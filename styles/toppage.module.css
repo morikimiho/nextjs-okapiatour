@@ -1,4 +1,17 @@
-.topimage {
-    width: 100%;
-  }
-  
+.container {
+  position: relative;
+}
+
+.search {
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  top: 75%;
+  left: 40%;
+  border: 1px grey solid;
+  border-radius: 10px;
+  background:rgba(45,25,98,0.5);
+  padding: 15px 25px;
+  display: flex;
+  margin: 20px auto;
+}
