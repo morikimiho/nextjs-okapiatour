@@ -1,17 +1,19 @@
 import styles from "../styles/crete-user.module.scss";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 const CreateUser = () => {
+
+
   return (
     <>
-    <Head>
+      <Head>
         <title>新規会員登録ページ</title>
-    </Head>
+      </Head>
       <header></header>
       <section className={styles.register}>
         <h3 className={styles.title}>新規会員登録</h3>
         <div className={styles.container}>
-
           <form action="">
             <div className={styles.form_name}>
               <div className={styles.form_name_side}>
@@ -20,7 +22,13 @@ const CreateUser = () => {
                     姓
                   </label>
                   <div>
-                    <input className={styles.input_name} type="text" id="" />
+                    <input
+                      className={styles.input_name}
+                      type="text"
+                      name="username"
+                      value={formValues.username}
+                      onChange={(e) => handleChange(e)}
+                    />
                   </div>
                 </div>
                 <div className={styles.name_kana}>
@@ -31,7 +39,8 @@ const CreateUser = () => {
                     <input className={styles.input_name} type="text" />
                   </div>
                 </div>
-              </div>{/* form_name_side */}
+              </div>
+              {/* form_name_side */}
 
               <div className={`${styles.form_name_side}${styles.name_right}`}>
                 <div className={styles.name_kanji}>
@@ -50,8 +59,10 @@ const CreateUser = () => {
                     <input className={styles.input_name} type="text" />
                   </div>
                 </div>
-              </div>{/* form_name_side */}
-            </div>{/* form_name */}
+              </div>
+              {/* form_name_side */}
+            </div>
+            {/* form_name */}
 
             <div className={styles.form_birth}>
               <label className={styles.form_label} htmlFor="">
@@ -83,7 +94,8 @@ const CreateUser = () => {
                   </select>
                 </div>
               </div>
-            </div>{/* form_birth */}
+            </div>
+            {/* form_birth */}
 
             <div className={styles.form_address}></div>
 
@@ -92,7 +104,13 @@ const CreateUser = () => {
                 メールアドレス
               </label>
               <div>
-                <input className={styles.input} type="email" />
+                <input
+                  className={styles.input}
+                  type="email"
+                  name="mailAddress"
+                  value={formValues.mailAddress}
+                  onChange={(e) => handleChange(e)}
+                />
               </div>
             </div>
 
@@ -101,9 +119,16 @@ const CreateUser = () => {
                 パスワード
               </label>
               <div>
-                <input className={styles.input} type="password" />
+                <input
+                  className={styles.input}
+                  type="text"
+                  name="password"
+                  value={formValues.password}
+                  onChange={(e) => handleChange(e)}
+                />
               </div>
             </div>
+
             <div className={styles.form_tmp}>
               <label className={styles.form_label} htmlFor="">
                 パスワード確認
@@ -125,7 +150,8 @@ const CreateUser = () => {
               <button className={styles.btn}>登録</button>
             </div>
           </form>
-        </div>{/* container */}
+        </div>
+        {/* container */}
       </section>
       <footer></footer>
     </>

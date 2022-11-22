@@ -1,15 +1,29 @@
 {"trip":[
   {
-  "id": 
-  "area":
-  "country":
-  "city":
-  "tourName":
-  "price":
-  "description":
-  "meetingPlace":
-  "times":
+  "id": ,
+  "area": ,
+  "country": ,
+  "city": ,
+  "tourName": ,
+  "price": ,
+  "description": ,
+  "meetingPlace": ,
+  "times": ,
   "maxPeople":
-},
+}
+],
+"users": [
+  {
+    "id": 1,
+    "firstName": "",
+    "lastName": "",
+    "firstNameKana": "",
+    "lastNameKana": "",
+    "birthY": 1,
+    "birthM": 1,
+    "birthD": 1,
+    "mail": "@",
+    "password": ""
+  }
 ]
 }
