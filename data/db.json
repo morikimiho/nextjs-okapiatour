@@ -1,17 +1,17 @@
-{"trip":[
+{"trips":[
   {
-  "id": 1
-  "img1":
-  "img2":
-  "img3":
-  "area":"ヨーロッパ"
-  "country":"フランス"
-  "city":"パリ"
-  "tourName":"パリ発：モン サン ミッシェル 1日ツアー"
-  "price":"¥17,000"
-  "description":"ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。"
-  "meetingPlace":"パリ 北駅"
-  "times":"14時間"
+  "id": 1,
+  "img1":"/mont-saint-michel01.jpg",
+  "img2":"/mont-saint-michel01.jpg",
+  "img3":"/mont-saint-michel01.jpg",
+  "area":"ヨーロッパ",
+  "country":"フランス",
+  "city":"パリ",
+  "tourName":"パリ発：モン サン ミッシェル 1日ツアー",
+  "price":"¥17,000",
+  "description":"ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+  "meetingPlace":"パリ 北駅",
+  "times":"14時間",
   "maxPeople":"20人"
 }
 ]
