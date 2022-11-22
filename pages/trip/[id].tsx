@@ -1,16 +1,14 @@
 import Head from "next/head";
-import Image from "next/image";
+import { Tripdetail } from "../../component/tripdetail";
 
 export default function Tripdetai() {
   <>
     <Head>
-      <title></title>
+      <title>aaa</title>
     </Head>
-    <Image />
-    <Image />
-    <Image />
+    <Tripdetail />
     
-    
+  
   </>;
   
 }
