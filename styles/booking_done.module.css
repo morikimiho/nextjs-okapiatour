@@ -1,0 +1,44 @@
+.booking_title {
+  margin: 20px;
+  line-height: 1.15;
+  font-size: 40px;
+  padding-left: 100px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  border-bottom: solid 2px black;
+}
+
+.booking_thanks {
+  text-align: center;
+  font-size: 30px;
+  padding-top: 50px;
+  color: darkblue;
+}
+
+.booking_number {
+  text-align: center;
+  font-size: 25px;
+  background-color: lemonchiffon;
+  padding: 10px;
+}
+
+.booking_message {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.booking_button {
+  padding-top: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+.booking_btn {
+  width: 200px;
+  height: 50px;
+}
+
+.booking_note {
+  text-align: center;
+  color: red;
+  padding-top: 30px;
+}
