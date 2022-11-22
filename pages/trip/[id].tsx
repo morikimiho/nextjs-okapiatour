@@ -2,6 +2,7 @@ import Head from "next/head";
 import { GetStaticPaths,GetStaticProps } from "next";
 import { getActiveTrips,getTrip } from "../../service/trip";
 import Image from "next/image";
+import styles from "../../styles/tripdetail.module.css";
 
 
 export const getStaticPaths:GetStaticPaths=async()=>{
@@ -45,7 +46,7 @@ export default function Tripdetai({trip}) {
    <h2>アクティビティ概要</h2>
    <div>
     <ul>
-      <li>無料キャンセル</li>
+      <li className={styles.cancel}>無料キャンセル</li>
       <li></li>
       <li></li>
     </ul>
