@@ -1,3 +1,15 @@
-{
-  "items": []
+{"trip":[
+  {
+  "id": 
+  "area":
+  "country":
+  "city":
+  "tourName":
+  "price":
+  "description":
+  "meetingPlace":
+  "times":
+  "maxPeople":
+},
+]
 }
