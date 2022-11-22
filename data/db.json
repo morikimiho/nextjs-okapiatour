@@ -1,9 +1,9 @@
 {"trips":[
   {
   "id": 1,
-  "img1":"/mont-saint-michel01.jpg",
-  "img2":"/mont-saint-michel01.jpg",
-  "img3":"/mont-saint-michel01.jpg",
+  "img1":"/images/mont-saint-michel01.jpg",
+  "img2":"/images/mont-saint-michel02.jpg",
+  "img3":"/images/mont-saint-michel03.jpg",
   "area":"ヨーロッパ",
   "country":"フランス",
   "city":"パリ",
