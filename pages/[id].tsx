@@ -9,7 +9,8 @@ export default function Tripdetai() {
     <Image />
     <Image />
     <Image />
-    <div></div>
+    
+    
   </>;
   
 }
