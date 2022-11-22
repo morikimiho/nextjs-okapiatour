@@ -1,0 +1,11 @@
+.width {
+    max-width: 960px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.radio {
+    border: 1px solid grey;
+    padding: 30px;
+    border-radius: 5px;
+}
