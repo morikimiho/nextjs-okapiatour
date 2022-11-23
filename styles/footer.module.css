@@ -1,0 +1,14 @@
+.footer {
+    background-color: #FFC896;
+    height: 50px;
+    text-align: center;
+    display: table;
+    width: 100%;
+}
+
+.copy {
+    display: table-cell;
+    vertical-align: middle;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
