@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const CreateUser = () => {
 
-
   return (
     <>
       <Head>
