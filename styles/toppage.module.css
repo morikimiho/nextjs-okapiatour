@@ -4,14 +4,22 @@
 
 .search {
   position: absolute;
-  color: white;
-  font-size: 20px;
-  top: 75%;
-  left: 40%;
+  color: black;
+  font-size: 22px;
+  top: 80%;
+  left: 0;
+  right: 0;
+  margin: auto;
   border: 1px grey solid;
-  border-radius: 10px;
-  background:rgba(45,25,98,0.5);
-  padding: 15px 25px;
+  border-radius: 15px;
+  background:rgba(237, 237, 243, 0.5);
+  padding: 10px 40px;
   display: flex;
-  margin: 20px auto;
+  font-family: 'Times New Roman', Times, serif;
+  max-width: 200px;
+  
+}
+
+.search img {
+  margin-top: 5px;
 }
