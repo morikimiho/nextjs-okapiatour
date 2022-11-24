@@ -8,17 +8,6 @@ import { useEffect, useState } from "react";
 //   };
 
 const CreateUser = () => {
-  const initialValues = {
-    firstName: "",
-    firstNameKana: "",
-    lastName: "",
-    lastNameKana: "",
-    mailAddress: "",
-    password: "",
-    birthY: "",
-    birthM: "",
-    birthD: "",
-  };
 
   const [firstName, setFirstName] = useState("");
   const [firstNameKana, setFirstNameKana] = useState("");

@@ -3,6 +3,9 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getActiveTrips, getTrip } from "../../service/trip";
 import Image from "next/image";
 import styles from "../../styles/tripdetail.module.css";
+import {TripdetailContent} from "../../component/"
+import {TripdetailCount} from "../../component/tripdetailCount";
+import { TripdetailAttention } from "../../component/tripdetailAttention";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const trips = await getActiveTrips();
@@ -69,19 +72,8 @@ export default function Tripdetai({ trip }) {
         <div className={styles.tripdetail}>
           <div>
             <div>
-              <p>参加人数を選択してください</p>
-              <select name="" id="">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-              </select>
+              
+             <TripdetailCount />
             </div>
             <div>
               <p>希望の日付を選択してください</p>
@@ -131,19 +123,7 @@ export default function Tripdetai({ trip }) {
               </div>
             </div>
           </div>
-          <div className={styles.attention}>
-            <h3>注意事項</h3>
-            <ul>
-              <li>
-                ランチは含まれておりません。(含まれるものに記載ある場合はランチ含む)
-              </li>
-              <li>集合場所までは各自でお越しください。</li>
-              <li>所要時間は交通渋滞などにより変更する可能性がございます。</li>
-              <li>
-                10名以上ご予約希望の場合は別途ご連絡ください（団体割引有り）
-              </li>
-            </ul>
-          </div>
+         <TripdetailAttention />
         </div>
         <br />
         <br />

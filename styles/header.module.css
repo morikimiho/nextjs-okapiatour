@@ -1,7 +1,8 @@
+
+
 .headerall {
     background-color: #FFC896;
 }
-
 .header {
     height: 50px;
     display: flex;
@@ -9,20 +10,18 @@
     justify-content: space-between;
     margin: 0 auto;
 }
-
 .buttons {
     margin: auto 20px;
     display: flex;   
 }
-
 .button {
     margin: auto 10px;
     cursor: pointer;
 }
 
-
 .logo {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 32px;
+    font-style: italic;
     margin: auto 10px;
 }

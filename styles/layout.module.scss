@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+
+$layout-width-inner: 1200px;
+$breakpoints: (
+//キー : 値
+'sp': "(max-width: 767px)", 
+'res': "(max-width: #{$layout-width-inner - 1px})", 
+// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
+'pc': "(min-width: #{$layout-width-inner})"
+) ;
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+// ホーム画面用
+.tour_trip_home {
+    margin: 0 auto 80px auto;
+    // width: calc(100vw - 200px);
+    padding: 0;
+    @include mq("res") {
+        margin: 0 auto 40px auto;
+        // width: calc(100vw - 60px);
+        transition: all 0.1s ease 0s;    
+    }
+}
+
+// それ以外
+.tour_trip_contents {
+    margin: 80px auto;
+    width: calc(100vw - 200px);
+    @include mq("res") {
+        margin: 40px auto;
+        width: calc(100vw - 60px);
+        transition: all 0.1s ease 0s;    
+    }
+}
+
+
+
+.qwerty {
+    width: inherit;
+    background-color: rgb(253, 162, 162);
+    height: 400px;
+}
