@@ -64,7 +64,7 @@ export default function Tripdetai({ trip }) {
         <h2>アクティビティ概要</h2>
         <div>
           <ul>
-            <li className={styles.cancel}>
+            <li>
               無料キャンセル(ご出発日三日目まで）
             </li>
             <li>今すぐ予約＆後で支払う</li>
