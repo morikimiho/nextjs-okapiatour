@@ -47,15 +47,15 @@ export default function Tripdetai({ trip }) {
         <div className={styles.tripinfo}>
           <div>
             <h2>アクティビティ概要</h2>
-            
-              <ul>
-                <li>無料キャンセル(ご出発日三日目まで）</li>
-                <li>今すぐ予約＆後で支払う</li>
-                <li>所要時間:{trip.times}</li>
-                <li>最小催行人数:{trip.minPeople}</li>
-                <li>集合場所:{trip.meetingPlace}</li>
-                <li>金額:{trip.price}</li>
-              </ul>
+
+            <ul>
+              <li>無料キャンセル(ご出発日三日目まで）</li>
+              <li>今すぐ予約＆後で支払う</li>
+              <li>所要時間:{trip.times}時間</li>
+              <li>最小催行人数:{trip.minPeople}</li>
+              <li>集合場所:{trip.meetingPlace}</li>
+              <li>金額:{trip.price}</li>
+            </ul>
           </div>
           <div className={styles.tripcontent}>
             <h2>含まれるもの</h2>
@@ -63,7 +63,6 @@ export default function Tripdetai({ trip }) {
               <li>{trip.content1}</li>
               <li>{trip.content2}</li>
               <li>{trip.content3}</li>
-        
             </ul>
           </div>
         </div>
@@ -90,22 +89,59 @@ export default function Tripdetai({ trip }) {
             </div>
             <div>
               <p>希望の時間帯を選択してください</p>
-              
-                { {trip.times} >=7 && ( <><select name="" id="">
-                                     <option value="1">9:00</option>
-                                     <option value="1">10:00</option>  
-                                     </select></> ): }
-              
-        
+
+              <div>
+                {trip.times >= 7 && (
+               
+                    <select>
+                      <option value="1">9:00</option>
+                      <option value="2">10:00</option>
+                    </select>
+                
+                )}
+
+                {trip.times < 7 && trip.times >= 3 && (
+               
+                    <select>
+                      <option value="1">9:00</option>
+                      <option value="2">10:00</option>
+                      <option value="3">11:00</option>
+                      <option value="4">12:00</option>
+                      <option value="5">13:00</option>
+                    </select>
+                
+                )}
+
+                {trip.times < 3 && (
+               
+                    <select name="" id="">
+                      <option value="1">9:00</option>
+                      <option value="2">10:00</option>
+                      <option value="3">11:00</option>
+                      <option value="4">12:00</option>
+                      <option value="5">13:00</option>
+                      <option value="6">14:00</option>
+                      <option value="7">15:00</option>
+                      <option value="8">16:00</option>
+                      <option value="9">17:00</option>
+                      <option value="10">18:00</option>
+                    </select>
+                
+                )}
+              </div>
             </div>
           </div>
           <div className={styles.attention}>
             <h3>注意事項</h3>
             <ul>
-              <li>ランチは含まれておりません。(含まれるものに記載ある場合はランチ含む)</li>
+              <li>
+                ランチは含まれておりません。(含まれるものに記載ある場合はランチ含む)
+              </li>
               <li>集合場所までは各自でお越しください。</li>
               <li>所要時間は交通渋滞などにより変更する可能性がございます。</li>
-              <li>10名以上ご予約希望の場合は別途ご連絡ください（団体割引有り）</li>
+              <li>
+                10名以上ご予約希望の場合は別途ご連絡ください（団体割引有り）
+              </li>
             </ul>
           </div>
         </div>
