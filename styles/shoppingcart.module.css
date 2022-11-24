@@ -1,0 +1,9 @@
+.button{
+    display: flex;
+}
+.tour{
+    display: flex;
+}
+.tourdetail{
+    margin-left: 50px;
+}
