@@ -11,12 +11,15 @@
 }
 
 .buttons {
-    margin: auto 20px;   
+    margin: auto 20px;
+    display: flex;   
 }
 
 .button {
     margin: auto 10px;
+    cursor: pointer;
 }
+
 
 .logo {
     font-family: 'Times New Roman', Times, serif;
