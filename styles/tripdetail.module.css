@@ -27,3 +27,6 @@
 .tripcontent{
     padding-left: 50px;
 }
+.count{
+    display: flex;
+}
