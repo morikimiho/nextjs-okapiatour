@@ -35,6 +35,7 @@
 .booking_btn {
   width: 200px;
   height: 50px;
+  cursor: pointer;
 }
 
 .booking_note {
