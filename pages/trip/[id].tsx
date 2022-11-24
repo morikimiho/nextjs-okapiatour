@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getActiveTrips, getTrip } from "../../service/trip";
-import Image from "next/image";
 import styles from "../../styles/tripdetail.module.css";
 import { TripdetailContent } from "../../component/tripdetailContent";
 import {TripdetailCount} from "../../component/tripdetailCount";
 import { TripdetailAttention } from "../../component/tripdetailAttention";
 import { TripdetailActivity } from "../../component/tripdetailActivity";
+import { TripdetailImage } from "../../component/tripdetailImage";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const trips = await getActiveTrips();
@@ -38,20 +38,19 @@ export default function Tripdetail({ trip }) {
       <Head>
         <title>{trip.tourName}</title>
       </Head>
+      
       <main className={styles.main}>
         <p>
           {trip.area} &nbsp;{trip.country}
         </p>
 
         <h1>{trip.tourName} </h1>
-        <Image src={trip.img1} alt={trip.tourName} width={220} height={150} />
-        <Image src={trip.img2} alt={trip.tourName} width={220} height={150} />
-        <Image src={trip.img3} alt={trip.tourName} width={220} height={150} />
+       <TripdetailImage trip={trip}/>
         <p>{trip.description}</p>
         <div className={styles.tripinfo}>
         <TripdetailActivity trip={trip}/>
         <TripdetailContent trip={trip}/>
-        </div>
+        </div> 
         <div className={styles.tripdetail}>
           <div>
             <div>
