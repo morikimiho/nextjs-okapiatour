@@ -3,8 +3,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getActiveTrips, getTrip } from "../../service/trip";
 import Image from "next/image";
 import styles from "../../styles/tripdetail.module.css";
-import { timeStamp } from "console";
-import { symbolName } from "typescript";
+
+
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const trips = await getActiveTrips();
@@ -69,7 +69,7 @@ export default function Tripdetai({ trip }) {
             </li>
             <li>今すぐ予約＆後で支払う</li>
             <li>所要時間:{trip.times}</li>
-            <li>最大人数:{trip.maxPeople}</li>
+            <li>最小催行人数:{trip.minPeople}</li>
             <li>集合場所:{trip.meetingPlace}</li>
           </ul>
         </div>
@@ -90,6 +90,7 @@ export default function Tripdetai({ trip }) {
             
               <p>希望の時間帯を選択してください</p>
               <select name="" id="">
+                {/* {{trip.time}} */}
                 <option value="1">9:00</option>
                 <option value="1">10:00</option>
               </select>
