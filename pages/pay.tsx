@@ -1,9 +1,12 @@
 import styles from '../styles/pay.module.css';
+import {Header} from "../component/header";
+import {Footer} from "../component/footer";
 
 export default function Pay() {
 
         return (
             < >
+                <Header />
                 <div className={styles.width}>
                 <h3 className={styles.title}>お支払いの内容を確認してください。</h3>
                     <div className={styles.total}>
@@ -14,6 +17,7 @@ export default function Pay() {
                         <InputRange />
                     </div>
                 </div>
+                <Footer />
             </>
         );
 
@@ -36,29 +40,17 @@ export function ConfirmTotal() {
                     <input type="radio" id='01' name='pay'/>クレジットカード
                 </div>
                 <br />
-                クレジットカード番号
-                <input type="text" />
-                    <br />
-                登録名
-                <input type="text" />
-                    <br />
-                有効期限
-                <input type="text" />
-                    <br />
-                セキュリティーコード
-                <input type="text" />
-                    <br />
-                    <div className={styles.radio}>
-                        <input type="radio" id='02' name='pay'/>銀行振込
-                    </div>
-                    <br />
-                    <div className={styles.radio}>
-                        <input type="radio" id='03' name='pay'/>コンビニ支払い
-                    </div>
+                <div className={styles.radio}>
+                    <input type="radio" id='02' name='pay'/>銀行振込
+                </div>
+                <br />
+                <div className={styles.radio}>
+                   <input type="radio" id='03' name='pay'/>コンビニ支払い
+                </div>
 
             </form>
             <button type='button' className={styles.button}>
-                <a href="#">決済を完了する →</a>
+                <a href="/booking_done">決済する</a>
             </button>
         </>
     );
