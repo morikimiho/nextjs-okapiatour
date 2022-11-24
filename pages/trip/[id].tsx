@@ -3,9 +3,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getActiveTrips, getTrip } from "../../service/trip";
 import Image from "next/image";
 import styles from "../../styles/tripdetail.module.css";
-import {TripdetailContent} from "../../component/"
+import { TripdetailContent } from "../../component/tripdetailContent";
 import {TripdetailCount} from "../../component/tripdetailCount";
 import { TripdetailAttention } from "../../component/tripdetailAttention";
+import { TripdetailActivity } from "../../component/tripdetailActivity";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const trips = await getActiveTrips();
@@ -31,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function Tripdetai({ trip }) {
+export default function Tripdetail({ trip }) {
   return (
     <>
       <Head>
@@ -48,32 +49,14 @@ export default function Tripdetai({ trip }) {
         <Image src={trip.img3} alt={trip.tourName} width={220} height={150} />
         <p>{trip.description}</p>
         <div className={styles.tripinfo}>
-          <div>
-            <h2>アクティビティ概要</h2>
-
-            <ul>
-              <li>無料キャンセル(ご出発日三日目まで）</li>
-              <li>今すぐ予約＆後で支払う</li>
-              <li>所要時間:{trip.times}時間</li>
-              <li>最小催行人数:{trip.minPeople}</li>
-              <li>集合場所:{trip.meetingPlace}</li>
-              <li>金額:{trip.price}</li>
-            </ul>
-          </div>
-          <div className={styles.tripcontent}>
-            <h2>含まれるもの</h2>
-            <ul>
-              <li>{trip.content1}</li>
-              <li>{trip.content2}</li>
-              <li>{trip.content3}</li>
-            </ul>
-          </div>
+        <TripdetailActivity trip={trip}/>
+        <TripdetailContent trip={trip}/>
         </div>
         <div className={styles.tripdetail}>
           <div>
             <div>
               
-             <TripdetailCount />
+             <TripdetailCount trip={trip} />
             </div>
             <div>
               <p>希望の日付を選択してください</p>
@@ -128,7 +111,7 @@ export default function Tripdetai({ trip }) {
         <br />
         <br />
         <div>
-          合計金額(入れた人数の合計金額を出す？？）
+          合計金額(入れた人数の合計金額を出す？？)
           <br />
           XXXXXX円
         </div>
