@@ -3,7 +3,7 @@
   line-height: 1.15;
   font-size: 40px;
   padding-left: 100px;
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: solid 2px black;
 }
@@ -11,7 +11,7 @@
 .booking_thanks {
   text-align: center;
   font-size: 30px;
-  padding-top: 50px;
+  padding-top: 20px;
   color: darkblue;
 }
 
@@ -40,5 +40,5 @@
 .booking_note {
   text-align: center;
   color: red;
-  padding-top: 30px;
+  padding-top: 20px;
 }
