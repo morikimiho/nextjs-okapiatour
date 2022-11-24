@@ -1,4 +1,20 @@
-{"trips":[
+
+{
+  "users": [
+    {
+      "firstName": "波田野",
+      "firstNameKana": "はたの",
+      "lastName": "大樹",
+      "lastNameKana": "まさき",
+      "mailAddress": "qwerty@qwerty.com",
+      "password": "qwerty",
+      "birthY": "1995",
+      "birthM": "9",
+      "birthD": "12",
+      "id": 1
+    }
+  ],
+  "trips":[
   {
   "id": 1,
   "img1":"/images/mont-saint-michel01.jpg",
