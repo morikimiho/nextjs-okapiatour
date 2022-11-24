@@ -21,6 +21,8 @@ export default function Home () {
                     <a href="#">&nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Image src="/images/虫眼鏡.png" alt="検索" width={16} height={16} /></a>
                 </button>
             </div>
+
+
             <Footer />
         </>
     );
@@ -39,13 +41,13 @@ export default function Home () {
             }}
         >
             <SplideSlide>
-                <Image className="slide-img" src="/images/scenery.jpg" alt="風景の画像" width={1500} height={700} objectFit="cover"/>
+                <Image className="slide-img" src="/images/scenery.jpg" alt="風景の画像" width={1500} height={700}/>
             </SplideSlide>
             <SplideSlide>
-                <Image className="slide-img" src="/images/flower.jpg" alt="花の画像" width={1500} height={700} objectFit="cover"/>
+                <Image className="slide-img" src="/images/flower.jpg" alt="花の画像" width={1500} height={700}/>
             </SplideSlide>
             <SplideSlide>
-                <Image className="slide-img" src="/images/fuji.jpg" alt="富士山の画像" width={1500} height={700} objectFit="cover"/>
+                <Image className="slide-img" src="/images/fuji.jpg" alt="富士山の画像" width={1500} height={700}/>
             </SplideSlide>
         </Splide>
 
@@ -61,3 +63,16 @@ export default function Home () {
     </>
   );
 };
+
+function Image (props: { img1: string ; tourName: string; }) {
+    return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={props.img1}
+        width={100}
+        height={75}
+        alt="ツアーパッケージ"
+        title={props.tourName}
+        className={styles.image}
+        />
+    );
+}
