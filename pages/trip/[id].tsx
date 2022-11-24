@@ -71,6 +71,7 @@ export default function Tripdetai({ trip }) {
             <li>所要時間:{trip.times}</li>
             <li>最小催行人数:{trip.minPeople}</li>
             <li>集合場所:{trip.meetingPlace}</li>
+            <li>金額:{trip.price}</li>
           </ul>
         </div>
         <div className={styles.tripdetail}>
@@ -105,7 +106,8 @@ export default function Tripdetai({ trip }) {
             </ul>
           </div>
         </div>
-
+        <br /><br />
+        <div>合計金額(入れた人数の合計金額を出す？？）<br />XXXXXX円</div>
         <div className={styles.buttonposition}>
           <button className={styles.button}>予約に進む</button>
         </div>
