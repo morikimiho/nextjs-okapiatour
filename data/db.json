@@ -1,29 +1,16 @@
-{"trip":[
-  {
-  "id": ,
-  "area": ,
-  "country": ,
-  "city": ,
-  "tourName": ,
-  "price": ,
-  "description": ,
-  "meetingPlace": ,
-  "times": ,
-  "maxPeople":
-}
-],
-"users": [
-  {
-    "id": 1,
-    "firstName": "",
-    "lastName": "",
-    "firstNameKana": "",
-    "lastNameKana": "",
-    "birthY": 1,
-    "birthM": 1,
-    "birthD": 1,
-    "mail": "@",
-    "password": ""
-  }
-]
+{
+  "users": [
+    {
+      "firstName": "波田野",
+      "firstNameKana": "はたの",
+      "lastName": "大樹",
+      "lastNameKana": "まさき",
+      "mailAddress": "qwerty@qwerty.com",
+      "password": "qwerty",
+      "birthY": "1995",
+      "birthM": "9",
+      "birthD": "12",
+      "id": 1
+    }
+  ]
 }

@@ -1,8 +1,67 @@
 import styles from "../styles/crete-user.module.scss";
 import Head from "next/head";
+import { Users } from "../types/types";
 import { useEffect, useState } from "react";
 
+// type User = {
+//     users: User[];
+//   };
+
 const CreateUser = () => {
+  const initialValues = {
+    firstName: "",
+    firstNameKana: "",
+    lastName: "",
+    lastNameKana: "",
+    mailAddress: "",
+    password: "",
+    birthY: "",
+    birthM: "",
+    birthD: "",
+  };
+
+  const [firstName, setFirstName] = useState("");
+  const [firstNameKana, setFirstNameKana] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [lastNameKana, setLastNameKana] = useState("");
+  const [tel, setTel] = useState("");
+  const [mailAddress, setMailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [birthY, setBirthY] = useState("");
+  const [birthM, setBirthM] = useState("");
+  const [birthD, setBirthD] = useState("");
+
+  const handleSubmit = () => {
+    const data = {
+      firstName,
+      firstNameKana,
+      lastName,
+      lastNameKana,
+      mailAddress,
+      tel,
+      password,
+      birthY,
+      birthM,
+      birthD,
+    };
+    // e.preventDefault();
+    // setFormErrors(validate(users));
+    // setIsSubmit(true);
+    fetch("http://localhost:8000/users", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+      });
+    // .then(router.push("/")) // .reloaded()リロード
+  };
 
   return (
     <>
@@ -13,7 +72,7 @@ const CreateUser = () => {
       <section className={styles.register}>
         <h3 className={styles.title}>新規会員登録</h3>
         <div className={styles.container}>
-          <form action="">
+          <form>
             <div className={styles.form_name}>
               <div className={styles.form_name_side}>
                 <div className={styles.name_kanji}>
@@ -24,9 +83,9 @@ const CreateUser = () => {
                     <input
                       className={styles.input_name}
                       type="text"
-                      name="username"
-                      value={formValues.username}
-                      onChange={(e) => handleChange(e)}
+                      name="firstName"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -35,7 +94,13 @@ const CreateUser = () => {
                     姓(ふりがな)
                   </label>
                   <div>
-                    <input className={styles.input_name} type="text" />
+                    <input
+                      className={styles.input_name}
+                      type="text"
+                      name="firstNameKana"
+                      value={firstNameKana}
+                      onChange={(e) => setFirstNameKana(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -47,7 +112,13 @@ const CreateUser = () => {
                     名
                   </label>
                   <div>
-                    <input className={styles.input_name} type="text" id="" />
+                    <input
+                      className={styles.input_name}
+                      type="text"
+                      name="lastName"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
                   </div>
                 </div>
                 <div className={styles.name_kana}>
@@ -55,7 +126,13 @@ const CreateUser = () => {
                     名(ふりがな)
                   </label>
                   <div>
-                    <input className={styles.input_name} type="text" />
+                    <input
+                      className={styles.input_name}
+                      type="text"
+                      name="lastNameKana"
+                      value={lastNameKana}
+                      onChange={(e) => setLastNameKana(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -72,7 +149,13 @@ const CreateUser = () => {
                   <label className={styles.form_label} htmlFor="">
                     年(西暦)
                   </label>
-                  <select className={styles.input_select} name="" id="">
+                  <select
+                    className={styles.input_select}
+                    id=""
+                    name="birthY"
+                    value={birthY}
+                    onChange={(e) => setBirthY(e.target.value)}
+                  >
                     <SelectYear />
                   </select>
                 </div>
@@ -80,7 +163,13 @@ const CreateUser = () => {
                   <label className={styles.form_label} htmlFor="">
                     月
                   </label>
-                  <select className={styles.input_select} name="" id="">
+                  <select
+                    className={styles.input_select}
+                    id=""
+                    name="birthM"
+                    value={birthM}
+                    onChange={(e) => setBirthM(e.target.value)}
+                  >
                     <SelectMonth />
                   </select>
                 </div>
@@ -88,7 +177,13 @@ const CreateUser = () => {
                   <label className={styles.form_label} htmlFor="">
                     日
                   </label>
-                  <select className={styles.input_select} name="" id="">
+                  <select
+                    className={styles.input_select}
+                    id=""
+                    name="birthD"
+                    value={birthD}
+                    onChange={(e) => setBirthD(e.target.value)}
+                  >
                     <SelectDays />
                   </select>
                 </div>
@@ -100,6 +195,21 @@ const CreateUser = () => {
 
             <div className={styles.form_tmp}>
               <label className={styles.form_label} htmlFor="">
+                電話番号
+              </label>
+              <div>
+                <input
+                  className={styles.input}
+                  type="tel"
+                  name="tel"
+                  value={tel}
+                  onChange={(e) => setTel(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className={styles.form_tmp}>
+              <label className={styles.form_label} htmlFor="">
                 メールアドレス
               </label>
               <div>
@@ -107,8 +217,8 @@ const CreateUser = () => {
                   className={styles.input}
                   type="email"
                   name="mailAddress"
-                  value={formValues.mailAddress}
-                  onChange={(e) => handleChange(e)}
+                  value={mailAddress}
+                  onChange={(e) => setMailAddress(e.target.value)}
                 />
               </div>
             </div>
@@ -120,10 +230,10 @@ const CreateUser = () => {
               <div>
                 <input
                   className={styles.input}
-                  type="text"
+                  type="password"
                   name="password"
-                  value={formValues.password}
-                  onChange={(e) => handleChange(e)}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -133,7 +243,13 @@ const CreateUser = () => {
                 パスワード確認
               </label>
               <div>
-                <input className={styles.input} type="password" />
+                <input
+                  className={styles.input}
+                  type="password"
+                  name="passwordConfirm"
+                  value={passwordConfirm}
+                  onChange={(e) => setPasswordConfirm(e.target.value)}
+                />
               </div>
             </div>
             <div className={styles.privacy}>
@@ -146,7 +262,14 @@ const CreateUser = () => {
               </span>
             </div>
             <div className={styles.create_user_btn}>
-              <button className={styles.btn}>登録</button>
+              <button
+                className={styles.btn}
+                type="submit"
+                value="追加"
+                onClick={handleSubmit}
+              >
+                登録
+              </button>
             </div>
           </form>
         </div>
@@ -208,7 +331,7 @@ const SelectYear = () => {
       <option value="1992">1992</option>
       <option value="1993">1993</option>
       <option value="1994">1994</option>
-      <option value="1995">1995</option>
+      <option value="1995" selected>1995</option>
       <option value="1996">1996</option>
       <option value="1997">1997</option>
       <option value="1998">1998</option>
