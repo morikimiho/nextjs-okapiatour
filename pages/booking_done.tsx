@@ -3,8 +3,6 @@ import styles from "../styles/booking_done.module.css";
 import Link from "next/link";
 import { Header } from "../component/header";
 import { Footer } from "../component/footer";
-
-let randomstring = require("randomstring");
   
 export default function BookingDone() {
   return (
@@ -22,7 +20,6 @@ export default function BookingDone() {
         <div className={styles.booking_number}>
           <p>ご予約を承りました。</p>
           <p>ご予約番号</p>
-          {randomstring.generate(7)}
           <p>お問合せに必要な番号です。大切に保管してください。</p>
         </div>
 
