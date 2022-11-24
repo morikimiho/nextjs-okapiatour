@@ -1,3 +1,4 @@
+
 {
   "users": [
     {
@@ -12,5 +13,22 @@
       "birthD": "12",
       "id": 1
     }
-  ]
+  ],
+  "trips":[
+  {
+  "id": 1,
+  "img1":"/images/mont-saint-michel01.jpg",
+  "img2":"/images/mont-saint-michel02.jpg",
+  "img3":"/images/mont-saint-michel03.jpg",
+  "area":"ヨーロッパ",
+  "country":"フランス",
+  "city":"パリ",
+  "tourName":"パリ発：モン サン ミッシェル 1日ツアー",
+  "price":"¥17,000",
+  "description":"ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+  "meetingPlace":"パリ 北駅",
+  "times":"14時間",
+  "minPeople":"2人"
+}
+]
 }

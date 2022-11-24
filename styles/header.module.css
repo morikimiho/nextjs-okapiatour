@@ -1,0 +1,25 @@
+.headerall {
+    background-color: #FFC896;
+}
+
+.header {
+    height: 50px;
+    display: flex;
+    max-width: 1200px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.buttons {
+    margin: auto 20px;   
+}
+
+.button {
+    margin: auto 10px;
+}
+
+.logo {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin: auto 10px;
+}
