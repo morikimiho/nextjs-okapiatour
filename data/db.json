@@ -28,7 +28,7 @@
   "description":"ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
   "meetingPlace":"パリ 北駅",
   "times":14,
-  "minPeople":"2人",
+  "minPeople":2,
   "content1":"集合場所からのバスによる往復送迎",
   "content2":"修道院の入場券",
   "content3":"ガイド"
