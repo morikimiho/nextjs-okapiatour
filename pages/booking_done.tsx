@@ -1,6 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/booking_done.module.css";
 import Link from "next/link";
+import { Header } from "../component/header";
+import { Footer } from "../component/footer";
 
 export default function BookingDone() {
   return (
@@ -8,6 +10,7 @@ export default function BookingDone() {
       <Head>
         <title>予約完了フォーム</title>
       </Head>
+      <Header />
       <main>
         <h1 className={styles.booking_title}>予約完了</h1>
         <p className={styles.booking_thanks}>
@@ -37,6 +40,7 @@ export default function BookingDone() {
           </p>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
