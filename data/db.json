@@ -1,4 +1,3 @@
-
 {
   "users": [
     {
@@ -12,6 +11,19 @@
       "birthM": "9",
       "birthD": "12",
       "id": 1
+    },
+    {
+      "firstName": "波田野",
+      "firstNameKana": "あっs",
+      "lastName": "朝き",
+      "lastNameKana": "あああ",
+      "mailAddress": "flamberge1191@gmail.com",
+      "tel": "090-5758-5142",
+      "password": "qwerty",
+      "birthY": "1953",
+      "birthM": "4",
+      "birthD": "5",
+      "id": 2
     }
   ],
   "trips":[

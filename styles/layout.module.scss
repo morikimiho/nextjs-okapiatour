@@ -33,13 +33,11 @@ $breakpoints: (
     margin: 80px auto;
     width: calc(100vw - 200px);
     @include mq("res") {
-        margin: 40px auto;
+        margin: 40px auto;  
         width: calc(100vw - 60px);
-        transition: all 0.1s ease 0s;    
+        transition: all 0.1s ease 0s;
     }
 }
-
-
 
 .qwerty {
     width: inherit;
