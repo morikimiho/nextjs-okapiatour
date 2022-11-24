@@ -12,7 +12,47 @@
   "description":"ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
   "meetingPlace":"パリ 北駅",
   "times":"14時間",
-  "minPeople":"2人"
+  "minPeople":"2人",
+  "content1":"集合場所からのバスによる往復送迎",
+  "content2":"修道院の入場券",
+  "content3":"ガイド"
+},
+{
+  "id": 2,
+  "img1":"/images/loire01.jpg",
+  "img2":"/images/loire02.jpeg",
+  "img3":"/images/loire03.jpeg",
+  "area":"ヨーロッパ",
+  "country":"フランス",
+  "city":"パリ",
+  "tourName":"パリ発：ロワール渓谷 古城めぐり 1日ツアー",
+  "price":"¥15,000",
+  "description":"フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
+  "meetingPlace":"パリ ノートルダム寺院前",
+  "times":"12時間",
+  "minPeople":"4人",
+  "content1":"集合場所からのバスによる往復送迎",
+  "content2":"城への入場料金",
+  "content3":"ランチ"
+},
+{
+  "id": 3,
+  "img1":"/images/loire01.jpg",
+  "img2":"/images/loire02.jpeg",
+  "img3":"/images/loire03.jpeg",
+  "area":"ヨーロッパ",
+  "country":"フランス",
+  "city":"パリ",
+  "tourName":"パリ発：ヴェルサイユ宮殿ツアー",
+  "price":"¥11,000",
+  "description":"ヴェルサイユ宮殿への半日ツアーです。優先入場サービスをご利用いただけますので、通常の入場時の待ち列を回避して速やかにご入場いただけます。",
+  "meetingPlace":"パリ ノートルダム寺院前",
+  "times":"5時間",
+  "minPeople":"4人",
+  "content1":"集合場所からのバスによる往復送迎 ",
+  "content2":"宮殿の入場チケット ",
+  "content3":"庭への入場"
 }
+
 ]
 }

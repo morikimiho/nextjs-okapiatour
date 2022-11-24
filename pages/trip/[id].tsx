@@ -4,8 +4,6 @@ import { getActiveTrips, getTrip } from "../../service/trip";
 import Image from "next/image";
 import styles from "../../styles/tripdetail.module.css";
 
-
-
 export const getStaticPaths: GetStaticPaths = async () => {
   const trips = await getActiveTrips();
   return {
@@ -41,38 +39,33 @@ export default function Tripdetai({ trip }) {
           {trip.area} &nbsp;{trip.country}
         </p>
 
-        <h1>パリ発：モン サン ミシェル 1日ツアー </h1>
-        <Image
-          src={trip.img1}
-          alt="モンサンミッシェルの画像"
-          width={220}
-          height={150}
-        />
-        <Image
-          src={trip.img2}
-          alt="モンサンミッシェルの画像"
-          width={220}
-          height={150}
-        />
-        <Image
-          src={trip.img3}
-          alt="モンサンミッシェルの画像"
-          width={220}
-          height={150}
-        />
+        <h1>{trip.tourName} </h1>
+        <Image src={trip.img1} alt={trip.tourName} width={220} height={150} />
+        <Image src={trip.img2} alt={trip.tourName} width={220} height={150} />
+        <Image src={trip.img3} alt={trip.tourName} width={220} height={150} />
         <p>{trip.description}</p>
-        <h2>アクティビティ概要</h2>
-        <div>
-          <ul>
-            <li>
-              無料キャンセル(ご出発日三日目まで）
-            </li>
-            <li>今すぐ予約＆後で支払う</li>
-            <li>所要時間:{trip.times}</li>
-            <li>最小催行人数:{trip.minPeople}</li>
-            <li>集合場所:{trip.meetingPlace}</li>
-            <li>金額:{trip.price}</li>
-          </ul>
+        <div className={styles.tripinfo}>
+          <div>
+            <h2>アクティビティ概要</h2>
+            
+              <ul>
+                <li>無料キャンセル(ご出発日三日目まで）</li>
+                <li>今すぐ予約＆後で支払う</li>
+                <li>所要時間:{trip.times}</li>
+                <li>最小催行人数:{trip.minPeople}</li>
+                <li>集合場所:{trip.meetingPlace}</li>
+                <li>金額:{trip.price}</li>
+              </ul>
+          </div>
+          <div className={styles.tripcontent}>
+            <h2>含まれるもの</h2>
+            <ul>
+              <li>{trip.content1}</li>
+              <li>{trip.content2}</li>
+              <li>{trip.content3}</li>
+              <li></li>
+            </ul>
+          </div>
         </div>
         <div className={styles.tripdetail}>
           <div>
@@ -88,7 +81,6 @@ export default function Tripdetai({ trip }) {
               <input type="date" />
             </div>
             <div>
-            
               <p>希望の時間帯を選択してください</p>
               <select name="" id="">
                 {/* {{trip.time}} */}
@@ -106,8 +98,13 @@ export default function Tripdetai({ trip }) {
             </ul>
           </div>
         </div>
-        <br /><br />
-        <div>合計金額(入れた人数の合計金額を出す？？）<br />XXXXXX円</div>
+        <br />
+        <br />
+        <div>
+          合計金額(入れた人数の合計金額を出す？？）
+          <br />
+          XXXXXX円
+        </div>
         <div className={styles.buttonposition}>
           <button className={styles.button}>予約に進む</button>
         </div>
