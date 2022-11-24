@@ -63,7 +63,7 @@ export default function Tripdetai({ trip }) {
               <li>{trip.content1}</li>
               <li>{trip.content2}</li>
               <li>{trip.content3}</li>
-              <li></li>
+        
             </ul>
           </div>
         </div>
@@ -74,6 +74,14 @@ export default function Tripdetai({ trip }) {
               <select name="" id="">
                 <option value="1">1</option>
                 <option value="2">2</option>
+                <option value="2">3</option>
+                <option value="2">4</option>
+                <option value="2">5</option>
+                <option value="2">6</option>
+                <option value="2">7</option>
+                <option value="2">8</option>
+                <option value="2">9</option>
+                <option value="2">10</option>
               </select>
             </div>
             <div>
@@ -92,9 +100,10 @@ export default function Tripdetai({ trip }) {
           <div className={styles.attention}>
             <h3>注意事項</h3>
             <ul>
-              <li>ランチは含まれておりません。</li>
+              <li>ランチは含まれておりません。(含まれるものに記載ある場合はランチ含む)</li>
               <li>集合場所までは各自でお越しください。</li>
               <li>所要時間は交通渋滞などにより変更する可能性がございます。</li>
+              <li>10名以上ご予約希望の場合は別途ご連絡ください（団体割引有り）</li>
             </ul>
           </div>
         </div>
