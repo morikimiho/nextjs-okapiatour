@@ -74,14 +74,14 @@ export default function Tripdetai({ trip }) {
               <select name="" id="">
                 <option value="1">1</option>
                 <option value="2">2</option>
-                <option value="2">3</option>
-                <option value="2">4</option>
-                <option value="2">5</option>
-                <option value="2">6</option>
-                <option value="2">7</option>
-                <option value="2">8</option>
-                <option value="2">9</option>
-                <option value="2">10</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
               </select>
             </div>
             <div>
@@ -90,11 +90,13 @@ export default function Tripdetai({ trip }) {
             </div>
             <div>
               <p>希望の時間帯を選択してください</p>
-              <select name="" id="">
-                {/* {{trip.time}} */}
-                <option value="1">9:00</option>
-                <option value="1">10:00</option>
-              </select>
+              
+                { {trip.times} >=7 && ( <><select name="" id="">
+                                     <option value="1">9:00</option>
+                                     <option value="1">10:00</option>  
+                                     </select></> ): }
+              
+        
             </div>
           </div>
           <div className={styles.attention}>
