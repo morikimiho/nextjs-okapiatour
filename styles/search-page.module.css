@@ -1,0 +1,29 @@
+.search_box {
+  margin: 80px;
+}
+
+.search_box_container {
+  border: 1px solid #888;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.search_items {
+  display: flex;
+  justify-content: center;
+}
+
+.search_result {
+  width: 70%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.search_result_container {
+  display: flex;
+}
+
+.tour_detail {
+  width: 50%;
+  background-color: aquamarine;
+}

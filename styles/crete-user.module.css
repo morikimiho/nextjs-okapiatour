@@ -1,6 +1,13 @@
 .register {
   width: 700px;
-  margin: 80px auto 80px;
+  margin: 0 auto;
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 1199px) {
+  .register {
+    width: 330px;
+    transition: all 0.3s ease 0s;
+  }
 }
 .register .title {
   margin: 0;
@@ -14,18 +21,48 @@
   padding: 40px;
   background-color: #FFC896;
 }
+@media (max-width: 1199px) {
+  .container {
+    padding: 20px;
+  }
+}
 .container .form_name {
-  display: flex;
-  margin-bottom: 40px;
+  width: 100%;
+}
+@media (max-width: 1199px) {
+  .container .form_name {
+    display: block;
+  }
+}
+@media (max-width: 1199px) {
+  .container .form_name {
+    margin-bottom: 20px;
+  }
 }
 .container .form_name .form_name_side {
-  width: 400px;
+  display: flex;
 }
-.container .form_name .form_name_side .name_right {
-  margin-left: auto;
+@media (max-width: 1199px) {
+  .container .form_name .form_name_side {
+    width: 274px;
+    display: block;
+  }
 }
 .container .form_name .name_kanji {
   margin-bottom: 40px;
+}
+@media (max-width: 1199px) {
+  .container .form_name .name_kanji {
+    margin-bottom: 20px;
+  }
+}
+.container .form_name .name_kana {
+  margin-left: auto;
+}
+@media (max-width: 1199px) {
+  .container .form_name .name_kana {
+    margin-bottom: 20px;
+  }
 }
 .container .form_birth_group {
   display: flex;
@@ -36,11 +73,27 @@
   background-color: #fff;
   margin-bottom: 40px;
 }
+@media (max-width: 1199px) {
+  .container .form_birth_group {
+    margin-bottom: 20px;
+  }
+}
 .container .form_tmp {
   margin-bottom: 40px;
 }
+@media (max-width: 1199px) {
+  .container .form_tmp {
+    margin-bottom: 20px;
+  }
+}
 .container .privacy {
   margin-bottom: 40px;
+}
+@media (max-width: 1199px) {
+  .container .privacy {
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
 }
 
 .form_label {
@@ -72,6 +125,12 @@
   width: 80px;
   border-radius: 10px;
 }
+@media (max-width: 1199px) {
+  .input_select {
+    width: 40px;
+    margin-left: 16px;
+  }
+}
 
 .privacy {
   text-align: center;
@@ -85,18 +144,27 @@
   padding: 15px 40px;
   border-radius: 20px;
   font-size: 24px;
+  font-weight: 700;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #DEDEDE;
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 1199px) {
+  .create_user_btn .btn {
+    font-size: 18px;
+    padding: 7px 20px;
+  }
 }
 .create_user_btn .btn:hover {
   position: relative;
-  left: 5px;
-  top: 5px;
+  transform: translate(2px, 2px);
   box-shadow: none;
 }
 
 .red {
-  color: #f63131;
+  color: #f84f4f;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .form_required {
@@ -105,7 +173,7 @@
 .form_required::after {
   position: absolute;
   content: "*";
-  color: #f63131;
+  color: #f84f4f;
   left: 0;
   top: 0;
 }
