@@ -85,3 +85,16 @@ const Slider = () => {
     </>
   );
 };
+
+function Image (props: { img1: string ; tourName: string; }) {
+    return (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={props.img1}
+        width={100}
+        height={75}
+        alt="ツアーパッケージ"
+        title={props.tourName}
+        className={styles.image}
+        />
+    );
+}

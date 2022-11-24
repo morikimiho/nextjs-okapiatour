@@ -64,10 +64,40 @@
   "description":"ヴェルサイユ宮殿への半日ツアーです。優先入場サービスをご利用いただけますので、通常の入場時の待ち列を回避して速やかにご入場いただけます。",
   "meetingPlace":"パリ ノートルダム寺院前",
   "times":"5時間",
-  "minPeople":"4人",
   "content1":"集合場所からのバスによる往復送迎 ",
   "content2":"宮殿の入場チケット ",
-  "content3":"庭への入場"
+  "content3":"庭への入場",
+  "minPeople":"2人"
+},
+{
+  "id": 4,
+  "img1":"/images/",
+  "img2":"/images/",
+  "img3":"/images/",
+  "area":"近畿",
+  "country":"日本",
+  "city":"大阪",
+  "tourName":"大阪・なんばでグルメツアー",
+  "price":"¥4,000",
+  "description":"地元の人がおすすめするたこ焼きとお好み焼きを味わうツアー。最後はなんばグランド花月で新喜劇を見てたくさん笑いましょう！",
+  "meetingPlace":"大阪府　南海なんば駅",
+  "times":"3時間",
+  "minPeople":"2人"
+},
+{
+  "id": 5,
+  "img1":"/images/",
+  "img2":"/images/",
+  "img3":"/images/",
+  "area":"東北",
+  "country":"日本",
+  "city":"宮城",
+  "tourName":"東北のおいしい海鮮をたくさん食べるグルメツアー",
+  "price":"¥6,000",
+  "description":"宮城名物・牡蠣や牛タン、ずんだ餅などを堪能できるツアーです。日本三景の松島にも訪れます。",
+  "meetingPlace":"宮城県　仙台駅",
+  "times":"4時間",
+  "minPeople":"2人"
 }
 
 ]
