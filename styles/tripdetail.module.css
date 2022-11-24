@@ -2,7 +2,7 @@
     background: url(../public/images/ok.jpg);
 }
 .main{
-   padding-left: 200px;
+   
 }
 .tripdetail{
     display: flex;
@@ -19,4 +19,11 @@
     padding-top: 80px;
     padding-left: 200px;
     padding-bottom: 100px;
+}
+
+.tripinfo{
+    display: flex;
+}
+.tripcontent{
+    padding-left: 50px;
 }
