@@ -1,4 +1,4 @@
-import styles from "../styles/search-page.module.scss";
+import styles from "../../styles/search-page.module.scss";
 import Head from "next/head";
 import Image from "next/image";
 import { Header } from "../../component/header";

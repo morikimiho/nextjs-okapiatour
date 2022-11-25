@@ -1,4 +1,4 @@
-import styles from '../styles/pay.module.css';
+import styles from '../../styles/pay.module.css';
 import {Header} from "../../component/header";
 import {Footer} from "../../component/footer";
 
