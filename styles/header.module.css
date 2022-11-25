@@ -4,7 +4,7 @@
     background-color: #FFC896;
 }
 .header {
-    height: 50px;
+    height: 60px;
     display: flex;
     max-width: 1200px;
     justify-content: space-between;
@@ -24,4 +24,11 @@
     font-size: 32px;
     font-style: italic;
     margin: auto 10px;
+    
+}
+
+
+.icon {
+    display: flex;
+    margin-left: 30px;
 }
