@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/booking_done.module.css";
 import Link from "next/link";
-import { Header } from "../component/header";
-import { Footer } from "../component/footer";
+import { Header } from "../../component/header";
+import { Footer } from "../../component/footer";
   
 export default function BookingDone() {
   return (
