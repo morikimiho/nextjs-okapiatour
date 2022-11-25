@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/id.js", "pages/create-user.tsx", "pages/create-user.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/id.js", "pages/trip/create-user.tsx", "pages/trip/create-user.tsx"],
   "exclude": ["node_modules"]
 }

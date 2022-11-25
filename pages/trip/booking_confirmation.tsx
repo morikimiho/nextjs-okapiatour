@@ -1,7 +1,7 @@
-import Head from "next/head";
-import { Header } from "../component/header";
-import { Footer } from "../component/footer";
+import { Header } from "../../component/header";
+import { Footer } from "../../component/footer";
 import styles from "../styles/booking_confirmation.module.css";
+import Head from "next/head";
 
 export default function BookingConfirmation() {
     return(
