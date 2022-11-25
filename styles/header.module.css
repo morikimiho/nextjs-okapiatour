@@ -4,21 +4,31 @@
     background-color: #FFC896;
 }
 .header {
-    height: 50px;
+    height: 60px;
     display: flex;
     max-width: 1200px;
     justify-content: space-between;
     margin: 0 auto;
 }
 .buttons {
-    margin: auto 20px;   
+    margin: auto 20px;
+    display: flex;   
 }
 .button {
     margin: auto 10px;
+    cursor: pointer;
 }
+
 .logo {
     font-family: 'Times New Roman', Times, serif;
     font-size: 32px;
     font-style: italic;
     margin: auto 10px;
+    
+}
+
+
+.icon {
+    display: flex;
+    margin-left: 30px;
 }

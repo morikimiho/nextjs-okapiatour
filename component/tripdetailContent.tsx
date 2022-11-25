@@ -2,7 +2,7 @@ import styles from "../styles/tripdetail.module.css";
 
 
 
-export function TripdetailContent() {
+export function TripdetailContent({trip}) {
   return (
     <div>
       <div className={styles.tripcontent}>
