@@ -32,7 +32,11 @@ export function Header() {
               />
             </Link>
           </div>
+          <div>
+          <Link href="http://localhost:3000/trip/login">
           <button className={styles.button}>ログイン</button>
+          </Link>
+          </div>
         </div>
       </div>
     </div>
