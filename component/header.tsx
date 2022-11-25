@@ -22,7 +22,7 @@ export function Header() {
             </Link>
         </div>
         <div className={styles.buttons}>
-          <div>
+          <div className={styles.cart}>
             <Link href="/">
               <Image
                 src="/images/shopping-cart.png"

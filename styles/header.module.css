@@ -17,7 +17,12 @@
 }
 .button {
     margin: auto 10px;
-    cursor: pointer;
+    cursor: pointer;    
+    border-radius: 99px;
+    padding: 10px;
+}
+.cart {
+    padding-top: 10px;
 }
 
 .logo {
