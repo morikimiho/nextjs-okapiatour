@@ -1,6 +1,5 @@
-import styles from "../styles/crete-user.module.scss";
+import styles from "../../styles/crete-user.module.scss";
 import Head from "next/head";
-import { Users } from "../../types/types";
 import { useState } from "react";
 import Layout from "../../component/layout";
 import Router from "next/router";
