@@ -15,8 +15,8 @@ export function Header() {
                   width={40}
                   height={40}
                 />
-                <div>
-               Trip
+                <div className={styles.tourTitle}>
+               Okapia Tour
                 </div>
               </div>
             </Link>
