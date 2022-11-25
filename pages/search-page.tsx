@@ -17,20 +17,25 @@ const SearchPage = () => {
         <section className={styles.search_box}>
           <div className={styles.search_box_container}>
             <form>
-              <h3>現地ツアーを検索する</h3>
+              <h3 className={styles.search_title}>現地ツアーを検索する</h3>
               <div className={styles.search_items}>
-                <select
-                  className={styles.input_abroad}
-                  id="abroad"
-                  name="abroad"
-                >
-                  <Abroad />
-                </select>
+                <div>
+                  <div>
+                    <label htmlFor="">国内外</label>
+                  </div>
+                  <select
+                    className={styles.input_abroad}
+                    id="abroad"
+                    name="abroad"
+                  >
+                    <Abroad />
+                  </select>
+                </div>
 
                 <RouteAbroad />
                 {/* <RouteJapan /> */}
 
-                <button>検索</button>
+                <button className={styles.search_submit}>検索</button>
               </div>
             </form>
           </div>
@@ -41,7 +46,8 @@ const SearchPage = () => {
         <section className={styles.search_result}>
           <div className={styles.search_result_container}>
             <div
-              style={{ position: "relative", width: "50%", height: "200px" }}
+              className={styles.tour_result_image}
+              // style={{ position: "relative", width: "50%", height: "200px" }}
             >
               <Image
                 className="slide-img"
@@ -53,13 +59,15 @@ const SearchPage = () => {
             </div>
 
             <div className={styles.tour_detail}>
-              <h3>ツアータイトル</h3>
-              <div className="tour_detail_description">
-                <div>楽しい</div>
-                <div>楽しい</div>
-                <div>楽しい</div>
+              <div className={styles.tour_detail_items}>
+                <h3 className={styles.tour_detail_items_title}>ツアータイトル</h3>
+                <div className="tour_detail_description">
+                  <div>楽しい</div>
+                  <div>楽しい</div>
+                  <div>楽しい</div>
+                </div>
+                <button>詳細はこちら</button>
               </div>
-              <button>詳細はこちら</button>
             </div>
           </div>
         </section>
@@ -85,17 +93,32 @@ const Abroad = () => {
 const RouteAbroad = () => {
   return (
     <div className={styles.route_abroad}>
-      <select className={styles.input_abroad} id="region" name="region">
-        <AreaAbroad />
-      </select>
+      <div>
+        <div>
+          <label htmlFor="">エリア</label>
+        </div>
+        <select className={styles.input_abroad} id="region" name="region">
+          <AreaAbroad />
+        </select>
+      </div>
 
-      <select className={styles.input_abroad} id="Abroad" name="Abroad">
-        <CountryAbroad />
-      </select>
+      <div>
+        <div>
+          <label htmlFor="">国/県</label>
+        </div>
+        <select className={styles.input_abroad} id="Abroad" name="Abroad">
+          <CountryAbroad />
+        </select>
+      </div>
 
-      <select className={styles.input_abroad} id="Abroad" name="Abroad">
-        <CityAbroad />
-      </select>
+      <div>
+        <div>
+          <label htmlFor="">都市</label>
+        </div>
+        <select className={styles.input_abroad} id="Abroad" name="Abroad">
+          <CityAbroad />
+        </select>
+      </div>
     </div>
   );
 };

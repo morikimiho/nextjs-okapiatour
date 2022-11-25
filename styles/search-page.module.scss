@@ -1,28 +1,117 @@
 @charset "UTF-8";
 
+
+$layout-width-inner: 1200px;
+$breakpoints: (
+//キー : 値
+'sp': "(max-width: 767px)", 
+'res': "(max-width: #{$layout-width-inner - 1px})", 
+// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
+'pc': "(min-width: #{$layout-width-inner})"
+) ;
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+
+// 検索フォーム　=========================================================
 .search_box {
-    margin: 80px;
+    margin: 80px 0;
 }
 .search_box_container {
-    border: 1px solid #888;
+    border: 3px solid #888;
     border-radius: 20px;
     text-align: center;
+    @include mq("res") {
+        padding-bottom: 53px;
+    }
+}
+.search_title {
+    margin: 40px 0 0;
+    font-size: 32px;
+    @include mq("res") {
+        font-size: 24px;
+    }
 }
 .search_items {
     display: flex;
     justify-content: center;
+    margin: 40px 0;
+    .route_abroad {
+        display: flex;
+        @include mq("res") {
+            // display: block;
+        }
+    }
+    .input_abroad {
+        margin: 0 10px;
+    }
 }
+.search_submit {
+    padding: 0 20px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    @include mq("res") {
+        position: absolute;
+        transform: translateY(64px);
+    }
+}
+
+
+
+
+
+
+
+
+// 検索結果　=================================================
 
 .search_result {
     width: 70%;
     max-width: 100%;
     margin: 0 auto;
+    @include mq("res") {
+        width: 100%;
+    } 
 }
 .search_result_container {
     display: flex;
+    @include mq("res") {
+        display: block;
+    }
+}
+
+.tour_result_image {
+    margin-right: 20px;
+    position: relative;
+    width: 50%;
+    height: 200px;
+    @include mq("res") {
+        margin: 0;
+        width: 100%;
+    }
 }
 
 .tour_detail {
     width: 50%;
-    background-color: aquamarine;
+    background-color: aquamarine;    // 後で消す
+    margin-left: 20px;
+    @include mq("res") {
+        margin: 0;
+        width: 100%;
+        padding: 20px;
+    }
+    .tour_detail_items {
+        margin-left: 40px;
+        @include mq("res") {
+            margin: 0;
+        }
+        .tour_detail_items_title {
+            margin: 0;
+        }
+    }
 }

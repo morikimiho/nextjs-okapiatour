@@ -1,16 +1,51 @@
 .search_box {
-  margin: 80px;
+  margin: 80px 0;
 }
 
 .search_box_container {
-  border: 1px solid #888;
+  border: 3px solid #888;
   border-radius: 20px;
   text-align: center;
+}
+@media (max-width: 1199px) {
+  .search_box_container {
+    padding-bottom: 53px;
+  }
+}
+
+.search_title {
+  margin: 40px 0 0;
+  font-size: 32px;
+}
+@media (max-width: 1199px) {
+  .search_title {
+    font-size: 24px;
+  }
 }
 
 .search_items {
   display: flex;
   justify-content: center;
+  margin: 40px 0;
+}
+.search_items .route_abroad {
+  display: flex;
+}
+.search_items .input_abroad {
+  margin: 0 10px;
+}
+
+.search_submit {
+  padding: 0 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+@media (max-width: 1199px) {
+  .search_submit {
+    position: absolute;
+    transform: translateY(64px);
+  }
 }
 
 .search_result {
@@ -18,12 +53,54 @@
   max-width: 100%;
   margin: 0 auto;
 }
+@media (max-width: 1199px) {
+  .search_result {
+    width: 100%;
+  }
+}
 
 .search_result_container {
   display: flex;
+}
+@media (max-width: 1199px) {
+  .search_result_container {
+    display: block;
+  }
+}
+
+.tour_result_image {
+  margin-right: 20px;
+  position: relative;
+  width: 50%;
+  height: 200px;
+}
+@media (max-width: 1199px) {
+  .tour_result_image {
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .tour_detail {
   width: 50%;
   background-color: aquamarine;
+  margin-left: 20px;
+}
+@media (max-width: 1199px) {
+  .tour_detail {
+    margin: 0;
+    width: 100%;
+    padding: 20px;
+  }
+}
+.tour_detail .tour_detail_items {
+  margin-left: 40px;
+}
+@media (max-width: 1199px) {
+  .tour_detail .tour_detail_items {
+    margin: 0;
+  }
+}
+.tour_detail .tour_detail_items .tour_detail_items_title {
+  margin: 0;
 }
