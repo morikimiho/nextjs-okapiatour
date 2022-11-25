@@ -26,7 +26,9 @@ export function TripdetailCount({trip}) {
         <button type="button" onClick={clickSubtract}>
           -
         </button>
+        &nbsp;
         {count}
+        &nbsp;
         <button type="button" onClick={clickAdd}>
           +
         </button>
