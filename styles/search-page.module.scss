@@ -60,12 +60,7 @@ $breakpoints: (
         transform: translateY(64px);
     }
 }
-.flex{
-    display: flex;
-}
-.block{
-    display: block
-}
+
 
 
 
@@ -120,4 +115,12 @@ $breakpoints: (
             margin: 0;
         }
     }
+}
+
+
+.flex{
+    display: flex;
+}
+.block{
+    display: block
 }
