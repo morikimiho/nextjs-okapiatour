@@ -2,6 +2,9 @@ import styles from "../../styles/search-page.module.scss";
 import Head from "next/head";
 import Layout from "../../component/layout";
 import { useState } from "react";
+import { EuropeCountry } from "../../component/serchPage/serchEurope";
+import { AsiaCountry } from "../../component/serchPage/serchAsia";
+import { Oceania } from "../../component/serchPage/searchOceania";
 
 // className={styles.}
 
@@ -52,7 +55,7 @@ const Abroad = () => {
           </select>
         </div>
 
-        <div>
+        <div className={styles.serchdetail}>
           {"海外" === abroad && <RouteAbroad />}
           {"国内" === abroad && <RouteJapan />}
         </div>
@@ -63,112 +66,36 @@ const Abroad = () => {
 
 // 海外を選んだ場合
 const RouteAbroad = () => {
-  const [area, setArea] = useState("");
+  const [area, setArea] = useState("ヨーロッパ");
   const changeHandler = (e) => {
     setArea(e.target.value);
   };
 
   return (
-    <div>
+    <div className={styles.flex}>
       <div>
-        <label htmlFor="">エリア</label>
+        <div>
+          <label htmlFor="">エリア</label>
+        </div>
+        <select name="" id="" onChange={changeHandler}>
+          <option>ヨーロッパ</option>
+          <option>アジア</option>
+          <option>オセアニア</option>
+        </select>
       </div>
-      <select name="" id="" onChange={changeHandler}>
-        <option>ヨーロッパ</option>
-        <option>アジア</option>
-        <option>オセアニア</option>
-      </select>
-      {"ヨーロッパ" === area && <EuropeCountry />}
-      {"アジア" === area && <AsiaCountry />}
-      {"オセアニア" === area && <Oceania />}
+      <div className={styles.serchdetail}>
+        {"ヨーロッパ" === area && <EuropeCountry />}
+        {"アジア" === area && <AsiaCountry />}
+        {"オセアニア" === area && <Oceania />}
+      </div>
     </div>
   );
 };
 
-//　海外→アジアを選んだ場合
-const AsiaCountry = () => {
-  const [country, setCountery] = useState("韓国");
-  const changeHandler = () => {
-    setCountery(e.target.value);
-  };
-
-  return (
-    <>
-      <div className={styles.flex}>
-        <div>
-          <div>
-            <label htmlFor="">国</label>
-          </div>
-          <select name="" id="" onChange={changeHandler}>
-            <option>韓国</option>
-            <option>インドネシア</option>
-          </select>
-        </div>
-        <div>
-          {"韓国" === country && <Korea />}
-          {"インドネシア" === country && <Indonesia />}
-        </div>
-      </div>
-    </>
-  );
-};
-
-//海外→ヨーロッパを選んだ場合
-const EuropeCountry = () => {
-  const [country, setCountery] = useState("フランス");
-  const changeHandler = () => {
-    setCountery(e.target.value);
-  };
-  return (
-    <>
-      <div className={styles.fles}>
-        <div>
-          <div>
-            <label htmlFor="">国</label>
-          </div>
-          <select name="" id="" onChange={changeHandler}>
-            <option>フランス</option>
-            <option>イタリア</option>
-          </select>
-        </div>
-        <div>
-          {"フランス" === country && <France />}
-          {"イタリア" === country && <Italy />}
-        </div>
-      </div>
-    </>
-  );
-};
-
-//海外→オセアニアを選んだ場合
-const Oceania = () => {
-  const [country, setCountery] = useState("オーストリア");
-  const changeHandler = () => {
-    setCountery(e.target.value);
-  };
-  return (
-    <>
-      <div className={styles.flex}>
-        <div>
-          <div>
-            <label htmlFor="">国</label>
-          </div>
-          <select name="" id="" onChange={changeHandler}>
-            <option>オーストラリア</option>
-          </select>
-        </div>
-        <div>{"オーストラリア" === country && <Australia />}</div>
-      </div>
-    </>
-  );
-};
 
 // 国内を選んだ場合
 const RouteJapan = () => {
-  const [prefecture, setPrefecture] = useState("大阪");
-  const changeHandler = () => {
-    setPrefecture(e.target.value);
-  };
+  
 
   return (
     <div>
@@ -176,16 +103,13 @@ const RouteJapan = () => {
         <div>
           <label htmlFor="">都道府県</label>
         </div>
-        <select name="" id="" onChange={changeHandler}>
+        <select name="" id="">
           <option value="">大阪</option>
           <option value="">北海道</option>
           <option value=""> 沖縄</option>
         </select>
       </div>
-      <div>
-        {"大阪" === prefecture && <Osaka />}
-        {"北海道" === prefecture && <Hokkaido />}
-        {"沖縄" === prefecture && <Okinawa />}</div>
+    
     </div>
   );
 };
