@@ -1,6 +1,6 @@
 
 
-export function TripdetailTimes({trip}){
+export function TripdetailTimes({tour}){
     return (
         <div>
             <div>
@@ -11,14 +11,14 @@ export function TripdetailTimes({trip}){
                 <p>希望の時間帯を選択してください</p>
 
                 <div>
-                  {trip.times >= 7 && (
+                  {tour.times >= 7 && (
                     <select>
                       <option value="1">9:00</option>
                       <option value="2">10:00</option>
                     </select>
                   )}
 
-                  {trip.times < 7 && trip.times >= 3 && (
+                  {tour.times < 7 && tour.times >= 3 && (
                     <select>
                       <option value="1">9:00</option>
                       <option value="2">10:00</option>
@@ -28,7 +28,7 @@ export function TripdetailTimes({trip}){
                     </select>
                   )}
 
-                  {trip.times < 3 && (
+                  {tour.times < 3 && (
                     <select name="" id="">
                       <option value="1">9:00</option>
                       <option value="2">10:00</option>
