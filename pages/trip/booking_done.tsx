@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "../styles/booking_done.module.css";
+import styles from "../../styles/booking_done.module.css";
 import Link from "next/link";
 import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
@@ -27,7 +27,7 @@ export default function BookingDone() {
           ご予約確認ページよりお申し込み内容お申し込み内容をご確認いただけます。
         </p>
         
-        <Link href='http://localhost:3000/booking_confirmation'>
+        <Link href='http://localhost:3000/trip/booking_confirmation'>
         <div className={styles.booking_button}>
         <button className={styles.booking_btn} type="submit">予約確認へ</button>
         </div>
