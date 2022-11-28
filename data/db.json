@@ -47,7 +47,8 @@
   "minPeople":2,
   "content1":"集合場所からのバスによる往復送迎",
   "content2":"修道院の入場券",
-  "content3":"ガイド"
+  "content3":"ガイド",
+  "recommend":true
 },
 {
   "id": 2,
@@ -69,7 +70,8 @@
   "minPeople":4,
   "content1":"集合場所からのバスによる往復送迎",
   "content2":"城への入場料金",
-  "content3":"ランチ"
+  "content3":"ランチ",
+  "recommend":true
 },
 {
   "id": 3,
@@ -91,7 +93,8 @@
   "minPeople":2,
   "content1":"集合場所からのバスによる往復送迎 ",
   "content2":"宮殿の入場チケット ",
-  "content3":"庭への入場"
+  "content3":"庭への入場",
+  "recommend":true
  
 },
 {
@@ -115,6 +118,7 @@
   "content1":"たこ焼き・お好み焼き",
   "content2":"新喜劇チケット",
   "content3":"ツアーコンダクターによる説明"
+
 },
 {
   "id": 5,
@@ -159,6 +163,7 @@
   "content1":"着物",
   "content2":"清水寺",
   "content3":"お抹茶"
+
 }
 
 ]

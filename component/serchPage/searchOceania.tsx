@@ -2,10 +2,10 @@ import styles from "../..//styles/search-page.module.scss";
 import { useState } from "react";
 
 //海外→オセアニアを選んだ場合
-export const Oceania = () => {
-  const [country, setCountery] = useState("オーストラリア");
+export const Oceania = ({setocCountry}) => {
+  const [ascountry, setasCountery] = useState("オーストラリア");
   const changeHandler = (e) => {
-    setCountery(e.target.value);
+    setocCountry(e.target.value);
   };
   return (
     <>
@@ -15,19 +15,19 @@ export const Oceania = () => {
             <label htmlFor="">国</label>
           </div>
           <select name="" id="" onChange={changeHandler}>
-            <option>オーストラリア</option>
+            <option value="aus">オーストラリア</option>
           </select>
         </div>
         <div className={styles.serchdetail}>
-            {"オーストラリア" === country && <Australia />}
+            {"aus" === country && <Australia />}
         </div>
       </div>
     </>
   );
 };
 
-const Australia = () => {
-  const [city, setCity] = useState("シドニー");
+const Australia = ({setCountry}) => {
+  
   const changeHandler = (e) => {
     setCity(e.target.value);
   };
