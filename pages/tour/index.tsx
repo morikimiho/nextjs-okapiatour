@@ -11,15 +11,15 @@ import { getActiveTrips } from "../../service/trip";
 export default function Home({tours}) {
   return (
     <>
-      <Head>
-        <title>trip</title>
-      </Head>
-      <Header />
-      <div className={styles.container}>
+        <Head>
+            <title>Okapia Tour</title>
+        </Head>
+        <Header />
+        <div className={styles.container}>
         <Slider />
         <div className={styles.subtitle}>新しい世界を見に行こう</div>
         <button type="button" className={styles.search}>
-          <a href="#">
+          <a href="/tour/search-page">
             &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Image src="/images/top/虫眼鏡.png" alt="検索" width={16} height={16} />
           </a>
@@ -28,7 +28,7 @@ export default function Home({tours}) {
       {tours.map((tour: { id: number; img1: string; tourName: string; }) => {
             return(
                 <>
-                    <p><Image src={tour.img1} width={250} height={200} /></p>
+                    <p><Image src={tour.img1} width={250} height={200} alt={"ツアー地域の写真"} /></p>
                     <p>{tour.tourName}</p>
                 </>
             );})}
@@ -112,7 +112,7 @@ function ItemDetail ({...tours}: { id: number, img1: string, tourName: string })
 
 
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:8000/trips');
+    const res = await fetch('http://localhost:8000/tours');
     const tours = await res.json();
     return {
       props: {tours},
