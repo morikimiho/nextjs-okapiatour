@@ -7,21 +7,21 @@ const getAlltrips = async () => {
     const fileContents = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(fileContents);
   
-    return data.trips;
+    return data.tours;
   };
 
 
   const getActiveTrips = async () => {
-    const trips = await getAlltrips();
+    const tours = await getAlltrips();
     
-    return trips;
+    return tours;
   }
 
 
 const getTrip = async (id: number) => {
     const allTrips = await getAlltrips();
-    const filtered = allTrips.filter((trip) => {
-      return trip.id === id;
+    const filtered = allTrips.filter((tour) => {
+      return tour.id === id;
     });
   
     if (filtered.length === 1) {
