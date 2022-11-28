@@ -40,6 +40,7 @@ const Abroad = () => {
   const [abroad, setAbroad] = useState<Area>("2");
   const changeHandler = (e: any) => {
     setAbroad(e.target.value);
+  
   };
 
   return (
