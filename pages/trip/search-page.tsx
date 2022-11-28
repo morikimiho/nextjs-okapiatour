@@ -36,8 +36,8 @@ export default SearchPage;
 
 //国内or 海外
 const Abroad = () => {
-  type Area = "国内" | "海外";
-  const [abroad, setAbroad] = useState<Area>("国内");
+  type Area = "1" | "2";
+  const [abroad, setAbroad] = useState<Area>("2");
   const changeHandler = (e: any) => {
     setAbroad(e.target.value);
   };
@@ -50,14 +50,15 @@ const Abroad = () => {
             <label htmlFor="">国内 or 海外</label>
           </div>
           <select name="" id="" onChange={changeHandler}>
-            <option>国内</option>
-            <option>海外</option>
+          <option value="1">海外</option>
+            <option value="2">国内</option>
+            
           </select>
         </div>
 
         <div className={styles.serchdetail}>
-          {"海外" === abroad && <RouteAbroad />}
-          {"国内" === abroad && <RouteJapan />}
+          {"1" === abroad && <RouteAbroad />}
+          {"2" === abroad && <RouteJapan />}
         </div>
       </div>
     </>
@@ -95,8 +96,6 @@ const RouteAbroad = () => {
 
 // 国内を選んだ場合
 const RouteJapan = () => {
-  
-
   return (
     <div>
       <div>
