@@ -11,10 +11,10 @@ import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const trips = await getActiveTrips();
+  const tours = await getActiveTrips();
   return {
-    paths: trips.map((trip) => {
-      return { params: { id: trip.id.toString() } };
+    paths: tours.map((tour) => {
+      return { params: { id: tour.id.toString() } };
     }),
     fallback: "blocking",
   };
@@ -26,37 +26,37 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const id = parseInt(params.id);
-  const trip = await getTrip(id);
+  const tour = await getTrip(id);
 
   return {
-    props: { trip },
+    props: { tour },
     revalidate: 10,
   };
 };
 
-export default function Tripdetail({ trip }) {
+export default function Tripdetail({ tour }) {
   return (
     <>
       <Head>
-        <title>{trip.tourName}</title>
+        <title>{tour.tourName}</title>
       </Head>
       <Layout>
         <main className={styles.main}>
           <p>
-            {trip.area} &nbsp;{trip.country}
+            {tour.area} &nbsp;{tour.country}
           </p>
 
-          <h1>{trip.tourName} </h1>
-          <TripdetailImage trip={trip} />
-          <p>{trip.description}</p>
+          <h1>{tour.tourName} </h1>
+          <TripdetailImage tour={tour} />
+          <p>{tour.description}</p>
           <div className={styles.tripinfo}>
-            <TripdetailActivity trip={trip} />
-            <TripdetailContent trip={trip} />
+            <TripdetailActivity tour={tour} />
+            <TripdetailContent tour={tour} />
           </div>
           <div className={styles.tripdetail}>
             <div>
-              <TripdetailCount trip={trip} />
-              <TripdetailTimes trip={trip} />
+              <TripdetailCount tour={tour} />
+              <TripdetailTimes tour={tour} />
             </div>
             <TripdetailAttention />
           </div>

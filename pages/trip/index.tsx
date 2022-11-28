@@ -5,8 +5,10 @@ import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
+import { GetStaticProps } from "next";
+import { getActiveTrips } from "../../service/trip";
 
-export default function Home() {
+export default function Home({trips}) {
   return (
     <>
       <Head>
@@ -23,6 +25,13 @@ export default function Home() {
           </a>
         </button>
       </div>
+      {trips.map((trip: { id: number; img1: string; tourName: string; }) => {
+            return(
+                <>
+                    <p><Image src={trip.img1} width={250} height={200} /></p>
+                    <p>{trip.tourName}</p>
+                </>
+            );})}
       <Footer />
     </>
   );
@@ -86,15 +95,27 @@ const Slider = () => {
   );
 };
 
-function Images (props: { img1: string ; tourName: string; }) {
+function ItemDetail ({...trips}: { id: number, img1: string, tourName: string }) {
+
     return (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={props.img1}
-        width={100}
-        height={75}
-        alt="ツアーパッケージ"
-        title={props.tourName}
-        className={styles.image}
-        />
+        <div>
+            <Image src={trips.img1}
+            width={100}
+            height={75}
+            alt="ツアーパッケージ"
+            title={trips.tourName}
+            className={styles.image}
+            />
+            <p>{trips.tourName}</p>
+        </div>
     );
+}
+
+
+export async function getStaticProps() {
+    const res = await fetch('http://localhost:8000/trips');
+    const trips = await res.json();
+    return {
+      props: {trips},
+    };
 }

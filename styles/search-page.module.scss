@@ -68,6 +68,7 @@ $breakpoints: (
 
 
 
+
 // 検索結果　=================================================
 
 .search_result {
@@ -114,4 +115,15 @@ $breakpoints: (
             margin: 0;
         }
     }
+}
+
+
+.flex{
+    display: flex;
+ 
+}
+
+.serchdetail{
+    padding-left: 10px;
+    padding-right: 10px;
 }
