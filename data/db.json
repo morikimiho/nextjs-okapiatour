@@ -24,6 +24,19 @@
       "birthM": "4",
       "birthD": "5",
       "id": 2
+    },
+    {
+      "firstName": "安倍",
+      "firstNameKana": "太郎",
+      "lastName": "あべ",
+      "lastNameKana": "たろう",
+      "mailAddress": "flower555@gmail.com",
+      "tel": "090-5234-1234",
+      "password": "qwerwes",
+      "birthY": "1954",
+      "birthM": "2",
+      "birthD": "5",
+      "id": 2
     }
   ],
   "trips":[
