@@ -16,7 +16,7 @@ export const EuropeCountry = ({ seteuCountry }) => {
           </div>
           <select name="" id="" onChange={changeHandler}>
             <option value="fr">フランス</option>
-            <option value="it">イタリア</option>
+            <option value="ita">イタリア</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
