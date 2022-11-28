@@ -15,9 +15,7 @@ const SearchPage = () => {
   type Area = "abroad" | "domestic";
   //国内 or 海外
   const [abroad, setAbroad] = useState<Area>("abroad");
-  //ヨーロッパorアジアorオセアニア
   const [area, setArea] = useState("eu");
-  //フランス or イタリア
   const [eucountry, seteuCountry] = useState("fr");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");

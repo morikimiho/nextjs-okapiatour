@@ -115,7 +115,8 @@
   "minPeople":2,
   "content1":"たこ焼き・お好み焼き",
   "content2":"新喜劇チケット",
-  "content3":"ツアーコンダクターによる説明"
+  "content3":"ツアーコンダクターによる説明",
+  "recommend":true
 
 },
 {
@@ -136,7 +137,8 @@
   "minPeople":2,
   "content1":"牡蠣",
   "content2":"松島周遊チケット",
-  "content3":"牛タン"
+  "content3":"牛タン",
+  "recommend":true
 },
 {
   "id": 6,
@@ -158,7 +160,8 @@
   "minPeople":2,
   "content1":"着物",
   "content2":"清水寺",
-  "content3":"お抹茶"
+  "content3":"お抹茶",
+  "recommend":true
 
 }
 
