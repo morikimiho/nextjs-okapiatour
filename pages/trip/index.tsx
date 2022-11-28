@@ -96,6 +96,7 @@ const Slider = () => {
 };
 
 function ItemDetail ({...trips}: { id: number, img1: string, tourName: string }) {
+
     return (
         <div>
             <Image src={trips.img1}
