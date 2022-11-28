@@ -3,10 +3,10 @@ import { useState } from "react";
 
 
 //　海外→アジアを選んだ場合
-export const AsiaCountry = () => {
+export const AsiaCountry = ({setasiCountry}) => {
     const [country, setCountery] = useState("韓国");
     const changeHandler = (e) => {
-      setCountery(e.target.value);
+      setasiCountry(e.target.value);
     };
   
     return (
@@ -22,8 +22,8 @@ export const AsiaCountry = () => {
             </select>
           </div>
           <div className={styles.serchdetail}>
-            {"韓国" === country && <Korea />}
-            {"インドネシア" === country && <Indonesia />}
+            {"korea" === country && <Korea />}
+            {"indo" === country && <Indonesia />}
           </div>
         </div>
       </>
