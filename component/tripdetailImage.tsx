@@ -1,11 +1,11 @@
 import Image from "next/image"
 
-export function TripdetailImage({trip}){
+export function TripdetailImage({tour}){
     return (
         <div>
-            <Image src={trip.img1} alt={trip.tourName} width={220} height={150} />
-            <Image src={trip.img2} alt={trip.tourName} width={220} height={150} />
-            <Image src={trip.img3} alt={trip.tourName} width={220} height={150} />
+            <Image src={tour.img1} alt={tour.tourName} width={220} height={150} />
+            <Image src={tour.img2} alt={tour.tourName} width={220} height={150} />
+            <Image src={tour.img3} alt={tour.tourName} width={220} height={150} />
         </div>
     )
 }
