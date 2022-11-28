@@ -2,10 +2,10 @@ import styles from "../..//styles/search-page.module.scss";
 
 
 
-//海外→ヨーロッパを選んだ場合
-export const EuropeCountry = ({ seteuCountry,eucountry }) => {
+//海外→アジアを選んだ場合
+export const AsiaCountry = ({ setasiCountry,asicountry }) => {
   const changeHandler = (e) => {
-    seteuCountry(e.target.value);
+    setasiCountry(e.target.value);
   };
   return (
     <>
@@ -14,10 +14,10 @@ export const EuropeCountry = ({ seteuCountry,eucountry }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={eucountry} name="" id="" onChange={changeHandler}>
+          <select value={asicountry} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
-            <option value="fr">フランス</option>
-            <option value="ita">イタリア</option>
+            <option value="ko">韓国</option>
+            <option value="indo">インドネシア</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -26,8 +26,8 @@ export const EuropeCountry = ({ seteuCountry,eucountry }) => {
   );
 };
 
-//海外→ヨーロッパ→フランスを選んだ場合
-export const France = () => {
+//海外→アジア→韓国を選んだ場合
+export const Korea = () => {
   return (
     <>
       <div className={styles.flex}>
@@ -36,7 +36,8 @@ export const France = () => {
             <label htmlFor="">都市</label>
           </div>
           <select name="" id="">
-            <option>パリ</option>
+            <option>ソウル</option>
+            <option>釜山</option>
           </select>
         </div>
       </div>
@@ -44,8 +45,8 @@ export const France = () => {
   );
 };
 
-//海外→ヨーロッパ→フランスを選んだ場合
-export const Italy = () => {
+//海外→アジア→インドネシアを選んだ場合
+export const Indonesia = () => {
   return (
     <>
       <div className={styles.flex}>
@@ -54,8 +55,8 @@ export const Italy = () => {
             <label htmlFor="">都市</label>
           </div>
           <select name="" id="">
-            <option>ミラノ</option>
-            <option>ヴェネチア</option>
+            <option>ジャカルタ</option>
+            <option>バリ島</option>
           </select>
         </div>
       </div>
