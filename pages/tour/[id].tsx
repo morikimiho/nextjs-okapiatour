@@ -11,23 +11,24 @@ import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const tours = await getActiveTrips();
+  const res = await fetch("http://localhost:8000/tours");
+  const tours = await res.json();
+  const paths = tours.map((tour: { id: number }) => {
+    return {
+      params: {
+        id: tour.id.toString(),
+      },
+    };
+  });
   return {
-    paths: tours.map((tour) => {
-      return { params: { id: tour.id.toString() } };
-    }),
-    fallback: "blocking",
+    paths,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (!params || !params.id || Array.isArray(params.id)) {
-    throw Error("エラー");
-  }
-
-  const id = parseInt(params.id);
-  const tour = await getTrip(id);
-
+  const res = await fetch(`http://localhost:8000/tours/${params.id}`);
+  const tour = await res.json();
   return {
     props: { tour },
     revalidate: 10,
@@ -75,4 +76,3 @@ export default function Tripdetail({ tour }) {
     </>
   );
 }
-
