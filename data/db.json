@@ -123,12 +123,6 @@
   "img1":"/images/miyagi/miyagi01.jpg",
   "img2":"/images/miyagi/miyagi02.jpg",
   "img3":"/images/miyagi/miyagi03.jpg",
-<<<<<<< HEAD
-  "abroad":"domestic",
-=======
-  "abroad":2,
-  "areaCode":2,
->>>>>>> main
   "area":"東北",
   "countryCode":2,
   "country":"日本",
