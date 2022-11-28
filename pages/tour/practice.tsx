@@ -9,7 +9,7 @@ export default function Searchpractice() {
   // if(){
   //   query={areaCode}&
   // }
-  const { data, error } = useSWR("/api/tours?areaCode=1", fetcher);
+  const { data, error } = useSWR("/api/tours", fetcher);
   // エラーになった場合は一覧は表示できないのでここで終わり
   if (error) return <div>failed to load</div>;
   // データ取得が完了していないときはローディング画面
@@ -17,7 +17,7 @@ export default function Searchpractice() {
 
   return (
     <>
-      {data.map((item) => {
+      {data.map((item:any) => {
         return (
           <div key={item.id}>
             <p>{item.area}</p>
