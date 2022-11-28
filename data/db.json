@@ -102,12 +102,6 @@
   "img1":"/images/osaka/osaka01.jpg",
   "img2":"/images/osaka/osaka02.jpg",
   "img3":"/images/osaka/osaka03.jpg",
-<<<<<<< HEAD
-  "abroad":"domestic",
-=======
-  "abroad":2,
-  "areaCode":2,
->>>>>>> main
   "area":"近畿",
   "countryCode":2,
   "country":"日本",
