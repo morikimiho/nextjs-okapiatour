@@ -86,7 +86,7 @@ const Slider = () => {
   );
 };
 
-function Image (props: { img1: string ; tourName: string; }) {
+function Images (props: { img1: string ; tourName: string; }) {
     return (
         // eslint-disable-next-line @next/next/no-img-element
         <img src={props.img1}
