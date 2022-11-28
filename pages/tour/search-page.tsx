@@ -3,8 +3,6 @@ import Head from "next/head";
 import Layout from "../../component/layout";
 import { useState } from "react";
 import { EuropeCountry } from "../../component/serchPage/serchEurope";
-import { AsiaCountry } from "../../component/serchPage/serchAsia";
-import { Oceania } from "../../component/serchPage/searchOceania";
 import { France } from "../../component/serchPage/serchEurope";
 import { Italy } from "../../component/serchPage/serchEurope";
 import Image from "next/image";
@@ -14,7 +12,6 @@ const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 const SearchPage = () => {
-  
   type Area = "abroad" | "domestic";
   //国内 or 海外
   const [abroad, setAbroad] = useState<Area>("abroad");
@@ -22,21 +19,17 @@ const SearchPage = () => {
   const [area, setArea] = useState("eu");
   //フランス or イタリア
   const [eucountry, seteuCountry] = useState("fr");
-  //韓国 or インドネシア
-  const [asicountry, setasCountry] = useState("asi");
-  //オーストラリア
-  const [occountry, setocCountry] = useState("oce");
-  
+
   const [url, setUrl] = useState("/api/tours?recommend=true");
   const { data, error } = useSWR(url, fetcher);
-    // エラーになった場合は一覧は表示できないのでここで終わり
-    if (error) return <div>failed to load</div>;
-    // データ取得が完了していないときはローディング画面
-    if (!data) return <div>loading...</div>;
+  // エラーになった場合は一覧は表示できないのでここで終わり
+  if (error) return <div>failed to load</div>;
+  // データ取得が完了していないときはローディング画面
+  if (!data) return <div>loading...</div>;
 
-  const clickHandler = () => {
-    setUrl(`/api/tours?abroad=abroad&areaCode=area`);
-    
+  const clickHandler = (e) => {
+    e.preventDefault();
+    setUrl(`/api/tours?abroad=${abroad}`);
   };
 
   return (
@@ -51,14 +44,12 @@ const SearchPage = () => {
           <div className={styles.search_items}>
             <form action="" onSubmit={clickHandler}>
               <div className={styles.flex}>
-                <Abroad setAbroad={setAbroad} />
-                {"abroad" === abroad && <RouteAbroad setArea={setArea} />}
+                <Abroad setAbroad={setAbroad} abroad={abroad} />
+                {"abroad" === abroad && <RouteAbroad setArea={setArea} area={area}/>}
                 {"domestic" === abroad && <RouteJapan />}
                 {"eu" === area && <EuropeCountry seteuCountry={seteuCountry} />}
-                {"asi" === area && <AsiaCountry setasiCountry={setasCountry} />}
-                {"oce" === area && <Oceania setocCountry={setocCountry}  />}
-                {"1" === eucountry && <France />}
-                {"2" === eucountry && <Italy />}
+                {"fr" === eucountry && <France />}
+                {"ita" === eucountry && <Italy />}
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -68,11 +59,13 @@ const SearchPage = () => {
         <div>
           {data.map((item: any) => {
             return (
-              <div key={item.id}>
-                <p><Image src={item.img1} width={150} height={100}/></p>
-                <p>{item.tourName}</p>
-                <p>{item.area}</p>
-                <p>{item.country}</p>
+              <div key={item.id} className={styles.flex}>
+                <Image src={item.img1} width={150} height={100} />
+                <div>
+                  <p>{item.tourName}</p>
+                  <p>{item.area}</p>
+                  <p>{item.country}</p>
+                </div>
               </div>
             );
           })}
@@ -84,7 +77,7 @@ const SearchPage = () => {
 export default SearchPage;
 
 //国内or 海外
-const Abroad = ({ setAbroad }) => {
+const Abroad = ({ setAbroad,abroad }) => {
   const changeHandler = (e: any) => {
     setAbroad(e.target.value);
   };
@@ -95,7 +88,8 @@ const Abroad = ({ setAbroad }) => {
           <div>
             <label htmlFor="">国内 or 海外</label>
           </div>
-          <select name="" id="" onChange={changeHandler}>
+          <select value={abroad} name="" id="" onChange={changeHandler}>
+         
             <option value="abroad">海外</option>
             <option value="domestic">国内</option>
           </select>
@@ -108,7 +102,7 @@ const Abroad = ({ setAbroad }) => {
 };
 
 // 海外を選んだ場合
-const RouteAbroad = ({ setArea }) => {
+const RouteAbroad = ({ setArea,area }) => {
   const changeHandler = (e) => {
     setArea(e.target.value);
   };
@@ -119,10 +113,8 @@ const RouteAbroad = ({ setArea }) => {
         <div>
           <label htmlFor="">エリア</label>
         </div>
-        <select name="" id="" onChange={changeHandler}>
+        <select value={area} name="" id="" onChange={changeHandler}>
           <option value="eu">ヨーロッパ</option>
-          <option value="asi">アジア</option>
-          <option value="oce">オセアニア</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
