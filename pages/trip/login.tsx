@@ -3,6 +3,7 @@ import Image from "next/image";
 import {Header} from "../../component/header";
 import {Footer} from "../../component/footer";
 import styles from "../../styles/login.module.css";
+import Link from "next/link";
 
 export default function Login () {
     return (
@@ -11,9 +12,11 @@ export default function Login () {
             <div className={styles.container}>
                 <Table />
             </div>
-            <button type="button" className={styles.regibutton}>
-                    <a href="#">新規登録はこちら</a>
-            </button>
+
+            <Link href='http://localhost:3000/trip/create-user'>
+            <button type="button" className={styles.regibutton}>新規登録はこちら</button>
+            </Link>
+
             <Footer />
         </>
     );

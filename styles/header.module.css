@@ -1,25 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 .headerall {
     background-color: #FFC896;
 }
-
 .header {
-    height: 50px;
+    height: 60px;
     display: flex;
     max-width: 1200px;
     justify-content: space-between;
     margin: 0 auto;
 }
-
 .buttons {
-    margin: auto 20px;   
+    margin: auto 20px;
+    display: flex;   
 }
-
 .button {
     margin: auto 10px;
+    cursor: pointer;    
+    border-radius: 99px;
+    padding: 10px;
+}
+.cart {
+    padding-top: 10px;
 }
 
 .logo {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-size: 32px;
+    font-style: italic;
     margin: auto 10px;
+    
+}
+
+.tourTitle{
+    font-family: 'Great Vibes', cursive;
+    font-weight: 300;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+
+
+.icon {
+    display: flex;
+    margin-left: 30px;
 }

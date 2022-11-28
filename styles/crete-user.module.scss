@@ -1,9 +1,29 @@
+@charset "UTF-8";
 
 
+$layout-width-inner: 1200px;
+$breakpoints: (
+//キー : 値
+'sp': "(max-width: 767px)", 
+'res': "(max-width: #{$layout-width-inner - 1px})", 
+// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
+'pc': "(min-width: #{$layout-width-inner})"
+) ;
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
 
 .register {
     width: 700px;
-    margin: 80px auto 80px;
+    margin: 0 auto;
+    transition: all 0.3s ease 0s;
+    @include mq("res") {
+        width: 330px;  
+        transition: all 0.3s ease 0s;
+    }
     .title {
         margin: 0;
         padding-bottom: 20px;
@@ -16,19 +36,37 @@
     border-radius: 16px;
     padding: 40px;
     background-color: #FFC896;
+    @include mq("res") {
+        padding: 20px;
+    } 
 
     .form_name {
-        display: flex;
-        // justify-content: space-between;
-        margin-bottom: 40px;
+        width: 100%;
+        @include mq("res") {
+            display: block;
+        }
+        @include mq("res") {
+            margin-bottom: 20px;
+        }
         .form_name_side {
-            width: 400px;
-            .name_right {
-                margin-left: auto;
+            display: flex;
+
+            @include mq("res") {
+                width: 274px;  
+                display: block;
             }
         }
         .name_kanji {
             margin-bottom: 40px;
+            @include mq("res") {
+                margin-bottom: 20px; 
+            }
+        }
+        .name_kana {
+            margin-left: auto;
+            @include mq("res") {
+                margin-bottom: 20px; 
+            }
         }
     }
 
@@ -40,12 +78,22 @@
         padding: 10px;
         background-color: #fff;
         margin-bottom: 40px;
+        @include mq("res") {
+            margin-bottom: 20px; 
+        }
     }
     .form_tmp {
         margin-bottom: 40px;
+        @include mq("res") {
+            margin-bottom: 20px; 
+        }
     }
     .privacy {
         margin-bottom: 40px;
+        @include mq("res") {
+            margin-bottom: 20px; 
+            font-size: 16px;
+        }
     }
 }
 .form_label {
@@ -74,6 +122,10 @@
     height: 25px;
     width: 80px;
     border-radius: 10px;
+    @include mq("res") {
+        width: 40px; 
+        margin-left: 16px;
+    }
 }
 .privacy {
     text-align: center;
@@ -85,25 +137,33 @@
     .btn {
         padding: 15px 40px;
         border-radius: 20px;
-        font-size: 24px;cursor: pointer;
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
         box-shadow:3px 5px 17px 5px #DEDEDE;
+        transition: all 0.3s ease 0s;
+        @include mq("res") {
+            font-size: 18px;
+            padding: 7px 20px;
+        } 
         &:hover{
             position: relative;
-            left:5px;
-            top:5px;
+            transform: translate(2px, 2px);
             box-shadow:none;
         }
     }
 }
 .red {
-    color: #f63131;
+    color: #f84f4f;
+    font-weight: 700;
+    cursor: pointer;
 }
 .form_required {
     position: relative;
     &::after {
         position: absolute;
         content: "*";
-        color: #f63131;
+        color: #f84f4f;
         left: 0;
         top: 0;
     }
