@@ -2,9 +2,13 @@ import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getActiveTrips, getTrip } from "../../service/trip";
 import styles from "../../styles/tripdetail.module.css";
-import Image from "next/image";
+import { TripdetailContent } from "../../component/tripdetailContent";
+import { TripdetailCount } from "../../component/tripdetailCount";
+import { TripdetailAttention } from "../../component/tripdetailAttention";
+import { TripdetailActivity } from "../../component/tripdetailActivity";
+import { TripdetailImage } from "../../component/tripdetailImage";
 import Layout from "../../component/layout";
-
+import { TripdetailTimes } from "../../component/tripdetailTimes";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tours = await getActiveTrips();
@@ -38,11 +42,6 @@ export default function Tripdetail({ tour }) {
       </Head>
       <Layout>
         <main className={styles.main}>
-<<<<<<< HEAD:pages/trip/[id].tsx
-          <h1>{trip.tourName} </h1>
-          <Image src={trip.img1} alt={"ツアー画像"} width={200} height={100} />
-          <p>{trip.description}</p>
-=======
           <p>
             {tour.area} &nbsp;{tour.country}
           </p>
@@ -62,15 +61,18 @@ export default function Tripdetail({ tour }) {
             <TripdetailAttention />
           </div>
           <br />
->>>>>>> main:pages/tour/[id].tsx
           <br />
           <div>
             合計金額(入れた人数の合計金額を出す？？)
             <br />
             XXXXXX円
           </div>
+          <div className={styles.buttonposition}>
+            <button className={styles.button}>予約に進む</button>
+          </div>
         </main>
       </Layout>
     </>
   );
 }
+
