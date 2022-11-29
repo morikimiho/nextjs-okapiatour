@@ -71,50 +71,9 @@ $breakpoints: (
 
 // 検索結果　=================================================
 
-.search_result {
-    width: 70%;
-    max-width: 100%;
-    margin: 0 auto;
-    @include mq("res") {
-        width: 100%;
-    } 
-}
-.search_result_container {
-    display: flex;
-    @include mq("res") {
-        display: block;
-    }
-}
 
-.tour_result_image {
-    margin-right: 20px;
-    position: relative;
-    width: 50%;
-    height: 200px;
-    @include mq("res") {
-        margin: 0;
-        width: 100%;
-    }
-}
-
-.tour_detail {
-    width: 50%;
-    background-color: aquamarine;    // 後で消す
-    margin-left: 20px;
-    @include mq("res") {
-        margin: 0;
-        width: 100%;
-        padding: 20px;
-    }
-    .tour_detail_items {
-        margin-left: 40px;
-        @include mq("res") {
-            margin: 0;
-        }
-        .tour_detail_items_title {
-            margin: 0;
-        }
-    }
+.search_result{
+    padding-top: 20px;
 }
 
 
@@ -126,4 +85,47 @@ $breakpoints: (
 .serchdetail{
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.list{
+    list-style-type: none;
+  
+}
+
+
+
+.eachcontent{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    height: 200px;
+    border: 2px solid #dcdfe4;
+}
+
+.title{
+    font-size: large;
+    font-weight: bold;
+}
+
+.headline{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.button{
+  color: #fff;
+  background-color: #eb6100;
+  border: #eb6100;
+  border-radius: 100vh;
+  padding: 10px 25px 10px 25px;
+  font-size: 1rem;
+}
+.button:hover{
+  margin-top: 3px;
+
+}
+
+
+.last{
+    padding-left: 60rem;
+    padding-top:20px;
 }
