@@ -1,9 +1,10 @@
+
 import styles from "../..//styles/search-page.module.scss";
 
 
 
 //海外→アジアを選んだ場合
-export const AsiaCountry = ({ setCountry,country }) => {
+export const NorthameCountry = ({ setCountry,country }) => {
   const changeHandler = (e) => {
     setCountry(e.target.value);
   };
@@ -16,8 +17,8 @@ export const AsiaCountry = ({ setCountry,country }) => {
           </div>
           <select value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
-            <option value="ko">韓国</option>
-            <option value="indo">インドネシア</option>
+            <option value="uni">アメリカ</option>
+            <option value="cana">カナダ</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -26,8 +27,8 @@ export const AsiaCountry = ({ setCountry,country }) => {
   );
 };
 
-//海外→アジア→韓国を選んだ場合
-export const Korea = ({city,setCity}) => {
+//海外→北米→アメリカを選んだ場合
+export const Uni = ({city,setCity}) => {
 const changeHandler=(e)=>{
   setCity(e.target.value)
 }
@@ -39,8 +40,8 @@ const changeHandler=(e)=>{
             <label htmlFor="">都市</label>
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
-            <option value="seoul">ソウル</option>
-            <option value="busan">釜山</option>
+            <option value="vegas">ラスベガス</option>
+            <option value="los">ロサンゼルス</option>
           </select>
         </div>
       </div>
@@ -48,8 +49,8 @@ const changeHandler=(e)=>{
   );
 };
 
-//海外→アジア→インドネシアを選んだ場合
-export const Indonesia = () => {
+//海外→北米→インドネシアを選んだ場合
+export const Canada= () => {
   return (
     <>
       <div className={styles.flex}>
@@ -58,8 +59,8 @@ export const Indonesia = () => {
             <label htmlFor="">都市</label>
           </div>
           <select name="" id="">
-            <option>ジャカルタ</option>
-            <option>バリ島</option>
+            <option value='van'>バンクーバ</option>
+            <option value="vic">ヴィクトリア</option>
           </select>
         </div>
       </div>
