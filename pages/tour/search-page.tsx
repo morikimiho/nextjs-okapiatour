@@ -12,18 +12,23 @@ import {
   Korea,
   Indonesia,
 } from "../../component/serchPage/serchAsia";
+import { NorthameCountry, Uni ,Canada} from "../../component/serchPage/sertchNorthAmerica";
+
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 const SearchPage = () => {
-  type Area = "abroad" | "domestic";
-  //国内 or 海外
-  const [abroad, setAbroad] = useState<Area>("abroad");
-  const[prefecture,setPrefecture]=useState("osk")
-  const [areaCode, setArea] = useState("eu");
-  const [eucountry, seteuCountry] = useState("fr");
-  const [asicountry, setasiCountry] = useState("");
+  type Abroad = "abroad" | "domestic" | "";
+  const [abroad, setAbroad] = useState<Abroad>("abroad");
+  type Prefecture = "osk" | "";
+  const [prefecture, setPrefecture] = useState<Prefecture>("osk");
+  type Area = "eu" | "asi" |"northame"| "";
+  const [areaCode, setArea] = useState<Area>("");
+  type Country = "fr" | "ita" | "ko" | "indo" | "cana"|"uni";
+  const [country, setCountry] = useState<Country>("");
+
+  const [city, setCity] = useState("");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");
   const { data, error } = useSWR(url, fetcher);
@@ -34,21 +39,43 @@ const SearchPage = () => {
 
   const onsubmitHandler = (e) => {
     e.preventDefault();
-    setUrl(`/api/tours?abroad=${abroad}&prefecture=${prefecture}`);
+    let query = "?";
+
+    if (abroad.length > 0) {
+      if (areaCode.length > 0) {
+        if (country.length > 0) {
+          if (city.length > 0) {
+            query =
+              query +
+              `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}&cityCode=${city}`;
+          } else {
+            query =
+              query +
+              `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}`;
+          }
+        } else {
+          query = query + `abroad=${abroad}&areaCode=${areaCode}`;
+        }
+      } else {
+        query = query + `abroad=${abroad}`;
+      }
+    }
+
+    setUrl(`/api/tours${query}`);
   };
+
+  //areaCode=${areadCode}
 
   const onAbroadChange = (val) => {
     setAbroad(val);
     setArea("");
-    seteuCountry("");
-    setasiCountry("");
+    setCountry("");
   };
 
-  const onAreaChange=(val)=>{
-  setArea(val);
-  seteuCountry("");
-  setasiCountry("");
-  }
+  const onAreaChange = (val) => {
+    setArea(val);
+    setCountry("");
+  };
 
   return (
     <>
@@ -64,25 +91,31 @@ const SearchPage = () => {
               <div className={styles.flex}>
                 <Abroad abroad={abroad} onAbroadChange={onAbroadChange} />
                 {"abroad" === abroad && (
-                  <RouteAbroad setArea={setArea} area={areaCode} onAreaChange={onAreaChange} />
+                  <RouteAbroad area={areaCode} onAreaChange={onAreaChange} />
                 )}
-                {"domestic" === abroad && <RouteJapan prefecture={prefecture} setprefecture={setPrefecture} />}
-                {"eu" === areaCode && (
-                  <EuropeCountry
-                    seteuCountry={seteuCountry}
-                    eucountry={eucountry}
+                {"domestic" === abroad && (
+                  <RouteJapan
+                    prefecture={prefecture}
+                    setPrefecture={setPrefecture}
                   />
+                )}
+                {"eu" === areaCode && (
+                  <EuropeCountry setCountry={setCountry} country={country} />
                 )}
                 {"asi" === areaCode && (
-                  <AsiaCountry
-                    setasiCountry={setasiCountry}
-                    asicountry={asicountry}
-                  />
+                  <AsiaCountry setCountry={setCountry} country={country} />
                 )}
-                {"fr" === eucountry && <France />}
-                {"ita" === eucountry && <Italy />}
-                {"ko" === asicountry && <Korea />}
-                {"indo" === asicountry && <Indonesia />}
+                {"northame" === areaCode && (
+                  <NorthameCountry setCountry={setCountry} country={country} />
+                )}
+
+                {"fr" === country && <France city={city} setCity={setCity}/>}
+                {"ita" === country && <Italy city={city} setCity={setCity} />}
+                {"ko" === country && <Korea city={city} setCity={setCity}/>}
+                {"uni" === country && <Uni city={city} setCity={setCity} />}
+                {"cana" === country && <Canada  />}
+                {"indo" === country && <Indonesia />}
+          
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -93,7 +126,7 @@ const SearchPage = () => {
           {data.map((item: any) => {
             return (
               <div key={item.id} className={styles.flex}>
-                <Image src={item.img1} width={150} height={100} />
+                <Image src={item.img1} width={150} height={100} alt="画像" />
                 <div>
                   <p>{item.tourName}</p>
                   <p>{item.area}</p>
@@ -134,7 +167,7 @@ const Abroad = ({ abroad, onAbroadChange }) => {
 };
 
 // 海外を選んだ場合
-const RouteAbroad = ({ area,onAreaChange }) => {
+const RouteAbroad = ({ area, onAreaChange }) => {
   const changeHandler = (e) => {
     onAreaChange(e.target.value);
   };
@@ -146,9 +179,10 @@ const RouteAbroad = ({ area,onAreaChange }) => {
           <label htmlFor="">エリア</label>
         </div>
         <select value={area} name="" id="" onChange={changeHandler}>
-        <option value="">-</option>
+          <option value="">-</option>
           <option value="eu">ヨーロッパ</option>
           <option value="asi">アジア</option>
+          <option value="northame">北米</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
@@ -157,18 +191,17 @@ const RouteAbroad = ({ area,onAreaChange }) => {
 };
 
 // 国内を選んだ場合
-const RouteJapan = ({setPrefecture}) => {
-
-  const changeHandler=(e)=>{
-  setPrefecture(e.target.value)
-  }
+const RouteJapan = ({ setPrefecture, prefecture }) => {
+  const changeHandler = (e) => {
+    setPrefecture(e.target.value);
+  };
   return (
     <div>
       <div>
         <div>
           <label htmlFor="">都道府県</label>
         </div>
-        <select name="" id="" onChange={changeHandler}>
+        <select value={prefecture} name="" id="" onChange={changeHandler}>
           <option value="osk">大阪</option>
           <option value="hokka">北海道</option>
           <option value="oki"> 沖縄</option>

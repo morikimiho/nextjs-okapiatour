@@ -1,49 +1,49 @@
 
+export function TripdetailTimes({tour, setTourDate, setStartTime}){
 
-export function TripdetailTimes({tour}){
     return (
         <div>
+         
+            <p>希望の日付を選択してください</p>
+              <input type="date" onChange ={(e) => setTourDate(e.target.value)}/>
+                       
             <div>
-                <p>希望の日付を選択してください</p>
-                <input type="date" />
-              </div>
+              <p>希望の時間帯を選択してください</p>
+
               <div>
-                <p>希望の時間帯を選択してください</p>
+                {tour.times >= 7 && (
+                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="9">9:00</option>
+                    <option value="10">10:00</option>
+                  </select>
+                )}
 
-                <div>
-                  {tour.times >= 7 && (
-                    <select>
-                      <option value="1">9:00</option>
-                      <option value="2">10:00</option>
-                    </select>
-                  )}
+                {tour.times < 7 && tour.times >= 3 && (
+                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="9">9:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                  </select>
+                )}
 
-                  {tour.times < 7 && tour.times >= 3 && (
-                    <select>
-                      <option value="1">9:00</option>
-                      <option value="2">10:00</option>
-                      <option value="3">11:00</option>
-                      <option value="4">12:00</option>
-                      <option value="5">13:00</option>
-                    </select>
-                  )}
-
-                  {tour.times < 3 && (
-                    <select name="" id="">
-                      <option value="1">9:00</option>
-                      <option value="2">10:00</option>
-                      <option value="3">11:00</option>
-                      <option value="4">12:00</option>
-                      <option value="5">13:00</option>
-                      <option value="6">14:00</option>
-                      <option value="7">15:00</option>
-                      <option value="8">16:00</option>
-                      <option value="9">17:00</option>
-                      <option value="10">18:00</option>
-                    </select>
-                  )}
-                </div>
+                {tour.times < 3 && (
+                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="9">9:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                  </select>
+                )}
               </div>
-        </div>
+            </div>
+      </div>
     )
 }
