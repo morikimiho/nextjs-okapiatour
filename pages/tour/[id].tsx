@@ -10,7 +10,7 @@ import { TripdetailImage } from "../../component/tripdetailImage";
 import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { useState } from "react";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -49,6 +49,7 @@ export default function Tripdetail({ tour }:{tour:{
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
+  const router = useRouter();
 
   async function PostData() {
     // if(login === true) {
@@ -122,7 +123,7 @@ export default function Tripdetail({ tour }:{tour:{
           <br />
           <br />
           <div className={styles.buttonposition}>
-            <button className={styles.button} onClick={PostData}>カートに入れる</button>
+            <button className={styles.button} onClick={PostData} onSubmit={()=>{router.push("/cart")}}>カートに入れる</button>
           </div>
         </main>
       </Layout>
