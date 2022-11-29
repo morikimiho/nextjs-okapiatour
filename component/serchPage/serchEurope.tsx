@@ -27,7 +27,10 @@ export const EuropeCountry = ({ setCountry,country }) => {
 };
 
 //海外→ヨーロッパ→フランスを選んだ場合
-export const France = () => {
+export const France = (city,setCity) => {
+  const changeHandler=(e)=>{
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -35,8 +38,8 @@ export const France = () => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select name="" id="">
-            <option>パリ</option>
+          <select value={city} name="" id="" onChange={changeHandler}>
+            <option value="pari">パリ</option>
           </select>
         </div>
       </div>
@@ -45,7 +48,10 @@ export const France = () => {
 };
 
 //海外→ヨーロッパ→フランスを選んだ場合
-export const Italy = () => {
+export const Italy = ({city,setCity}) => {
+  const changeHandler=(e)=>{
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -53,9 +59,9 @@ export const Italy = () => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select name="" id="">
-            <option>ミラノ</option>
-            <option>ヴェネチア</option>
+          <select value={city} name="" id="" onChange={changeHandler}>
+            <option value="mila">ミラノ</option>
+            <option value="vene">ヴェネチア</option>
           </select>
         </div>
       </div>

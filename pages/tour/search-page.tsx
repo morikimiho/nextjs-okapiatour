@@ -12,6 +12,8 @@ import {
   Korea,
   Indonesia,
 } from "../../component/serchPage/serchAsia";
+import { NorthameCountry, Uni ,Canada} from "../../component/serchPage/sertchNorthAmerica";
+
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
@@ -21,12 +23,12 @@ const SearchPage = () => {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
   const [prefecture, setPrefecture] = useState<Prefecture>("osk");
-  type Area = "eu" | "asi" | "";
-  const [areaCode, setArea] = useState<Area>("eu");
-  type Country = "fr" | "ita" | "ko" | "indo" | "";
-  const [country, setCountry] = useState<Country>("fr");
-  // type Asi="ko"|"indo"|"";
-  // const [country, setCountry] = useState<Asi>("");
+  type Area = "eu" | "asi" |"northame"| "";
+  const [areaCode, setArea] = useState<Area>("");
+  type Country = "fr" | "ita" | "ko" | "indo" | "cana"|"uni";
+  const [country, setCountry] = useState<Country>("");
+
+  const [city, setCity] = useState("");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");
   const { data, error } = useSWR(url, fetcher);
@@ -42,9 +44,15 @@ const SearchPage = () => {
     if (abroad.length > 0) {
       if (areaCode.length > 0) {
         if (country.length > 0) {
-          query =
-            query +
-            `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}`;
+          if (city.length > 0) {
+            query =
+              query +
+              `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}&cityCode=${city}`;
+          } else {
+            query =
+              query +
+              `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}`;
+          }
         } else {
           query = query + `abroad=${abroad}&areaCode=${areaCode}`;
         }
@@ -97,10 +105,17 @@ const SearchPage = () => {
                 {"asi" === areaCode && (
                   <AsiaCountry setCountry={setCountry} country={country} />
                 )}
-                {"fr" === country && <France />}
-                {"ita" === country && <Italy />}
-                {"ko" === country && <Korea />}
+                {"northame" === areaCode && (
+                  <NorthameCountry setCountry={setCountry} country={country} />
+                )}
+
+                {"fr" === country && <France city={city} setCity={setCity}/>}
+                {"ita" === country && <Italy city={city} setCity={setCity} />}
+                {"ko" === country && <Korea city={city} setCity={setCity}/>}
+                {"uni" === country && <Uni city={city} setCity={setCity} />}
+                {"cana" === country && <Canada  />}
                 {"indo" === country && <Indonesia />}
+          
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -167,6 +182,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
           <option value="">-</option>
           <option value="eu">ヨーロッパ</option>
           <option value="asi">アジア</option>
+          <option value="northame">北米</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
