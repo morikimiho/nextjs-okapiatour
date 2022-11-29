@@ -12,8 +12,12 @@ import {
   Korea,
   Indonesia,
 } from "../../component/serchPage/serchAsia";
-import { NorthameCountry, Uni ,Canada} from "../../component/serchPage/sertchNorthAmerica";
-
+import {
+  NorthameCountry,
+  Uni,
+  Canada,
+} from "../../component/serchPage/sertchNorthAmerica";
+import Link from "next/link";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
@@ -23,9 +27,9 @@ const SearchPage = () => {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
   const [prefecture, setPrefecture] = useState<Prefecture>("osk");
-  type Area = "eu" | "asi" |"northame"| "";
+  type Area = "eu" | "asi" | "northame" | "";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "cana"|"uni";
+  type Country = "fr" | "ita" | "ko" | "indo" | "cana" | "uni";
   const [country, setCountry] = useState<Country>("");
 
   const [city, setCity] = useState("");
@@ -109,30 +113,57 @@ const SearchPage = () => {
                   <NorthameCountry setCountry={setCountry} country={country} />
                 )}
 
-                {"fr" === country && <France city={city} setCity={setCity}/>}
+                {"fr" === country && <France city={city} setCity={setCity} />}
                 {"ita" === country && <Italy city={city} setCity={setCity} />}
-                {"ko" === country && <Korea city={city} setCity={setCity}/>}
+                {"ko" === country && <Korea city={city} setCity={setCity} />}
                 {"uni" === country && <Uni city={city} setCity={setCity} />}
-                {"cana" === country && <Canada  />}
+                {"cana" === country && <Canada />}
                 {"indo" === country && <Indonesia />}
-          
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
           </div>
         </div>
 
-        <div>
+        <div id="serch_result" className={styles.search_result}>
+          {url.indexOf("recommend=true") > 0 ? (
+            <span className={styles.headline}>おすすめ</span>
+          ) : (
+            <span className={styles.headline}>検索結果</span>
+          )}
+
           {data.map((item: any) => {
             return (
-              <div key={item.id} className={styles.flex}>
-                <Image src={item.img1} width={150} height={100} alt="画像" />
-                <div>
-                  <p>{item.tourName}</p>
-                  <p>{item.area}</p>
-                  <p>{item.country}</p>
+              <>
+                <div id="content" className={styles.eachcontent}>
+                  <div key={item.id} className={styles.flex}>
+                    <Image
+                      src={item.img1}
+                      width={300}
+                      height={200}
+                      alt="画像"
+                    className={styles.image}/>
+                    <div>
+                      <ul className={styles.list}>
+                        <li className={styles.title}>
+                          {item.area}&nbsp;{item.country}&nbsp;{item.city}
+                        </li>
+                        <li>{item.tourName}</li>
+                        <li>価格：{item.price}円</li>
+
+                       
+                         
+                       
+                      </ul>
+                      <div className={button_round}>
+                        <Link href={`/tour/${item.id}`} >
+                              <button className={styles.button}>詳細はこちら </button>
+                            </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </>
             );
           })}
         </div>
