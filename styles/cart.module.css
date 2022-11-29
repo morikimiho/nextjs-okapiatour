@@ -1,0 +1,16 @@
+.buttonsubmit {
+    display: flex;
+    justify-content: center;
+}
+
+.paysubmit {
+    margin: auto 10px;
+    cursor: pointer;    
+    padding: 10px; 
+}
+
+.searchsubmit {
+    margin: auto 10px;
+    cursor: pointer; 
+    padding: 10px;
+}

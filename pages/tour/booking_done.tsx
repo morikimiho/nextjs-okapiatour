@@ -27,7 +27,7 @@ export default function BookingDone() {
           ご予約確認ページよりお申し込み内容お申し込み内容をご確認いただけます。
         </p>
         
-        <Link href='http://localhost:3000/trip/booking_confirmation'>
+        <Link href='http://localhost:3000/tour/booking_confirmation'>
         <div className={styles.booking_button}>
         <button className={styles.booking_btn} type="submit">予約確認へ</button>
         </div>
