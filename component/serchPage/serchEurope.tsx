@@ -3,9 +3,9 @@ import styles from "../..//styles/search-page.module.scss";
 
 
 //海外→ヨーロッパを選んだ場合
-export const EuropeCountry = ({ seteuCountry,eucountry }) => {
+export const EuropeCountry = ({ setCountry,country }) => {
   const changeHandler = (e) => {
-    seteuCountry(e.target.value);
+    setCountry(e.target.value);
   };
   return (
     <>
@@ -14,7 +14,7 @@ export const EuropeCountry = ({ seteuCountry,eucountry }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={eucountry} name="" id="" onChange={changeHandler}>
+          <select value={country} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="fr">フランス</option>
             <option value="ita">イタリア</option>

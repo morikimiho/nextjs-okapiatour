@@ -3,9 +3,9 @@ import styles from "../..//styles/search-page.module.scss";
 
 
 //海外→アジアを選んだ場合
-export const AsiaCountry = ({ setasiCountry,asicountry }) => {
+export const AsiaCountry = ({ setCountry,country }) => {
   const changeHandler = (e) => {
-    setasiCountry(e.target.value);
+    setCountry(e.target.value);
   };
   return (
     <>
@@ -14,8 +14,8 @@ export const AsiaCountry = ({ setasiCountry,asicountry }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={asicountry} name="" id="" onChange={changeHandler}>
-          <option value="">-</option>
+          <select value={country} name="" id="" onChange={changeHandler}>
+            <option value="">-</option>
             <option value="ko">韓国</option>
             <option value="indo">インドネシア</option>
           </select>
