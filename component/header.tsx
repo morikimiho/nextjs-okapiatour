@@ -33,7 +33,7 @@ export function Header() {
             </Link>
           </div>
           <div>
-          <Link href="http://localhost:3000/trip/login">
+          <Link href="http://localhost:3000/tour/login">
           <button className={styles.button}>ログイン</button>
           </Link>
           </div>

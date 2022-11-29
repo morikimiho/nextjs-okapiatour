@@ -27,17 +27,6 @@
     }
   ],
 
-  "cart": [
-    {
-      "id": "",
-      "date": "",
-      "images": "",
-      "tourName": "",
-      "description": "",
-      "price": ""
-    }
-  ],
-
   "tours":[
   {
   "id": 1,
