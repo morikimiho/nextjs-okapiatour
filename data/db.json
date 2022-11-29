@@ -10,7 +10,8 @@
       "birthY": "1995",
       "birthM": "9",
       "birthD": "12",
-      "id": 1
+      "id": 1,
+      "login": true
     },
     {
       "firstName": "波田野",
@@ -23,18 +24,8 @@
       "birthY": "1953",
       "birthM": "4",
       "birthD": "5",
-      "id": 2
-    }
-  ],
-
-  "cart": [
-    {
-      "id": "",
-      "date": "",
-      "images": "",
-      "tourName": "",
-      "description": "",
-      "price": ""
+      "id": 2,
+      "login": false
     }
   ],
 
@@ -316,5 +307,7 @@
   "recommend":true
 }
 
+],
+"inCart":[
 ]
 }
