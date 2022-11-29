@@ -29,8 +29,8 @@ export default function Home({tours}) {
       <div className={styles.tourContent}>
         <div className={styles.areaPickUp}><img src="/images/top/overseas.png" alt="飛行機" width={32} height={32}/>&nbsp;&nbsp;&nbsp;海外・おすすめツアーPickUp!</div>
         <div className={styles.overseas}>
-          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: number;}) => {
-            if(tour.abroad === 1 && tour.id < 4) {
+          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: string;}) => {
+            if(tour.abroad === "abroad" && tour.id < 4) {
                 return(
                     <div className={styles.blockTourContent}>
                           <p><Link href={`/tour/${tour.id}`}><Image src={tour.img1} width={300} height={200} alt={"ツアー地域の写真"} /></Link></p>
@@ -40,8 +40,8 @@ export default function Home({tours}) {
         </div>
         <div className={styles.areaPickUp}><img src="/images/top/domestic.png" alt="自動車" width={32} height={32}/>&nbsp;&nbsp;&nbsp;国内・おすすめツアーPickUp!</div>
         <div className={styles.domestic}>
-          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: number;}) => {
-            if(tour.abroad === 2 && tour.id < 7) {
+          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: string;}) => {
+            if(tour.abroad === "domestic" && tour.id < 7) {
                 return(
                     <div className={styles.blockTourContent}>
                         <p><Link href={`/tour/${tour.id}`}><Image src={tour.img1} width={300} height={200} alt={"ツアー地域の写真"} /></Link></p>
