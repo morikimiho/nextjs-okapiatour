@@ -31,9 +31,9 @@
   "tours": [
     {
       "id": 1,
-      "img1": "/images/france/mont-saint-miche/mont-saint-michel01.jpg",
-      "img2": "/images/france/mont-saint-miche/mont-saint-michel02.jpg",
-      "img3": "/images/france/mont-saint-miche/mont-saint-michel03.jpg",
+      "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+      "img2": "/images/france/paris/mont-saint-michel/mont-saint-michel02.jpg",
+      "img3": "/images/france/paris/mont-saint-michel/mont-saint-michel03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -54,9 +54,9 @@
     },
     {
       "id": 2,
-      "img1": "/images/france/loire/loire01.jpg",
-      "img2": "/images/france/loire/loire02.jpeg",
-      "img3": "/images/france/loire/loire03.jpeg",
+      "img1": "/images/france/paris/loire/loire01.jpg",
+      "img2": "/images/france/paris/loire/loire02.jpeg",
+      "img3": "/images/france/paris/loire/loire03.jpeg",
       "abroad": "abroad",
       "area": "ヨーロッパ",
       "areaCode": "eu",
@@ -77,9 +77,9 @@
     },
     {
       "id": 3,
-      "img1": "/images/france/loire/loire01.jpg",
-      "img2": "/images/france/loire/loire02.jpeg",
-      "img3": "/images/france/loire/loire03.jpeg",
+      "img1": "/images/france/paris/loire/loire01.jpg",
+      "img2": "/images/france/paris/loire/loire02.jpg",
+      "img3": "/images/france/paris/loire/loire03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",

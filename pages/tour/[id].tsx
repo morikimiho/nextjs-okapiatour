@@ -51,43 +51,44 @@ export default function Tripdetail({ tour }:{tour:{
   const [numberOfPeople, setNumberOfPeople] = useState(1);
 
   async function PostData() {
-    const data = {
-      tourDate: tourDate,//新規データ
-      startTime: startTime, //新規データ
-      img1: tour.img1,
-      tourName: tour.tourName,
-      description: tour.description,
-      numberOfPeople: numberOfPeople,//新規データ
-      price: tour.price,
-      total: tour.price*numberOfPeople
-    }
-    // if(login === true) {
-      await fetch('http://localhost:8000/inCart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
+    // const data = {
+    //   tourDate: tourDate,//新規データ
+    //   startTime: startTime, //新規データ
+    //   img1: tour.img1,
+    //   tourName: tour.tourName,
+    //   description: tour.description,
+    //   numberOfPeople: numberOfPeople,//新規データ
+    //   price: tour.price,
+    //   total: tour.price*numberOfPeople
+    // }
+    // // if(login === true) {
+    //   await fetch('http://localhost:8000/inCart', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
   
   
-      .then((response) => response.json())
-      .then((data) => {
-          console.log(data);
-          // router.push('http://localhost:3000/tour/cart')
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      });
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //       console.log(data);
+    //       // router.push('http://localhost:3000/tour/cart')
+    //   })
+    //   .catch((error) => {
+    //       console.error('Error:', error);
+    //   });
       
     // } else {
-    //   localStorage.setItem(tourDate,tourDate)
-    //   localStorage.setItem(img1, tour.img1),
-    //   localStorage.setItem(tourName, tour.tourName),
-    //   localStorage.setItem(description, tour.description),
-    //   localStorage.setItem(countPeople, countPeople),//新規データ
-    //   localStorage.setItem(price, tour.price)
-    //   localStorage.setItem(total, tour.price*numberOfPeople)
+    localStorage.setItem('tourDate',tourDate)
+    localStorage.setItem('startTime',startTime)
+    localStorage.setItem('img1', tour.img1),
+    localStorage.setItem('tourName', tour.tourName),
+    localStorage.setItem('description', tour.description),
+    localStorage.setItem('numberOfPeople', numberOfPeople),//新規データ
+    localStorage.setItem('price', tour.price),
+    localStorage.setItem('total', tour.price * numberOfPeople)
     // }
   }
 
