@@ -137,28 +137,48 @@ const SearchPage = () => {
               <>
                 <div id="content" className={styles.eachcontent}>
                   <div key={item.id} className={styles.flex}>
-                    <Image
-                      src={item.img1}
-                      width={300}
-                      height={200}
-                      alt="画像"
-                    className={styles.image}/>
                     <div>
-                      <ul className={styles.list}>
-                        <li className={styles.title}>
-                          {item.area}&nbsp;{item.country}&nbsp;{item.city}
-                        </li>
-                        <li>{item.tourName}</li>
-                        <li>価格：{item.price}円</li>
+                      <Image
+                        src={item.img1}
+                        width={300}
+                        height={200}
+                        alt="画像"
+                        className={styles.image}
+                      />
+                    </div>
+                    <div>
+                      <div className={styles.title}>{item.tourName}</div>
+                      <div className={styles.place}>
+                        {item.area}&nbsp;{item.country}&nbsp;{item.city}&nbsp;
+                      </div>
+                      <div>
+                        <div className={styles.flex}>
+                          <div className={styles.flex}>
+                            <div id="info">
+                              <ul className={styles.list}>
+                                <span className={styles.span}>概要</span>
+                                <li>{item.tourName}</li>
+                                <li>価格：{item.price}円</li>
+                              </ul>
+                            </div>
+                            <div id="tourcontent">
+                              <ul className={styles.list}>
+                                <span className={styles.span}>含まれるもの</span>
+                                <li>{item.content1}</li>
+                                <li>{item.content2}</li>
+                                <li>{item.content3}</li>
+                              </ul>
+                            </div>
+                          </div>
 
-                       
-                         
-                       
-                      </ul>
-                      <div className={button_round}>
-                        <Link href={`/tour/${item.id}`} >
-                              <button className={styles.button}>詳細はこちら </button>
+                          <div id='button' className={styles.button_around}>
+                            <Link href={`/tour/${item.id}`}>
+                              <button className={styles.button}>
+                                詳細はこちら{" "}
+                              </button>
                             </Link>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
