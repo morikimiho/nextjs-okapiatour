@@ -55,39 +55,41 @@ export default function Tripdetail({ tour }:{tour:{
 
   async function PostData() {
     // const [loginId, setLoginId] = useCookies();
-    let data = {
-      tourDate: tourDate,//新規データ
+    let carts = {
+      itemId:{tourDate: tourDate,//新規データ
       startTime: startTime, //新規データ
       img1: tour.img1,
       tourName: tour.tourName,
       description: tour.description,
       numberOfPeople: numberOfPeople,//新規データ
       price: tour.price,
-      total: tour.price*numberOfPeople }; //新規データ
+      total: tour.price*numberOfPeople },
+      userId:0} //新規データ}
+
 
     // loginId ? {
-    //     await fetch('http://localhost:8000/inCart', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
+        await fetch('http://localhost:8000/inCart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(carts),
+      })
   
   
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //       console.log(data);
-    //       router.push('http://localhost:3000/tour/cart')
-    //   })
-    //   .catch((error) => {
-    //       console.error('Error:', error);
-    //   })
+      .then((response) => response.json())
+      .then((data) => {
+          console.log(data);
+          router.push('http://localhost:3000/tour/cart')
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      })
       
     // }:{
 
-    localStorage.setItem('data',JSON.stringify(data)); //新規データ
-    router.push('http://localhost:3000/tour/cart');
+    // localStorage.setItem('data',JSON.stringify(carts)); //新規データ
+    // router.push('http://localhost:3000/tour/cart');
     // }
   }
 
