@@ -317,8 +317,6 @@
       "recommend": true
     }
   ],
-
-  
   "inCart": [
     {
       "tourDate": "2022-11-25",
@@ -341,7 +339,17 @@
       "price": 6000,
       "total": 42000,
       "id": 2
+    },
+    {
+      "tourDate": "",
+      "startTime": "",
+      "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+      "tourName": "モン サン ミッシェル 1日ツアー",
+      "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+      "numberOfPeople": 1,
+      "price": 17000,
+      "total": 17000,
+      "id": 3
     }
   ]
 }
-
