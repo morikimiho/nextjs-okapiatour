@@ -50,7 +50,7 @@ export function ConfirmTotal() {
 
             </form>
             <button type='button' className={styles.button}>
-                <a href="/booking_done">決済する</a>
+                <a href="/tour/booking_done">決済する</a>
             </button>
         </>
     );
