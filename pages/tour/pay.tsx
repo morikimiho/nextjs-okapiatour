@@ -3,8 +3,26 @@ import {Header} from "../../component/header";
 import {Footer} from "../../component/footer";
 
 export default function Pay() {
-const[loginId,setloginId]=useCookie()
-//   const loginId=1;
+// const[loginId,setloginId]=useCookie()
+  const loginId=1;
+
+
+  fetch(`http://localhost:8000/inCart?userId=${loginId}`)
+  .then(response=>response.json())
+  .then(deta=>{
+      console.log(deta);
+
+  })
+
+
+    // fetch('http://localhost:8000/orders', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(deta),
+    //   })
+
         return (
             < >
                 <Header />
@@ -35,22 +53,9 @@ export function ConfirmTotal() {
 
  export function InputRange() {
  
-    fetch(`http://localhost:8000/inCart/userId=${loginId}`)
-    .then(response=>response.json())
-    .then(deta=>{
-        console.log(deta);
-
-    })
 
   
 
-    fetch('http://localhost:8000/orders', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(deta),
-      })
 
     return (
         <>
