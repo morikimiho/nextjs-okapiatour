@@ -28,6 +28,7 @@
       "login": false
     }
   ],
+
   "tours": [
     {
       "id": 1,
@@ -304,6 +305,8 @@
       "recommend": true
     }
   ],
+
+  
   "inCart": [
     {
       "tourDate": "2022-11-25",
