@@ -11,7 +11,7 @@ import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
-import { useCookies } from "react-cookie";
+import useCookie from "../../hooks/useCookie";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -51,10 +51,13 @@ export default function Tripdetail({ tour }:{tour:{
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const router = useRouter();
+  const cookie = useCookie();
+  
 
 
   async function PostData() {
-    // const [loginId, setLoginId] = useCookies();
+    const loginId = cookie.loginId;
+
     let carts = {
       itemId:{tourDate: tourDate,//新規データ
       startTime: startTime, //新規データ
@@ -64,10 +67,15 @@ export default function Tripdetail({ tour }:{tour:{
       numberOfPeople: numberOfPeople,//新規データ
       price: tour.price,
       total: tour.price*numberOfPeople },
-      userId:0} //新規データ}
+      userId:loginId} //新規データ}
 
+    if(!loginId){
 
-    // loginId ? {
+      localStorage.setItem('carts',JSON.stringify(carts)); //新規データ
+      router.push('http://localhost:3000/tour/cart');
+
+    } else {
+      
         await fetch('http://localhost:8000/inCart', {
         method: 'POST',
         headers: {
@@ -86,11 +94,7 @@ export default function Tripdetail({ tour }:{tour:{
           console.error('Error:', error);
       })
       
-    // }:{
-
-    // localStorage.setItem('data',JSON.stringify(carts)); //新規データ
-    // router.push('http://localhost:3000/tour/cart');
-    // }
+    }
   }
 
 

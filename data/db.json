@@ -520,37 +520,21 @@
   ],
   "inCart": [
     {
-      "ItemId": {
-        "tourDate": "2022-12-10",
-        "startTime": 12,
-        "img1": "/images/hokkaido/hokkaidohitsuji/hokkidohitsuji01.jpg",
-        "tourName": "羊ヶ丘展望台/小樽オルゴール堂",
-        "description": "クラーク博士像を見に行きます。オルゴールを思い出に持って帰りましょう！",
-        "numberOfPeople": 5,
-        "price": 6000,
-        "total": 30000
-      },
-      "userId": 1,
-      "id": 1
-    },
-    {
       "itemId": {
-        "tourDate": "",
-        "startTime": "",
-        "img1": "/images/france/paris/loire/loire01.jpg",
-        "tourName": "ヴェルサイユ宮殿ツアー",
-        "description": "ヴェルサイユ宮殿への半日ツアーです。優先入場サービスをご利用いただけますので、通常の入場時の待ち列を回避して速やかにご入場いただけます。",
-        "numberOfPeople": 1,
-        "price": 11000,
-        "total": 11000
+        "tourDate": "2022-12-10",
+        "startTime": 13,
+        "img1": "/images/kyoto/kyoto01.jpg",
+        "tourName": "京都で着物とお茶体験",
+        "description": "着物を着て、お茶体験ができます。清水寺で写真撮影も可能です。",
+        "numberOfPeople": 6,
+        "price": 6000,
+        "total": 36000
       },
       "userId": 2,
-      "id": 2
+      "id": 1
     }
   ],
-  "orders":[
-    {
-      
-    }
+  "orders": [
+    {}
   ]
 }
