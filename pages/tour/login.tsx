@@ -13,7 +13,7 @@ export default function Login () {
                 <Table />
             </div>
 
-            <Link href='http://localhost:3000/trip/create-user'>
+            <Link href='http://localhost:3000/tour/create-user'>
             <button type="button" className={styles.regibutton}>新規登録はこちら</button>
             </Link>
 
