@@ -26,9 +26,21 @@
       "birthD": "5",
       "id": 2,
       "login": false
+    },
+    {
+      "firstName": "本田",
+      "firstNameKana": "ほんだ",
+      "lastName": "圭佑",
+      "lastNameKana": "けいすけ",
+      "mailAddress": "keisuke@honda.com",
+      "tel": "090-1234-5678",
+      "password": "keisuke04",
+      "birthY": "1982",
+      "birthM": "5",
+      "birthD": "9",
+      "id": 3
     }
   ],
-
   "tours": [
     {
       "id": 1,
@@ -330,6 +342,6 @@
       "total": 42000,
       "id": 2
     }
-
   ]
 }
+
