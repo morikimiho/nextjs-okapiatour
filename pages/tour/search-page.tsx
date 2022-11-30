@@ -29,10 +29,10 @@ const SearchPage = () => {
   const [prefecture, setPrefecture] = useState<Prefecture>("osk");
   type Area = "eu" | "asi" | "northame" | "";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "cana" | "uni";
+  type Country = "fr" | "ita" | "ko" | "indo" | "cana" | "uni"|"";
   const [country, setCountry] = useState<Country>("");
-
-  const [city, setCity] = useState("");
+  type City="mila"|"vene"|"pari"|""; 
+  const [city, setCity] = useState<City>("");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");
   const { data, error } = useSWR(url, fetcher);
@@ -81,6 +81,11 @@ const SearchPage = () => {
     setCountry("");
   };
 
+  const onCountryChange=(val)=>{
+    setCountry(val);
+    setCity("");
+  }
+
   return (
     <>
       <Head>
@@ -104,13 +109,13 @@ const SearchPage = () => {
                   />
                 )}
                 {"eu" === areaCode && (
-                  <EuropeCountry setCountry={setCountry} country={country} />
+                  <EuropeCountry  country={country} onCountryChanege={onCountryChange}/>
                 )}
                 {"asi" === areaCode && (
-                  <AsiaCountry setCountry={setCountry} country={country} />
+                  <AsiaCountry  country={country} onCountryChanege={onCountryChange} />
                 )}
                 {"northame" === areaCode && (
-                  <NorthameCountry setCountry={setCountry} country={country} />
+                  <NorthameCountry country={country}  onCountryChanege={onCountryChange}/>
                 )}
 
                 {"fr" === country && <France city={city} setCity={setCity} />}
@@ -163,7 +168,9 @@ const SearchPage = () => {
                             </div>
                             <div id="tourcontent">
                               <ul className={styles.list}>
-                                <span className={styles.span}>含まれるもの</span>
+                                <span className={styles.span}>
+                                  含まれるもの
+                                </span>
                                 <li>{item.content1}</li>
                                 <li>{item.content2}</li>
                                 <li>{item.content3}</li>
@@ -171,7 +178,7 @@ const SearchPage = () => {
                             </div>
                           </div>
 
-                          <div id='button' className={styles.button_around}>
+                          <div id="button" className={styles.button_around}>
                             <Link href={`/tour/${item.id}`}>
                               <button className={styles.button}>
                                 詳細はこちら{" "}
@@ -206,6 +213,7 @@ const Abroad = ({ abroad, onAbroadChange }) => {
             <label htmlFor="">国内 or 海外</label>
           </div>
           <select value={abroad} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
             <option value="abroad">海外</option>
             <option value="domestic">国内</option>
           </select>
