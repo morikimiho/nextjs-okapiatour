@@ -1,25 +1,56 @@
 import styles from "../styles/header.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export function Header() {
+  const router = useRouter();
+
+  /*
+  クッキーを削除するとエラーになる
+  Unhandled Runtime Error
+  SyntaxError: "undefined" is not valid JSON
+  => try,catch で改善
+  */
+
+  // クッキーにセットされている名前をログイン名として表示
+  const [loginId, setLoginId] = useState("");
+  const [loginName, setLoginName] = useState("");
+  useEffect(() => {
+      try {
+        const users = JSON.parse(document.cookie.split("=")[1]);
+        // console.log(users);
+        setLoginId(users.id);
+        setLoginName(decodeURI(users.name));
+      }
+      catch {
+        console.log('cookie_is_undefined');
+      }
+      // }
+});
+
+  // ログアウト(クッキー削除)　　挙動少しおかしい要改善
+  function logOut() {
+    if (!"/tour") {
+      document.cookie = "user=;max-age=0";
+      router.push("/tour");
+    } else {
+      router.reload();
+    }
+    document.cookie = "user=;max-age=0";
+  }
+
   return (
-    <div className={styles.headerall}>
+    <div className={styles.header_all}>
       <div className={styles.header}>
         <div className={styles.logo}>
-            <Link href="/trip" className={styles.icon_flex}>
-              <div className={styles.icon}>
-                <Image
-                  src="/images/logo.png"
-                  alt="ロゴ"
-                  width={40}
-                  height={40}
-                />
-                <div className={styles.tourTitle}>
-               Okapia Tour
-                </div>
-              </div>
-            </Link>
+          <Link href="/tour" className={styles.icon_flex}>
+            <div className={styles.icon}>
+              <Image src="/images/logo.png" alt="ロゴ" width={40} height={40} />
+              <div className={styles.tourTitle}>Okapia Tour</div>
+            </div>
+          </Link>
         </div>
         <div className={styles.buttons}>
           <div className={styles.cart}>
@@ -32,11 +63,28 @@ export function Header() {
               />
             </Link>
           </div>
-          <div>
-          <Link href="http://localhost:3000/tour/login">
-          <button className={styles.button}>ログイン</button>
-          </Link>
-          </div>
+
+          {/* ログインしてなかったら */}
+          {!loginName && (
+            <div>
+              <Link href="/tour/login">
+                <button className={styles.button}>ログイン</button>
+              </Link>
+            </div>
+          )}
+
+          {/* ログインしてたら */}
+          {loginName.length > 0 && (
+            <>
+              <div>
+                <div>{loginId}</div>
+                <div>{loginName}</div>
+              </div>
+              <button className={styles.button} onClick={logOut}>
+                ログアウト
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>
