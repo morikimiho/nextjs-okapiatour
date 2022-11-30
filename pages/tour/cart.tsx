@@ -3,15 +3,14 @@ import Head from "next/head";
 import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
 import useSWR from "swr";
-import Image from "next/image";
-import { CartdetailCount } from "../../component/CartList/cartdetailCount";
 import styles from "../../styles/cart.module.css";
+import { Cartlist } from "../../component/CartList/cartlist";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 export default function Cart() {
-  const { data, error } = useSWR("/api/carts", fetcher);
+  const { data, error } = useSWR("/api/inCart", fetcher);
 
   // エラーになった場合は一覧は表示できないのでここで終わり
   if (error) return <div>failed to load</div>;
@@ -27,22 +26,10 @@ export default function Cart() {
       <main>
         {data.map((cart: any) => {
           return (
-            <div key={cart.id}>
-              <p>{cart.date}</p>
-              <Image
-                src={cart.images}
-                width={150}
-                height={100}
-                alt="ツアー画像"
-              />
-              <p>{cart.tourName}</p>
-              <p>{cart.description}</p>
-              <p>{cart.price}</p>
-              <CartdetailCount />
-            </div>
+            <Cartlist cart={cart} />
           );
         })}
-        <button onClick={() => console.log('removed!')}>削除</button>
+       
         <div className={styles.buttonsubmit}>
           <div>
             <Link href="http://localhost:3000/tour/pay">

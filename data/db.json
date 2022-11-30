@@ -54,7 +54,7 @@
       "country": "フランス",
       "cityCode": 1,
       "city": "パリ",
-      "tourName": "パリ発：モン サン ミッシェル 1日ツアー",
+      "tourName": "モン サン ミッシェル 1日ツアー",
       "price": 17000,
       "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
       "meetingPlace": "パリ 北駅",
@@ -68,8 +68,8 @@
     {
       "id": 2,
       "img1": "/images/france/paris/loire/loire01.jpg",
-      "img2": "/images/france/paris/loire/loire02.jpeg",
-      "img3": "/images/france/paris/loire/loire03.jpeg",
+      "img2": "/images/france/paris/loire/loire02.jpg",
+      "img3": "/images/france/paris/loire/loire03.jpg",
       "abroad": "abroad",
       "area": "ヨーロッパ",
       "areaCode": "eu",
@@ -77,7 +77,7 @@
       "country": "フランス",
       "cityCode": 1,
       "city": "パリ",
-      "tourName": "パリ発：ロワール渓谷 古城めぐり 1日ツアー",
+      "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
       "price": 15000,
       "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
       "meetingPlace": "パリ ノートルダム寺院前",
@@ -100,7 +100,7 @@
       "country": "フランス",
       "cityCode": 1,
       "city": "パリ",
-      "tourName": "パリ発：ヴェルサイユ宮殿ツアー",
+      "tourName": "ヴェルサイユ宮殿ツアー",
       "price": 11000,
       "description": "ヴェルサイユ宮殿への半日ツアーです。優先入場サービスをご利用いただけますので、通常の入場時の待ち列を回避して速やかにご入場いただけます。",
       "meetingPlace": "パリ ノートルダム寺院前",
@@ -117,7 +117,7 @@
       "img2": "/images/osaka/osaka02.jpg",
       "img3": "/images/osaka/osaka03.jpg",
       "abroad": "domestic",
-      "area": "近畿",
+      "area": "",
       "countryCode": 2,
       "country": "日本",
       "prefecture": "osk",
@@ -139,7 +139,7 @@
       "img2": "/images/miyagi/miyagi02.jpg",
       "img3": "/images/miyagi/miyagi03.jpg",
       "abroad": "domestic",
-      "area": "東北",
+      "area": "",
       "countryCode": 2,
       "country": "日本",
       "prefecture": "osk",
@@ -162,7 +162,7 @@
       "img3": "/images/kyoto/kyoto03.jpg",
       "abroad": "domestic",
       "areaCode": 2,
-      "area": "近畿",
+      "area": "",
       "countryCode": 2,
       "country": "日本",
       "prefecture": "osk",
@@ -228,7 +228,7 @@
       "id": 9,
       "img1": "/images/venezia/gondora/gondora01.jpg",
       "img2": "/images/venezia/gondora/gondora02.jpg",
-      "img3": "/images/venezia/gondora/gondora.jpg",
+      "img3": "/images/venezia/gondora/gondora03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -317,6 +317,8 @@
       "recommend": true
     }
   ],
+
+  
   "inCart": [
     {
       "tourDate": "2022-11-25",
@@ -342,3 +344,4 @@
     }
   ]
 }
+

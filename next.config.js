@@ -13,12 +13,12 @@ const nextConfig = {
         destination: 'http://localhost:8000/tours/:slug',
       },
       {
-        source: '/api/carts',
-        destination: 'http://localhost:8000/carts',
+        source: '/api/inCart',
+        destination: 'http://localhost:8000/inCart',
       },
       {
-        source: '/api/carts/:slug',
-        destination: 'http://localhost:8000/carts/:slug',
+        source: '/api/inCart/:slug',
+        destination: 'http://localhost:8000/inCart/:slug',
       },
     ];
   },
