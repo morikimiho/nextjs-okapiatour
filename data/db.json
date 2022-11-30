@@ -52,7 +52,7 @@
       "area": "ヨーロッパ",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "モン サン ミッシェル 1日ツアー",
       "price": 17000,
@@ -75,7 +75,7 @@
       "areaCode": "eu",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
       "price": 15000,
@@ -98,7 +98,7 @@
       "area": "ヨーロッパ",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "ヴェルサイユ宮殿ツアー",
       "price": 11000,
@@ -344,4 +344,3 @@
     }
   ]
 }
-
