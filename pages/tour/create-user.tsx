@@ -21,6 +21,8 @@ const CreateUser = () => {
   const [birthM, setBirthM] = useState("");
   const [birthD, setBirthD] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // チェクボックスクリックでboolean反転
   const toggleCheckbox = () => {
@@ -35,33 +37,47 @@ const CreateUser = () => {
       /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
 
     if (!firstName) {
-      alert("姓を入力してください");
+      setError(true);
+      setErrorMessage("*姓を入力してください*");
     } else if (!lastName) {
-      alert("名を入力してください");
+      setError(true);
+      setErrorMessage("名を入力してください");
     } else if (!firstNameKana) {
-      alert("姓(ふりがな)を入力してください");
+      setError(true);
+      setErrorMessage("姓(ふりがな)を入力してください");
     } else if (!lastNameKana) {
-      alert("名(ふりがな)を入力してください");
+      setError(true);
+      setErrorMessage("名(ふりがな)を入力してください");
     } else if (!tel) {
-      alert("電話番号を入力してください");
-    } else if (!tel.match(/^\d{2,4}-\d{3,4}-\d{4}$/)) {
-      alert("正しい電話番号を入力してください");
+      setError(true);
+      setErrorMessage("*電話番号を入力してください*");
+    } else if (!tel.match(/^0[-0-9]{9,12}$/)) {
+      setError(true);
+      setErrorMessage("*電話番号は９~12桁の半角数字を入力してください*");
     } else if (!mailAddress) {
-      alert("名を入力してください");
+      setError(true);
+      setErrorMessage("*メールアドレスを入力してください*");
     } else if (!regex.test(mailAddress)) {
-      alert("正しいメールアドレスを入力してください");
+      setError(true);
+      setErrorMessage("*メールアドレスを正しく入力してください*");
     } else if (!password) {
-      alert("パスワードを入力してください");
+      setError(true);
+      setErrorMessage("*パスワードを入力してください*");
     } else if (password.length < 4) {
-      alert("4文字以上15文字以下のパスワードを入力してください");
+      setError(true);
+      setErrorMessage("*パスワードは4桁以上15桁以下入力してください*");
     } else if (password.length > 15) {
-      alert("4文字以上15文字以下のパスワードを入力してください");
+      setError(true);
+      setErrorMessage("*パスワードは4桁以上15桁以下入力してください*");
     } else if (!passwordConfirm) {
-      alert("確認用パスワードを入力してください");
+      setError(true);
+      setErrorMessage("*確認用パスワードを入力してください*");
     } else if (password !== passwordConfirm) {
-      alert("パスワードが違います");
+      setError(true);
+      setErrorMessage("*パスワードと確認用パスワードが一致しません*");
     } else if (isChecked === false) {
-      alert("会員規約の同意にチェックしてください");
+      setError(true);
+      setErrorMessage("");
     } else {
       const data = {
         firstName,
@@ -122,13 +138,13 @@ const CreateUser = () => {
                       名
                     </label>
                     <div>
-                    <input
+                      <input
                         className={styles.input_name}
                         type="text"
                         name="lastName"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        />
+                      />
                     </div>
                   </div>
                 </div>
@@ -137,10 +153,10 @@ const CreateUser = () => {
                 <div className={styles.form_name_side}>
                   <div className={styles.name_kanji}>
                     <label className={styles.form_label} htmlFor="">
-                    姓(ふりがな)
+                      姓(ふりがな)
                     </label>
                     <div>
-                    <input
+                      <input
                         className={styles.input_name}
                         type="text"
                         name="firstNameKana"
@@ -289,12 +305,9 @@ const CreateUser = () => {
                   に同意する
                 </span>
               </div>
+              <span className={styles.error_message}style={{ display: error ? "block" : "none" }}>{errorMessage}</span>
               <div className={styles.create_user_btn}>
-                <button
-                  className={styles.btn}
-                  type="submit"
-                  value="追加"
-                >
+                <button className={styles.btn} type="submit" value="追加">
                   登録
                 </button>
               </div>
