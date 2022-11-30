@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-.headerall {
+.header_all {
     background-color: #FFC896;
 }
 .header {
@@ -19,10 +19,11 @@
     margin: auto 10px;
     cursor: pointer;    
     border-radius: 99px;
-    padding: 10px;
+    padding: 7px;
+    font-size: 8px;
 }
 .cart {
-    padding-top: 10px;
+    margin: 10px 10px 0;
 }
 
 .logo {
@@ -39,7 +40,6 @@
     padding-left: 10px;
     padding-top: 3px;
 }
-
 
 .icon {
     display: flex;
