@@ -3,31 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { getCookieParser } from "next/dist/server/api-utils";
+import  useCookie  from "../hooks/useCookie";
 
 export function Header() {
   const router = useRouter();
-
-  /*
-  クッキーを削除するとエラーになる
-  Unhandled Runtime Error
-  SyntaxError: "undefined" is not valid JSON
-  => try,catch で改善
-  */
+  const cookie = useCookie();
+  // console.log(cookie.loginId)
 
   // クッキーにセットされている名前をログイン名として表示
   const [loginId, setLoginId] = useState("");
   const [loginName, setLoginName] = useState("");
   useEffect(() => {
-      try {
-        const users = JSON.parse(document.cookie.split("=")[1]);
-        // console.log(users);
-        setLoginId(users.id);
-        setLoginName(decodeURI(users.name));
-      }
-      catch {
-        console.log('cookie_is_undefined');
-      }
-      // }
+    setLoginId(cookie.loginId);
+    setLoginName(cookie.loginName)
 });
 
   // ログアウト(クッキー削除)　　挙動少しおかしい要改善
@@ -77,8 +66,8 @@ export function Header() {
           {loginName.length > 0 && (
             <>
               <div>
-                <div>{loginId}</div>
-                <div>{loginName}</div>
+                <div>{cookie.loginId}</div>
+                <div>{cookie.loginName}</div>
               </div>
               <button className={styles.button} onClick={logOut}>
                 ログアウト

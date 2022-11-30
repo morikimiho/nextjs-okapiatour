@@ -4,21 +4,57 @@
     margin: 40px auto 20px;
 }
 .title {
-    margin: 40px 0 20px;
+    /* margin: 40px 0 20px;   */
+        margin: 0;
+        padding-bottom: 20px;
+        font-size: 26px;
+        text-align: center;
 }
 
 .inner_border {
-    border: 1px solid gray;
-    padding-top: 40px;
-    padding-bottom: 20px;
+    border: none;
+    padding: 40px 0;
+    border-radius: 16px;
+    background-color: #FFC896;
+}
+.input_form {
+    display: flex;
+    justify-content: center;
+}
+.input_name {
+    width: 280px;
+    height: 40px;
+    border-radius: 10px;
+    border: solid 1px rgb(118, 118, 118);
+    margin-bottom: 40px;
+}
+.login_button {
     text-align: center;
 }
-
 .button {
-    margin-top: 20px;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    transition: all 0.3s ease 0s;
 }
 
 .reg_button {
     display: flex;
     margin: 40px auto;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    transition: all 0.3s ease 0s;
+}
+
+.error_message {
+    color: #f63131;
+    text-align: center;
+    padding-bottom: 20px;
 }
