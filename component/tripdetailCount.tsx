@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import styles from "../styles/tripdetail.module.css";
 
-export function TripdetailCount({setNumberOfPeople}) {
+export function TripdetailCount({setNumberOfPeople}:{setNumberOfPeople: Dispatch<SetStateAction<number>>}){
 
   return (
     <div>
