@@ -52,7 +52,7 @@
       "area": "ヨーロッパ",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "モン サン ミッシェル 1日ツアー",
       "price": 17000,
@@ -75,7 +75,7 @@
       "areaCode": "eu",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
       "price": 15000,
@@ -98,7 +98,7 @@
       "area": "ヨーロッパ",
       "countryCode": "fr",
       "country": "フランス",
-      "cityCode": 1,
+      "cityCode": "pari",
       "city": "パリ",
       "tourName": "ヴェルサイユ宮殿ツアー",
       "price": 11000,
@@ -290,7 +290,7 @@
       "minPeople": 2,
       "content1": "ロケ地への送迎",
       "content2": "日本語ガイド",
-      "content3": "ロケ地居酒屋での食事（カンジャンケジャン定食または熟成サムギョプサル）",
+      "content3": "ロケ地居酒屋での食事",
       "recommend": true
     },
     {
@@ -432,37 +432,18 @@
   ],
   "inCart": [
     {
-      "tourDate": "2022-11-25",
-      "startTime": 12,
-      "img1": "/images/venezia/murano/murano01.jpg",
-      "tourName": "ムラーノ島＆ブラーノ島 半日ラグーン ツアー ",
-      "description": " グラン ツーリスモのスピードボートから、ベネチアン ラグーンの最も美しい景観をご堪能ください。ムラーノ島では吹きガラスの実演を見学し、ブラーノ島では地元の歴史や文化を学びながら観光を楽しみましょう。 ",
-      "numberOfPeople": 5,
-      "price": 2000,
-      "total": 10000,
+      "ItemId": {
+        "tourDate": "2022-12-10",
+        "startTime": 12,
+        "img1": "/images/hokkaido/hokkaidohitsuji/hokkidohitsuji01.jpg",
+        "tourName": "羊ヶ丘展望台/小樽オルゴール堂",
+        "description": "クラーク博士像を見に行きます。オルゴールを思い出に持って帰りましょう！",
+        "numberOfPeople": 5,
+        "price": 6000,
+        "total": 30000
+      },
+      "userId": 0,
       "id": 1
-    },
-    {
-      "tourDate": "2022-12-10",
-      "startTime": 11,
-      "img1": "/images/miyagi/miyagi01.jpg",
-      "tourName": "東北のおいしい名産グルメツアー",
-      "description": "宮城名物・牡蠣や牛タン、ずんだ餅などを堪能できるツアーです。日本三景の松島にも訪れます。",
-      "numberOfPeople": 7,
-      "price": 6000,
-      "total": 42000,
-      "id": 2
-    },
-    {
-      "tourDate": "",
-      "startTime": "",
-      "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
-      "tourName": "モン サン ミッシェル 1日ツアー",
-      "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
-      "numberOfPeople": 1,
-      "price": 17000,
-      "total": 17000,
-      "id": 3
     }
   ]
 }
