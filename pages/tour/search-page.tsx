@@ -242,6 +242,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
           <option value="eu">ヨーロッパ</option>
           <option value="asi">アジア</option>
           <option value="northame">北米</option>
+          <option value="southame">南米</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
