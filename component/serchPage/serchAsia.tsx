@@ -3,9 +3,9 @@ import styles from "../..//styles/search-page.module.scss";
 
 
 //海外→アジアを選んだ場合
-export const AsiaCountry = ({ setCountry,country }) => {
+export const AsiaCountry = ({ onCountryChanege,country }) => {
   const changeHandler = (e) => {
-    setCountry(e.target.value);
+    onCountryChanege(e.target.value);
   };
   return (
     <>
