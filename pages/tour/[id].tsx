@@ -10,7 +10,7 @@ import { TripdetailImage } from "../../component/tripdetailImage";
 import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { useState } from "react";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -49,48 +49,50 @@ export default function Tripdetail({ tour }:{tour:{
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
+  const router = useRouter();
 
   async function PostData() {
     // if(login === true) {
 
-    // const data = {
-    //   tourDate: tourDate,//新規データ
-    //   startTime: startTime, //新規データ
-    //   img1: tour.img1,
-    //   tourName: tour.tourName,
-    //   description: tour.description,
-    //   numberOfPeople: numberOfPeople,//新規データ
-    //   price: tour.price,
-    //   total: tour.price*numberOfPeople //新規データ
-    // }
+    const data = {
+      tourDate: tourDate,//新規データ
+      startTime: startTime, //新規データ
+      img1: tour.img1,
+      tourName: tour.tourName,
+      description: tour.description,
+      numberOfPeople: numberOfPeople,//新規データ
+      price: tour.price,
+      total: tour.price*numberOfPeople //新規データ
+    }
 
-    //   await fetch('http://localhost:8000/inCart', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(data),
-    //   })
+      await fetch('http://localhost:8000/inCart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
   
   
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //       console.log(data);
-    //       // router.push('http://localhost:3000/tour/cart')
-    //   })
-    //   .catch((error) => {
-    //       console.error('Error:', error);
-    //   });
+      .then((response) => response.json())
+      .then((data) => {
+          console.log(data);
+          router.push('http://localhost:3000/tour/cart')
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
       
     // } else {
-    localStorage.setItem('tourDate',tourDate) //新規データ
-    localStorage.setItem('startTime',startTime) //新規データ
-    localStorage.setItem('img1', tour.img1),
-    localStorage.setItem('tourName', tour.tourName),
-    localStorage.setItem('description', tour.description),
-    localStorage.setItem('numberOfPeople', numberOfPeople),//新規データ
-    localStorage.setItem('price', tour.price),
-    localStorage.setItem('total', tour.price * numberOfPeople)//新規データ
+    // localStorage.setItem('tourDate',tourDate) //新規データ
+    // localStorage.setItem('startTime',startTime) //新規データ
+    // localStorage.setItem('img1', tour.img1),
+    // localStorage.setItem('tourName', tour.tourName),
+    // localStorage.setItem('description', tour.description),
+    // localStorage.setItem('numberOfPeople', numberOfPeople),//新規データ
+    // localStorage.setItem('price', tour.price),
+    // localStorage.setItem('total', tour.price * numberOfPeople);//新規データ
+    // router.push('http://localhost:3000/tour/cart');
     // }
   }
 
