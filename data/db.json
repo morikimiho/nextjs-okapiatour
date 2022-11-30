@@ -326,7 +326,28 @@
       "price": 6000,
       "total": 42000,
       "id": 2
+    },
+    {
+      "tourDate": "",
+      "startTime": "",
+      "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+      "tourName": "モン サン ミッシェル 1日ツアー",
+      "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+      "numberOfPeople": 1,
+      "price": 17000,
+      "total": 17000,
+      "id": 3
+    },
+    {
+      "tourDate": "2022-12-03",
+      "startTime": 10,
+      "img1": "/images/france/paris/loire/loire01.jpg",
+      "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
+      "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
+      "numberOfPeople": 5,
+      "price": 15000,
+      "total": 75000,
+      "id": 4
     }
-
   ]
 }
