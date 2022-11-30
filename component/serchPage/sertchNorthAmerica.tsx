@@ -17,8 +17,8 @@ export const NorthameCountry = ({ onCountryChanege,country }) => {
           </div>
           <select value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
-            <option value="uni">アメリカ</option>
-            <option value="cana">カナダ</option>
+            <option value="ame">アメリカ</option>
+       
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -42,25 +42,6 @@ const changeHandler=(e)=>{
           <select value={city} name="" id="" onChange={changeHandler}>
             <option value="vegas">ラスベガス</option>
             <option value="los">ロサンゼルス</option>
-          </select>
-        </div>
-      </div>
-    </>
-  );
-};
-
-//海外→北米→インドネシアを選んだ場合
-export const Canada= () => {
-  return (
-    <>
-      <div className={styles.flex}>
-        <div>
-          <div>
-            <label htmlFor="">都市</label>
-          </div>
-          <select name="" id="">
-            <option value='van'>バンクーバ</option>
-            <option value="vic">ヴィクトリア</option>
           </select>
         </div>
       </div>
