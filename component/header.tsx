@@ -43,7 +43,7 @@ export function Header() {
         </div>
         <div className={styles.buttons}>
           <div className={styles.cart}>
-            <Link href="/">
+            <Link href="/tour/cart">
               <Image
                 src="/images/shopping-cart.png"
                 alt="ショッピングカート"
