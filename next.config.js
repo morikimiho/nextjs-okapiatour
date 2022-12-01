@@ -14,11 +14,13 @@ const nextConfig = {
       },
       {
         source: '/api/inCarts',
+
         destination: 'http://localhost:8000/inCarts',
       },
       {
         source: '/api/inCarts/:slug',
         destination: 'http://localhost:8000/inCarts/:slug',
+
       },
     ];
   },
