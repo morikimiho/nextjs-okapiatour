@@ -577,25 +577,53 @@
       "recommend": true
     },
     {
-      "tourDate": "2022-11-24",
-      "startTime": "",
-      "img1": "/images/korea/seoul/itewon/itewon01.jpg",
-      "tourName": "梨泰院クラスロケ地ツアー",
-      "description": " 大人気ドラマ梨泰院クラスのロケ地を巡ります。（ご飯つき） ",
-      "numberOfPeople": 3,
-      "price": 4000,
-      "total": 12000,
-      "id": 3
-    },
-    {
-      "tourDate": "2022-11-17",
-      "startTime": "",
-      "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
-      "tourName": "モン サン ミッシェル 1日ツアー",
-      "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
-      "numberOfPeople": 1,
-      "price": 17000,
-      "total": 17000,
+
+      "id": 76,
+      "img1": "/images/spain/san/basque/basque01.jpeg",
+      "img2":"/images/spain/san/basque/basque02.jpeg",
+      "img3": "/images/spain/san/basque/basque03.jpg",
+      "abroad": "abroad",
+      "areaCode": "eu",
+      "area": "ヨーロッパ",
+      "countryCode":"sp",
+      "country": "スペイン",
+      "cityCode":"san",
+      "city": "サンセバスチャン",
+      "tourName": "バスクチーズケーキ試食ツアー",
+      "price": 5000,
+      "description": "バスクチーズケーキ発祥店で本場の味を堪能しよう。（お土産付）",
+      "meetingPlace": "La Vina店前",
+      "times": 2,
+      "minPeople": 2,
+      "content1": "La Vina店の入店（席確保済み）",
+      "content2": "バスクチーズケーキ2人前&タパス2品",
+      "content3": "バスクチーズケーキのお土産(2人前）",
+      "recommend": true
+    }
+  ],
+  "inCarts": [
+ {
+      "tours": [{
+        "tourDate": "",
+        "startTime": "",
+        "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+        "tourName": "モン サン ミッシェル 1日ツアー",
+        "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+        "numberOfPeople": 1,
+        "price": 17000,
+        "total": 17000
+      },{
+        "tourDate": "",
+        "startTime": "",
+        "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+        "tourName": "モン サン ミッシェル 1日ツアー",
+        "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+        "numberOfPeople": 1,
+        "price": 17000,
+        "total": 17000
+      }],
+      "userId": 4,
+
       "id": 4
     }
   ]
