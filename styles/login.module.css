@@ -1,33 +1,60 @@
 .container {
     max-width: 700px;
     
-    margin: 50px auto 30px;
+    margin: 40px auto 20px;
 }
 .title {
-    margin-bottom: 30px;
+    /* margin: 40px 0 20px;   */
+        margin: 0;
+        padding-bottom: 20px;
+        font-size: 26px;
+        text-align: center;
 }
 
-.innerborder {
-    border: 1px solid gray;
-    padding-top: 50px;
-    padding-bottom: 30px;
+.inner_border {
+    border: none;
+    padding: 40px 0;
+    border-radius: 16px;
+    background-color: #FFC896;
+}
+.input_form {
+    display: flex;
+    justify-content: center;
+}
+.input_name {
+    width: 280px;
+    height: 40px;
+    border-radius: 10px;
+    border: solid 1px rgb(118, 118, 118);
+    margin-bottom: 40px;
+}
+.login_button {
     text-align: center;
 }
-.table {
-    display: flex;
-    justify-content: center;
-}
-
-.tr {
-    margin: 10px;
-}
-
 .button {
-    margin-top: 30px;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    transition: all 0.3s ease 0s;
 }
 
-.regibutton {
+.reg_button {
     display: flex;
-    justify-content: center;
-    margin: 30px auto;
+    margin: 40px auto;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    transition: all 0.3s ease 0s;
+}
+
+.error_message {
+    color: #f63131;
+    text-align: center;
+    padding-bottom: 20px;
 }

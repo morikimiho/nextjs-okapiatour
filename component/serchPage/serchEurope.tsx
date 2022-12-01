@@ -3,9 +3,9 @@ import styles from "../..//styles/search-page.module.scss";
 
 
 //海外→ヨーロッパを選んだ場合
-export const EuropeCountry = ({ setCountry,country }) => {
+export const EuropeCountry = ({ onCountryChanege,country }) => {
   const changeHandler = (e) => {
-    setCountry(e.target.value);
+    onCountryChanege(e.target.value)
   };
   return (
     <>
@@ -18,6 +18,7 @@ export const EuropeCountry = ({ setCountry,country }) => {
           <option value="">-</option>
             <option value="fr">フランス</option>
             <option value="ita">イタリア</option>
+            <option value="sp">スペイン</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -40,6 +41,7 @@ export const France = (city,setCity) => {
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
             <option value="pari">パリ</option>
+            <option value="mal">マルセイユ</option>
           </select>
         </div>
       </div>
@@ -60,8 +62,32 @@ export const Italy = ({city,setCity}) => {
             <label htmlFor="">都市</label>
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
-            <option value="mila">ミラノ</option>
+          <option value="">-</option>
+            <option value="milan">ミラノ</option>
             <option value="vene">ヴェネチア</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+//海外→ヨーロッパ→スペインを選んだ場合
+export const Spain = ({city,setCity}) => {
+  const changeHandler=(e)=>{
+    setCity(e.target.value)
+  }
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select value={city} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
+            <option value="bal">バルセロナ</option>
+            <option value="san">サンセバスチャン</option>
           </select>
         </div>
       </div>
