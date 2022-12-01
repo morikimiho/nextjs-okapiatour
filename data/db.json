@@ -739,24 +739,9 @@
       "recommend": true
     }
   ],
-  "inCart": [
-    {
-      "itemId": {
-        "tourDate": "2022-12-10",
-        "startTime": 13,
-        "img1": "/images/kyoto/kyoto01.jpg",
-        "tourName": "京都で着物とお茶体験",
-        "description": "着物を着て、お茶体験ができます。清水寺で写真撮影も可能です。",
-        "numberOfPeople": 6,
-        "price": 6000,
-        "total": 36000
-      },
-      "userId": 2,
-
-      "id": 2
-    },
-    {
-      "itemId": {
+  "inCarts": [
+ {
+      "tours": [{
         "tourDate": "",
         "startTime": "",
         "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
@@ -765,12 +750,7 @@
         "numberOfPeople": 1,
         "price": 17000,
         "total": 17000
-      },
-      "userId": 0,
-      "id": 3
-    },
-    {
-      "itemId": {
+      },{
         "tourDate": "",
         "startTime": "",
         "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
@@ -779,7 +759,7 @@
         "numberOfPeople": 1,
         "price": 17000,
         "total": 17000
-      },
+      }],
       "userId": 4,
       "id": 4
     }
