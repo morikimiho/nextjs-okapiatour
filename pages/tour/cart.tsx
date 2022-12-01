@@ -5,18 +5,23 @@ import useSWR from "swr";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
 import { useEffect, useState } from "react";
+import useCookie from "../../hooks/useCookie";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 export default function Cart() {
-  const { data, error } = useSWR("/api/inCart", fetcher);
+  const cookie =useCookie();
+  const loginId = cookie.loginId;
+  const { data, error } = useSWR(`http://localhost:8000/inCarts?userId=${loginId}`, fetcher);
   const [amount, setAmount] = useState(0);
+ 
+  console.log(data);
 
   useEffect(() => {
     if (!data) return;
     setAmount(
-      data.reduce(
+      data[0].tours.reduce(
         (prev: number, current: { price: number; numberOfPeople: number }) =>
           current.price * current.numberOfPeople + prev,
         0
@@ -35,9 +40,9 @@ export default function Cart() {
         <title>買い物リスト</title>
       </Head>
       <Layout>
-        <main>
-          {data.map((cart: any) => {
-            return <Cartlist cart={cart} setAmount={setAmount} />;
+         <main>
+          {data[0].tours.map((tour: any) => {
+            return <Cartlist tour={tour} setAmount={setAmount} />;
           })}
           <p>合計：{amount}円</p>
           <div className={styles.buttonsubmit}>
@@ -57,7 +62,7 @@ export default function Cart() {
               </Link>
             </div>
           </div>
-        </main>
+        </main> 
       </Layout>
     </>
   );
