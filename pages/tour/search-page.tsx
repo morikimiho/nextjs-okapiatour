@@ -2,7 +2,7 @@ import styles from "../../styles/search-page.module.scss";
 import Head from "next/head";
 import Layout from "../../component/layout";
 import { useState } from "react";
-import { EuropeCountry } from "../../component/serchPage/serchEurope";
+import { EuropeCountry, Spain } from "../../component/serchPage/serchEurope";
 import { France } from "../../component/serchPage/serchEurope";
 import { Italy } from "../../component/serchPage/serchEurope";
 import Image from "next/image";
@@ -10,14 +10,15 @@ import useSWR from "swr";
 import {
   AsiaCountry,
   Korea,
-  Indonesia,
+  Philippines,
+  Taiwan,
 } from "../../component/serchPage/serchAsia";
 import {
   NorthameCountry,
   Uni,
-  Canada,
 } from "../../component/serchPage/sertchNorthAmerica";
 import Link from "next/link";
+import { Australia, OceCountry } from "../../component/serchPage/oceania";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
@@ -27,11 +28,11 @@ const SearchPage = () => {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
   const [prefecture, setPrefecture] = useState<Prefecture>("osk");
-  type Area = "eu" | "asi" | "northame" | "";
+  type Area = "eu" | "asi" | "northame" | "oce" | "";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "cana" | "uni"|"";
+  type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";
   const [country, setCountry] = useState<Country>("");
-  type City="mila"|"vene"|"pari"|""; 
+  type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
   const [city, setCity] = useState<City>("");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");
@@ -60,7 +61,9 @@ const SearchPage = () => {
         } else {
           query = query + `abroad=${abroad}&areaCode=${areaCode}`;
         }
-      } else {
+      } else if(prefecture.length>0){
+        query = query + `prefecture=${prefecture}`
+      } else{
         query = query + `abroad=${abroad}`;
       }
     }
@@ -81,10 +84,10 @@ const SearchPage = () => {
     setCountry("");
   };
 
-  const onCountryChange=(val)=>{
+  const onCountryChange = (val) => {
     setCountry(val);
     setCity("");
-  }
+  };
 
   return (
     <>
@@ -109,21 +112,45 @@ const SearchPage = () => {
                   />
                 )}
                 {"eu" === areaCode && (
-                  <EuropeCountry  country={country} onCountryChanege={onCountryChange}/>
+                  <EuropeCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
                 )}
                 {"asi" === areaCode && (
-                  <AsiaCountry  country={country} onCountryChanege={onCountryChange} />
+                  <AsiaCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
                 )}
                 {"northame" === areaCode && (
-                  <NorthameCountry country={country}  onCountryChanege={onCountryChange}/>
+                  <NorthameCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
                 )}
+                 {"oce" === areaCode && (
+                  <OceCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
+                )}
+
 
                 {"fr" === country && <France city={city} setCity={setCity} />}
                 {"ita" === country && <Italy city={city} setCity={setCity} />}
                 {"ko" === country && <Korea city={city} setCity={setCity} />}
-                {"uni" === country && <Uni city={city} setCity={setCity} />}
-                {"cana" === country && <Canada />}
-                {"indo" === country && <Indonesia />}
+                {"ame" === country && <Uni city={city} setCity={setCity} />}
+                {"sp" === country && <Spain city={city} setCity={setCity} />}
+                {"phi" === country && <Philippines city={city} setCity={setCity} />}
+                {"taiwa" === country && (
+                  <Taiwan city={city} setCity={setCity} />
+                )}
+                 {"aus" === country && (
+                  <Australia city={city} setCity={setCity} />
+                )}
+                
+
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -213,7 +240,7 @@ const Abroad = ({ abroad, onAbroadChange }) => {
             <label htmlFor="">国内 or 海外</label>
           </div>
           <select value={abroad} name="" id="" onChange={changeHandler}>
-          <option value="">-</option>
+            <option value="">-</option>
             <option value="abroad">海外</option>
             <option value="domestic">国内</option>
           </select>
@@ -243,6 +270,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
           <option value="asi">アジア</option>
           <option value="northame">北米</option>
           <option value="southame">南米</option>
+          <option value="oce">オセアニア</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
@@ -262,9 +290,15 @@ const RouteJapan = ({ setPrefecture, prefecture }) => {
           <label htmlFor="">都道府県</label>
         </div>
         <select value={prefecture} name="" id="" onChange={changeHandler}>
+        <option value="-">-</option>
+          <option value="hoka">北海道</option>
+          <option value="miya"> 宮城</option>
           <option value="osk">大阪</option>
-          <option value="hokka">北海道</option>
+          <option value="kyo">京都</option>
+          <option value="naga">長崎</option>
+          <option value="fuku">福岡</option>
           <option value="oki"> 沖縄</option>
+      
         </select>
       </div>
     </div>
