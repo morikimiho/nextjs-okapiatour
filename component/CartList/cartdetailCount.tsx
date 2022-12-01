@@ -1,9 +1,14 @@
-export const CartdetailCount = ({nop,num}) => {
+type Props = {
+  num: number;
+  HandleNumChange: any;
+};
+
+export const CartdetailCount = ({num, HandleNumChange}:Props) => {
   return (
     <>
       <div>
         <label htmlFor="">人数</label>
-        <select value={num} onChange= {(e)=> nop(e.target.value)}>
+        <select value={num} onChange= {HandleNumChange}>
           <option value=""></option>
           <option value="1">1</option>
           <option value="2">2</option>
