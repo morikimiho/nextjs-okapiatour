@@ -1,5 +1,5 @@
 
-import styles from "../..//styles/search-page.module.scss";
+import styles from "../../styles//scss/search-page.module.scss";
 
 
 
