@@ -177,3 +177,9 @@
   left: 0;
   top: 0;
 }
+
+.error_message {
+  color: #f63131;
+  text-align: center;
+  padding-bottom: 20px;
+}

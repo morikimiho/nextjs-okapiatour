@@ -1,18 +1,18 @@
+@use "public" as pub;
+
 .container {
   max-width: 700px;
+
   margin: 40px auto 20px;
 }
-
 .title {
   margin: 0;
   padding-bottom: 20px;
   font-size: 26px;
   text-align: center;
-}
-@media (max-width: 1199px) {
-  .title {
+  @include pub.mq("res") { 
     font-size: 18px;
-  }
+} 
 }
 
 .inner_border {
@@ -21,12 +21,10 @@
   border-radius: 16px;
   background-color: #ffc896;
 }
-
 .input_form {
   display: flex;
   justify-content: center;
 }
-
 .input_name {
   width: 280px;
   height: 40px;
@@ -34,25 +32,23 @@
   border: solid 1px rgb(118, 118, 118);
   margin-bottom: 40px;
 }
-
 .login_button {
-  text-align: center;
+    text-align: center;
 }
-
 .button {
-  border-radius: 20px;
-  padding: 10px 30px;
-  font-size: 24px;
-  font-weight: 400;
-  background-color: #f;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 24px;
+    font-weight: 400;
+    background-color: #fff;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
   transition: all 0.3s ease 0s;
+  &:hover{
+    position: relative;
+    transform: translate(2px, 2px);
+    box-shadow:none;
 }
-.button:hover {
-  position: relative;
-  transform: translate(2px, 2px);
-  box-shadow: none;
 }
 
 .reg_button {
@@ -66,15 +62,15 @@
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
   transition: all 0.3s ease 0s;
-}
-.reg_button:hover {
-  position: relative;
-  transform: translate(2px, 2px);
-  box-shadow: none;
+  &:hover{
+      position: relative;
+      transform: translate(2px, 2px);
+      box-shadow:none;
+    }
 }
 
 .error_message {
-  color: #f63131;
-  text-align: center;
-  padding-bottom: 20px;
+    color: #f63131;
+    text-align: center;
+    padding-bottom: 20px;
 }

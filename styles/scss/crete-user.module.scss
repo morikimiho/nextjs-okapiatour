@@ -1,26 +1,12 @@
 @charset "UTF-8";
+@use "public" as pub;
 
-
-$layout-width-inner: 1200px;
-$breakpoints: (
-//キー : 値
-'sp': "(max-width: 767px)", 
-'res': "(max-width: #{$layout-width-inner - 1px})", 
-// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
-'pc': "(min-width: #{$layout-width-inner})"
-) ;
-
-@mixin mq($breakpoint: sp) {
-    @media #{map-get($breakpoints, $breakpoint)} {
-        @content;
-    }
-}
 
 .register {
     width: 700px;
     margin: 0 auto;
     transition: all 0.3s ease 0s;
-    @include mq("res") {
+    @include pub.mq("res") {
         width: 330px;  
         transition: all 0.3s ease 0s;
     }
@@ -35,36 +21,36 @@ $breakpoints: (
     // border: 1px solid #000;
     border-radius: 16px;
     padding: 40px;
-    background-color: #FFC896;
-    @include mq("res") {
+    background-color: pub.$main_color;
+    @include pub.mq("res") {
         padding: 20px;
     } 
 
     .form_name {
         width: 100%;
-        @include mq("res") {
+        @include pub.mq("res") {
             display: block;
         }
-        @include mq("res") {
+        @include pub.mq("res") {
             margin-bottom: 20px;
         }
         .form_name_side {
             display: flex;
 
-            @include mq("res") {
+            @include pub.mq("res") {
                 width: 274px;  
                 display: block;
             }
         }
         .name_kanji {
             margin-bottom: 40px;
-            @include mq("res") {
+            @include pub.mq("res") {
                 margin-bottom: 20px; 
             }
         }
         .name_kana {
             margin-left: auto;
-            @include mq("res") {
+            @include pub.mq("res") {
                 margin-bottom: 20px; 
             }
         }
@@ -78,19 +64,19 @@ $breakpoints: (
         padding: 10px;
         background-color: #fff;
         margin-bottom: 40px;
-        @include mq("res") {
+        @include pub.mq("res") {
             margin-bottom: 20px; 
         }
     }
     .form_tmp {
         margin-bottom: 40px;
-        @include mq("res") {
+        @include pub.mq("res") {
             margin-bottom: 20px; 
         }
     }
     .privacy {
         margin-bottom: 40px;
-        @include mq("res") {
+        @include pub.mq("res") {
             margin-bottom: 20px; 
             font-size: 16px;
         }
@@ -122,7 +108,7 @@ $breakpoints: (
     height: 25px;
     width: 80px;
     border-radius: 10px;
-    @include mq("res") {
+    @include pub.mq("res") {
         width: 40px; 
         margin-left: 16px;
     }
@@ -142,7 +128,7 @@ $breakpoints: (
         cursor: pointer;
         box-shadow:3px 5px 17px 5px #DEDEDE;
         transition: all 0.3s ease 0s;
-        @include mq("res") {
+        @include pub.mq("res") {
             font-size: 18px;
             padding: 7px 20px;
         } 

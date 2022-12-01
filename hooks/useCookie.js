@@ -8,10 +8,9 @@ import  useCookie  from "../hooks/useCookie";
 const cookie = useCookie();
 
 - データ取得
-console.log( cookie.loginId )　  // ログインしているユーザーのdata/db/users/id 
-console.log( cookie.loginName )  // ログインしているユーザーのdata/db/users/firstName
+const loginId = cookie.loginId;      // ログインしているユーザーのdata/db/users/id 
+const loginName = cookie.loginName;  // ログインしているユーザーのdata/db/users/firstName
 */
-
 
 import { useState, useEffect } from "react";
 
@@ -20,25 +19,59 @@ const useCookie = () => {
   // クッキーにセットされている名前をログイン名として表示
   const [loginId, setLoginId] = useState("");
   const [loginName, setLoginName] = useState("");
+
   useEffect(() => {
+    const cookies = document.cookie;
+    if (!cookies) {
+    } else {
+      const cookiesArray = cookies.split(";");
+      // console.log(cookiesArray)  // (2) ['uni={"id":56,"name":"%E6%9%87%8E"}', ' user={"id":3,"name":"%E6%9C%AC%E7%94%B0"}']
+      const cookie = cookiesArray.filter(function (cookie) {
+        return cookie.includes("userOkapiaTour");
+      });
+      // console.log(cookie);  // [' user={"id":3,"name":"%E6%9C%AC%E7%94%B0"}']
+      const cookieName = cookie[0]; // 配列から取り出す
+      // console.log(cookieName);  //  user={"id":3,"name":"%E6%9C%AC%E7%94%B0"}
       try {
-        const users = JSON.parse(document.cookie.split("=")[1]);
-        // console.log(users);
+        const users = JSON.parse(cookieName.split("=")[1]);
+        console.log(users);
         setLoginId(users.id);
         setLoginName(decodeURI(users.name));
+      } catch {
+        console.log("cookie_is_undefined");
       }
-      catch {
-        console.log('cookie_is_undefined');
-      }
-      // }
-});
-    return {loginId, loginName}
-}
+    }
+  });
+  return { loginId, loginName };
+};
 export default useCookie;
 
-
-
-
+// case2
+// const useCookie = () => {
+//   // クッキーにセットされている名前をログイン名として表示
+//   const [loginId, setLoginId] = useState("");
+//   const [loginName, setLoginName] = useState("");
+//   useEffect(() => {
+//       try {
+//         if (document.cookie.indexOf('=') === 1 ) {
+//             const users = JSON.parse(document.cookie.split("=")[1]);
+//             console.log(users);
+//             setLoginId(users.id);
+//             setLoginName(decodeURI(users.name));
+//         } else {
+//             const users = document.cookie;
+//             const splits = users.split(";");
+//             console.log(splits)
+//         }
+//       }
+//       catch {
+//         console.log('cookie_is_undefined');
+//       }
+//       // }
+// });
+//     return {loginId, loginName}
+// }
+// export default useCookie;
 
 /*
   クッキーを削除するとエラーになる

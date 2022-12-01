@@ -1,47 +1,100 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
-.header_all {
-    background-color: #FFC896;
-}
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 .header {
-    height: 60px;
-    display: flex;
-    max-width: 1200px;
-    justify-content: space-between;
-    margin: 0 auto;
+  background-color: #FFC896;
 }
-.buttons {
-    margin: auto 20px;
-    display: flex;   
+.header .header_items {
+  height: 60px;
+  display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+  margin: 0 auto;
 }
-.button {
-    margin: auto 10px;
-    cursor: pointer;    
-    border-radius: 99px;
-    padding: 7px;
-    font-size: 8px;
+.header .header_items .header_logo {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 45px;
+  font-style: italic;
+  margin: auto 10px;
 }
-.cart {
-    margin: 10px 10px 0;
+@media (max-width: 1199px) {
+  .header .header_items .header_logo {
+    font-size: 30px;
+  }
+}
+.header .buttons {
+  margin: auto 20px;
+  display: flex;
+}
+@media (max-width: 1199px) {
+  .header .buttons {
+    margin: auto 0;
+  }
+}
+.header .button {
+  margin: 8px 10px;
+  cursor: pointer;
+  border-radius: 99px;
+  padding: 7px;
+  font-size: 8px;
+}
+.header .cart {
+  margin: 10px;
+}
+.header .cart .cart_size {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.header .tourTitle {
+  font-family: "Great Vibes", cursive;
+  font-weight: 300;
+  padding-left: 10px;
+  margin-top: 7px;
+}
+.header .header_logo_items {
+  display: flex;
+  margin-left: 30px;
+}
+@media (max-width: 1199px) {
+  .header .header_logo_items {
+    margin: 0;
+  }
+}
+.header .header_logo_items .icon {
+  position: relative;
+  height: 45px;
+  width: 45px;
+  margin-top: 8px;
+}
+@media (max-width: 1199px) {
+  .header .header_logo_items .icon {
+    margin-top: 4px;
+  }
 }
 
-.logo {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 32px;
-    font-style: italic;
-    margin: auto 10px;
-    
+@media (max-width: 1199px) {
+  .login_user {
+    display: none;
+  }
 }
 
-.tourTitle{
-    font-family: 'Great Vibes', cursive;
-    font-weight: 300;
-    padding-left: 10px;
-    padding-top: 3px;
+.res_login_user {
+  display: none;
 }
-
-.icon {
-    display: flex;
-    margin-left: 30px;
+@media (max-width: 1199px) {
+  .res_login_user {
+    display: block;
+    height: 40px;
+    background: #ffe4cb;
+    padding-top: 9px;
+  }
+}
+.res_login_user .res_flex {
+  display: flex;
+  justify-content: center;
+}
+.res_login_user .res_flex .res_icon {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin-top: 4px;
 }
