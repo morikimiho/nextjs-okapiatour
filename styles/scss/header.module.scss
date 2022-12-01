@@ -1,0 +1,101 @@
+
+@use "public" as pub;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+@include pub.mq("res") { 
+}
+
+.header {
+    background-color: pub.$main_color;
+
+    .header_items {
+        height: 60px;
+        display: flex;
+        max-width: 1200px;
+        justify-content: space-between;
+        margin: 0 auto;
+        .header_logo {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 45px;
+            font-style: italic;
+            margin: auto 10px;
+            @include pub.mq("res") { 
+                font-size: 30px;
+            }
+        }
+    }
+    .buttons {
+        margin: auto 20px;
+        display: flex; 
+        @include pub.mq("res") { 
+            margin: auto 0;
+        }  
+    }
+    .button {
+        margin: 8px 10px;
+        cursor: pointer;    
+        border-radius: 99px;
+        padding: 7px;
+        font-size: 8px;
+    }
+    .cart {
+        margin: 10px ;
+        .cart_size {
+            position: relative;
+            width: 30px;
+            height: 30px;
+        }
+    }
+    
+    
+    .tourTitle{
+        font-family: 'Great Vibes', cursive;
+        font-weight: 300;
+        padding-left: 10px;
+        margin-top: 7px;
+    }
+    
+    .header_logo_items {
+        display: flex;
+        margin-left: 30px;
+        @include pub.mq("res") { 
+            margin: 0;
+        }
+        .icon {
+            position: relative;
+            height: 45px;
+            width: 45px;
+            margin-top: 8px;
+            @include pub.mq("res") { 
+                margin-top: 4px;
+            }
+        }
+    }
+    
+}
+
+.login_user {
+    @include pub.mq("res") { 
+        display: none;
+    }
+}
+.res_login_user {
+    display: none;
+
+    @include pub.mq("res") { 
+        display: block;
+        height: 40px;
+        background: #ffe4cb;
+        padding-top: 9px;
+    }
+    .res_flex {
+        display: flex;
+        justify-content: center;
+        .res_icon {
+            position: relative;
+            width: 15px;
+            height: 15px;
+            margin-top: 4px;
+        }
+    }
+}

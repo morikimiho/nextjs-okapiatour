@@ -1,4 +1,4 @@
-import styles from "../../styles/crete-user.module.scss";
+import styles from "../../styles/crete-user.module.css";
 import Head from "next/head";
 import { useState } from "react";
 import Layout from "../../component/layout";
@@ -29,7 +29,7 @@ const CreateUser = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
     //半角英数字のみ(空文字OK)
@@ -91,19 +91,31 @@ const CreateUser = () => {
         birthM,
         birthD,
       };
-      fetch("http://localhost:8000/users", {
+      const res = await fetch("http://localhost:8000/users", {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Success:", data);
-        })
-        .then(Router.reload() as any); // .reloaded()リロード
+      });
+
+      const resResult = await res.json();
+      const inCartsData = {
+        userId: resResult.id,
+        tours: [],
+      };
+
+      const addInCarts = await fetch("http://localhost:8000/inCarts", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inCartsData),
+      });
+      console.log(await addInCarts.json());
+      await Router.push("/tour/login") as any; // .reloaded()リロード
     }
   };
 
@@ -305,7 +317,12 @@ const CreateUser = () => {
                   に同意する
                 </span>
               </div>
-              <span className={styles.error_message}style={{ display: error ? "block" : "none" }}>{errorMessage}</span>
+              <span
+                className={styles.error_message}
+                style={{ display: error ? "block" : "none" }}
+              >
+                {errorMessage}
+              </span>
               <div className={styles.create_user_btn}>
                 <button className={styles.btn} type="submit" value="追加">
                   登録

@@ -9,45 +9,105 @@ import { GetStaticProps } from "next";
 import { getActiveTrips } from "../../service/trip";
 import Link from "next/link";
 
-export default function Home({tours}) {
+export default function Home({ tours }) {
   return (
     <>
-        <Head>
-            <title>Okapia Tour</title>
-        </Head>
-        <Header />
-        <div className={styles.container}>
+      <Head>
+        <title>Okapia Tour</title>
+      </Head>
+      <Header />
+      <div className={styles.container}>
         <Slider />
         <div className={styles.subtitle}>新しい世界を見に行こう</div>
         <button type="button" className={styles.search}>
           <a href="/tour/search-page">
             &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Image src="/images/top/虫眼鏡.png" alt="検索" width={16} height={16} />
+            <Image
+              src="/images/top/虫眼鏡.png"
+              alt="検索"
+              width={16}
+              height={16}
+            />
           </a>
         </button>
       </div>
       <div className={styles.tourContent}>
-        <div className={styles.areaPickUp}><img src="/images/top/overseas.png" alt="飛行機" width={32} height={32}/>&nbsp;&nbsp;&nbsp;海外・おすすめツアーPickUp!</div>
-        <div className={styles.overseas}>
-          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: string;}) => {
-            if(tour.abroad === "abroad" && tour.id < 4) {
-                return(
-                    <div className={styles.blockTourContent}>
-                          <p><Link href={`/tour/${tour.id}`}><Image src={tour.img1} width={300} height={200} alt={"ツアー地域の写真"} /></Link></p>
-                          <p><Link href={`/tour/${tour.id}`}>{tour.tourName}</Link></p>
-                    </div>
-                );}})}
+        <div className={styles.areaPickUp}>
+          <img
+            src="/images/top/overseas.png"
+            alt="飛行機"
+            width={32}
+            height={32}
+          />
+          &nbsp;&nbsp;&nbsp;海外・おすすめツアーPickUp!
         </div>
-        <div className={styles.areaPickUp}><img src="/images/top/domestic.png" alt="自動車" width={32} height={32}/>&nbsp;&nbsp;&nbsp;国内・おすすめツアーPickUp!</div>
-        <div className={styles.domestic}>
-          {tours.map((tour: { id: number; img1: string; tourName: string; abroad: string;}) => {
-            if(tour.abroad === "domestic" && tour.id < 7) {
-                return(
-                    <div className={styles.blockTourContent}>
-                        <p><Link href={`/tour/${tour.id}`}><Image src={tour.img1} width={300} height={200} alt={"ツアー地域の写真"} /></Link></p>
-                        <p><Link href={`/tour/${tour.id}`}>{tour.tourName}</Link></p>
+        <div className={styles.overseas}>
+          {tours.map(
+            (tour: {
+              id: number;
+              img1: string;
+              tourName: string;
+              abroad: string;
+            }) => {
+              if (tour.abroad === "abroad" && tour.id < 4) {
+                return (
+                  <div className={styles.blockTourContent}>
+                    <div className={styles.overseas_images}>
+                      <Link href={`/tour/${tour.id}`}>
+                        <Image
+                          src={tour.img1}
+                          alt={"ツアー地域の写真"}
+                          layout="fill"
+                        />
+                      </Link>
                     </div>
-                );}})}
+                    <p>
+                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
+                    </p>
+                  </div>
+                );
+              }
+            }
+          )}
+        </div>
+
+        <div className={styles.areaPickUp}>
+          <img
+            src="/images/top/domestic.png"
+            alt="自動車"
+            width={32}
+            height={32}
+          />
+          &nbsp;&nbsp;&nbsp;国内・おすすめツアーPickUp!
+        </div>
+        <div className={styles.overseas}>
+          {tours.map(
+            (tour: {
+              id: number;
+              img1: string;
+              tourName: string;
+              abroad: string;
+            }) => {
+              if (tour.abroad === "domestic" && tour.id < 7) {
+                return (
+                  <div className={styles.blockTourContent}>
+                    <div className={styles.overseas_images}>
+                      <Link href={`/tour/${tour.id}`}>
+                        <Image
+                          src={tour.img1}
+                          alt={"ツアー地域の写真"}
+                          layout="fill"
+                        />
+                      </Link>
+                    </div>
+                    <p>
+                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
+                    </p>
+                  </div>
+                );
+              }
+            }
+          )}
         </div>
       </div>
       <Footer />
@@ -66,7 +126,7 @@ const Slider = () => {
         }}
       >
         <SplideSlide>
-          <div style={{ position: "relative", width: "100vw", height: "calc(100vh - 50px)" }}>
+          <div className={styles.top_image}>
             <Image
               className="slide-img"
               src="/images/top/scenery.jpg"
@@ -77,7 +137,7 @@ const Slider = () => {
           </div>
         </SplideSlide>
         <SplideSlide>
-          <div style={{ position: "relative", width: "100vw", height: "calc(100vh - 50px)" }}>
+          <div className={styles.top_image}>
             <Image
               className="slide-img"
               src="/images/top/flower.jpg"
@@ -88,7 +148,7 @@ const Slider = () => {
           </div>
         </SplideSlide>
         <SplideSlide>
-          <div style={{ position: "relative", width: "100vw", height: "calc(100vh - 50px)" }}>
+          <div className={styles.top_image}>
             <Image
               className="slide-img"
               src="/images/top/fuji.jpg"
@@ -113,26 +173,32 @@ const Slider = () => {
   );
 };
 
-function ItemDetail ({...tours}: { id: number, img1: string, tourName: string }) {
-    return (
-        <div>
-            <Image src={tours.img1}
-            width={100}
-            height={75}
-            alt="ツアーパッケージ"
-            title={tours.tourName}
-            className={styles.image}
-            />
-            <p>{tours.tourName}</p>
-        </div>
-    );
+function ItemDetail({
+  ...tours
+}: {
+  id: number;
+  img1: string;
+  tourName: string;
+}) {
+  return (
+    <div>
+      <Image
+        src={tours.img1}
+        width={100}
+        height={75}
+        alt="ツアーパッケージ"
+        title={tours.tourName}
+        className={styles.image}
+      />
+      <p>{tours.tourName}</p>
+    </div>
+  );
 }
 
-
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:8000/tours');
-    const tours = await res.json();
-    return {
-      props: {tours},
-    };
+  const res = await fetch("http://localhost:8000/tours");
+  const tours = await res.json();
+  return {
+    props: { tours },
+  };
 }

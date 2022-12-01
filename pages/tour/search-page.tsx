@@ -1,4 +1,4 @@
-import styles from "../../styles/search-page.module.scss";
+import styles from "../../styles/search-page.module.css";
 import Head from "next/head";
 import Layout from "../../component/layout";
 import { useState } from "react";
