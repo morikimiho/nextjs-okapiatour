@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+
+$layout-width-inner: 1200px;
+$breakpoints: (
+//キー : 値
+'sp': "(max-width: 767px)", 
+'res': "(max-width: #{$layout-width-inner - 1px})", 
+// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
+'pc': "(min-width: #{$layout-width-inner})"
+) ;
+
+@mixin mq($breakpoint: sp) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+$main_color: #FFC896;

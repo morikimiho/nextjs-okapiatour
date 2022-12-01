@@ -6,26 +6,13 @@
       "lastName": "大樹",
       "lastNameKana": "まさき",
       "mailAddress": "qwerty@qwerty.com",
+      
       "password": "qwerty",
       "birthY": "1995",
       "birthM": "9",
       "birthD": "12",
       "id": 1,
       "login": true
-    },
-    {
-      "firstName": "波田野",
-      "firstNameKana": "あっs",
-      "lastName": "朝き",
-      "lastNameKana": "あああ",
-      "mailAddress": "flower888@gmail.com",
-      "tel": "090-5234-8765",
-      "password": "qwerty",
-      "birthY": "1953",
-      "birthM": "4",
-      "birthD": "5",
-      "id": 2,
-      "login": false
     },
     {
       "firstName": "本田",
@@ -800,6 +787,7 @@
   "inCarts": [
     {
 
+
       "tours": [
         {
           "tourDate": "2022-12-27",
@@ -835,6 +823,7 @@
       ],
       "userId": 4,
       "id": 4
+
 
 
 
