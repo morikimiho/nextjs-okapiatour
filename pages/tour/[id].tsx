@@ -12,6 +12,7 @@ import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
+import { idText } from "typescript";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -38,65 +39,105 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function Tripdetail({ tour }:{tour:{
-  img1:string
-  tourName:string
-  description:string
-  price:number
-  times:number
-  area:string
-  country:string
-}}) {
+export default function Tripdetail({
+  tour,
+}: {
+  tour: {
+    id:number
+    img1: string;
+    tourName: string;
+    description: string;
+    price: number;
+    times: number;
+    area: string;
+    country: string;
+  };
+}) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const router = useRouter();
   const cookie = useCookie();
-  
-
 
   async function PostData() {
     const loginId = cookie.loginId;
 
-    let carts = {
-      itemId:{tourDate: tourDate,//新規データ
-      startTime: startTime, //新規データ
-      img1: tour.img1,
-      tourName: tour.tourName,
-      description: tour.description,
-      numberOfPeople: numberOfPeople,//新規データ
-      price: tour.price,
-      total: tour.price*numberOfPeople },
-      userId:loginId} //新規データ}
+    const res = await fetch(
+      `http://localhost:8000/inCarts?userId=${loginId}`
+    );
+    const inCarts = await res.json();
+    {
+      inCarts.map(
+        async (cart: {
+          id: number;
+          tours: {
+            id:number
+            tourDate: string; //新規データ
+            startTime: string; //新規データ
+            img1: string;
+            tourName: string;
+            description: string;
+            numberOfPeople: number; //新規データ
+            price: number;
+            total: number;
+          }[];
+        }) => {
 
-    if(!loginId){
+        const localData = {
+          tours:[...cart.tours,
+          {id:tour.id,
+            tourDate: tourDate, //新規データ
+            startTime: startTime, //新規データ
+            img1: tour.img1,
+            tourName: tour.tourName,
+            description: tour.description,
+            numberOfPeople: numberOfPeople, //新規データ
+            price: tour.price,
+            total: tour.price * numberOfPeople,
+          }]}; 
 
-      localStorage.setItem('carts',JSON.stringify(carts)); //新規データ
-      router.push('http://localhost:3000/tour/cart');
+    if (!loginId) {
+
+      // localStorage.getItem('tours');
+      localStorage.setItem('tours',JSON.stringify(localData));
+      router.push("http://localhost:3000/tour/cart");
 
     } else {
-      
-        await fetch('http://localhost:8000/inCart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(carts),
-      })
+    await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                tours:[...cart.tours,
+                  {id:tour.id,
+                    tourDate: tourDate, //新規データ
+                    startTime: startTime, //新規データ
+                    img1: tour.img1,
+                    tourName: tour.tourName,
+                    description: tour.description,
+                    numberOfPeople: numberOfPeople, //新規データ
+                    price: tour.price,
+                    total: tour.price * numberOfPeople,
+                  }],
+                  userId: loginId,
+                  id: cart.id,
+                })
+                ,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                router.push("http://localhost:3000/tour/cart");
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          }
+        })
+      }
   
-  
-      .then((response) => response.json())
-      .then((data) => {
-          console.log(data);
-          router.push('http://localhost:3000/tour/cart')
-      })
-      .catch((error) => {
-          console.error('Error:', error);
-      })
-      
     }
-  }
-
 
   return (
     <>
@@ -118,15 +159,21 @@ export default function Tripdetail({ tour }:{tour:{
           </div>
           <div className={styles.tripdetail}>
             <div>
-              <TripdetailCount setNumberOfPeople={setNumberOfPeople}/>
-              <TripdetailTimes tour={tour} setTourDate={setTourDate} setStartTime={setStartTime} />
+              <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
+              <TripdetailTimes
+                tour={tour}
+                setTourDate={setTourDate}
+                setStartTime={setStartTime}
+              />
             </div>
             <TripdetailAttention />
           </div>
           <br />
           <br />
           <div className={styles.buttonposition}>
-            <button className={styles.button} onClick={PostData}>カートに入れる</button>
+            <button className={styles.button} onClick={PostData}>
+              カートに入れる
+            </button>
           </div>
         </main>
       </Layout>
