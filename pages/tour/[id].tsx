@@ -13,6 +13,7 @@ import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
 import { idText } from "typescript";
+// import { ErrorCheck } from "../../component/errorCheck";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -60,8 +61,10 @@ export default function Tripdetail({
   const cookie = useCookie();
 
   async function PostData() {
-    const loginId = cookie.loginId;
 
+    // <ErrorCheck tour={tour} setTourDate={setTourDate}/>
+
+    const loginId = cookie.loginId;
     const res = await fetch(
       `http://localhost:8000/inCarts?userId=${loginId}`
     );
@@ -92,8 +95,8 @@ export default function Tripdetail({
             tourName: tour.tourName,
             description: tour.description,
             numberOfPeople: numberOfPeople, //新規データ
-            price: tour.price,
-            total: tour.price * numberOfPeople,
+            price: Number(tour.price).toLocaleString(),
+            total: Number(tour.price * numberOfPeople).toLocaleString(),
           }]}; 
 
     if (!loginId) {
@@ -117,8 +120,8 @@ export default function Tripdetail({
                     tourName: tour.tourName,
                     description: tour.description,
                     numberOfPeople: numberOfPeople, //新規データ
-                    price: tour.price,
-                    total: tour.price * numberOfPeople,
+                    price: Number(tour.price).toLocaleString(),
+                    total: Number(tour.price * numberOfPeople).toLocaleString(),
                   }],
                   userId: loginId,
                   id: cart.id,

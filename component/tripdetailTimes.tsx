@@ -13,6 +13,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
               <div>
                 {tour.times >= 7 && (
                   <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
                   </select>
@@ -20,6 +21,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
 
                 {tour.times < 7 && tour.times >= 3 && (
                   <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
                     <option value="11">11:00</option>
@@ -30,6 +32,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
 
                 {tour.times < 3 && (
                   <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                    <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
                     <option value="11">11:00</option>
