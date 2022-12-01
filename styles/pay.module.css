@@ -27,3 +27,11 @@
     display: flex;
     margin: 20px auto;
 }
+
+.flex{
+    display: flex;
+}
+
+.list{
+    list-style-type: none;
+}
