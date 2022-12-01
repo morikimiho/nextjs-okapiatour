@@ -1,5 +1,4 @@
-import { Header } from "../../component/header";
-import { Footer } from "../../component/footer";
+
 import styles from "../../styles/login.module.css";
 import Link from "next/link";
 import { useState } from "react";
