@@ -7,7 +7,7 @@ export function Header() {
     <div className={styles.headerall}>
       <div className={styles.header}>
         <div className={styles.logo}>
-            <Link href="/trip" className={styles.icon_flex}>
+            <Link href="/tour" className={styles.icon_flex}>
               <div className={styles.icon}>
                 <Image
                   src="/images/logo.png"
@@ -23,7 +23,7 @@ export function Header() {
         </div>
         <div className={styles.buttons}>
           <div className={styles.cart}>
-            <Link href="/">
+            <Link href="/tour/cart">
               <Image
                 src="/images/shopping-cart.png"
                 alt="ショッピングカート"

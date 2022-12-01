@@ -1,9 +1,15 @@
 import Image from "next/image";
 import { CartdetailCount } from "../../component/CartList/cartdetailCount";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 
-export const Cartlist = ({ cart }) => {
+type Props = {
+  cart: any;
+  setAmount: Dispatch<SetStateAction<number>>;
+};
+
+export const Cartlist = ({ cart,setAmount }:Props) => {
+  const [num, setNum] = useState(cart.numberOfPeople);
   const router = useRouter();
   function deleteTask(e: any) {
     const id = e.target.id;
@@ -16,21 +22,29 @@ export const Cartlist = ({ cart }) => {
       },
     }).then(router.reload() as any);
   };
-  const [num, setNum] = useState(cart.numberOfPeople);
+  
+  const HandleNumChange = (e: { target: { value: any; }; }) => {
+    const newNum = e.target.value;
+    setNum(newNum);
+    setAmount((prev: number) => prev - cart.price * num + cart.price * newNum);
+  }
+
   return (
     <div key={cart.id}>
-      <p>{cart.tourDate}</p>
+      <p>日程：{cart.tourDate}</p>
+      <p>開始時間：{cart.startTime}時</p>
       <Image src={cart.img1} width={150} height={100} alt="ツアー画像" />
       <p>{cart.tourName}</p>
-      <p>{cart.description}</p>
-      <p>{cart.price}</p>
-      <CartdetailCount nop={setNum} num={num} />
+      <p>概要：{cart.description}</p>
+      <p>価格：{cart.price}円</p>
+      <CartdetailCount  num={num}  HandleNumChange={HandleNumChange}/>
       <input
         id={`${cart.id}`}
         type="submit"
         value="削除"
         onClick={deleteTask}
       />
+      <p>小計：{cart.price * num}円</p>
     </div>
   );
 };
