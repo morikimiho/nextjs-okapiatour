@@ -2,49 +2,57 @@ import Image from "next/image";
 import { CartdetailCount } from "../../component/CartList/cartdetailCount";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
+import useCookie from "../../hooks/useCookie";
 
 type Props = {
-  cart: any;
+  tour: any;
   setAmount: Dispatch<SetStateAction<number>>;
 };
 
-export const Cartlist = ({ cart,setAmount }:Props) => {
-  const [num, setNum] = useState(cart.numberOfPeople);
+export const Cartlist = ({ tour,setAmount }:Props) => {
+  const cookie =useCookie();
+  const loginId = cookie.loginId;
+  const [num, setNum] = useState(tour.numberOfPeople);
   const router = useRouter();
-  function deleteTask(e: any) {
-    const id = e.target.id;
-    console.log(id);
-    fetch(`http://localhost:8000/inCart/${id}`, {
+  
+
+  const  DeleteData=(e)=> {
+    const id=e.target.id
+
+      fetch(`http://localhost:8000/inCarts?userId=${loginId}&tours&tourId=${id}`, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    }).then(router.reload() as any);
-  };
-  
+    })
+
+    
+    
+  }
+
   const HandleNumChange = (e: { target: { value: any; }; }) => {
     const newNum = e.target.value;
     setNum(newNum);
-    setAmount((prev: number) => prev - cart.price * num + cart.price * newNum);
+    setAmount((prev: number) => prev - tour.price * num + tour.price * newNum);
   }
 
   return (
-    <div key={cart.id}>
-      <p>日程：{cart.tourDate}</p>
-      <p>開始時間：{cart.startTime}時</p>
-      <Image src={cart.img1} width={150} height={100} alt="ツアー画像" />
-      <p>{cart.tourName}</p>
-      <p>概要：{cart.description}</p>
-      <p>価格：{cart.price}円</p>
+    <div key={tour.id}>
+      <p>日程：{tour.tourDate}</p>
+      <p>開始時間：{tour.startTime}時</p>
+      <Image src={tour.img1} width={150} height={100} alt="ツアー画像" />
+      <p>{tour.tourName}</p>
+      <p>概要：{tour.description}</p>
+      <p>価格：{tour.price}円</p>
       <CartdetailCount  num={num}  HandleNumChange={HandleNumChange}/>
       <input
-        id={`${cart.id}`}
+        id={`${tour.id}`}
         type="submit"
         value="削除"
-        onClick={deleteTask}
+        onClick={DeleteData}
       />
-      <p>小計：{cart.price * num}円</p>
+      <p>小計：{tour.price * num}円</p>
     </div>
   );
 };
