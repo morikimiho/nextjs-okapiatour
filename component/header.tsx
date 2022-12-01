@@ -14,15 +14,10 @@ export function Header() {
   const loginId = cookie.loginId;
   const loginName = cookie.loginName;
 
-  // ログアウト(クッキー削除)　　挙動少しおかしい要改善
+  // ログアウト(クッキー削除)
   function logOut() {
-    if (!"/tour") {
-      document.cookie = "userOkapiaTour=;max-age=0";
-      router.push("/tour");
-    } else {
-      router.reload();
-    }
-    document.cookie = "userOkapiaTour=;max-age=0";
+    document.cookie = "userOkapiaTour=;path=/;max-age=0";
+    router.reload();
   }
 
   return (
@@ -65,8 +60,10 @@ export function Header() {
             {loginName.length > 0 && (
               <>
                 <div className={styles.login_user}>
+                <Link href="/tour/booking_confirmation">
                   <div>{loginId}</div>
                   <div>{loginName}さん</div>
+                  </Link>
                 </div>
                 <button className={styles.button} onClick={logOut}>
                   ログアウト
