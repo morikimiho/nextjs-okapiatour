@@ -11,6 +11,7 @@ export default function Pay() {
   const loginId = cookie.loginId;
   //文字列になっていた
   const [cart, setCart] = useState();
+  const [amount, setAmount] = useState(0);
 
   useEffect(() => {
     if (loginId.length === 0) {
@@ -20,14 +21,27 @@ export default function Pay() {
       .then((response) => response.json())
       .then((deta) => {
         //カート
-        setCart(deta[0]);
-        console.log(deta);
+        const cartcontent = deta[0];
+        if (cartcontent) {
+          setCart(cartcontent);
+
+          setAmount(
+            cartcontent.tours.reduce(
+              (
+                prev: number,
+                current: { price: number; numberOfPeople: number }
+              ) => current.price * current.numberOfPeople + prev,
+              0
+            )
+          );
+        }
       });
     //取れないことは想定しない
     //next dev動いている時 catch
     //mock-apiが起動していない時　res
   }, [loginId]);
 
+  console.log(loginId);
   //   useEffect(() => {  }, [loginId]);
   const onClick = () => {
     if (loginId.length === 0) {
@@ -43,8 +57,19 @@ export default function Pay() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(deta),
+          
         });
+       
       });
+
+     
+    fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
   };
   return (
     <>
@@ -73,15 +98,16 @@ export default function Pay() {
                         <ul className={styles.list}>
                           <li>日程:{tour.tourDate}</li>
                           <li>人数：{tour.numberOfPeople}</li>
-                          <li>小計:{tour.total}円</li>
+                          <li>小計:{tour.total.toLocaleString()}円</li>
                         </ul>
                       </div>
                     </div>
-                    
                   </>
                 );
               })}
-              <div><h2>合計:</h2></div>
+            <div>
+              <h2>合計:{amount.toLocaleString()}円</h2>
+            </div>
           </div>
           <h3 className={styles.title}>
             下記からお支払いの方法を選択してください。
