@@ -52,6 +52,19 @@
       "birthM": "8",
       "birthD": "16",
       "id": 4
+    },
+    {
+      "firstName": "椎名",
+      "firstNameKana": "しいな",
+      "lastName": "林檎",
+      "lastNameKana": "りんご",
+      "mailAddress": "ringo@shiina.jp",
+      "tel": "0901234567",
+      "password": "ringoringo",
+      "birthY": "1986",
+      "birthM": "5",
+      "birthD": "12",
+      "id": 5
     }
   ],
   "tours": [

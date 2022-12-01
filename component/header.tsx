@@ -2,32 +2,27 @@ import styles from "../styles/header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
-import { getCookieParser } from "next/dist/server/api-utils";
-import  useCookie  from "../hooks/useCookie";
+
+import useCookie from "../hooks/useCookie";
 
 export function Header() {
   const router = useRouter();
   const cookie = useCookie();
-  // console.log(cookie.loginId)
+  // console.log(cookie);
 
   // クッキーにセットされている名前をログイン名として表示
-  const [loginId, setLoginId] = useState("");
-  const [loginName, setLoginName] = useState("");
-  useEffect(() => {
-    setLoginId(cookie.loginId);
-    setLoginName(cookie.loginName)
-});
+  const loginId = cookie.loginId;
+  const loginName = cookie.loginName;
 
   // ログアウト(クッキー削除)　　挙動少しおかしい要改善
   function logOut() {
     if (!"/tour") {
-      document.cookie = "user=;max-age=0";
+      document.cookie = "userOkapiaTour=;max-age=0";
       router.push("/tour");
     } else {
       router.reload();
     }
-    document.cookie = "user=;max-age=0";
+    document.cookie = "userOkapiaTour=;max-age=0";
   }
 
   return (
@@ -43,7 +38,7 @@ export function Header() {
         </div>
         <div className={styles.buttons}>
           <div className={styles.cart}>
-            <Link href="/">
+            <Link href="/tour/cart">
               <Image
                 src="/images/shopping-cart.png"
                 alt="ショッピングカート"
@@ -66,8 +61,8 @@ export function Header() {
           {loginName.length > 0 && (
             <>
               <div>
-                <div>{cookie.loginId}</div>
-                <div>{cookie.loginName}</div>
+                <div>{loginId}</div>
+                <div>{loginName}さん</div>
               </div>
               <button className={styles.button} onClick={logOut}>
                 ログアウト
