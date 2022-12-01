@@ -10,7 +10,7 @@ export default async function Handler(req, res) {
     const name = encodeURI(user.firstName);  // 日本語がクッキーに入らないので(?)エンコード
     // console.log(name);
     res.setHeader('Set-Cookie', [
-        `user={"id":${id},"name":"${name}"}; max-age=86400; path=/`
+        `userOkapiaTour={"id":${id},"name":"${name}"}; max-age=86400; path=/`
     ]);
     res.status(200).json(user)
 }
