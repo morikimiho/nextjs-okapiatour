@@ -1,4 +1,4 @@
-import styles from "../..//styles/search-page.module.scss";
+import styles from "../../styles/scss/search-page.module.scss";
 
 //海外→アジアを選んだ場合
 export const AsiaCountry = ({ onCountryChanege, country }) => {
