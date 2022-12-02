@@ -16,7 +16,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
   const [num, setNum] = useState(tour.numberOfPeople);
   const router = useRouter();
 
- 
+
 
   const HandleNumChange = (e: { target: { value: any } }) => {
     const newNum = e.target.value;
