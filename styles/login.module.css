@@ -44,7 +44,9 @@
   padding: 10px 30px;
   font-size: 24px;
   font-weight: 400;
-  background-color: #f;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
   transition: all 0.3s ease 0s;
@@ -62,7 +64,9 @@
   padding: 10px 30px;
   font-size: 24px;
   font-weight: 400;
-  background-color: #ffe4cb;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
   transition: all 0.3s ease 0s;

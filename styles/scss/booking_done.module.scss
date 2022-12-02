@@ -1,3 +1,7 @@
+
+@charset "UTF-8";
+@use "public" as pub;
+
 .booking_title {
   margin: 0;
   line-height: 1.15;
@@ -5,11 +9,9 @@
   padding-bottom: 20px;
   text-align: center;
   position: relative;
-}
-@media (max-width: 1199px) {
-  .booking_title {
+  @include pub.mq("res") {
     font-size: 23px;
-  }
+  } 
 }
 
 .booking_thanks {
@@ -18,11 +20,9 @@
   margin: 30px 0;
   color: darkblue;
   font-weight: 400;
-}
-@media (max-width: 1199px) {
-  .booking_thanks {
+  @include pub.mq("res") {
     font-size: 23px;
-  }
+  } 
 }
 
 .booking_number {
@@ -36,7 +36,6 @@
   text-align: center;
   padding-top: 20px;
 }
-
 .booking_coment {
   padding-bottom: 25px;
 }
@@ -45,29 +44,27 @@
   padding-top: 20px;
   font-size: 20px;
   text-align: center;
-}
-.booking_button .booking_btn {
-  padding: 15px 40px;
-  border-radius: 20px;
-  font-size: 24px;
-  font-weight: 700;
-  box-shadow: 3px 5px 17px 5px #DEDEDE;
-  background-color: #FFC896;
-  color: #9a2727;
-  border: none;
-  transition: all 0.3s ease 0s;
-}
-@media (max-width: 1199px) {
-  .booking_button .booking_btn {
-    font-size: 18px;
-    padding: 16px 30px;
+  .booking_btn {
+    padding: 15px 40px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    background-color: pub.$main_color;
+    color: pub.$sub_color;
+    border: none;
+    transition: all 0.3s ease 0s;
+    @include pub.mq("res") {
+      font-size: 18px;
+      padding: 16px 30px;
+    } 
+    &:hover{
+      cursor: pointer;
+        position: relative;
+        transform: translate(2px, 2px);
+        box-shadow:none;
+    }
   }
-}
-.booking_button .booking_btn:hover {
-  cursor: pointer;
-  position: relative;
-  transform: translate(2px, 2px);
-  box-shadow: none;
 }
 
 .booking_note {

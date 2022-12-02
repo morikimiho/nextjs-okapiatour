@@ -1,0 +1,21 @@
+@use "public" as pub;
+
+.bookingC_title {
+    padding-left: 50px;
+    margin: 20px;
+    @include pub.mq("res") {
+        font-size: 30px;
+        padding-left: 20px;
+    } 
+}
+
+.bookingC_message {
+    padding: 0.1em 0.3em;
+	border-left: 10px solid pub.$sub_color;
+	border-bottom: 3px solid #B0BEC5;
+}
+
+.bookingC_text {
+    padding: 15px 0 0 15px;
+    margin-top: 0;
+}

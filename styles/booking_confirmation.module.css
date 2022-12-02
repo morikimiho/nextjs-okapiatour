@@ -1,15 +1,21 @@
 .bookingC_title {
-    padding-left: 50px;
-    margin: 20px;
+  padding-left: 50px;
+  margin: 20px;
+}
+@media (max-width: 1199px) {
+  .bookingC_title {
+    font-size: 30px;
+    padding-left: 20px;
+  }
 }
 
 .bookingC_message {
-    padding: 0.1em 0.3em;
-	border-left: 10px solid #1E88E5;
-	border-bottom: 3px solid #B0BEC5;
+  padding: 0.1em 0.3em;
+  border-left: 10px solid #9a2727;
+  border-bottom: 3px solid #B0BEC5;
 }
 
 .bookingC_text {
-    padding-left: 15px;
-    margin-top: 0;
+  padding: 15px 0 0 15px;
+  margin-top: 0;
 }

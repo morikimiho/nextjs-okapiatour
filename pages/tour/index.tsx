@@ -61,7 +61,7 @@ export default function Home({ tours }) {
                         />
                       </Link>
                     </div>
-                    <p>
+                    <p className={styles.tour_title}>
                       <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
                     </p>
                   </div>
@@ -100,7 +100,7 @@ export default function Home({ tours }) {
                         />
                       </Link>
                     </div>
-                    <p>
+                    <p className={styles.tour_title}>
                       <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
                     </p>
                   </div>

@@ -30,7 +30,7 @@ export default function ShoppingCart() {
             </div>
             </div>
 
-            <div>合計金額　✖︎✖️✖️✖️円</div>
+            <div>合計金額 ✖️✖️✖️円</div>
         </main>
         </Layout>
     </>
