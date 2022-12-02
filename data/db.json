@@ -664,7 +664,6 @@
       "recommend": true
     },
     {
-
       "id": 52,
       "img1": "/images/Taiwan/Taipei/kyuhun.jpeg",
       "img2": "/images/Taiwan/Taipei/tea_kyuhun.jpeg",
@@ -892,10 +891,9 @@
       "content1": "ラグーンで泳ぐことが出来ますので水着をお持ち下さい。",
       "content2": "現地は非常に日差しが強いので、日焼け止めやサングラスは必須です。",
       "content3": "英語ガイドでのご案内となりますので予めご了承下さい。",
-
       "recommend": true
     },
-     {
+    {
       "id": 64,
       "img1": "/images/kairo/kairo01.jpg",
       "img2": "/images/kairo/kairo02.jpg",
@@ -1171,8 +1169,14 @@
       "recommend": true
     }
   ],
-
   "inCarts": [
+    {
+      "tours": [],
+      "userId": 4,
+      "id": 4
+    }
+  ],
+  "orders": [
     {
       "tours": [
         {
@@ -1188,10 +1192,8 @@
         }
       ],
       "userId": 4,
-      "id": 4
+      "rsNumber": "OkapiTour6l1e12cl8646",
+      "id": 9
     }
-  ],
-  "orders": [
   ]
 }
-
