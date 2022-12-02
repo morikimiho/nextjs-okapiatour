@@ -1,16 +1,31 @@
 .buttonsubmit {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
-.paysubmit {
-    margin: auto 10px;
-    cursor: pointer;    
-    padding: 10px; 
+.buttonsubmit .submit {
+  margin: auto 10px;
+  cursor: pointer;
+  padding: 15px 0;
+  width: 220px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #dedede;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
+  transition: all 0.3s ease 0s;
 }
-
-.searchsubmit {
-    margin: auto 10px;
-    cursor: pointer; 
-    padding: 10px;
+@media (max-width: 1199px) {
+  .buttonsubmit .submit {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-top: 10px;
+  }
+}
+.buttonsubmit .submit:hover {
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }

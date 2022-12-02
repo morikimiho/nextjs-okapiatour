@@ -1,50 +1,79 @@
-.cancel{
-    background: url(../public/images/ok.jpg);
+@charset "UTF-8";
+@use "public" as pub;
+
+.cancel {
+  background: url(../public/images/ok.jpg);
 }
 
 .tour_tags {
-    display: flex;
-    .tour_tag {
-        border: 3px solid rgb(207, 207, 207);
-        border-radius: 99px;
-        padding: 5px 14px 5px 10px;
-        margin: 0 2px;
-        font-style: italic;
+  display: flex;
+  justify-content: center;
+  margin-right: 684px;
+  .tour_tag {
+    border: 3px solid rgb(207, 207, 207);
+    border-radius: 99px;
+    padding: 5px 14px 5px 10px;
+    margin: 0 2px;
+    font-style: italic;
+  }
+}
+
+.tour_title {
+  text-align: center;
+  margin: 10px 300px 20px 0;
+  margin-right: 388px;
+  margin-bottom: 20px;
+}
+
+.tripdetail {
+  display: flex;
+}
+.attention {
+  padding-left: 150px;
+}
+.buttonposition {
+    padding-top: 40px;
+    text-align: center;
+    .button {
+        padding: 15px 40px;
+        border-radius: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow:3px 5px 17px 5px #DEDEDE;
+        color: pub.$highlight_color;
+        background-color: pub.$sub_color;
+        border: none;
+        transition: all 0.3s ease 0s;
+        @include pub.mq("res") {
+            font-size: 18px;
+            padding: 7px 20px;
+        } 
+        &:hover{
+            position: relative;
+            transform: translate(2px, 2px);
+            box-shadow:none;
+        }
     }
 }
-.tripdetail{
-    display: flex;
-}
-.attention{
-    padding-left: 150px;
-}
-.button{
-   width: 200px;
-   height: 50px;
 
+.tripinfo {
+  display: flex;
 }
-.buttonposition{
-    padding-top: 80px;
-    padding-left: 200px;
-    padding-bottom: 100px;
+.tripcontent {
+  padding-left: 50px;
 }
-
-.tripinfo{
-    display: flex;
+.count {
+  display: flex;
 }
-.tripcontent{
-    padding-left: 50px;
-}
-.count{
-    display: flex;
-}
-
-
-
 
 // components/tripdetailimage
 
 .tour_detail_images {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+}
+.detailimage_third {
+  position: relative;
+  bottom: 4px;
 }

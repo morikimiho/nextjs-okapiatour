@@ -173,7 +173,7 @@ const SearchPage = () => {
                       <Image
                         src={item.img1}
                         width={300}
-                        height={200}
+                        height={196}
                         alt="画像"
                         className={styles.image}
                       />
