@@ -32,11 +32,15 @@
         }  
     }
     .button {
-        margin: 8px 10px;
+        margin: 9px 10px;
         cursor: pointer;    
         border-radius: 99px;
         padding: 7px;
         font-size: 8px;
+        font-weight: 700;
+        color: pub.$highlight_color;
+        background-color: pub.$sub_color;
+        border: none;
     }
     .cart {
         margin: 10px ;
@@ -85,7 +89,7 @@
     @include pub.mq("res") { 
         display: block;
         height: 40px;
-        background: #ffe4cb;
+        background: pub.$highlight_color;
         padding-top: 9px;
     }
     .res_flex {

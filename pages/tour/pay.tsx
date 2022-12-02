@@ -38,7 +38,7 @@ export default function Pay() {
       });
     //取れないことは想定しない
     //next dev動いている時 catch
-    //mock-apiが起動していない時　res
+    //mock-apiが起動していない時 res
   }, [loginId]);
 
   console.log(loginId);

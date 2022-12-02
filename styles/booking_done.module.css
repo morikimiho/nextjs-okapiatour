@@ -1,17 +1,28 @@
 .booking_title {
-  margin: 20px;
+  margin: 0;
   line-height: 1.15;
-  font-size: 40px;
-  padding-left: 100px;
-  padding-bottom: 10px;
-  border-bottom: solid 2px black;
+  font-size: 26px;
+  padding-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+@media (max-width: 1199px) {
+  .booking_title {
+    font-size: 23px;
+  }
 }
 
 .booking_thanks {
   text-align: center;
   font-size: 30px;
-  padding-top: 20px;
+  margin: 30px 0;
   color: darkblue;
+  font-weight: 400;
+}
+@media (max-width: 1199px) {
+  .booking_thanks {
+    font-size: 23px;
+  }
 }
 
 .booking_number {
@@ -26,23 +37,45 @@
   padding-top: 20px;
 }
 
+.booking_coment {
+  padding-bottom: 25px;
+}
+
 .booking_button {
   padding-top: 20px;
   font-size: 20px;
   text-align: center;
 }
-.booking_btn {
-  width: 200px;
-  height: 50px;
+.booking_button .booking_btn {
+  padding: 15px 40px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  box-shadow: 3px 5px 17px 5px #DEDEDE;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 1199px) {
+  .booking_button .booking_btn {
+    font-size: 18px;
+    padding: 16px 30px;
+  }
+}
+.booking_button .booking_btn:hover {
   cursor: pointer;
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 .booking_note {
   text-align: center;
-  color: red;
+  color: #f63131;
   padding-top: 20px;
 }
 
 .booking_RsNumber {
-  color: red;
+  color: #f63131;
 }

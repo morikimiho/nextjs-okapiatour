@@ -15,19 +15,19 @@ export default function BookingDone() {
     if (loginId.length === 0) {
       return;
     }
-  fetch(`http://localhost:8000/orders?userId=${loginId}`)
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log(data);
-      const cartitem = data[0];
-      if (cartitem) {
-        setRsNumber(cartitem);
-      }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    })
-  },[loginId]);
+    fetch(`http://localhost:8000/orders?userId=${loginId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log(data);
+        const cartitem = data[0];
+        if (cartitem) {
+          setRsNumber(cartitem);
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [loginId]);
 
   return (
     <>
@@ -36,7 +36,9 @@ export default function BookingDone() {
       </Head>
       <Layout>
         <main>
-          <h1 className={styles.booking_title}>予約完了</h1>
+          <div className={styles.booking_title}>
+            <h2>予約が完了しました</h2>
+          </div>
           <p className={styles.booking_thanks}>
             お申し込みいただき、ありがとうございます！
           </p>
@@ -44,21 +46,22 @@ export default function BookingDone() {
           <div className={styles.booking_number}>
             <p>ご予約を承りました。</p>
             <p>ご予約番号</p>
+
             <p className={styles.booking_RsNumber}>{rsNumber.rsNumber}</p>
             <p>お問合せに必要な番号です。大切に保管してください。</p>
-          </div>
+        </div>
 
           <p className={styles.booking_message}>
             ご予約確認ページよりお申し込み内容お申し込み内容をご確認いただけます。
           </p>
 
-          <Link href="http://localhost:3000/tour/booking_confirmation">
-            <div className={styles.booking_button}>
-              <button className={styles.booking_btn} type="submit">
+          <div className={styles.booking_button}>
+            <button className={styles.booking_btn} type="submit">
+              <Link href="http://localhost:3000/tour/booking_confirmation">
                 予約確認へ
-              </button>
-            </div>
-          </Link>
+              </Link>
+            </button>
+          </div>
 
           <div className={styles.booking_note}>
             <p>

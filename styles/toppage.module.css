@@ -100,3 +100,7 @@
 .overseas_images:hover {
   transform: scale(1.1);
 }
+
+.tour_title {
+  font-weight: 700;
+}
