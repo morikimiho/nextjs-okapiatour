@@ -105,6 +105,11 @@
   content: "*";
   color: #f63131;
 }
+@media (max-width: 1199px) {
+  .form_label {
+    margin: 0 14px;
+  }
+}
 
 .input_name {
   width: 280px;
@@ -127,8 +132,8 @@
 }
 @media (max-width: 1199px) {
   .input_select {
-    width: 40px;
-    margin-left: 16px;
+    width: 58px;
+    margin-left: 14px;
   }
 }
 
@@ -147,6 +152,9 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #DEDEDE;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
   transition: all 0.3s ease 0s;
 }
 @media (max-width: 1199px) {
