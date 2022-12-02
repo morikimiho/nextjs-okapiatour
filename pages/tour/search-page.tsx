@@ -27,7 +27,7 @@ const SearchPage = () => {
   type Abroad = "abroad" | "domestic" | "";
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
-  const [prefecture, setPrefecture] = useState<Prefecture>("osk");
+  const [prefecture, setPrefecture] = useState<Prefecture>("");
   type Area = "eu" | "asi" | "northame" | "oce" | "";
   const [areaCode, setArea] = useState<Area>("");
   type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";

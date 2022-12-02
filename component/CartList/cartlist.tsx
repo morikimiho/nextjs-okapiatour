@@ -16,7 +16,7 @@ export const Cartlist = ({ tour,setAmount }:Props) => {
   const router = useRouter();
   
 
-  const  DeleteData=(e)=> {
+  const  DeleteData=(e:any)=> {
     const id=e.target.id
 
       fetch(`http://localhost:8000/inCarts?userId=${loginId}&tours&tourId=${id}`, {
