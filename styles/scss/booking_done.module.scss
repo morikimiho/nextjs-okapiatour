@@ -50,8 +50,8 @@
     font-size: 24px;
     font-weight: 700;
     box-shadow:3px 5px 17px 5px #DEDEDE;
-    background-color: pub.$main_color;
-    color: pub.$sub_color;
+    color: pub.$highlight_color;
+    background-color: pub.$sub_color;
     border: none;
     transition: all 0.3s ease 0s;
     @include pub.mq("res") {

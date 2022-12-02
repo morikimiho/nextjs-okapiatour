@@ -1,37 +1,50 @@
-
 .title {
-    text-align: center;
-    margin: 50px auto;
+  text-align: center;
+  margin: 50px auto;
 }
 
 .width {
-    max-width: 800px;
-    justify-content: center;
-    margin: 50px auto;
+  max-width: 800px;
+  justify-content: center;
+  margin: 50px auto;
 }
 
 .total {
-    border: 1px slategray dotted;
-    padding: 20px 100px;
-    margin: 50px 0;
+  border: 1px slategray dotted;
+  padding: 20px 100px;
+  margin: 50px 0;
 }
 
 .radio {
-    border: 1px solid grey;
-    padding: 30px;
-    border-radius: 5px;
+  border: 1px solid grey;
+  padding: 30px;
+  border-radius: 5px;
 }
 
 .button {
-    padding: 10px 40px;
-    display: flex;
-    margin: 20px auto;
+  display: flex;
+  margin: 40px auto 0;
+  padding: 15px 40px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #DEDEDE;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+.button:hover {
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
-.flex{
-    display: flex;
+.flex {
+  display: flex;
 }
 
-.list{
-    list-style-type: none;
+.list {
+  list-style-type: none;
 }
