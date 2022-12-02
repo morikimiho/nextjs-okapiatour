@@ -1,32 +1,50 @@
-.cancel{
-    background: url(../public/images/ok.jpg);
-}
-.main{
-   
-}
-.tripdetail{
-    display: flex;
-}
-.attention{
-    padding-left: 150px;
-}
-.button{
-   width: 200px;
-   height: 50px;
-
-}
-.buttonposition{
-    padding-top: 80px;
-    padding-left: 200px;
-    padding-bottom: 100px;
+.cancel {
+  background: url(../public/images/ok.jpg);
 }
 
-.tripinfo{
-    display: flex;
+.tour_tags {
+  display: flex;
 }
-.tripcontent{
-    padding-left: 50px;
+.tour_tags .tour_tag {
+  border: 3px solid rgb(207, 207, 207);
+  border-radius: 99px;
+  padding: 5px 14px 5px 10px;
+  margin: 0 2px;
+  font-style: italic;
 }
-.count{
-    display: flex;
+
+.tripdetail {
+  display: flex;
+}
+
+.attention {
+  padding-left: 150px;
+}
+
+.button {
+  width: 200px;
+  height: 50px;
+}
+
+.buttonposition {
+  padding-top: 80px;
+  padding-left: 200px;
+  padding-bottom: 100px;
+}
+
+.tripinfo {
+  display: flex;
+}
+
+.tripcontent {
+  padding-left: 50px;
+}
+
+.count {
+  display: flex;
+}
+
+.tour_detail_images {
+  display: flex;
+  justify-content: center;
 }

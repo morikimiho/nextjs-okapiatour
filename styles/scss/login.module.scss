@@ -31,6 +31,7 @@
   border-radius: 10px;
   border: solid 1px rgb(118, 118, 118);
   margin-bottom: 40px;
+  border: none;
 }
 .login_button {
   text-align: center;
@@ -44,7 +45,7 @@
   background-color: pub.$sub_color;
   border: none;
   cursor: pointer;
-  box-shadow: 3px 5px 17px 5px #dedede;
+  box-shadow: 1px 1px 8px 1px #e39090;
   transition: all 0.3s ease 0s;
   &:hover {
     position: relative;
