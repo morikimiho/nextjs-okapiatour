@@ -22,6 +22,11 @@ const nextConfig = {
         destination: 'http://localhost:8000/inCarts/:slug',
 
       },
+      {
+        source: '/api/orders',
+        destination: 'http://localhost:8000/orders',
+
+      },
     ];
   },
 }
