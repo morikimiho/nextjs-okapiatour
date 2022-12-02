@@ -76,7 +76,7 @@ export default function Cart() {
                 );
               })}
             </div>
-            <h2>合計：{amount}円</h2>
+            <h2>合計：{Number(amount).toLocaleString()}円</h2>
             <div className={styles.buttonsubmit}>
               <div>
                 <Link href="http://localhost:3000/tour/pay">
