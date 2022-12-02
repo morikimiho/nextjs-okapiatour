@@ -90,7 +90,9 @@
         content: "*";
         color: #f63131;
     }
-
+    @include pub.mq("res") {
+        margin: 0 14px;
+    }
 }
 .input_name {
     width: 280px;
@@ -109,8 +111,8 @@
     width: 80px;
     border-radius: 10px;
     @include pub.mq("res") {
-        width: 40px; 
-        margin-left: 16px;
+        width: 58px; 
+        margin-left: 14px;
     }
 }
 .privacy {
@@ -127,6 +129,9 @@
         font-weight: 700;
         cursor: pointer;
         box-shadow:3px 5px 17px 5px #DEDEDE;
+        color: pub.$highlight_color;
+        background-color: pub.$sub_color;
+        border: none;
         transition: all 0.3s ease 0s;
         @include pub.mq("res") {
             font-size: 18px;

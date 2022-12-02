@@ -42,7 +42,7 @@ export default function Tripdetail({
   tour,
 }: {
   tour: {
-    id:number
+    id: number;
     img1: string;
     tourName: string;
     description: string;
@@ -50,7 +50,7 @@ export default function Tripdetail({
     times: number;
     area: string;
     country: string;
-  }
+  };
 }) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -59,28 +59,29 @@ export default function Tripdetail({
   const cookie = useCookie();
 
   async function PostData() {
-
     // <ErrorCheck tour={tour} setTourDate={setTourDate}/>
 
     const loginId = cookie.loginId;
 
     if (!loginId) {
-          const toursJSON = localStorage.getItem('tours');
-          const setNewData = {
-            tours:
-            [{id:tour.id,
-              tourDate: tourDate, //新規データ
-              startTime: startTime, //新規データ
-              img1: tour.img1,
-              tourName: tour.tourName,
-              description: tour.description,
-              numberOfPeople: numberOfPeople, //新規データ
-              price: Number(tour.price),
-              total: Number(tour.price * numberOfPeople),
-            }]}; 
-      if(toursJSON === null) {
-        localStorage.setItem('tours',JSON.stringify(setNewData));
-
+      const toursJSON = localStorage.getItem("tours");
+      const setNewData = {
+        tours: [
+          {
+            id: tour.id,
+            tourDate: tourDate, //新規データ
+            startTime: startTime, //新規データ
+            img1: tour.img1,
+            tourName: tour.tourName,
+            description: tour.description,
+            numberOfPeople: numberOfPeople, //新規データ
+            price: Number(tour.price),
+            total: Number(tour.price * numberOfPeople),
+          },
+        ],
+      };
+      if (toursJSON === null) {
+        localStorage.setItem("tours", JSON.stringify(setNewData));
       } else {
         const tours = JSON.parse(toursJSON);
         // console.log("tours", tours.tours);
@@ -96,12 +97,12 @@ export default function Tripdetail({
             numberOfPeople: numberOfPeople, //新規データ
             price: Number(tour.price),
             total: Number(tour.price * numberOfPeople),
+
           }]};
         localStorage.setItem('tours',JSON.stringify(addTourData));
       }
 
       router.push("http://localhost:3000/tour/cart");
-
     } else {
       const res = await fetch(
         `http://localhost:8000/inCarts?userId=${loginId}`
@@ -112,7 +113,7 @@ export default function Tripdetail({
           async (cart: {
             id: number;
             tours: {
-              id:number
+              id: number;
               tourDate: string; //新規データ
               startTime: string; //新規データ
               img1: string;
@@ -123,14 +124,16 @@ export default function Tripdetail({
               total: number;
             }[];
           }) => {
-    await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+            await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                tours:[...cart.tours,
-                  {id:tour.id,
+                tours: [
+                  ...cart.tours,
+                  {
+                    id: tour.id,
                     tourDate: tourDate, //新規データ
                     startTime: startTime, //新規データ
                     img1: tour.img1,
@@ -139,11 +142,11 @@ export default function Tripdetail({
                     numberOfPeople: numberOfPeople, //新規データ
                     price: Number(tour.price),
                     total: Number(tour.price * numberOfPeople),
-                  }],
-                  userId: loginId,
-                  id: cart.id,
-                })
-                ,
+                  },
+                ],
+                userId: loginId,
+                id: cart.id,
+              }),
             })
               .then((response) => response.json())
               .then((data) => {
@@ -154,10 +157,10 @@ export default function Tripdetail({
                 console.error("Error:", error);
               });
           }
-    )}
+        );
       }
-  
     }
+  }
 
   return (
     <>
@@ -166,9 +169,12 @@ export default function Tripdetail({
       </Head>
       <Layout>
         <main className={styles.main}>
-          <p>
-            {tour.area} &nbsp;{tour.country}
-          </p>
+          <div className={styles.tour_tags}>
+            {tour.area.length > 0 && (
+              <div className={styles.tour_tag}>{tour.area}</div>
+            )}
+            <div className={styles.tour_tag}>{tour.country}</div>
+          </div>
 
           <h1>{tour.tourName} </h1>
           <TripdetailImage tour={tour} />

@@ -17,7 +17,7 @@ export default function Pay() {
     if (loginId.length === 0) {
       return;
     }
-    fetch(`http://localhost:8000/inCarts?userId=${loginId}`)
+    fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
       .then((deta) => {
         //カート
@@ -38,37 +38,49 @@ export default function Pay() {
       });
     //取れないことは想定しない
     //next dev動いている時 catch
-    //mock-apiが起動していない時　res
+    //mock-apiが起動していない時 res
   }, [loginId]);
 
   console.log(loginId);
   //   useEffect(() => {  }, [loginId]);
-  const onClick = () => {
+  const onClick = async () => {
     if (loginId.length === 0) {
       return;
     }
-    fetch(`http://localhost:8000/inCarts?userId=${loginId}`)
+    await fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
-      .then((deta) => {
+      .then((data) => {
+        const cart=data[0]
         // console.log(deta);
-        fetch("http://localhost:8000/orders", {
+        let randomstring = require("randomstring");
+        
+        console.log("yo",randomstring.generate({
+          length: 12,
+          charset: 'alphabetic'
+        }));
+        fetch("/api/orders", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(deta),
-          
+          body: JSON.stringify({
+            tours: cart.tours,
+            userId: cart.userId,
+            rsNumber: "OkapiTour"+randomstring.generate({
+              length: 12,
+              charset: 'alphabetic123456890'
+            }),
+          }),
         });
-       
       });
 
-     
-    fetch(`http://localhost:8000/inCarts/${cart.id}`, {
-      method: "DELETE",
+    fetch(`/api/inCarts/${cart.id}`, {
+      method: "PATCH",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({ tours: [] }),
     });
   };
   return (
