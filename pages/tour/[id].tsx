@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getActiveTrips, getTrip } from "../../service/trip";
 import styles from "../../styles/tripdetail.module.css";
 import { TripdetailContent } from "../../component/tripdetailContent";
 import { TripdetailCount } from "../../component/tripdetailCount";
@@ -12,7 +11,6 @@ import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
-import { idText } from "typescript";
 // import { ErrorCheck } from "../../component/errorCheck";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -52,7 +50,7 @@ export default function Tripdetail({
     times: number;
     area: string;
     country: string;
-  };
+  }
 }) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -65,29 +63,28 @@ export default function Tripdetail({
     // <ErrorCheck tour={tour} setTourDate={setTourDate}/>
 
     const loginId = cookie.loginId;
-    const res = await fetch(
-      `http://localhost:8000/inCarts?userId=${loginId}`
-    );
-    const inCarts = await res.json();
-    {
-      inCarts.map(
-        async (cart: {
-          id: number;
-          tours: {
-            id:number
-            tourDate: string; //新規データ
-            startTime: string; //新規データ
-            img1: string;
-            tourName: string;
-            description: string;
-            numberOfPeople: number; //新規データ
-            price: number;
-            total: number;
-          }[];
-        }) => {
 
-        const localData = {
-          tours:[...cart.tours,
+    if (!loginId) {
+          const toursJSON = localStorage.getItem('tours');
+          const setNewData = {
+            tours:
+            [{id:tour.id,
+              tourDate: tourDate, //新規データ
+              startTime: startTime, //新規データ
+              img1: tour.img1,
+              tourName: tour.tourName,
+              description: tour.description,
+              numberOfPeople: numberOfPeople, //新規データ
+              price: Number(tour.price).toLocaleString(),
+              total: Number(tour.price * numberOfPeople).toLocaleString(),
+            }]}; 
+      if(toursJSON === null) {
+        localStorage.setItem('tours',JSON.stringify(setNewData));
+
+      } else {
+        const tours = JSON.parse(toursJSON);
+        const addTourData = 
+          [...tours.tours,
           {id:tour.id,
             tourDate: tourDate, //新規データ
             startTime: startTime, //新規データ
@@ -97,15 +94,33 @@ export default function Tripdetail({
             numberOfPeople: numberOfPeople, //新規データ
             price: Number(tour.price).toLocaleString(),
             total: Number(tour.price * numberOfPeople).toLocaleString(),
-          }]}; 
+          }];
+        localStorage.setItem('tours',JSON.stringify(addTourData));
+      }
 
-    if (!loginId) {
-
-      // localStorage.getItem('tours');
-      localStorage.setItem('tours',JSON.stringify(localData));
-      router.push("http://localhost:3000/tour/cart");
+      // router.push("http://localhost:3000/tour/cart");
 
     } else {
+      const res = await fetch(
+        `http://localhost:8000/inCarts?userId=${loginId}`
+      );
+      const inCarts = await res.json();
+      {
+        inCarts.map(
+          async (cart: {
+            id: number;
+            tours: {
+              id:number
+              tourDate: string; //新規データ
+              startTime: string; //新規データ
+              img1: string;
+              tourName: string;
+              description: string;
+              numberOfPeople: number; //新規データ
+              price: number;
+              total: number;
+            }[];
+          }) => {
     await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
               method: "PUT",
               headers: {
@@ -137,7 +152,7 @@ export default function Tripdetail({
                 console.error("Error:", error);
               });
           }
-        })
+    )}
       }
   
     }
