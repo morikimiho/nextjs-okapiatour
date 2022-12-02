@@ -75,8 +75,8 @@ export default function Tripdetail({
               tourName: tour.tourName,
               description: tour.description,
               numberOfPeople: numberOfPeople, //新規データ
-              price: Number(tour.price).toLocaleString(),
-              total: Number(tour.price * numberOfPeople).toLocaleString(),
+              price: Number(tour.price),
+              total: Number(tour.price * numberOfPeople),
             }]}; 
       if(toursJSON === null) {
         localStorage.setItem('tours',JSON.stringify(setNewData));
@@ -92,8 +92,8 @@ export default function Tripdetail({
             tourName: tour.tourName,
             description: tour.description,
             numberOfPeople: numberOfPeople, //新規データ
-            price: Number(tour.price).toLocaleString(),
-            total: Number(tour.price * numberOfPeople).toLocaleString(),
+            price: Number(tour.price),
+            total: Number(tour.price * numberOfPeople),
           }];
         localStorage.setItem('tours',JSON.stringify(addTourData));
       }
@@ -135,8 +135,8 @@ export default function Tripdetail({
                     tourName: tour.tourName,
                     description: tour.description,
                     numberOfPeople: numberOfPeople, //新規データ
-                    price: Number(tour.price).toLocaleString(),
-                    total: Number(tour.price * numberOfPeople).toLocaleString(),
+                    price: Number(tour.price),
+                    total: Number(tour.price * numberOfPeople),
                   }],
                   userId: loginId,
                   id: cart.id,

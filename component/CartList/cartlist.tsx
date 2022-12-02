@@ -35,7 +35,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
               <li>日程：{tour.tourDate}</li>
               <li>開始時間：{tour.startTime}時</li>
               <li>概要：{tour.description}</li>
-              <li>価格：{tour.price}円</li>
+              <li>価格：{Number(tour.price).toLocaleString()}円</li>
             </ul>
           </div>
           <div className={Styles.delete_count_total}>
@@ -44,7 +44,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
               onClick={(e)=>deleteHandler(tour.id)}
             >削除</button>
             <CartdetailCount num={num} HandleNumChange={HandleNumChange} />
-            小計：{tour.price * num}円
+            小計：{Number(tour.price * num).toLocaleString()}円
           </div>
         </div>
       </div>
