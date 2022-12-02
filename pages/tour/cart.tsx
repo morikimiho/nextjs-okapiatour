@@ -10,7 +10,10 @@ export default function Cart() {
 
   return (
 
-    <div>{loginId ? <BackCart loginId={loginId} /> : <LocalCart /> }</div>
+  
+    <div>{loginId ? <BackCart loginId={loginId} /> : <p>ローカルがありません。</p> }</div>
+
+    // <LocalCart loginId={loginId}
     
     );
 }
