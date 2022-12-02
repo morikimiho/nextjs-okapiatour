@@ -9,7 +9,7 @@ type Props = {
   setAmount: Dispatch<SetStateAction<number>>;
 };
 
-export const Cartlist = ({ tour,setAmount }:Props) => {
+export const Cartlist = ({ tour,setAmount,deleteHandler}:Props) => {
   const cookie =useCookie();
   const loginId = cookie.loginId;
   const [num, setNum] = useState(tour.numberOfPeople);
@@ -17,17 +17,8 @@ export const Cartlist = ({ tour,setAmount }:Props) => {
   
 
   const  DeleteData=(e)=> {
-    const id=e.target.id
 
-      fetch(`http://localhost:8000/inCarts?userId=${loginId}&tours&tourId=${id}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-
-    
+    deleteHandler(e.target.id)
     
   }
 
