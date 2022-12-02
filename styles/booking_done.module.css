@@ -3,7 +3,6 @@
   line-height: 1.15;
   font-size: 40px;
   padding-left: 100px;
-  padding-top: 10px;
   padding-bottom: 10px;
   border-bottom: solid 2px black;
 }
@@ -42,4 +41,8 @@
   text-align: center;
   color: red;
   padding-top: 20px;
+}
+
+.booking_RsNumber {
+  color: red;
 }
