@@ -44,7 +44,7 @@ export default function BookingDone() {
           <div className={styles.booking_number}>
             <p>ご予約を承りました。</p>
             <p>ご予約番号</p>
-            <p className={styles.booking_RsNumber}>{rsNumber.reservationNumber}</p>
+            <p className={styles.booking_RsNumber}>{rsNumber.rsNumber}</p>
             <p>お問合せに必要な番号です。大切に保管してください。</p>
           </div>
 
