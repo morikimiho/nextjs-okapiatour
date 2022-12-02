@@ -83,7 +83,9 @@ export default function Tripdetail({
 
       } else {
         const tours = JSON.parse(toursJSON);
-        const addTourData = 
+        // console.log("tours", tours.tours);
+        const addTourData = {
+           tours:
           [...tours.tours,
           {id:tour.id,
             tourDate: tourDate, //新規データ
@@ -94,11 +96,11 @@ export default function Tripdetail({
             numberOfPeople: numberOfPeople, //新規データ
             price: Number(tour.price),
             total: Number(tour.price * numberOfPeople),
-          }];
+          }]};
         localStorage.setItem('tours',JSON.stringify(addTourData));
       }
 
-      // router.push("http://localhost:3000/tour/cart");
+      router.push("http://localhost:3000/tour/cart");
 
     } else {
       const res = await fetch(
