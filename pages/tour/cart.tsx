@@ -64,7 +64,7 @@ export default function Cart() {
       <Layout>
         <main>
           <div className={Styles.cart_width}>
-            <h1>ツアーカート</h1>
+            <h1 className={Styles.cart_name}>ツアーカート</h1>
             <div className={Styles.cartcontents}>
               {tours.map((tour: any) => {
                 return (
@@ -80,14 +80,14 @@ export default function Cart() {
             <div className={styles.buttonsubmit}>
               <div>
                 <Link href="http://localhost:3000/tour/pay">
-                  <button className={styles.paysubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
                 </Link>
               </div>
               <div>
                 <Link href="http://localhost:3000/tour/search-page">
-                  <button className={styles.searchsubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>
                 </Link>

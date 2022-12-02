@@ -175,7 +175,7 @@ export default function Tripdetail({
             <div className={styles.tour_tag}>{tour.country}</div>
           </div>
 
-          <h1>{tour.tourName} </h1>
+          <h1 className={styles.tour_title}>{tour.tourName} </h1>
           <TripdetailImage tour={tour} />
           <p>{tour.description}</p>
           <div className={styles.tripinfo}>

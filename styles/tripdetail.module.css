@@ -4,6 +4,8 @@
 
 .tour_tags {
   display: flex;
+  justify-content: center;
+  margin-right: 684px;
 }
 .tour_tags .tour_tag {
   border: 3px solid rgb(207, 207, 207);
@@ -11,6 +13,13 @@
   padding: 5px 14px 5px 10px;
   margin: 0 2px;
   font-style: italic;
+}
+
+.tour_title {
+  text-align: center;
+  margin: 10px 300px 20px 0;
+  margin-right: 388px;
+  margin-bottom: 20px;
 }
 
 .tripdetail {
@@ -21,15 +30,32 @@
   padding-left: 150px;
 }
 
-.button {
-  width: 200px;
-  height: 50px;
-}
-
 .buttonposition {
-  padding-top: 80px;
-  padding-left: 200px;
-  padding-bottom: 100px;
+  padding-top: 40px;
+  text-align: center;
+}
+.buttonposition .button {
+  padding: 15px 40px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #DEDEDE;
+  color: #ffe4cb;
+  background-color: #9a2727;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 1199px) {
+  .buttonposition .button {
+    font-size: 18px;
+    padding: 7px 20px;
+  }
+}
+.buttonposition .button:hover {
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 .tripinfo {
@@ -47,4 +73,9 @@
 .tour_detail_images {
   display: flex;
   justify-content: center;
+}
+
+.detailimage_third {
+  position: relative;
+  bottom: 4px;
 }
