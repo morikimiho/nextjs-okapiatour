@@ -84,7 +84,7 @@ export default function Pay() {
               cart.tours.map((tour) => {
                 return (
                   <>
-                    <h3>購入ツアー：{tour.tourName};</h3>
+                    <h3>{tour.tourName};</h3>
                     <div className={styles.flex}>
                       <div>
                         <Image
