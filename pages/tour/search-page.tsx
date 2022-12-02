@@ -1,4 +1,4 @@
-import styles from "../../styles/search-page.module.scss";
+import styles from "../../styles/search-page.module.css";
 import Head from "next/head";
 import Layout from "../../component/layout";
 import { useState } from "react";
@@ -27,7 +27,7 @@ const SearchPage = () => {
   type Abroad = "abroad" | "domestic" | "";
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
-  const [prefecture, setPrefecture] = useState<Prefecture>("osk");
+  const [prefecture, setPrefecture] = useState<Prefecture>("");
   type Area = "eu" | "asi" | "northame" | "oce" | "";
   const [areaCode, setArea] = useState<Area>("");
   type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";

@@ -1,20 +1,5 @@
-@charset "UTF-8";
 
-
-$layout-width-inner: 1200px;
-$breakpoints: (
-//キー : 値
-'sp': "(max-width: 767px)", 
-'res': "(max-width: #{$layout-width-inner - 1px})", 
-// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
-'pc': "(min-width: #{$layout-width-inner})"
-) ;
-
-@mixin mq($breakpoint: sp) {
-    @media #{map-get($breakpoints, $breakpoint)} {
-        @content;
-    }
-}
+@use "public" as pub;
 
 
 // 検索フォーム　=========================================================
@@ -25,14 +10,14 @@ $breakpoints: (
     border: 3px solid #888;
     border-radius: 20px;
     text-align: center;
-    @include mq("res") {
+    @include pub.mq("res") {
         padding-bottom: 53px;
     }
 }
 .search_title {
     margin: 40px 0 0;
     font-size: 32px;
-    @include mq("res") {
+    @include pub.mq("res") {
         font-size: 24px;
     }
 }
@@ -42,7 +27,7 @@ $breakpoints: (
     margin: 40px 0;
     .route_abroad {
         display: flex;
-        @include mq("res") {
+        @include pub.mq("res") {
             // display: block;
         }
     }
@@ -55,7 +40,7 @@ $breakpoints: (
     font-size: 20px;
     border-radius: 8px;
     cursor: pointer;
-    @include mq("res") {
+    @include pub.mq("res") {
         position: absolute;
         transform: translateY(64px);
     }
@@ -124,7 +109,6 @@ $breakpoints: (
 }
 .button:hover{
   margin-top: 3px;
-
 }
 
 .button_around{

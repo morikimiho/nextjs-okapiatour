@@ -1,4 +1,4 @@
-import styles from "../../styles/crete-user.module.scss";
+import styles from "../../styles/crete-user.module.css";
 import Head from "next/head";
 import { useState } from "react";
 import Layout from "../../component/layout";
@@ -92,30 +92,30 @@ const CreateUser = () => {
         birthD,
       };
       const res = await fetch("http://localhost:8000/users", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    const resResult = await res.json();
-    const inCartsData = {
-      userId: resResult.id,
-      tours: [],
-    };
-    
-    const addInCarts = await fetch("http://localhost:8000/inCarts", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(inCartsData),
-    });
-    console.log(await addInCarts.json());
-      // .then(Router.push("/tour/login") as any); // .reloaded()リロード
+      const resResult = await res.json();
+      const inCartsData = {
+        userId: resResult.id,
+        tours: [],
+      };
+
+      const addInCarts = await fetch("http://localhost:8000/inCarts", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inCartsData),
+      });
+      console.log(await addInCarts.json());
+      await Router.push("/tour/login") as any; // .reloaded()リロード
     }
   };
 
