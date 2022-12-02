@@ -3,47 +3,51 @@ import { CartdetailCount } from "../../component/CartList/cartdetailCount";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
+import Styles from "../../styles/cartlist.module.css";
 
 type Props = {
   tour: any;
   setAmount: Dispatch<SetStateAction<number>>;
 };
 
-export const Cartlist = ({ tour,setAmount,deleteHandler}:Props) => {
-  const cookie =useCookie();
+export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
+  const cookie = useCookie();
   const loginId = cookie.loginId;
   const [num, setNum] = useState(tour.numberOfPeople);
   const router = useRouter();
-  
 
-  const  DeleteData=(e)=> {
+ 
 
-    deleteHandler(e.target.id)
-    
-  }
-
-  const HandleNumChange = (e: { target: { value: any; }; }) => {
+  const HandleNumChange = (e: { target: { value: any } }) => {
     const newNum = e.target.value;
     setNum(newNum);
     setAmount((prev: number) => prev - tour.price * num + tour.price * newNum);
-  }
+  };
 
   return (
-    <div key={tour.id}>
-      <p>日程：{tour.tourDate}</p>
-      <p>開始時間：{tour.startTime}時</p>
-      <Image src={tour.img1} width={150} height={100} alt="ツアー画像" />
-      <p>{tour.tourName}</p>
-      <p>概要：{tour.description}</p>
-      <p>価格：{tour.price}円</p>
-      <CartdetailCount  num={num}  HandleNumChange={HandleNumChange}/>
-      <input
-        id={`${tour.id}`}
-        type="submit"
-        value="削除"
-        onClick={DeleteData}
-      />
-      <p>小計：{tour.price * num}円</p>
-    </div>
+    <>
+      <div className={Styles.each_tour}>
+        <h3 className={Styles.padding}>{tour.tourName}</h3><br />
+        <div key={tour.id} className={Styles.flex}>
+          <Image src={tour.img1} width={180} height={130} alt="ツアー画像" />
+          <div className={Styles.tourinfo}>
+            <ul className={Styles.list}>
+              <li>日程：{tour.tourDate}</li>
+              <li>開始時間：{tour.startTime}時</li>
+              <li>概要：{tour.description}</li>
+              <li>価格：{tour.price}円</li>
+            </ul>
+          </div>
+          <div className={Styles.delete_count_total}>
+            <button
+              type="submit"
+              onClick={(e)=>deleteHandler(tour.id)}
+            >削除</button>
+            <CartdetailCount num={num} HandleNumChange={HandleNumChange} />
+            小計：{tour.price * num}円
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
