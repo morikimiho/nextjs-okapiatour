@@ -38,7 +38,7 @@ export default function Pay() {
       });
     //取れないことは想定しない
     //next dev動いている時 catch
-    //mock-apiが起動していない時　res
+    //mock-apiが起動していない時 res
   }, [loginId]);
 
   console.log(loginId);
@@ -84,7 +84,7 @@ export default function Pay() {
               cart.tours.map((tour) => {
                 return (
                   <>
-                    <h3>購入ツアー：{tour.tourName};</h3>
+                    <h3>{tour.tourName};</h3>
                     <div className={styles.flex}>
                       <div>
                         <Image

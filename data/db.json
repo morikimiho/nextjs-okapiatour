@@ -137,7 +137,7 @@
       "tourName": "大阪・なんばでグルメツアー",
       "price": 4000,
       "description": "地元の人がおすすめするたこ焼きとお好み焼きを味わうツアー。最後はなんばグランド花月で新喜劇を見てたくさん笑いましょう！",
-      "meetingPlace": "大阪府　南海なんば駅",
+      "meetingPlace": "大阪府 南海なんば駅",
       "times": 3,
       "minPeople": 2,
       "content1": "たこ焼き・お好み焼き",
@@ -499,7 +499,7 @@
       "tourName": "京都旅行♪ 着物・お団子・八坂神社",
       "price": 5000,
       "description": "約100種類の中から自分の好きな着物を選べます。",
-      "meetingPlace": "京都府　京都河原町駅",
+      "meetingPlace": "京都府 京都河原町駅",
       "times": 4,
       "minPeople": 2,
       "content1": "着物",
@@ -521,7 +521,7 @@
       "tourName": "滝まで歩こう！大阪の中で自然を感じるツアー",
       "price": 2000,
       "description": "駅から滝まで約3km歩きます。秋は紅葉も！希望者は近くの猫カフェで癒されましょう。",
-      "meetingPlace": "大阪府　阪急箕面駅",
+      "meetingPlace": "大阪府 阪急箕面駅",
       "times": 3,
       "minPeople": 2,
       "content1": "滝",
@@ -588,12 +588,56 @@
       "tourName": "自然豊かな地、コアラに会いに行こう",
       "price": 6000,
       "description": "オーストラリアの大自然を感じることができるツアーです。",
-      "meetingPlace": "オーストラリア　ケアンズ空港",
+      "meetingPlace": "オーストラリア ケアンズ空港",
       "times": 5,
       "minPeople": 2,
       "content1": "コアラ",
       "content2": "自然",
       "content3": "バスでの送迎",
+      "recommend": true
+    },
+    {
+      "id": 25,
+      "img1": "/images/okinawa/glass/glass01.jpeg",
+      "img2": "/images/okinawa/glass/glass02.jpeg",
+      "img3": "/images/okinawa/glass/glass03.jpeg",
+      "abroad": "domestic",
+      "areaCode": 2,
+      "area": "",
+      "country": "日本",
+      "prefecture": "oki",
+      "city": "沖縄",
+      "tourName": "吹きガラス体験!海の見える工房で世界に一つのグラス作り！！",
+      "price": 6000,
+      "description": "海を眺めながら、世界に一つのオリジナル作品をつくってみませんか？",
+      "meetingPlace": "",
+      "times": 4,
+      "minPeople": 2,
+      "content1": "見学席もしっかり屋根付きなので雨の日でもご安心下さい。",
+      "content2": "暗闇で光る蓄光グラスもおすすめ♪",
+      "content3": "初心者・お子様連れも大歓迎◎",
+      "recommend": true
+    },
+    {
+      "id": 26,
+      "img1": "/images/okinawa/dive/dive01.jpeg",
+      "img2": "/images/okinawa/dive/dive02.jpeg",
+      "img3": "/images/okinawa/dive/dive03.jpeg",
+      "abroad": "domestic",
+      "areaCode": 2,
+      "area": "",
+      "country": "日本",
+      "prefecture": "oki",
+      "city": "沖縄",
+      "tourName": "【青の洞窟】ダイビング体験ツアー！",
+      "price": 6000,
+      "description": "経験年数5年以上のスタッフが、安全で楽しいツアーをお約束します!",
+      "meetingPlace": "",
+      "times": 4,
+      "minPeople": 2,
+      "content1": "他のお客様に気を使う事なく1グループ専任のガイドが丁寧にご案内します。",
+      "content2": "お客様のスマートフォンにデータでお送り♪素敵な海の思い出をSNSで自慢できます。",
+      "content3": "ダイビング一流メーカーSpro,Gullを中心に安全で楽しいダイビンクをご案内。",
       "recommend": true
     },
     {
@@ -611,7 +655,7 @@
       "tourName": "フィリピンのローカルフードツアー",
       "price": 2000,
       "description": "安くて美味しい、ローカルフードを回りましょう",
-      "meetingPlace": "フィリピン　マニラ空港",
+      "meetingPlace": "フィリピン マニラ空港",
       "times": 4,
       "minPeople": 2,
       "content1": "フィリピンバーベキュー",
@@ -620,6 +664,7 @@
       "recommend": true
     },
     {
+
       "id": 52,
       "img1": "/images/Taiwan/Taipei/kyuhun.jpeg",
       "img2": "/images/Taiwan/Taipei/tea_kyuhun.jpeg",
@@ -824,6 +869,97 @@
       "content1": "送迎付き",
       "content2": "日本語ガイド",
       "content3": "ビュッフェ式ディナー",
+
+      "id": 58,
+      "img1": "/images/south_america/samba/samba01.jpeg",
+      "img2": "/images/south_america/samba/samba02.jpeg",
+      "img3": "/images/south_america/samba/samba03.jpeg",
+      "abroad": "abroad",
+      "areaCode": "southame",
+      "area": "南米",
+      "country": "ブラジル",
+      "countryCode": "bra",
+      "cityCode": "rio",
+      "city": "リオ・デ・ジャネイロ",
+      "tourName": "本場サンバショー鑑賞!「GINGA TROPICAL」",
+      "price": 9000,
+      "description": "レブロン劇場で開催されているGINGA TROPICALのサンバショーを見に行こう！",
+      "meetingPlace": "",
+      "times": 2,
+      "minPeople": 2,
+      "content1": "当日の渋滞状況により最大１時間ほど遅くなる可能性もございます",
+      "content2": "予告無く会場が変更となる場合がございますので、予めご了承下さい。",
+      "content3": "夕食会場でお飲み物を飲まれる場合は、現地にて各自にて代金をお支払い下さい。",
+      "recommend": true
+    },
+    {
+      "id": 59,
+      "img1": "/images/south_america/rio_city/rio_city01.jpeg",
+      "img2": "/images/south_america/rio_city/rio_city02.jpeg",
+      "img3": "/images/south_america/rio_city/rio_city03.jpeg",
+      "abroad": "abroad",
+      "areaCode": "southame",
+      "area": "南米",
+      "country": "ブラジル",
+      "countryCode": "bra",
+      "cityCode": "rio",
+      "city": "リオ・デ・ジャネイロ",
+      "tourName": "【日本語ガイド】リオデジャネイロ半日ツアー!",
+      "price": 14000,
+      "description": "短時間でも大満足!世界遺産,山と海との間のカリオカの景観群",
+      "meetingPlace": "",
+      "times": 2,
+      "minPeople": 2,
+      "content1": "リオデジャネイロの見所をぎゅぎゅっと詰めたツアーです。",
+      "content2": "日本語ガイドで安心!",
+      "content3": "場料も込みですので、ご自身にてのお手配の必要がなく大変便利です。",
+      "recommend": true
+    },
+    {
+      "id": 61,
+      "img1": "/images/south_america/iguazu_fall/iguazu01.jpeg",
+      "img2": "/images/south_america/iguazu_fall/iguazu02.jpeg",
+      "img3": "/images/south_america/iguazu_fall/iguazu03.jpeg",
+      "abroad": "abroad",
+      "areaCode": "southame",
+      "area": "南米",
+      "country": "ブラジル",
+      "countryCode": "bra",
+      "cityCode": "braziria",
+      "city": "ブラジリア",
+      "tourName": "イグアスの滝を上空から見よう!【パノラマヘリコプターフライト】",
+      "price": 24000,
+      "description": "",
+      "meetingPlace": "",
+      "times": 2,
+      "minPeople": 2,
+      "content1": "イグアスの滝のパノラマヘリコプターツアー",
+      "content2": "経験豊富なパイロットが最高の時間をお届けします！",
+      "content3": "ホテルへの無料送迎サービス付き",
+      "recommend": true
+    },
+    {
+      "id": 62,
+      "img1": "/images/south_america/lencois/lencois01.jpeg",
+      "img2": "/images/south_america/lencois/lencois02.jpeg",
+      "img3": "/images/south_america/lencois/lencois03.jpeg",
+      "abroad": "abroad",
+      "areaCode": "southame",
+      "area": "南米",
+      "country": "ブラジル",
+      "countryCode": "bra",
+      "cityCode": "braziria",
+      "city": "ブラジリア",
+      "tourName": "絶景レンソイス砂丘日帰りツアー",
+      "price": 14000,
+      "description": "お得にレンソイス砂丘観光プランはこちら!!",
+      "meetingPlace": "",
+      "times": 2,
+      "minPeople": 2,
+      "content1": "ラグーンで泳ぐことが出来ますので水着をお持ち下さい。",
+      "content2": "現地は非常に日差しが強いので、日焼け止めやサングラスは必須です。",
+      "content3": "英語ガイドでのご案内となりますので予めご了承下さい。",
+
       "recommend": true
     },
     {
@@ -967,7 +1103,7 @@
     {
       "id": 73,
       "img1": "/images/spain/mar/bal/saku01.jpg",
-      "img2": "/images/spain/mar/bal/saku02.jpeg",
+      "img2": "/images/spain/mar/bal/saku02.jpg",
       "img3": "/images/spain/mar/bal/saku03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
@@ -1034,24 +1170,27 @@
       "recommend": true
     }
   ],
-  "inCarts": [ {
-    "tours": [
-      {
-        "id": 8,
-        "tourDate": "2022-12-28",
-        "startTime": 13,
-        "img1": "/images/milan/domo/domo01.jpg",
-        "tourName": "ドゥオーモ（ミラノ大聖堂）＆テラス ガイド付きツアー",
-        "description": "ミラノ大聖堂を少人数ツアーまたはプライベートツアーで見学しましょう。優先入場口からの入場とテラスへのアクセスが含まれます。",
-        "numberOfPeople": 6,
-        "price": "4,000",
-        "total": "24,000"
-      }
-    ],
-    "userId": 4,
-    "id": 4
-  }
-],
-"orders": [
-]
+
+  "inCarts": [
+    {
+      "tours": [
+        {
+          "id": 8,
+          "tourDate": "2022-12-28",
+          "startTime": 13,
+          "img1": "/images/milan/domo/domo01.jpg",
+          "tourName": "ドゥオーモ（ミラノ大聖堂）＆テラス ガイド付きツアー",
+          "description": "ミラノ大聖堂を少人数ツアーまたはプライベートツアーで見学しましょう。優先入場口からの入場とテラスへのアクセスが含まれます。",
+          "numberOfPeople": 6,
+          "price": "4,000",
+          "total": "24,000"
+        }
+      ],
+      "userId": 4,
+      "id": 4
+    }
+  ],
+  "orders": [
+  ]
 }
+
