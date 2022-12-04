@@ -1,8 +1,10 @@
+import styles from "../styles/tripdetail.module.css";
+
 export function TripdetailActivity({tour}) {
     return (
-      <div>
+      <div className={styles.activity}>
         <h2>アクティビティ概要</h2>
-        <ul>
+        <ul className={styles.detail_list}>
           <li>無料キャンセル(ご出発日三日目まで)</li>
           <li>今すぐ予約＆後で支払う</li>
           <li>所要時間：{tour.times}時間</li>

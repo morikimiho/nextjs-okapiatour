@@ -5,7 +5,7 @@ export function TripdetailAttention(){
 return  (
     <div className={styles.attention}>
     <h3>注意事項</h3>
-    <ul>
+    <ul className={styles.detail_list}>
       <li>
         ランチは含まれておりません。(含まれるものに記載ある場合はランチ含む)
       </li>
@@ -16,7 +16,6 @@ return  (
       </li>
     </ul>
   </div>
-
 )
 
 }
