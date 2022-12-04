@@ -5,7 +5,7 @@ export function TripdetailAttention(){
 return  (
     <div className={styles.attention}>
     <h3>注意事項</h3>
-    <ul>
+    <ul className={styles.detail_list}>
       <li>表示価格は全て税込表示です。</li>
       <li>集合場所までは各自でお越しください。</li>
       <li>所要時間は交通渋滞などにより変更する可能性がございます。</li>
@@ -14,7 +14,6 @@ return  (
       </li>
     </ul>
   </div>
-
 )
 
 }
