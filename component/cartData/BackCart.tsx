@@ -1,23 +1,23 @@
-import Link from "next/link";
-import Head from "next/head";
-import Layout from "../../component/layout";
 import useSWR from "swr";
-import styles from "../../styles/cart.module.css";
-import { Cartlist } from "../../component/CartList/cartlist";
-import { useEffect, useState } from "react";
-import Styles from "../../styles/cartlist.module.css";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { CartItems } from "./CartItems";
+import { Tour } from "../../types/types";
 
+type Props = {
+    loginId: string;
+    amount:number;
+    setAmount:Dispatch<SetStateAction<number>>;
+};
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
-export function BackCart({loginId, amount, setAmount}) {
+export function BackCart({loginId, amount, setAmount}:Props) {
 
   const { data, error } = useSWR(
     `http://localhost:8000/inCarts?userId=${loginId}`,
     fetcher
   );
-  const [tours, setTours] = useState([]);
+  const [tours, setTours] = useState<Tour[]>([]);
 
   useEffect(() => {
     if (!data) return;

@@ -1,13 +1,19 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../../component/layout";
-import useSWR from "swr";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
+import { Dispatch, SetStateAction } from "react";
 
+type Props = {
+    tours:[];
+    amount:number;
+    setAmount: Dispatch<SetStateAction<number>>;
+    deleteHandler:Function;
+}
 
-export function CartItems({tours,amount,setAmount,deleteHandler}) {
+export function CartItems({tours,amount,setAmount,deleteHandler}:Props) {
 
 
   return (
