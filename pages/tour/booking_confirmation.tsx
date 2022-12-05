@@ -46,25 +46,10 @@ export default function BookingConfirmation() {
           <p className={styles.bookingC_text}>
             現在ご予約いただいている内容の確認が可能です。
           </p>
-
-          {userData.map((tour: any) => {
-            return (
-              <>
-                <p>日程：{tour.tourDate}</p>
-
-                <Image
-                  src={tour.img1}
-                  width={180}
-                  height={130}
-                  alt="ツアー画像"
-                />
-
-                <ul>
-                  <li>{tour.tourName}</li>
-                  <li>人数：{tour.numberOfPeople}</li>
-                </ul>
-              </>
-            );
+                )
+              })}
+            </div>
+            )
           })}
         </main>
       </Layout>
