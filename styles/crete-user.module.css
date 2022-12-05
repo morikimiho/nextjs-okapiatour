@@ -175,17 +175,6 @@
   cursor: pointer;
 }
 
-.form_required {
-  position: relative;
-}
-.form_required::after {
-  position: absolute;
-  content: "*";
-  color: #f84f4f;
-  left: 0;
-  top: 0;
-}
-
 .error_message {
   color: #f63131;
   text-align: center;
