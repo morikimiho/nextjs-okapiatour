@@ -19,6 +19,10 @@ import {
 } from "../../component/serchPage/sertchNorthAmerica";
 import Link from "next/link";
 import { Australia, OceCountry } from "../../component/serchPage/oceania";
+import {
+  SouthameCountry,Bra
+} from "../../component/serchPage/southame";
+import { Africa } from "../../component/serchPage/africa";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
@@ -28,9 +32,9 @@ const SearchPage = () => {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   type Prefecture = "osk" | "";
   const [prefecture, setPrefecture] = useState<Prefecture>("");
-  type Area = "eu" | "asi" | "northame" | "oce" | "";
+  type Area = "eu" | "asi" | "northame" | "oce" | "southame"|"af"|"";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";
+  type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"bra"|"";
   const [country, setCountry] = useState<Country>("");
   type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
   const [city, setCity] = useState<City>("");
@@ -135,6 +139,19 @@ const SearchPage = () => {
                     onCountryChanege={onCountryChange}
                   />
                 )}
+                  {"southame" === areaCode && (
+                  <SouthameCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
+                )}
+
+{"af" === areaCode && (
+                  <Africa
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
+                )}
 
 
                 {"fr" === country && <France city={city} setCity={setCity} />}
@@ -148,6 +165,9 @@ const SearchPage = () => {
                 )}
                  {"aus" === country && (
                   <Australia city={city} setCity={setCity} />
+                )}
+                 {"bra" === country && (
+                  <Bra city={city} setCity={setCity} />
                 )}
                 
 
@@ -271,6 +291,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
           <option value="northame">北米</option>
           <option value="southame">南米</option>
           <option value="oce">オセアニア</option>
+          <option value="af">アフリカ</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
