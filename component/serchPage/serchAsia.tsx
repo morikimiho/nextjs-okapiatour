@@ -39,7 +39,7 @@ export const Korea = ({ city, setCity }) => {
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
             <option value="seoul">ソウル</option>
-            <option value="busan">釜山</option>
+            
           </select>
         </div>
       </div>
@@ -60,8 +60,10 @@ export const Taiwan = ({ setCity, city }) => {
             <label htmlFor="">都市</label>
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
-            <option>台北</option>
-            <option>台中</option>
+          <option value=""></option>
+            <option value="taipei">台北</option>
+            <option value="taichu">台中</option>
+            <option value="tainan">台南</option>
           </select>
         </div>
       </div>
