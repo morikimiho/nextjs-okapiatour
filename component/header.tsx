@@ -44,6 +44,7 @@ export function Header() {
                     layout="fill"
                   />
                 </div>
+                <div className={styles.icon_name}>カート</div>
               </Link>
             </div>
 
@@ -51,7 +52,7 @@ export function Header() {
             {!loginName && (
               <div>
                 <Link href="/tour/login">
-                  <button className={styles.button}>ログイン</button>
+                  <button className={styles.button_login}>ログイン</button>
                 </Link>
               </div>
             )}
@@ -60,11 +61,31 @@ export function Header() {
             {loginName.length > 0 && (
               <>
                 <div className={styles.login_user}>
-                <Link href="/tour/booking_confirmation">
-                  <div>{loginId}</div>
-                  <div>{loginName}さん</div>
+                  <Link href="/tour/booking_confirmation">
+                    <div className={styles.cart_size}>
+                      <Image
+                        src="/images/user.png"
+                        alt="ロゴ"
+                        layout="fill"
+                      />
+                    </div>
+                    <div className={styles.icon_name}>{loginName}さん</div>
                   </Link>
                 </div>
+                <div className={styles.login_user}>
+                  <Link href="/tour/booking_confirmation">
+                    <div className={styles.cart_size}>
+                      <Image
+                        src="/images/booking.png"
+                        alt="ロゴ"
+                        layout="fill"
+                      />
+                    </div>
+                    <div className={styles.icon_name}>予約確認</div>
+                  </Link>
+                </div>
+
+
                 <button className={styles.button} onClick={logOut}>
                   ログアウト
                 </button>
@@ -74,18 +95,26 @@ export function Header() {
         </div>
       </div>
 
+
       {loginName.length > 0 && (
         <div className={styles.res_login_user}>
           <div className={styles.res_flex}>
             <div className={styles.res_icon}>
-              <Image src="/images/res_user_pin.png" alt="ロゴ" layout="fill" />
+              <Image src="/images/user.png" alt="ロゴ" layout="fill" />
             </div>
             <Link href="/tour/booking_confirmation">
-              <div>ようこそ！{loginName}さん</div>
+              <div>{loginName}さん</div>
+            </Link>
+
+            <div className={styles.res_icon}>
+              <Image src="/images/booking.png" alt="ロゴ" layout="fill" />
+            </div>
+            <Link href="/tour/booking_confirmation">
+              <div>予約の確認はこちら</div>
             </Link>
           </div>
         </div>
       )}
     </>
   );
-}
+}     
