@@ -30,23 +30,42 @@
   }
 }
 .header .button {
-  margin: 9px 10px;
+  margin: 15px 10px;
   cursor: pointer;
-  border-radius: 99px;
-  padding: 7px;
+  border-radius: 11px;
+  padding: 8px;
   font-size: 8px;
   font-weight: 700;
-  color: #ffe4cb;
+  color: #fff3e9;
+  background-color: #9a2727;
+  border: none;
+  position: relative;
+  bottom: 4px;
+}
+.header .button_login {
+  margin: 12px 10px;
+  cursor: pointer;
+  border-radius: 11px;
+  padding: 12px 8px;
+  font-size: 8px;
+  font-weight: 700;
+  color: #fff3e9;
   background-color: #9a2727;
   border: none;
 }
 .header .cart {
   margin: 10px;
+  font-size: 12px;
 }
-.header .cart .cart_size {
+.header .cart_size {
   position: relative;
   width: 30px;
   height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.header .icon_name {
+  width: 100%;
 }
 .header .tourTitle {
   font-family: "Great Vibes", cursive;
@@ -75,6 +94,10 @@
   }
 }
 
+.login_user {
+  font-size: 12px;
+  margin: 10px;
+}
 @media (max-width: 1199px) {
   .login_user {
     display: none;
@@ -88,17 +111,19 @@
   .res_login_user {
     display: block;
     height: 40px;
-    background: #ffe4cb;
+    background: #fff3e9;
     padding-top: 9px;
   }
 }
 .res_login_user .res_flex {
   display: flex;
   justify-content: center;
+  font-weight: 700;
 }
 .res_login_user .res_flex .res_icon {
   position: relative;
   width: 15px;
   height: 15px;
   margin-top: 4px;
+  margin: 4px 5px 0 12px;
 }

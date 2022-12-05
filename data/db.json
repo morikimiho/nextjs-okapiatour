@@ -1182,6 +1182,17 @@
           "numberOfPeople": 1,
           "price": 15000,
           "total": 15000
+        },
+        {
+          "id": 13,
+          "tourDate": "",
+          "startTime": "",
+          "img1": "/images/hokkaido/hokkaidohitsuji/hokkidohitsuji01.jpg",
+          "tourName": "羊ヶ丘展望台/小樽オルゴール堂",
+          "description": "クラーク博士像を見に行きます。オルゴールを思い出に持って帰りましょう！",
+          "numberOfPeople": 1,
+          "price": 6000,
+          "total": 6000
         }
       ],
       "userId": 4,

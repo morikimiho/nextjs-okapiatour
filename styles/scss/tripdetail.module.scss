@@ -73,7 +73,7 @@ margin-left: 12vw;
     border-radius: 20px;
     padding: 20px;
     margin: 10px;
-    width: calc(100% - 478px);
+    width: calc(100% - 460px);
     background: pub.$main_color;
     @include pub.mq("res") {
         width: 100%;
@@ -179,7 +179,7 @@ margin-left: 12vw;
     border-image-slice: 20;
     border-image-repeat: round;
     border-style: solid;
-    border-width: 20px;
+    border-width: 22px;
     @include pub.mq("res") {
         width: 77vw;
         height: 28vh;
