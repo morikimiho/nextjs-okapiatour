@@ -56,7 +56,7 @@ export function BackCart({loginId, amount, setAmount}:Props) {
 
   return (
     <>
-     <CartItems tours={tours} amount={amount} setAmount={setAmount} deleteHandler={deleteHandler}/>
+     <CartItems tours={tours} amount={amount} setAmount={setAmount} deleteHandler={deleteHandler} loginId={loginId}/>
     </>
   );
 }

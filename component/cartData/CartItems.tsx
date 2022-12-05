@@ -11,9 +11,10 @@ type Props = {
     amount:number;
     setAmount: Dispatch<SetStateAction<number>>;
     deleteHandler:Function;
+    loginId: string;
 }
 
-export function CartItems({tours,amount,setAmount,deleteHandler}:Props) {
+export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) {
 
 
   return (
@@ -39,11 +40,15 @@ export function CartItems({tours,amount,setAmount,deleteHandler}:Props) {
             <h2>合計：{Number(amount).toLocaleString()}円</h2>
             <div className={styles.buttonsubmit}>
               <div>
-                <Link href="http://localhost:3000/tour/pay">
+                {!loginId ? <Link href="http://localhost:3000/tour/login">
                   <button className={styles.paysubmit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
-                </Link>
+                </Link> : <Link href="http://localhost:3000/tour/pay">
+                <button className={styles.paysubmit} type="submit">
+                    お支払い情報の入力へ進む
+                  </button>
+                </Link>}
               </div>
               <div>
                 <Link href="http://localhost:3000/tour/search-page">
