@@ -15,7 +15,19 @@
   border-bottom: 3px solid #B0BEC5;
 }
 
-.bookingC_text {
-  padding: 15px 0 0 15px;
-  margin-top: 0;
+
+
+.flex{
+  display: flex;
+}
+
+.list{
+  list-style-type: none;
+  margin: 0;
+}
+
+.bookings{
+  border: 1px slategray dotted;
+  padding: 15px;
+  margin: 20px;
 }
