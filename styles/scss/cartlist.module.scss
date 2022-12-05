@@ -1,0 +1,98 @@
+@charset "UTF-8";
+@use "public" as pub;
+
+.flex {
+  display: flex;
+  @include pub.mq("res") {
+    display: block;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  line-height: 1.6;
+  @include pub.mq("res") {
+    padding: 0;
+  }
+}
+
+.cart_width {
+  max-width: 1300px;
+  justify-content: center;
+  margin: 50px auto;
+}
+
+.cartcontents {
+  border: 1px slategray dotted;
+  padding: 40px 120px;
+  margin-top: 20px;
+  @include pub.mq("res") {
+    padding: 0 20px;
+  }
+}
+
+.padding {
+  padding: 0;
+  margin-block-start: 0;
+}
+
+.each_tour {
+  margin: 30px 0;
+  .padding {
+    padding-bottom: 10px;
+  }
+}
+
+.tourinfo {
+  width: calc(858px - (180px + 142px));
+  @include pub.mq("res") {
+    width: 100%;
+    max-width: 600px;
+  }
+}
+
+.delete_count_total {
+  margin-left: 26px;
+  width: 142px;
+  margin-left: 20px;
+  @include pub.mq("res") {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+  }
+  .delete_button {
+      padding: 5px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow:3px 5px 17px 5px #DEDEDE;
+    color: pub.$highlight_color;
+    background-color: pub.$sub_color;
+    border: none;
+    transition: all 0.3s ease 0s;
+    &:hover{
+        position: relative;
+        transform: translate(2px, 2px);
+        box-shadow:none;
+    }
+    @include pub.mq("res") {
+      margin-right: 20px;
+    }
+}
+.cartlist_items {
+    display: block;
+    @include pub.mq("res") {
+        display: flex;
+    }
+      padding-top: 4px;
+    .total_value {
+      margin-top: 10px;
+      @include pub.mq("res") {
+        margin-top: 0;
+        margin-left: 20px;
+      }
+    }
+  }
+}

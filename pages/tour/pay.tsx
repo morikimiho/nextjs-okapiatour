@@ -96,7 +96,7 @@ export default function Pay() {
               cart.tours.map((tour) => {
                 return (
                   <>
-                    <h3>{tour.tourName};</h3>
+                    <h3>{tour.tourName}</h3>
                     <div className={styles.flex}>
                       <div>
                         <Image
@@ -140,15 +140,15 @@ export default function Pay() {
                 <input type="radio" id="03" name="pay" />
                 コンビニ支払い
               </div>
-              <Link href="/tour/booking_done">
                 <button
                   type="button"
                   className={styles.button}
                   onClick={onClick}
                 >
+              <Link href="/tour/booking_done">
                   決済する
-                </button>
               </Link>
+                </button>
             </form>
           </div>
         </div>

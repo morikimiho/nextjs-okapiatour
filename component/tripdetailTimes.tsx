@@ -1,18 +1,18 @@
-
+import styles from "../styles/tripdetail.module.css";
 export function TripdetailTimes({tour, setTourDate, setStartTime}){
 
     return (
         <div>
          
             <p>希望の日付を選択してください</p>
-              <input type="date" onChange ={(e) => setTourDate(e.target.value)}/>
+              <input type="date" className={styles.detail_form} onChange ={(e) => setTourDate(e.target.value)}/>
                        
             <div>
               <p>希望の時間帯を選択してください</p>
 
               <div>
                 {tour.times >= 7 && (
-                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form}  onChange={(e) => setStartTime(Number(e.target.value))}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
@@ -20,7 +20,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
                 )}
 
                 {tour.times < 7 && tour.times >= 3 && (
-                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form} onChange={(e) => setStartTime(Number(e.target.value))}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
@@ -31,7 +31,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
                 )}
 
                 {tour.times < 3 && (
-                  <select onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form} onChange={(e) => setStartTime(Number(e.target.value))}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>

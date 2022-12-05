@@ -1171,6 +1171,13 @@
   ],
   "inCarts": [
     {
+      "tours": [],
+      "userId": 4,
+      "id": 4
+    }
+  ],
+  "orders": [
+    {
       "tours": [
         {
           "id": 4,
@@ -1191,8 +1198,19 @@
           "tourName": "乗合 ゴンドラ ツアー ",
           "description": "ヴェネツィアの運河を運航するゴンドラの30分間ツアーです。幻想的なヴェネツィアの街の景観と美しい名所の数々を、水上からご覧いただけます。ゴンドラでしか味わえない、ヴェネツィアの魅力を堪能しましょう。。",
           "numberOfPeople": 6,
-          "price": 2000,
-          "total": 12000
+          "price": "4,000",
+          "total": "24,000"
+        },
+        {
+          "id": 1,
+          "tourDate": "",
+          "startTime": "",
+          "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+          "tourName": "モン サン ミッシェル 1日ツアー",
+          "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+          "numberOfPeople": 1,
+          "price": 17000,
+          "total": 17000
         },
         {
           "id": 7,
@@ -1416,8 +1434,9 @@
         }
       ],
       "userId": 4,
-      "id": 4
+      "rsNumber": "OkapiTour6l1e12cl8646",
+      "id": 9
     }
-  ],
-  "orders": []
+
+  ]
 }

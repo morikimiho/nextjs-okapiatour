@@ -175,32 +175,41 @@ export default function Tripdetail({
             )}
             <div className={styles.tour_tag}>{tour.country}</div>
           </div>
-
-          <h1>{tour.tourName} </h1>
+          <h1 className={styles.tour_title}><span>{tour.tourName}</span></h1>
           <TripdetailImage tour={tour} />
-          <p>{tour.description}</p>
-          <div className={styles.tripinfo}>
-            <TripdetailActivity tour={tour} />
-            <TripdetailContent tour={tour} />
-          </div>
-          <div className={styles.tripdetail}>
-            <div>
-              <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
-              <TripdetailTimes
-                tour={tour}
-                setTourDate={setTourDate}
-                setStartTime={setStartTime}
-              />
+          <p className={styles.tour_description}>{tour.description}</p>
+
+
+          <div className={styles.tour_detail_info}>
+
+           <div className={styles.tour_detail_info_items}>
+            <TripdetailActivity tour={tour} />  {/* // アクティビティ概要 */}
+            <TripdetailContent tour={tour} />   {/* // 含まれるもの */}
+           </div>
+
+
+
+            <div className={styles.tour_detail_info_items}> {/* // 人数 時間 時間 */}
+              <div className={styles.times}>
+                <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
+                <TripdetailTimes
+                  tour={tour}
+                  setTourDate={setTourDate}
+                  setStartTime={setStartTime}
+                />
+              </div>
+              <TripdetailAttention /> {/* // 注意事項 */}
             </div>
-            <TripdetailAttention />
-          </div>
-          <br />
-          <br />
-          <div className={styles.buttonposition}>
-            <button className={styles.button} onClick={PostData}>
-              カートに入れる
-            </button>
-          </div>
+
+
+
+            <div className={styles.button_position}>
+              <button className={styles.button} onClick={PostData}>
+                カートに入れる
+              </button>
+            </div>
+          </div>{/* tour_detail_info */}
+
         </main>
       </Layout>
     </>
