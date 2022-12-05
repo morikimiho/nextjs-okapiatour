@@ -12,7 +12,7 @@ export default function Cart() {
   
   return (
     <div>
-      {loginId ? <BackCart loginId={loginId} amount={amount} setAmount={setAmount}/> : <LocalCart amount={amount} setAmount={setAmount}/>}
+      {loginId ? <BackCart loginId={loginId} amount={amount} setAmount={setAmount}/> : <LocalCart amount={amount} setAmount={setAmount} loginId={loginId}/>}
     </div>
     );
 }

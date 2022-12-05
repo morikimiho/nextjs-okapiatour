@@ -5,9 +5,10 @@ import { CartItems } from "../cartData/CartItems";
 type Props = {
   amount: number;
   setAmount: Dispatch<SetStateAction<number>>;
+  loginId: string;
 };
 
-export function LocalCart({ amount, setAmount }: Props) {
+export function LocalCart({ amount, setAmount, loginId}: Props) {
   const [tours, setTours] = useState<Tour[]>([]);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export function LocalCart({ amount, setAmount }: Props) {
       setAmount={setAmount}
       deleteHandler={deleteHandler}
       amount={amount}
+      loginId={loginId}
     />
   );
 }
