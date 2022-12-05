@@ -22,7 +22,7 @@ import { Australia, OceCountry } from "../../component/serchPage/oceania";
 import {
   SouthameCountry,Bra
 } from "../../component/serchPage/southame";
-import { Africa } from "../../component/serchPage/africa";
+import { Africa,Egy } from "../../component/serchPage/africa";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
@@ -168,6 +168,10 @@ const SearchPage = () => {
                 )}
                  {"bra" === country && (
                   <Bra city={city} setCity={setCity} />
+                )}
+
+{"egy" === country && (
+                  <Egy city={city} setCity={setCity} />
                 )}
                 
 
