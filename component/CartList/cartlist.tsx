@@ -16,8 +16,6 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
   const [num, setNum] = useState(tour.numberOfPeople);
   const router = useRouter();
 
-
-
   const HandleNumChange = (e: { target: { value: any } }) => {
     const newNum = e.target.value;
     setNum(newNum);
@@ -27,7 +25,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
   return (
     <>
       <div className={Styles.each_tour}>
-        <h3 className={Styles.padding}>{tour.tourName}</h3><br />
+        <h3 className={Styles.padding}>{tour.tourName}</h3>
         <div key={tour.id} className={Styles.flex}>
           <Image src={tour.img1} width={180} height={130} alt="ツアー画像" />
           <div className={Styles.tourinfo}>
@@ -40,11 +38,18 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
           </div>
           <div className={Styles.delete_count_total}>
             <button
+              className={Styles.delete_button}
               type="submit"
-              onClick={(e)=>deleteHandler(tour.id)}
-            >削除</button>
-            <CartdetailCount num={num} HandleNumChange={HandleNumChange} />
-            小計：{Number(tour.price * num).toLocaleString()}円
+              onClick={(e) => deleteHandler(tour.id)}
+            >
+              削除
+            </button>
+            <div className={Styles.cartlist_items}>
+              <CartdetailCount num={num} HandleNumChange={HandleNumChange} />
+              <div className={Styles.total_value}>
+                小計：{Number(tour.price * num).toLocaleString()}円
+              </div>
+            </div>
           </div>
         </div>
       </div>
