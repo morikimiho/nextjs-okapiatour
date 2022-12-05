@@ -1009,8 +1009,8 @@
     },
     {
       "id": 70,
-      "img1": "/images/america/vegas/national/canyon01.jpg",
-      "img2": "/images/america/vegas/national/canyon02.jpg",
+      "img1": "/images/america/vegas/national/canyon01.jpeg",
+      "img2": "/images/america/vegas/national/canyon02.jpeg",
       "img3": "/images/america/vegas/national/canyon03.jpg",
       "abroad": "abroad",
       "areaCode": "northame",
@@ -1078,9 +1078,9 @@
     },
     {
       "id": 75,
-      "img1": "/images/france/mar/mona/mona01.jpg",
+      "img1": "/images/france/mar/mona/mona01.jpeg",
       "img2": "/images/france/mar/mona/mona02.jpeg",
-      "img3": "/images/france/mar/mona/mona03.jpeg",
+      "img3": "/images/france/mar/mona/mona03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1101,9 +1101,9 @@
     },
     {
       "id": 73,
-      "img1": "/images/spain/mar/bal/saku01.jpg",
-      "img2": "/images/spain/mar/bal/saku02.jpg",
-      "img3": "/images/spain/mar/bal/saku03.jpg",
+      "img1": "/images/spain/bal/saku/saku01.jpg",
+      "img2": "/images/spain/bal/saku/saku02.jpg",
+      "img3": "/images/spain/bal/saku/saku03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1124,9 +1124,9 @@
     },
     {
       "id": 74,
-      "img1": "/images/spain/mar/bal/guel01.jpg",
-      "img2": "/images/spain/mar/bal/guel02.jpg",
-      "img3": "/images/spain/mar/bal/guel03.jpg",
+      "img1": "/images/spain/bal/guel/guel01.jpg",
+      "img2": "/images/spain/bal/guel/guel02.jpg",
+      "img3": "/images/spain/bal/guel/guel03.jpeg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1173,72 +1173,20 @@
     {
       "tours": [
         {
-          "id": 2,
+          "id": 71,
           "tourDate": "",
           "startTime": "",
-          "img1": "/images/france/paris/loire/loire01.jpg",
-          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
-          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
+          "img1": "/images/america/vegas/casino/casino01.jpg",
+          "tourName": "カジノ体験ツアー",
+          "description": "初心者も安心。教えてもらいながカジノを楽しもう。",
           "numberOfPeople": 1,
-          "price": 15000,
-          "total": 15000
-        },
-        {
-          "id": 13,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/hokkaido/hokkaidohitsuji/hokkidohitsuji01.jpg",
-          "tourName": "羊ヶ丘展望台/小樽オルゴール堂",
-          "description": "クラーク博士像を見に行きます。オルゴールを思い出に持って帰りましょう！",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
+          "price": 12000,
+          "total": 12000
         }
       ],
       "userId": 4,
       "id": 4
     }
   ],
-  "orders": [
-    {
-      "tours": [
-        {
-          "id": 2,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/loire/loire01.jpg",
-          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
-          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
-          "numberOfPeople": 1,
-          "price": 15000,
-          "total": 15000
-        },
-        {
-          "id": 2,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/loire/loire01.jpg",
-          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
-          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
-          "numberOfPeople": 1,
-          "price": 15000,
-          "total": 15000
-        },
-        {
-          "id": 6,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/kyoto/kyoto01.jpg",
-          "tourName": "京都で着物とお茶体験",
-          "description": "着物を着て、お茶体験ができます。清水寺で写真撮影も可能です。",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        }
-      ],
-      "userId": 4,
-      "rsNumber": "OkapiTour1hae8i50p81i",
-      "id": 1
-    }
-  ]
+  "orders": []
 }
