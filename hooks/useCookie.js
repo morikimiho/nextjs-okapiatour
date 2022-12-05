@@ -34,7 +34,7 @@ const useCookie = () => {
       // console.log(cookieName);  //  user={"id":3,"name":"%E6%9C%AC%E7%94%B0"}
       try {
         const users = JSON.parse(cookieName.split("=")[1]);
-        console.log(users);
+        // console.log(users);
         setLoginId(users.id);
         setLoginName(decodeURI(users.name));
       } catch {
