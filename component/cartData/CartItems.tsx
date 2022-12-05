@@ -4,7 +4,6 @@ import Layout from "../../component/layout";
 import useSWR from "swr";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
-import { useEffect, useState } from "react";
 import Styles from "../../styles/cartlist.module.css";
 
 

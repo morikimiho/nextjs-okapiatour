@@ -10,7 +10,7 @@ type Props = {
   setAmount: Dispatch<SetStateAction<number>>;
 };
 
-export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
+export const Cartlist = ({ tour, setAmount, deleteHandler}: Props) => {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   const [num, setNum] = useState(tour.numberOfPeople);
@@ -24,9 +24,9 @@ export const Cartlist = ({ tour, setAmount, deleteHandler }: Props) => {
 
   return (
     <>
-      <div className={Styles.each_tour}>
+      <div className={Styles.each_tour} key={tour.id}>
         <h3 className={Styles.padding}>{tour.tourName}</h3>
-        <div key={tour.id} className={Styles.flex}>
+        <div className={Styles.flex}>
           <Image src={tour.img1} width={180} height={130} alt="ツアー画像" />
           <div className={Styles.tourinfo}>
             <ul className={Styles.list}>
