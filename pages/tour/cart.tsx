@@ -8,12 +8,6 @@ export default function Cart() {
   const loginId = cookie.loginId;
 
   return (
-    <>
-      if(!loginId){
-        <LocalCart />
-      } else {
-        <BackCart loginId={loginId} />
-      }
-    </>
+    <LocalCart />
     );
 }
