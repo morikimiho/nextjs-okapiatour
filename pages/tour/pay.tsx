@@ -5,41 +5,45 @@ import Link from "next/link";
 import Layout from "../../component/layout";
 import Head from "next/head";
 import Image from "next/image";
+import { Tour } from "../../types/types";
+import useSWR from "swr";
 
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   //文字列になっていた
+
   const [cart, setCart] = useState();
   const [amount, setAmount] = useState(0);
-
+  const fetcher = (resource: any, init: any) =>
+    fetch(resource, init).then((res) => res.json());
+  const { data, error } = useSWR(
+    `http://localhost:8000/inCarts?userId=${loginId}`,
+    fetcher
+  );
   useEffect(() => {
     if (loginId.length === 0) {
       return;
     }
-    fetch(`/api/inCarts?userId=${loginId}`)
-      .then((response) => response.json())
-      .then((deta) => {
-        //カート
-        const cartcontent = deta[0];
-        if (cartcontent) {
-          setCart(cartcontent);
+    //カート
+    const cartcontent = data[0];
+    if (cartcontent) {
+      setCart(cartcontent);
 
-          setAmount(
-            cartcontent.tours.reduce(
-              (
-                prev: number,
-                current: { price: number; numberOfPeople: number }
-              ) => current.price * current.numberOfPeople + prev,
-              0
-            )
-          );
-        }
-      });
-    //取れないことは想定しない
-    //next dev動いている時 catch
-    //mock-apiが起動していない時 res
-  }, [loginId]);
+      setAmount(
+        cartcontent.tours.reduce(
+          (prev: number, current: { price: number; numberOfPeople: number }) =>
+            current.price * current.numberOfPeople + prev,
+          0
+        )
+      );
+    }
+  }, [data]);
+
+  // エラーになった場合は一覧は表示できないのでここで終わり
+  if (error) return <div>failed to load</div>;
+  // データ取得が完了していないときはローディング画面
+  if (!data) return <div>loading...</div>;
 
   console.log(loginId);
   //   useEffect(() => {  }, [loginId]);
@@ -47,17 +51,14 @@ export default function Pay() {
     if (loginId.length === 0) {
       return;
     }
+    //cartの中身を取得し、ordersへ格納する。
     await fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
-        const cart=data[0]
+        const cart = data[0];
         // console.log(deta);
+
         let randomstring = require("randomstring");
-        
-        console.log("yo",randomstring.generate({
-          length: 12,
-          charset: 'alphabetic'
-        }));
         fetch("/api/orders", {
           method: "POST",
           headers: {
@@ -66,22 +67,25 @@ export default function Pay() {
           body: JSON.stringify({
             tours: cart.tours,
             userId: cart.userId,
-            rsNumber: "OkapiTour"+randomstring.generate({
-              length: 12,
-              charset: 'alphabetic123456890'
-            }),
+            rsNumber:
+              "OkapiTour" +
+              randomstring.generate({
+                length: 12,
+                charset: "alphabetic123456890",
+              }),
           }),
         });
       });
-
-    fetch(`/api/inCarts/${cart.id}`, {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ tours: [] }),
-    });
+    if (cart) {
+      fetch(`/api/inCarts/${cart.id}`, {
+        method: "PATCH",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tours: [] }),
+      });
+    }
   };
   return (
     <>
@@ -93,7 +97,7 @@ export default function Pay() {
           <h3 className={styles.title}>お支払いの内容を確認してください。</h3>
           <div className={styles.total}>
             {cart &&
-              cart.tours.map((tour) => {
+              cart.tours.map((tour: Tour) => {
                 return (
                   <>
                     <h3>{tour.tourName}</h3>
@@ -140,15 +144,9 @@ export default function Pay() {
                 <input type="radio" id="03" name="pay" />
                 コンビニ支払い
               </div>
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={onClick}
-                >
-              <Link href="/tour/booking_done">
-                  決済する
-              </Link>
-                </button>
+              <button type="button" className={styles.button} onClick={onClick}>
+                <Link href="/tour/booking_done">決済する</Link>
+              </button>
             </form>
           </div>
         </div>
@@ -156,32 +154,3 @@ export default function Pay() {
     </>
   );
 }
-
-// export function InputRange({onSubmit}) {
-//   return (
-//     <>
-//       <form onSubmit={onSubmit}>
-//         <div className={styles.radio}>
-//           <input type="radio" id="01" name="pay" />
-//           クレジットカード
-//         </div>
-//         <br />
-//         <div className={styles.radio}>
-//           <input type="radio" id="02" name="pay" />
-//           銀行振込
-//         </div>
-//         <br />
-//         <div className={styles.radio}>
-//           <input type="radio" id="03" name="pay" />
-//           コンビニ支払い
-//         </div>
-//         <Link href="/tour/booking_done">
-//             <button type="button" className={styles.button}>
-//             決済する
-//                   </button>
-//         </Link>
-//       </form>
-
-//     </>
-//   );
-// }

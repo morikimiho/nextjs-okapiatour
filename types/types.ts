@@ -40,6 +40,13 @@ type Tour = {
   tourDate?: string;
   startTime?: number;
   numberOfPeople?: number;
+  total:number;
 };
 
-export type { Users, Tour };
+type Abroad = "abroad" | "domestic" | "";
+type Prefecture = "osk" | "";
+type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
+type Country = | "fr" | "ita"| "ko"| "indo"| "ame"| "sp"| "taiwa"| "aus"| "phi"| "bra"| "egy"| "";
+type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
+
+export type { Users, Tour, Abroad, Prefecture, Area,Country,City };
