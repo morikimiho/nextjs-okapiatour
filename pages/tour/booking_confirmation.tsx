@@ -4,6 +4,7 @@ import Layout from "../../component/layout";
 import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Tour } from "../../types/types";
 
 
 export default function BookingConfirmation() {
@@ -49,12 +50,12 @@ export default function BookingConfirmation() {
             return(
             <div className={styles.bookings}>
               <h3>予約番号:{d.rsNumber}</h3>
-              {d.tours.map((tour)=>{
+              {d.tours.map((tour:Tour)=>{
                 return (
                   <div>
                     <h4>{tour.tourName}</h4>
                     <div className={styles.flex} >
-                      <Image src={tour.img1} width={150} height={100} />
+                      <Image src={tour.img1} width={150} height={100} alt="画像" />
                       <div>
                         <ul className={styles.list}>
                           <li>日程：{tour.tourDate}</li>
