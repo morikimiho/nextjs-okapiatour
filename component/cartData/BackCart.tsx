@@ -11,13 +11,12 @@ import { CartItems } from "./CartItems";
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
-export function BackCart({loginId}) {
+export function BackCart({loginId, amount, setAmount}) {
 
   const { data, error } = useSWR(
     `http://localhost:8000/inCarts?userId=${loginId}`,
     fetcher
   );
-  const [amount, setAmount] = useState(0);
   const [tours, setTours] = useState([]);
 
   useEffect(() => {

@@ -1180,13 +1180,17 @@
           "tourName": "カジノ体験ツアー",
           "description": "初心者も安心。教えてもらいながカジノを楽しもう。",
           "numberOfPeople": 1,
+
           "price": 12000,
           "total": 12000
+
         }
       ],
       "userId": 4,
       "id": 4
     }
   ],
+
   "orders": []
 }
+
