@@ -8,6 +8,9 @@ export default function Cart() {
   const loginId = cookie.loginId;
 
   return (
-    <LocalCart />
+    <div>{loginId ? <BackCart loginId={loginId} /> : <p>ローカルがありません。</p> }</div>
+
+    // <LocalCart loginId={loginId}
+    
     );
 }
