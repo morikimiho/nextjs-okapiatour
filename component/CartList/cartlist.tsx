@@ -4,10 +4,12 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
 import Styles from "../../styles/cartlist.module.css";
+import { Tour } from "../../types/types";
 
 type Props = {
-  tour: any;
+  tour:any;
   setAmount: Dispatch<SetStateAction<number>>;
+  deleteHandler: Function;
 };
 
 export const Cartlist = ({ tour, setAmount, deleteHandler}: Props) => {

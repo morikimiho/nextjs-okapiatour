@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Tour } from "../../types/types";
 import { CartItems } from "../cartData/CartItems";
 
 type Props = {
   amount: number;
-  setAmount: Function;
+  setAmount: Dispatch<SetStateAction<number>>;
 };
 
 export function LocalCart({ amount, setAmount }: Props) {

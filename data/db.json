@@ -103,7 +103,7 @@
     {
       "id": 3,
       "img1": "/images/france/paris/versailles/versailles01.jpg",
-      "img2":"/images/france/paris/versailles/versailles02.jpeg",
+      "img2": "/images/france/paris/versailles/versailles02.jpeg",
       "img3": "/images/france/paris/versailles/versailles03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
@@ -1173,24 +1173,20 @@
     {
       "tours": [
         {
-          "id": 71,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/america/vegas/casino/casino01.jpg",
-          "tourName": "カジノ体験ツアー",
-          "description": "初心者も安心。教えてもらいながカジノを楽しもう。",
-          "numberOfPeople": 1,
-
-          "price": 12000,
-          "total": 12000
-
+          "id": 1,
+          "tourDate": "2022-12-27",
+          "startTime": 10,
+          "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+          "tourName": "モン サン ミッシェル 1日ツアー",
+          "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+          "numberOfPeople": 6,
+          "price": 17000,
+          "total": 102000
         }
       ],
       "userId": 4,
       "id": 4
     }
   ],
-
   "orders": []
 }
-

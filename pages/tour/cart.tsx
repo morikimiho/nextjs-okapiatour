@@ -11,7 +11,8 @@ export default function Cart() {
   const [amount, setAmount] = useState(0);
   
   return (
-    // <div>{loginId ? <BackCart loginId={loginId} amount={amount} setAmount={setAmount}/> : <p>ローカルがありません。</p> }</div>
-      <LocalCart loginId={loginId} amount={amount} setAmount={setAmount}/>
+    <div>
+      {loginId ? <BackCart loginId={loginId} amount={amount} setAmount={setAmount}/> : <LocalCart amount={amount} setAmount={setAmount}/>}
+    </div>
     );
 }
