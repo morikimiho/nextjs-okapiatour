@@ -1182,17 +1182,6 @@
     },
     {
       "tours": [
-        {
-          "id": 1,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
-          "tourName": "モン サン ミッシェル 1日ツアー",
-          "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
-          "numberOfPeople": 1,
-          "price": 17000,
-          "total": 17000
-        }
       ],
       "userId": 3,
       "id": 3
