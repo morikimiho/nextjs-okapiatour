@@ -15,7 +15,7 @@ export const Africa = ({ onCountryChanege,country }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={country} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="egy">エジプト</option>
        
@@ -39,7 +39,7 @@ const changeHandler=(e)=>{
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="kairo">カイロ</option>
           </select>

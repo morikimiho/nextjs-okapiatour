@@ -15,7 +15,7 @@ export const SouthameCountry = ({ onCountryChanege,country }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={country} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="bra">ブラジル</option>
        
@@ -39,7 +39,7 @@ const changeHandler=(e)=>{
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="rio">リオデジャネイロ</option>
             <option value="braziria">ブラジリア</option>

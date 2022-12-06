@@ -76,10 +76,14 @@
   @include pub.mq("res") {
     margin-top: 20px;
     padding: 0 20px 20px 20px;
+    max-width: 660px;
+    margin: 20px auto 0;
   }
 }
 .booking_id {
     text-align: center;
+    font-size: 22px;
+    margin-top: 20px;
 }
 .booking_flex {
   display: flex;

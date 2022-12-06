@@ -1,3 +1,4 @@
+import Styles from "../../styles/cartlist.module.css";
 type Props = {
   num: number;
   HandleNumChange: any;
@@ -8,7 +9,7 @@ export const CartdetailCount = ({num, HandleNumChange}:Props) => {
     <>
       <div>
         <label htmlFor="">人数</label>
-        <select value={num} onChange= {HandleNumChange}>
+        <select className={Styles.cart_detail_count} value={num} onChange= {HandleNumChange}>
           <option value=""></option>
           <option value="1">1</option>
           <option value="2">2</option>

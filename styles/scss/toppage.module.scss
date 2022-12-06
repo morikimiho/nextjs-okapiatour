@@ -101,12 +101,33 @@
     width: inherit;
   }
   transition: all 0.3s ease 0s;
-  &:hover {
-    transform: scale(1.1);
-  }
+  position: relative;
+  &::after {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    width: 40%;
+    height: 20px;
+    background-image: linear-gradient(rgba(0 0 0 / 0) 70%, pub.$main_color 70%);
+    bottom: -20px; 
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    }
+    
+    &:hover {
+      transform: scale(1.1);
+      &::after {
+        visibility: visible;
+        bottom: -34px; /*アニメーションが止まる位置*/
+        opacity: 1;
+      }
+    }
 }
 .tour_title {
   font-weight: 700;
+  text-align: center;
 }
 
 .scr_top {
@@ -115,7 +136,15 @@
   bottom: 60px;
 }
 .scr_top_btn {
-  width: 30px;
-  height: 30px;
-  background: rgb(227, 87, 87);
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border: solid 5px pub.$dark_color;
+  background: pub.$main_color;
+  border-radius: 4px;
+  transition: all 0.3s ease 0s;
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+  }
 }

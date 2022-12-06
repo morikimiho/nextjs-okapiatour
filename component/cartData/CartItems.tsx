@@ -43,7 +43,7 @@ export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) 
                     お支払い情報の入力へ進む
                   </button>
                 </Link> : <Link href="http://localhost:3000/tour/pay">
-                <button className={styles.paysubmit} type="submit">
+                <button className={styles.submit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
                 </Link>}
