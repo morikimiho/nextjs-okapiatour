@@ -1,7 +1,8 @@
 import useSWR from "swr";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useReducer, useState } from "react";
 import { CartItems } from "./CartItems";
 import { Tour } from "../../types/types";
+import {useRouter} from "next/router";
 
 type Props = {
     loginId: string;
@@ -12,6 +13,7 @@ const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 export function BackCart({loginId, amount, setAmount}:Props) {
+  const router=useRouter();
 
   const { data, error } = useSWR(
     `http://localhost:8000/inCarts?userId=${loginId}`,
@@ -52,6 +54,9 @@ export function BackCart({loginId, amount, setAmount}:Props) {
         body: JSON.stringify({ tours: newTours }),
       });
     setTours(newTours);
+    
+    
+    router.reload();
   };
 
   return (
