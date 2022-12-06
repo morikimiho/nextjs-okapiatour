@@ -39,7 +39,7 @@ export default function Login() {
           const response =  fetch(
             `http://localhost:8000/users?mailAddress=${mailAddress}&password=${password}`
           );
-          const userdata =  (await response).json();
+          const userdata =  await (await response).json();
           const user = userdata[0];
           console.log(user);
           const id = user.id;
