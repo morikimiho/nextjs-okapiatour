@@ -142,7 +142,7 @@ const ScrTop = () => {
         }
       `}</style>
       <button onClick={scrollTop} className={styles.scr_top_btn}>
-        aa
+        <div className={styles.scr_top_bt}>＞</div>
       </button>
     </div>
   );

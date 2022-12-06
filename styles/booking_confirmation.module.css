@@ -50,7 +50,7 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
-  color: #fff3e9;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   transition: all 0.3s ease 0s;
@@ -72,7 +72,7 @@
 
 .bookings {
   border: solid 3px #FFC896;
-  background-color: #fff3e9;
+  background-color: #fff7ee;
   border-radius: 20px;
   margin-top: 40px;
   padding: 0 40px 40px 40px;
@@ -81,11 +81,15 @@
   .bookings {
     margin-top: 20px;
     padding: 0 20px 20px 20px;
+    max-width: 660px;
+    margin: 20px auto 0;
   }
 }
 
 .booking_id {
   text-align: center;
+  font-size: 22px;
+  margin-top: 20px;
 }
 
 .booking_flex {

@@ -48,7 +48,7 @@ export default function BookingDone() {
             <p>ご予約番号</p>
 
             <p className={styles.booking_RsNumber}>{rsNumber.rsNumber}</p>
-            <p>お問合せに必要な番号です。大切に保管してください。</p>
+            <p className={styles.booking_message}>お問合せに必要な番号です。大切に保管してください。</p>
         </div>
 
           <p className={styles.booking_message}>

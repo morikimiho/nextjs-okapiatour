@@ -79,3 +79,7 @@
 .booking_RsNumber {
   color: #f63131;
 }
+.booking_message {
+  margin: 20px 0;
+  padding: 0;
+}

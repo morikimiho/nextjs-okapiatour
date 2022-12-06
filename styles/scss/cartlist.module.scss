@@ -63,9 +63,10 @@
     width: 100%;
   }
   .delete_button {
-      padding: 5px 20px;
+    padding: 5px 20px;
     margin-bottom: 10px;
     cursor: pointer;
+    font-weight: 700;
     border-radius: 10px;
     box-shadow:3px 5px 17px 5px #DEDEDE;
     color: pub.$highlight_color;
@@ -98,3 +99,15 @@
 }
 
 
+
+// cart_detail_count
+.cart_detail_count {
+  border: solid 2px pub.$main_color;
+  border-radius: 10px;
+  width: 66px;
+  height: 30px;
+  margin-left: 3px;
+  position: relative;
+  bottom: 4px;
+  text-align: center;
+}
