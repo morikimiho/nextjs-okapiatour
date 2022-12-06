@@ -1,7 +1,8 @@
 import styles from "../../styles/scss/search-page.module.scss";
+import { City, Country } from "../../types/types";
 
 //海外→オセアニアを選んだ場合
-export const OceCountry = ({ onCountryChanege, country }) => {
+export const OceCountry = ({ onCountryChanege, country }:{onCountryChanege:Function,country:Country}) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value);
   };
@@ -25,7 +26,7 @@ export const OceCountry = ({ onCountryChanege, country }) => {
 };
 
 //海外→オセアニア→オーストラリアを選んだ場合
-export const Australia = ({ city, setCity }) => {
+export const Australia = ({ city, setCity }:{city:City,setCity:Function}) => {
   const changeHandler = (e) => {
     setCity(e.target.value);
   };
@@ -37,6 +38,7 @@ export const Australia = ({ city, setCity }) => {
             <label htmlFor="">都市</label>
           </div>
           <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
             <option value="cairns">ケアンズ</option>
             <option value="gold">ゴールドコースト</option>
           </select>

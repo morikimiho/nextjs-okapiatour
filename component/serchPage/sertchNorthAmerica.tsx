@@ -1,10 +1,11 @@
 
 import styles from "../../styles//scss/search-page.module.scss";
+import { City, Country } from "../../types/types";
 
 
 
 //海外→北米を選んだ場合
-export const NorthameCountry = ({ onCountryChanege,country }) => {
+export const NorthameCountry = ({ onCountryChanege,country }:{onCountryChanege:Function,country:Country}) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value);
   };
@@ -28,7 +29,7 @@ export const NorthameCountry = ({ onCountryChanege,country }) => {
 };
 
 //海外→北米→アメリカを選んだ場合
-export const Uni = ({city,setCity}) => {
+export const Uni = ({city,setCity}:{city:City,setCity:Function}) => {
 const changeHandler=(e)=>{
   setCity(e.target.value)
 }
@@ -40,6 +41,7 @@ const changeHandler=(e)=>{
             <label htmlFor="">都市</label>
           </div>
           <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
             <option value="vegas">ラスベガス</option>
             <option value="los">ロサンゼルス</option>
           </select>

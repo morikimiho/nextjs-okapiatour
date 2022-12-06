@@ -1,10 +1,11 @@
 
 import styles from "../../styles//scss/search-page.module.scss";
+import { City, Country } from "../../types/types";
 
 
 
 //海外→アフリカを選んだ場合
-export const Africa = ({ onCountryChanege,country }) => {
+export const Africa = ({ onCountryChanege,country }:{onCountryChanege:Function,country:Country}) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value);
   };
@@ -28,7 +29,7 @@ export const Africa = ({ onCountryChanege,country }) => {
 };
 
 //海外→北米→アメリカを選んだ場合
-export const Egy = ({city,setCity}) => {
+export const Egy = ({city,setCity}:{city:City,setCity:Function}) => {
 const changeHandler=(e)=>{
   setCity(e.target.value)
 }

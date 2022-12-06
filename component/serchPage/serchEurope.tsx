@@ -1,9 +1,10 @@
 import styles from "../../styles/scss/search-page.module.scss";
+import { City, Country } from "../../types/types";
 
 
 
 //海外→ヨーロッパを選んだ場合
-export const EuropeCountry = ({ onCountryChanege,country }) => {
+export const EuropeCountry = ({ onCountryChanege,country }:{onCountryChanege:Function,country:Country}) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value)
   };
@@ -28,7 +29,7 @@ export const EuropeCountry = ({ onCountryChanege,country }) => {
 };
 
 //海外→ヨーロッパ→フランスを選んだ場合
-export const France = ({city,setCity}) => {
+export const France = ({city,setCity}:{city:City,setCity:Function}) => {
   const changeHandler=(e)=>{
     setCity(e.target.value)
   }
@@ -40,6 +41,7 @@ export const France = ({city,setCity}) => {
             <label htmlFor="">都市</label>
           </div>
           <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
             <option value="pari">パリ</option>
             <option value="mar">マルセイユ</option>
           </select>
@@ -50,7 +52,7 @@ export const France = ({city,setCity}) => {
 };
 
 //海外→ヨーロッパ→フランスを選んだ場合
-export const Italy = ({city,setCity}) => {
+export const Italy = ({city,setCity}:{city:City,setCity:Function}) => {
   const changeHandler=(e)=>{
     setCity(e.target.value)
   }
@@ -73,7 +75,7 @@ export const Italy = ({city,setCity}) => {
 };
 
 //海外→ヨーロッパ→スペインを選んだ場合
-export const Spain = ({city,setCity}) => {
+export const Spain = ({city,setCity}:{city:City,setCity:Function}) => {
   const changeHandler=(e)=>{
     setCity(e.target.value)
   }
