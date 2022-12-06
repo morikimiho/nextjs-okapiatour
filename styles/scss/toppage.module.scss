@@ -44,14 +44,21 @@
   margin: 100px auto;
   max-width: 1100px;
   @include pub.mq("res") {
-
-}  
+  }
 }
 .areaPickUp {
   margin: 60px auto 15px;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.pick_title {
+  line-height: 1.6;
+  background-image: linear-gradient(rgba(0 0 0 / 0) 70%, pub.$main_color 70%);
+  width: fit-content;
+  font-style: italic;
 }
 
 .overseas {
@@ -64,7 +71,7 @@
     display: block;
     text-align: center;
     // margin: 0 20px 40px;
-  } 
+  }
 }
 
 .blockTourContent {
@@ -74,8 +81,8 @@
   @include pub.mq("res") {
     max-width: 400px;
     min-width: 330px;
-    margin: 0 auto 40px; 
-} 
+    margin: 0 auto 40px;
+  }
 }
 .top_image {
   position: relative;
@@ -88,7 +95,7 @@
 
 .overseas_images {
   position: relative;
-  width: 300px; 
+  width: 300px;
   height: 200px;
   @include pub.mq("res") {
     width: inherit;
@@ -100,4 +107,15 @@
 }
 .tour_title {
   font-weight: 700;
+}
+
+.scr_top {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+}
+.scr_top_btn {
+  width: 30px;
+  height: 30px;
+  background: rgb(227, 87, 87);
 }

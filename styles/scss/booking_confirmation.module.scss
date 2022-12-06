@@ -1,21 +1,109 @@
 @use "public" as pub;
 
 .bookingC_title {
-    padding-left: 50px;
-    margin: 20px;
-    @include pub.mq("res") {
-        font-size: 30px;
-        padding-left: 20px;
-    } 
+  padding-left: 50px;
+  margin: 0 20px 40px 20px;
+  @include pub.mq("res") {
+    font-size: 28px;
+    padding-left: 0px;
+  }
 }
 
 .bookingC_message {
-    padding: 0.1em 0.3em;
-	border-left: 10px solid pub.$sub_color;
-	border-bottom: 3px solid #B0BEC5;
+  padding: 0.1em 0.3em;
+  border-left: 10px solid pub.$sub_color;
+  border-bottom: 3px solid #b0bec5;
 }
 
 .bookingC_text {
-    padding: 15px 0 0 15px;
-    margin-top: 0;
+  padding: 15px 0 0 15px;
+  margin-top: 0;
+}
+.bookingC_ok {
+  @include pub.mq("res") {
+    font-size: 14px;
+  }
+}
+.bookingC_error {
+  margin-left: 16px;
+  margin-bottom: calc(100vh - 362px);
+  @include pub.mq("res") {
+    margin-bottom: calc(100vh - 358px);
+  }
+}
+
+.bookingC_btn {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30vh;
+  .bookingC_btn_search {
+    padding: 15px 40px;
+    border-radius: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 3px 5px 17px 5px #dedede;
+    color: pub.$highlight_color;
+    background-color: pub.$sub_color;
+    border: none;
+    transition: all 0.3s ease 0s;
+    @include pub.mq("res") {
+      font-size: 18px;
+      //   padding: 7px 20px;
+    }
+    &:hover {
+      position: relative;
+      transform: translate(2px, 2px);
+      box-shadow: none;
+    }
+  }
+}
+
+.dpn {
+  display: none;
+}
+
+// 予約があるときときUI/UX
+
+.bookings {
+  border: solid 3px pub.$main_color;
+  background-color: pub.$highlight_color;
+  border-radius: 20px;
+  margin-top: 40px;
+  padding: 0 40px 40px 40px;
+  @include pub.mq("res") {
+    margin-top: 20px;
+    padding: 0 20px 20px 20px;
+  }
+}
+.booking_id {
+    text-align: center;
+}
+.booking_flex {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  @include pub.mq("res") {
+    // display: block;
+    flex-wrap: wrap;
+  }
+}
+.booking_image {
+  position: relative;
+  width: 300px;
+  height: 200px;
+}
+.list {
+  width: 300px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.8;
+  @include pub.mq("res") {
+    line-height: 1.6;
+    margin-left: 10px;
+    margin-top: 10px;
+  } 
 }

@@ -14,7 +14,7 @@ export const EuropeCountry = ({ onCountryChanege,country }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={country} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={country} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="fr">フランス</option>
             <option value="ita">イタリア</option>
@@ -39,8 +39,7 @@ export const France = ({city,setCity}) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
-          <option value="">-</option>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
             <option value="pari">パリ</option>
             <option value="mar">マルセイユ</option>
           </select>
@@ -62,7 +61,7 @@ export const Italy = ({city,setCity}) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="milan">ミラノ</option>
             <option value="vene">ヴェネチア</option>
@@ -85,7 +84,7 @@ export const Spain = ({city,setCity}) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="bal">バルセロナ</option>
             <option value="san">サンセバスチャン</option>

@@ -12,7 +12,7 @@
   font-size: 16px;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
-  color: #ffe4cb;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   transition: all 0.3s ease 0s;
@@ -46,8 +46,10 @@
 @media (max-width: 1199px) {
   .buttonsubmit .submit {
     font-size: 14px;
-    padding: 10px 20px;
+    padding: 10px 0;
+    width: 200px;
     margin-top: 10px;
+    border-radius: 12px;
   }
 }
 .buttonsubmit .submit:hover {

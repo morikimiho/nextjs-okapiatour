@@ -13,9 +13,7 @@ type Props = {
     deleteHandler:Function;
     loginId: string;
 }
-
 export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) {
-
 
   return (
     <>
@@ -41,7 +39,7 @@ export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) 
             <div className={styles.buttonsubmit}>
               <div>
                 {!loginId ? <Link href="http://localhost:3000/tour/login">
-                  <button className={styles.paysubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
                 </Link> : <Link href="http://localhost:3000/tour/pay">
@@ -52,7 +50,7 @@ export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) 
               </div>
               <div>
                 <Link href="http://localhost:3000/tour/search-page">
-                  <button className={styles.searchsubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>
                 </Link>

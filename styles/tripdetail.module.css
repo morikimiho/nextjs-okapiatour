@@ -55,7 +55,7 @@
 
 .tour_detail_info_items {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 @media (max-width: 1199px) {
   .tour_detail_info_items {
@@ -67,7 +67,8 @@
   padding: 20px;
   margin: 10px;
   width: calc(100% - 460px);
-  background: #FFC896;
+  background: #fff7ee;
+  border: solid 5px #FFC896;
 }
 @media (max-width: 1199px) {
   .tour_detail_info_items .activity {
@@ -81,7 +82,8 @@
   padding: 20px;
   margin: 10px;
   width: calc(100% - 460px);
-  background: #FFC896;
+  background: #fff7ee;
+  border: solid 5px #FFC896;
 }
 @media (max-width: 1199px) {
   .tour_detail_info_items .times {
@@ -95,7 +97,8 @@
   padding: 20px;
   margin: 10px;
   width: 460px;
-  background: #FFC896;
+  background: #fff7ee;
+  border: solid 5px #FFC896;
 }
 @media (max-width: 1199px) {
   .tour_detail_info_items .tripcontent {
@@ -109,7 +112,8 @@
   padding: 20px;
   margin: 10px;
   width: 460px;
-  background: #FFC896;
+  background: #fff7ee;
+  border: solid 5px #FFC896;
 }
 @media (max-width: 1199px) {
   .tour_detail_info_items .attention {
@@ -127,6 +131,7 @@
   height: 30px;
   border-radius: 10px;
   text-align: center;
+  border: solid 2px #FFC896;
   margin: 10px 0;
   position: relative;
   left: 180px;
@@ -143,6 +148,11 @@
   padding-top: 80px;
   text-align: center;
 }
+@media (max-width: 1199px) {
+  .button_position {
+    padding-top: 40px;
+  }
+}
 .button_position .button {
   padding: 15px 40px;
   border-radius: 20px;
@@ -150,7 +160,7 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #dedede;
-  color: #ffe4cb;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   transition: all 0.3s ease 0s;
@@ -189,7 +199,7 @@
 @media (max-width: 1199px) {
   .tour_detail_images::after {
     width: 77vw;
-    height: 28vh;
+    height: 47vw;
   }
 }
 
@@ -206,7 +216,7 @@
 @media (max-width: 1199px) {
   .tour_detail_images_top {
     width: 50vw;
-    height: 30vh;
+    height: 50vw;
   }
 }
 
@@ -218,7 +228,7 @@
 @media (max-width: 1199px) {
   .tour_detail_images_sub {
     width: 30vw;
-    height: 15vh;
+    height: 25vw;
   }
 }
 

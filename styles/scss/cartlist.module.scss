@@ -74,7 +74,7 @@
     transition: all 0.3s ease 0s;
     &:hover{
         position: relative;
-        transform: translate(2px, 2px);
+        transform: translate(1px, 1px);
         box-shadow:none;
     }
     @include pub.mq("res") {
@@ -96,3 +96,5 @@
     }
   }
 }
+
+

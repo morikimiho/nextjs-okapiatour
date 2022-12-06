@@ -1,32 +1,121 @@
 .bookingC_title {
   padding-left: 50px;
-  margin: 20px;
+  margin: 0 20px 40px 20px;
 }
 @media (max-width: 1199px) {
   .bookingC_title {
-    font-size: 30px;
-    padding-left: 20px;
+    font-size: 28px;
+    padding-left: 0px;
   }
 }
 
 .bookingC_message {
   padding: 0.1em 0.3em;
   border-left: 10px solid #9a2727;
-  border-bottom: 3px solid #B0BEC5;
+  border-bottom: 3px solid #b0bec5;
 }
 
-.flex{
+.bookingC_text {
+  padding: 15px 0 0 15px;
+  margin-top: 0;
+}
+
+@media (max-width: 1199px) {
+  .bookingC_ok {
+    font-size: 14px;
+  }
+}
+
+.bookingC_error {
+  margin-left: 16px;
+  margin-bottom: calc(100vh - 362px);
+}
+@media (max-width: 1199px) {
+  .bookingC_error {
+    margin-bottom: calc(100vh - 358px);
+  }
+}
+
+.bookingC_btn {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30vh;
+}
+.bookingC_btn .bookingC_btn_search {
+  padding: 15px 40px;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #dedede;
+  color: #fff3e9;
+  background-color: #9a2727;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+@media (max-width: 1199px) {
+  .bookingC_btn .bookingC_btn_search {
+    font-size: 18px;
+  }
+}
+.bookingC_btn .bookingC_btn_search:hover {
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.dpn {
+  display: none;
+}
+
+.bookings {
+  border: solid 3px #FFC896;
+  background-color: #fff3e9;
+  border-radius: 20px;
+  margin-top: 40px;
+  padding: 0 40px 40px 40px;
+}
+@media (max-width: 1199px) {
+  .bookings {
+    margin-top: 20px;
+    padding: 0 20px 20px 20px;
+  }
+}
+
+.booking_id {
+  text-align: center;
+}
+
+.booking_flex {
   display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+@media (max-width: 1199px) {
+  .booking_flex {
+    flex-wrap: wrap;
+  }
 }
 
-.list{
-  list-style-type: none;
-  margin: 0;
+.booking_image {
+  position: relative;
+  width: 300px;
+  height: 200px;
 }
 
-.bookings{
-  border: 1px slategray dotted;
-  padding: 15px;
-  margin: 20px;
+.list {
+  width: 300px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.8;
 }
-
+@media (max-width: 1199px) {
+  .list {
+    line-height: 1.6;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+}

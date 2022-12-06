@@ -8,6 +8,7 @@ import "@splidejs/splide/css";
 import { GetStaticProps } from "next";
 import { getActiveTrips } from "../../service/trip";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home({ tours }) {
   return (
@@ -39,7 +40,7 @@ export default function Home({ tours }) {
             width={32}
             height={32}
           />
-          &nbsp;&nbsp;&nbsp;海外・おすすめツアーPickUp!
+          <span className={styles.pick_title}>海外・おすすめツアーPickUp!</span>
         </div>
         <div className={styles.overseas}>
           {tours.map(
@@ -78,7 +79,7 @@ export default function Home({ tours }) {
             width={32}
             height={32}
           />
-          &nbsp;&nbsp;&nbsp;国内・おすすめツアーPickUp!
+          <span className={styles.pick_title}>国内・おすすめツアーPickUp!</span>
         </div>
         <div className={styles.overseas}>
           {tours.map(
@@ -110,10 +111,42 @@ export default function Home({ tours }) {
           )}
         </div>
       </div>
+      <ScrTop />
       <Footer />
     </>
   );
 }
+const ScrTop = () => {
+  const [src200, setScr200] = useState(false);
+  const PAGE_Y_OFFSET = 40;
+  function uni () {
+    if (window.pageYOffset > PAGE_Y_OFFSET) {
+      setScr200(true)
+    }
+  }
+
+  const scrollTop = () => {   
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <div className={src200 ? "scr_top" : ""}>
+      <style jsx>{`
+        .scr_top {
+          position: fixed;
+          right: 20px;
+          bottom: 60px;
+        }
+      `}</style>
+      <button onClick={scrollTop} className={styles.scr_top_btn}>
+        aa
+      </button>
+    </div>
+  );
+};
 
 const Slider = () => {
   return (

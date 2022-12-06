@@ -12,7 +12,7 @@ export const OceCountry = ({ onCountryChanege, country }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={country} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="aus">オーストラリア</option>
  
@@ -36,7 +36,7 @@ export const Australia = ({ city, setCity }) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
             <option value="cairns">ケアンズ</option>
             <option value="gold">ゴールドコースト</option>
           </select>

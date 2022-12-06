@@ -52,7 +52,7 @@ margin-left: 12vw;
 }
 .tour_detail_info_items {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   @include pub.mq("res") {
     display: block;
   }
@@ -62,7 +62,8 @@ margin-left: 12vw;
     padding: 20px;
     margin: 10px;
     width: calc(100% - 460px);
-    background: pub.$main_color;
+    background: pub.$highlight_color;
+    border: solid 5px pub.$main_color;
     @include pub.mq("res") {
       width: 100%;
       max-width: 340px;
@@ -74,7 +75,8 @@ margin-left: 12vw;
     padding: 20px;
     margin: 10px;
     width: calc(100% - 460px);
-    background: pub.$main_color;
+    background: pub.$highlight_color;
+    border: solid 5px pub.$main_color;
     @include pub.mq("res") {
         width: 100%;
         max-width: 340px;
@@ -86,7 +88,8 @@ margin-left: 12vw;
     padding: 20px;
     margin: 10px;
     width: 460px;
-    background: pub.$main_color;
+    background: pub.$highlight_color;
+    border: solid 5px pub.$main_color;
     @include pub.mq("res") {
         width: 100%;
         max-width: 340px;
@@ -98,7 +101,8 @@ margin-left: 12vw;
     padding: 20px;
     margin: 10px;
     width: 460px;
-    background: pub.$main_color;
+    background: pub.$highlight_color;
+    border: solid 5px pub.$main_color;
     @include pub.mq("res") {
         width: 100%;
         max-width: 340px;
@@ -114,7 +118,7 @@ margin-left: 12vw;
     height: 30px;
     border-radius: 10px;
     text-align: center;
-    // margin: 10px 180px 10px;
+    border: solid 2px pub.$main_color;
     margin: 10px 0;
     position: relative;
     left: 180px;
@@ -129,6 +133,9 @@ margin-left: 12vw;
 .button_position {
   padding-top: 80px;
   text-align: center;
+  @include pub.mq("res") {
+    padding-top: 40px;
+  }
   .button {
     padding: 15px 40px;
     border-radius: 20px;
@@ -182,7 +189,7 @@ margin-left: 12vw;
     border-width: 22px;
     @include pub.mq("res") {
         width: 77vw;
-        height: 28vh;
+        height: 47vw;
     }
   }
 }
@@ -197,7 +204,7 @@ margin-left: 12vw;
   height: 400px;
   @include pub.mq("res") {
       width: 50vw;
-      height: 30vh;
+      height: 50vw;
     }
 }
 
@@ -207,6 +214,6 @@ margin-left: 12vw;
     height: 200px;
     @include pub.mq("res") {
         width: 30vw;
-        height: 15vh;
+        height: 25vw;
     }
 }
