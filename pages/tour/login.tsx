@@ -120,10 +120,10 @@ export default function Login() {
           </div>
         </div>
         {/* container */}
-
+        <Link href="create-user">
         <button type="button" className={styles.reg_button}>
-          <Link href="create-user">新規登録はこちら</Link>
-        </button>
+        新規登録はこちら
+        </button></Link>
       </Layout>
     </>
   );

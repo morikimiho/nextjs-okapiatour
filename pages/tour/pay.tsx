@@ -112,9 +112,9 @@ export default function Pay() {
                       </div>
                       <div>
                         <ul className={styles.list}>
-                          <li>日程:{tour.tourDate}</li>
-                          <li>人数：{tour.numberOfPeople}</li>
-                          <li>小計:{tour.total.toLocaleString()}円</li>
+                          <li>日程：{tour.tourDate}</li>
+                          <li>人数：{tour.numberOfPeople}人</li>
+                          <li>小計：{tour.total.toLocaleString()}円</li>
                         </ul>
                       </div>
                     </div>

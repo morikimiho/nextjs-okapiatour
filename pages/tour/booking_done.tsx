@@ -56,11 +56,12 @@ export default function BookingDone() {
           </p>
 
           <div className={styles.booking_button}>
+          <Link href="http://localhost:3000/tour/booking_confirmation">
             <button className={styles.booking_btn} type="submit">
-              <Link href="http://localhost:3000/tour/booking_confirmation">
+             
                 予約確認へ
-              </Link>
-            </button>
+             
+            </button> </Link>
           </div>
 
           <div className={styles.booking_note}>
