@@ -221,3 +221,8 @@
     height: 15vh;
   }
 }
+
+.valid {
+  color: red;
+  font-size: 12px;
+}

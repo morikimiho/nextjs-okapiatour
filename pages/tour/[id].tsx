@@ -57,9 +57,14 @@ export default function Tripdetail({
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const router = useRouter();
   const cookie = useCookie();
+  const [dateError, setDateError] = useState(false);
+  const [timeError, setTimeError] = useState(false);
 
-  async function PostData() {
-    // <ErrorCheck tour={tour} setTourDate={setTourDate}/>
+  async function PostData(e: { preventDefault: () => any; }) {
+    if(dateError === false || timeError === false) {
+      alert("日付もしくは時間が指定されていません");
+      return e.preventDefault();
+    } 
 
     const loginId = cookie.loginId;
 
@@ -84,7 +89,6 @@ export default function Tripdetail({
         localStorage.setItem("tours", JSON.stringify(setNewData));
       } else {
         const tours = JSON.parse(toursJSON);
-        // console.log("tours", tours.tours);
         const addTourData = {
            tours:
           [...tours.tours,
@@ -196,6 +200,10 @@ export default function Tripdetail({
                   tour={tour}
                   setTourDate={setTourDate}
                   setStartTime={setStartTime}
+                  dateError={dateError}
+                  setDateError={setDateError}
+                  timeError={timeError}
+                  setTimeError={setTimeError}
                 />
               </div>
               <TripdetailAttention /> {/* // 注意事項 */}
