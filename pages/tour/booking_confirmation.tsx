@@ -71,16 +71,16 @@ export default function BookingConfirmation() {
                     <>
                       <div className={styles.booking_flex}>
                         <div className={styles.booking_image}>
-                          <Image src={tour.img1} layout="fill" />
+                          <Image src={tour.img1} layout="fill" alt="画像" />
                         </div>
                         <div className={styles.list}>
                           <div className={styles.booking_items}>
                             {tour.tourName}
                           </div>
                           <div>日程：{tour.tourDate}</div>
-                          <div>開始時刻:{tour.startTime}</div>
-                          <div>人数:{tour.numberOfPeple}</div>
-                          <div>合計価格{tour.total.toLocaleString()}</div>
+                          <div>開始時刻：{tour.startTime}時</div>
+                          <div>人数：{tour.numberOfPeople}人</div>
+                          <div>合計価格：{tour.total.toLocaleString()}円</div>
                         </div>
                       </div>
                     </>

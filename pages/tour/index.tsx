@@ -20,8 +20,9 @@ export default function Home({ tours }) {
       <div className={styles.container}>
         <Slider />
         <div className={styles.subtitle}>新しい世界を見に行こう</div>
+        <Link href="/tour/search-page">
         <button type="button" className={styles.search}>
-          <a href="/tour/search-page">
+        
             &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Image
               src="/images/top/虫眼鏡.png"
@@ -29,8 +30,8 @@ export default function Home({ tours }) {
               width={16}
               height={16}
             />
-          </a>
-        </button>
+       
+        </button>   </Link>
       </div>
       <div className={styles.tourContent}>
         <div className={styles.areaPickUp}>
