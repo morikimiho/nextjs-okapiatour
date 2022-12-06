@@ -1,18 +1,40 @@
 import styles from "../styles/tripdetail.module.css";
-export function TripdetailTimes({tour, setTourDate, setStartTime}){
+
+type Props = {
+  tour: any;
+  setTourDate: Function;
+  setStartTime: Function;
+  dateError:boolean;
+  setDateError: Function;
+  timeError:boolean;
+  setTimeError:Function;
+}
+
+export function TripdetailTimes({tour, setTourDate, setStartTime, dateError, setDateError, timeError, setTimeError}:Props){
+
+  function changeDate(e: { target: { value: any; }; }) {
+    setTourDate(e.target.value);
+    setDateError(true);
+  }
+
+  function changeTime(e: { target: { value: any; }; }) {
+    setStartTime(Number(e.target.value));
+    setTimeError(true);
+  }
 
     return (
         <div>
          
-            <p>希望の日付を選択してください</p>
-              <input type="date" className={styles.detail_form} onChange ={(e) => setTourDate(e.target.value)}/>
+            <p>希望の日付を選択してください</p><span className={styles.valid} style={{ display: dateError ? "none" : "block" }}>※日付を入力してください</span>
+            <br />
+              <input type="date" className={styles.detail_form} onChange ={changeDate}/>
                        
             <div>
-              <p>希望の時間帯を選択してください</p>
+              <p>希望の時間帯を選択してください</p><span className={styles.valid} style={{ display: timeError ? "none" : "block" }}>※時間を入力してください</span>
 
               <div>
                 {tour.times >= 7 && (
-                  <select className={styles.detail_form}  onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form}  onChange={changeTime}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
@@ -20,7 +42,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
                 )}
 
                 {tour.times < 7 && tour.times >= 3 && (
-                  <select className={styles.detail_form} onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form} onChange={changeTime}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>
@@ -31,7 +53,7 @@ export function TripdetailTimes({tour, setTourDate, setStartTime}){
                 )}
 
                 {tour.times < 3 && (
-                  <select className={styles.detail_form} onChange={(e) => setStartTime(Number(e.target.value))}>
+                  <select className={styles.detail_form} onChange={changeTime}>
                     <option value="">---</option>
                     <option value="9">9:00</option>
                     <option value="10">10:00</option>

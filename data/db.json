@@ -102,9 +102,9 @@
     },
     {
       "id": 3,
-      "img1": "/images/france/paris/loire/loire01.jpg",
-      "img2": "/images/france/paris/loire/loire02.jpg",
-      "img3": "/images/france/paris/loire/loire03.jpg",
+      "img1": "/images/france/paris/versailles/versailles01.jpg",
+      "img2": "/images/france/paris/versailles/versailles02.jpeg",
+      "img3": "/images/france/paris/versailles/versailles03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -899,7 +899,7 @@
       "img2": "/images/kairo/kairo02.jpg",
       "img3": "/images/kairo/kairo03.jpg",
       "abroad": "abroad",
-      "areaCode": "northame",
+      "areaCode": "af",
       "area": "アフリカ",
       "country": "エジプト",
       "countryCode": "egy",
@@ -922,7 +922,7 @@
       "img2": "/images/kairo/kairo05.jpg",
       "img3": "/images/kairo/kairo06.jpg",
       "abroad": "abroad",
-      "areaCode": "northame",
+      "areaCode": "af",
       "area": "アフリカ",
       "country": "エジプト",
       "countryCode": "egy",
@@ -945,7 +945,7 @@
       "img2": "/images/kairo/kairo08.jpeg",
       "img3": "/images/kairo/kairo09.jpeg",
       "abroad": "abroad",
-      "areaCode": "northame",
+      "areaCode": "af",
       "area": "アフリカ",
       "country": "エジプト",
       "countryCode": "egy",
@@ -1009,8 +1009,8 @@
     },
     {
       "id": 70,
-      "img1": "/images/america/vegas/national/canyon01.jpg",
-      "img2": "/images/america/vegas/national/canyon02.jpg",
+      "img1": "/images/america/vegas/national/canyon01.jpeg",
+      "img2": "/images/america/vegas/national/canyon02.jpeg",
       "img3": "/images/america/vegas/national/canyon03.jpg",
       "abroad": "abroad",
       "areaCode": "northame",
@@ -1078,9 +1078,9 @@
     },
     {
       "id": 75,
-      "img1": "/images/france/mar/mona/mona01.jpg",
-      "img2": "/images/france/mar/mona/mona02.jpeg",
-      "img3": "/images/france/mar/mona/mona03.jpeg",
+      "img1": "/images/france/mar/mona/moma01.jpeg",
+      "img2": "/images/france/mar/mona/moma02.jpeg",
+      "img3": "/images/france/mar/mona/moma03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1101,9 +1101,9 @@
     },
     {
       "id": 73,
-      "img1": "/images/spain/mar/bal/saku01.jpg",
-      "img2": "/images/spain/mar/bal/saku02.jpg",
-      "img3": "/images/spain/mar/bal/saku03.jpg",
+      "img1": "/images/spain/bal/saku/saku01.jpg",
+      "img2": "/images/spain/bal/saku/saku02.jpg",
+      "img3": "/images/spain/bal/saku/saku03.jpg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1124,9 +1124,9 @@
     },
     {
       "id": 74,
-      "img1": "/images/spain/mar/bal/guel01.jpg",
-      "img2": "/images/spain/mar/bal/guel02.jpg",
-      "img3": "/images/spain/mar/bal/guel03.jpg",
+      "img1": "/images/spain/bal/guel/guel01.jpg",
+      "img2": "/images/spain/bal/guel/guel02.jpg",
+      "img3": "/images/spain/bal/guel/guel03.jpeg",
       "abroad": "abroad",
       "areaCode": "eu",
       "area": "ヨーロッパ",
@@ -1172,108 +1172,30 @@
   "inCarts": [
     {
       "tours": [],
-      "userId": 4,
-      "id": 4
-    }
-  ],
-  "orders": [
-    {
-      "tours": [
-        {
-          "id": 2,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/loire/loire01.jpg",
-          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
-          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
-          "numberOfPeople": 1,
-          "price": 15000,
-          "total": 15000
-        },
-        {
-          "id": 13,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/hokkaido/hokkaidohitsuji/hokkidohitsuji01.jpg",
-          "tourName": "羊ヶ丘展望台/小樽オルゴール堂",
-          "description": "クラーク博士像を見に行きます。オルゴールを思い出に持って帰りましょう！",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        },
-        {
-          "id": 2,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/loire/loire01.jpg",
-          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
-          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
-          "numberOfPeople": 1,
-          "price": 15000,
-          "total": 15000
-        }
-      ],
-      "userId": 4,
-      "rsNumber": "OkapiTourt603i91a6la9",
+      "userId": 1,
       "id": 1
     },
     {
-      "tours": [
-        {
-          "id": 5,
-          "tourDate": "2022-12-13",
-          "startTime": 10,
-          "img1": "/images/miyagi/miyagi01.jpg",
-          "tourName": "東北のおいしい名産グルメツアー",
-          "description": "宮城名物・牡蠣や牛タン、ずんだ餅などを堪能できるツアーです。日本三景の松島にも訪れます。",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        },
-        {
-          "id": 14,
-          "tourDate": "2022-12-21",
-          "startTime": 11,
-          "img1": "/images/hokkaido/hokkiadouainu/hokkaidoainu01.jpg",
-          "tourName": "アイヌ文化に触れるツアー",
-          "description": "国立アイヌ民族博物館を訪れます。アイヌ料理も味わうことができます。",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        }
-      ],
-      "userId": 4,
-      "rsNumber": "OkapiTourc969ih1pea01",
+      "tours": [],
+      "userId": 2,
       "id": 2
     },
     {
       "tours": [
-        {
-          "id": 1,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
-          "tourName": "モン サン ミッシェル 1日ツアー",
-          "description": "ユネスコ世界遺産のモン サン ミシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
-          "numberOfPeople": 1,
-          "price": 17000,
-          "total": 17000
-        },
-        {
-          "id": 5,
-          "tourDate": "",
-          "startTime": "",
-          "img1": "/images/miyagi/miyagi01.jpg",
-          "tourName": "東北のおいしい名産グルメツアー",
-          "description": "宮城名物・牡蠣や牛タン、ずんだ餅などを堪能できるツアーです。日本三景の松島にも訪れます。",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        }
       ],
-      "userId": 4,
-      "rsNumber": "OkapiTourp2ab4el86ahp",
+      "userId": 3,
       "id": 3
+    },
+    {
+      "tours": [],
+      "userId": 4,
+      "id": 4
+    },
+    {
+      "tours": [],
+      "userId": 5,
+      "id": 5
     }
-  ]
+  ],
+  "orders": []
 }

@@ -1,15 +1,20 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../../component/layout";
-import useSWR from "swr";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
-import { useEffect, useState } from "react";
 import Styles from "../../styles/cartlist.module.css";
+import { Dispatch, SetStateAction } from "react";
 
+type Props = {
+    tours:[];
+    amount:number;
+    setAmount: Dispatch<SetStateAction<number>>;
+    deleteHandler:Function;
+    loginId: string;
+}
+export function CartItems({tours,amount,setAmount,deleteHandler,loginId}:Props) {
 
-export function CartItems({tours,amount,setAmount,deleteHandler}) {
-  
   return (
     <>
       <Head>
@@ -33,11 +38,15 @@ export function CartItems({tours,amount,setAmount,deleteHandler}) {
             <h2>合計：{Number(amount).toLocaleString()}円</h2>
             <div className={styles.buttonsubmit}>
               <div>
-                <Link href="http://localhost:3000/tour/pay">
+                {!loginId ? <Link href="http://localhost:3000/tour/login">
                   <button className={styles.submit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
-                </Link>
+                </Link> : <Link href="http://localhost:3000/tour/pay">
+                <button className={styles.paysubmit} type="submit">
+                    お支払い情報の入力へ進む
+                  </button>
+                </Link>}
               </div>
               <div>
                 <Link href="http://localhost:3000/tour/search-page">

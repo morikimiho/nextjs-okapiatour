@@ -5,6 +5,7 @@ import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Tour } from "../../types/types";
 
 export default function BookingConfirmation() {
   const cookie = useCookie();
