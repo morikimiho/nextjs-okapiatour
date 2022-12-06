@@ -19,20 +19,18 @@ import {
 } from "../../component/serchPage/sertchNorthAmerica";
 import Link from "next/link";
 import { Australia, OceCountry } from "../../component/serchPage/oceania";
+import { SouthameCountry, Bra } from "../../component/serchPage/southame";
+import { Africa, Egy } from "../../component/serchPage/africa";
+import { Abroad, Prefecture, Area, Country,City } from "../../types/types";
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 const SearchPage = () => {
-  type Abroad = "abroad" | "domestic" | "";
   const [abroad, setAbroad] = useState<Abroad>("abroad");
-  type Prefecture = "osk" | "";
   const [prefecture, setPrefecture] = useState<Prefecture>("");
-  type Area = "eu" | "asi" | "northame" | "oce" | "";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";
   const [country, setCountry] = useState<Country>("");
-  type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
   const [city, setCity] = useState<City>("");
 
   const [url, setUrl] = useState("/api/tours?recommend=true");
@@ -42,7 +40,7 @@ const SearchPage = () => {
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
 
-  const onsubmitHandler = (e) => {
+  const onsubmitHandler = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     let query = "?";
 
@@ -61,9 +59,9 @@ const SearchPage = () => {
         } else {
           query = query + `abroad=${abroad}&areaCode=${areaCode}`;
         }
-      } else if(prefecture.length>0){
-        query = query + `prefecture=${prefecture}`
-      } else{
+      } else if (prefecture.length > 0) {
+        query = query + `prefecture=${prefecture}`;
+      } else {
         query = query + `abroad=${abroad}`;
       }
     }
@@ -73,18 +71,18 @@ const SearchPage = () => {
 
   //areaCode=${areadCode}
 
-  const onAbroadChange = (val) => {
+  const onAbroadChange = (val: Abroad) => {
     setAbroad(val);
     setArea("");
     setCountry("");
   };
 
-  const onAreaChange = (val) => {
+  const onAreaChange = (val: Area) => {
     setArea(val);
     setCountry("");
   };
 
-  const onCountryChange = (val) => {
+  const onCountryChange = (val: Country) => {
     setCountry(val);
     setCity("");
   };
@@ -129,28 +127,43 @@ const SearchPage = () => {
                     onCountryChanege={onCountryChange}
                   />
                 )}
-                 {"oce" === areaCode && (
+                {"oce" === areaCode && (
                   <OceCountry
                     country={country}
                     onCountryChanege={onCountryChange}
                   />
                 )}
+                {"southame" === areaCode && (
+                  <SouthameCountry
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
+                )}
 
+                {"af" === areaCode && (
+                  <Africa
+                    country={country}
+                    onCountryChanege={onCountryChange}
+                  />
+                )}
 
                 {"fr" === country && <France city={city} setCity={setCity} />}
                 {"ita" === country && <Italy city={city} setCity={setCity} />}
                 {"ko" === country && <Korea city={city} setCity={setCity} />}
                 {"ame" === country && <Uni city={city} setCity={setCity} />}
                 {"sp" === country && <Spain city={city} setCity={setCity} />}
-                {"phi" === country && <Philippines city={city} setCity={setCity} />}
+                {"phi" === country && (
+                  <Philippines city={city} setCity={setCity} />
+                )}
                 {"taiwa" === country && (
                   <Taiwan city={city} setCity={setCity} />
                 )}
-                 {"aus" === country && (
+                {"aus" === country && (
                   <Australia city={city} setCity={setCity} />
                 )}
-                
+                {"bra" === country && <Bra city={city} setCity={setCity} />}
 
+                {"egy" === country && <Egy city={city} setCity={setCity} />}
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -228,8 +241,14 @@ const SearchPage = () => {
 export default SearchPage;
 
 //国内or 海外
-const Abroad = ({ abroad, onAbroadChange }) => {
-  const changeHandler = (e) => {
+const Abroad = ({
+  abroad,
+  onAbroadChange,
+}: {
+  abroad: Abroad;
+  onAbroadChange: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     onAbroadChange(e.target.value);
   };
   return (
@@ -253,8 +272,14 @@ const Abroad = ({ abroad, onAbroadChange }) => {
 };
 
 // 海外を選んだ場合
-const RouteAbroad = ({ area, onAreaChange }) => {
-  const changeHandler = (e) => {
+const RouteAbroad = ({
+  area,
+  onAreaChange,
+}: {
+  area: Area;
+  onAreaChange: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     onAreaChange(e.target.value);
   };
 
@@ -271,6 +296,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
           <option value="northame">北米</option>
           <option value="southame">南米</option>
           <option value="oce">オセアニア</option>
+          <option value="af">アフリカ</option>
         </select>
       </div>
       <div className={styles.serchdetail}></div>
@@ -279,8 +305,8 @@ const RouteAbroad = ({ area, onAreaChange }) => {
 };
 
 // 国内を選んだ場合
-const RouteJapan = ({ setPrefecture, prefecture }) => {
-  const changeHandler = (e) => {
+const RouteJapan = ({ setPrefecture, prefecture }:{setPrefecture:Function,prefecture:Prefecture}) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     setPrefecture(e.target.value);
   };
   return (
@@ -290,7 +316,7 @@ const RouteJapan = ({ setPrefecture, prefecture }) => {
           <label htmlFor="">都道府県</label>
         </div>
         <select value={prefecture} name="" id="" onChange={changeHandler}>
-        <option value="-">-</option>
+          <option value="-">-</option>
           <option value="hoka">北海道</option>
           <option value="miya"> 宮城</option>
           <option value="osk">大阪</option>
@@ -298,7 +324,6 @@ const RouteJapan = ({ setPrefecture, prefecture }) => {
           <option value="naga">長崎</option>
           <option value="fuku">福岡</option>
           <option value="oki"> 沖縄</option>
-      
         </select>
       </div>
     </div>

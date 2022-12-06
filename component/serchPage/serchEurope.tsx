@@ -28,7 +28,7 @@ export const EuropeCountry = ({ onCountryChanege,country }) => {
 };
 
 //海外→ヨーロッパ→フランスを選んだ場合
-export const France = (city,setCity) => {
+export const France = ({city,setCity}) => {
   const changeHandler=(e)=>{
     setCity(e.target.value)
   }
@@ -40,8 +40,9 @@ export const France = (city,setCity) => {
             <label htmlFor="">都市</label>
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
+          <option value="">-</option>
             <option value="pari">パリ</option>
-            <option value="mal">マルセイユ</option>
+            <option value="mar">マルセイユ</option>
           </select>
         </div>
       </div>

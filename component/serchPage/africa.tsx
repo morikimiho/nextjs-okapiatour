@@ -3,8 +3,8 @@ import styles from "../../styles//scss/search-page.module.scss";
 
 
 
-//海外→北米を選んだ場合
-export const NorthameCountry = ({ onCountryChanege,country }) => {
+//海外→アフリカを選んだ場合
+export const Africa = ({ onCountryChanege,country }) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value);
   };
@@ -17,7 +17,7 @@ export const NorthameCountry = ({ onCountryChanege,country }) => {
           </div>
           <select value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
-            <option value="ame">アメリカ</option>
+            <option value="egy">エジプト</option>
        
           </select>
         </div>
@@ -28,7 +28,7 @@ export const NorthameCountry = ({ onCountryChanege,country }) => {
 };
 
 //海外→北米→アメリカを選んだ場合
-export const Uni = ({city,setCity}) => {
+export const Egy = ({city,setCity}) => {
 const changeHandler=(e)=>{
   setCity(e.target.value)
 }
@@ -40,8 +40,8 @@ const changeHandler=(e)=>{
             <label htmlFor="">都市</label>
           </div>
           <select value={city} name="" id="" onChange={changeHandler}>
-            <option value="vegas">ラスベガス</option>
-            <option value="los">ロサンゼルス</option>
+            <option value="">-</option>
+            <option value="kairo">カイロ</option>
           </select>
         </div>
       </div>

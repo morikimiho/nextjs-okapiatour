@@ -1,4 +1,3 @@
-
 import styles from "../../styles/login.module.css";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,7 +16,7 @@ export default function Login() {
   };
 
   //ログイン処理（CookieにsignedIn=trueとする）
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     fetch("/api/login", {
       method: "POST",
@@ -26,7 +25,7 @@ export default function Login() {
       },
       body: JSON.stringify(data),
     })
-      .then((response) => {
+      .then(async (response) => {
         console.log(response);
         response.json();
         if (response.status !== 200) {
@@ -35,6 +34,32 @@ export default function Login() {
         } else if (response.status === 200) {
           router.push("/tour");
           console.log("ok");
+
+          //ここからログインしたidにローカルデータを紐付けるコードを記載
+          const response =  fetch(
+            `http://localhost:8000/users?mailAddress=${mailAddress}&password=${password}`
+          );
+          const userdata =  (await response).json();
+          const user = userdata[0];
+          console.log(user);
+          const id = user.id;
+          console.log(id);
+
+          const localtours = JSON.parse(
+            localStorage.getItem("tours") ?? '{"tours:[]}'
+          );
+
+          if (localtours.tours.length === 0) {
+            return;
+          }
+          fetch(`/api/inCarts/${id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ tours: localtours.tours }),
+          });
+          localStorage.clear();
         }
       })
       .then((data) => {
@@ -52,7 +77,7 @@ export default function Login() {
           <div className={styles.inner_border}>
             <form onSubmit={handleSubmit} className={styles.input_form}>
               <div>
-              <span
+                <span
                   className={styles.error_message}
                   style={{ display: error ? "block" : "none" }}
                 >
