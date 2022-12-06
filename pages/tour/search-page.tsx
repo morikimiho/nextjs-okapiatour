@@ -23,6 +23,7 @@ import { SouthameCountry, Bra } from "../../component/serchPage/southame";
 import { Africa, Egy } from "../../component/serchPage/africa";
 import { Abroad, Prefecture, Area, Country,City } from "../../types/types";
 
+
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
@@ -95,7 +96,7 @@ const SearchPage = () => {
 
       <Layout>
         <div className={styles.search_box_container}>
-          <h3 className={styles.search_title}>現地ツアーを検索する</h3>
+          <h3 className={styles.search_title}>Search tour</h3>
           <div className={styles.search_items}>
             <form action="" onSubmit={onsubmitHandler}>
               <div className={styles.flex}>
@@ -206,7 +207,7 @@ const SearchPage = () => {
                         <div id="info">
                           <ul className={styles.list}>
                             <span className={styles.span}>概要</span>
-                            <li>価格: {item.price}円 ~</li>
+                            <li>価格: {(item.price).toLocaleString()}円 ~</li>
                             <li>集合: {item.meetingPlace}</li>
                           </ul>
                         </div>
