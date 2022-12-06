@@ -110,7 +110,7 @@
     height: 25px;
     width: 80px;
     border-radius: 10px;
-    border: none;
+    border: solid 2px rgb(184, 184, 184);
     @include pub.mq("res") {
         width: 58px; 
         margin-left: 14px;
@@ -129,7 +129,7 @@
         font-size: 24px;
         font-weight: 700;
         cursor: pointer;
-        box-shadow:3px 5px 17px 5px #DEDEDE;
+        box-shadow: 1px 1px 6px 1px #655656;
         color: pub.$highlight_color;
         background-color: pub.$sub_color;
         border: none;

@@ -98,7 +98,7 @@ export default useCookie;
 // });
 
 // cookieが二つ以上ある想定
-// ；　で分ける
+// ； で分ける
 // cookie key user をfilter でとってくる
-// ＝　で分ける
+// ＝ で分ける
 // return setId setName
