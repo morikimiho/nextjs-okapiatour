@@ -18,7 +18,7 @@ export default function Pay() {
   const fetcher = (resource: any, init: any) =>
     fetch(resource, init).then((res) => res.json());
   const { data, error } = useSWR(
-    `http://localhost:8000/inCarts?userId=${loginId}`,
+    `/api/inCarts?userId=${loginId}`,
     fetcher
   );
   useEffect(() => {
@@ -131,7 +131,7 @@ export default function Pay() {
           <div className={styles.input}>
             <form>
               <div className={styles.radio}>
-                <input type="radio" id="01" name="pay" />
+                <input type="radio" id="01" name="pay"  />
                 クレジットカード
               </div>
               <br />

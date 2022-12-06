@@ -1,7 +1,8 @@
 import styles from "../../styles/scss/search-page.module.scss";
+import { City, Country } from "../../types/types";
 
 //海外→アジアを選んだ場合
-export const AsiaCountry = ({ onCountryChanege, country }) => {
+export const AsiaCountry = ({ onCountryChanege, country }:{onCountryChanege:Function,country:Country}) => {
   const changeHandler = (e) => {
     onCountryChanege(e.target.value);
   };
@@ -26,7 +27,7 @@ export const AsiaCountry = ({ onCountryChanege, country }) => {
 };
 
 //海外→アジア→韓国を選んだ場合
-export const Korea = ({ city, setCity }) => {
+export const Korea = ({ city, setCity }:{city:City,setCity:Function}) => {
   const changeHandler = (e) => {
     setCity(e.target.value);
   };
@@ -48,7 +49,7 @@ export const Korea = ({ city, setCity }) => {
 };
 
 //海外→アジア→台湾を選んだ場合
-export const Taiwan = ({ setCity, city }) => {
+export const Taiwan = ({ setCity, city }:{city:City,setCity:Function}) => {
   const changeHandler = (e) => {
     setCity(e.target.value);
   };
@@ -60,7 +61,7 @@ export const Taiwan = ({ setCity, city }) => {
             <label htmlFor="">都市</label>
           </div>
           <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
-          <option value=""></option>
+          <option value="">-</option>
             <option value="taipei">台北</option>
             <option value="taichu">台中</option>
             <option value="tainan">台南</option>
@@ -72,7 +73,7 @@ export const Taiwan = ({ setCity, city }) => {
 };
 
 //海外→アジア→台湾を選んだ場合
-export const Philippines = ({ setCity, city }) => {
+export const Philippines = ({ setCity, city }:{city:City,setCity:Function}) => {
   const changeHandler = (e) => {
     setCity(e.target.value);
   };
