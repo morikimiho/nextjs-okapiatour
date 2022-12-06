@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../../styles/toppage.module.css";
 import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
+import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import { GetStaticProps } from "next";
@@ -21,8 +22,7 @@ export default function Home({ tours }) {
         <Slider />
         <div className={styles.subtitle}>新しい世界を見に行こう</div>
         <Link href="/tour/search-page">
-        <button type="button" className={styles.search}>
-        
+          <button type="button" className={styles.search}>
             &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <Image
               src="/images/top/虫眼鏡.png"
@@ -30,8 +30,8 @@ export default function Home({ tours }) {
               width={16}
               height={16}
             />
-       
-        </button>   </Link>
+          </button>
+        </Link>
       </div>
       <div className={styles.tourContent}>
         <div className={styles.areaPickUp}>
@@ -117,37 +117,6 @@ export default function Home({ tours }) {
     </>
   );
 }
-const ScrTop = () => {
-  const [src200, setScr200] = useState(false);
-  const PAGE_Y_OFFSET = 40;
-  function uni () {
-    if (window.pageYOffset > PAGE_Y_OFFSET) {
-      setScr200(true)
-    }
-  }
-
-  const scrollTop = () => {   
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  return (
-    <div className={src200 ? "scr_top" : ""}>
-      <style jsx>{`
-        .scr_top {
-          position: fixed;
-          right: 20px;
-          bottom: 60px;
-        }
-      `}</style>
-      <button onClick={scrollTop} className={styles.scr_top_btn}>
-        <div className={styles.scr_top_bt}>＞</div>
-      </button>
-    </div>
-  );
-};
 
 const Slider = () => {
   return (
