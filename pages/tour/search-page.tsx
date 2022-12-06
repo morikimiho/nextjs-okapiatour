@@ -30,7 +30,17 @@ const SearchPage = () => {
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   type Area = "eu" | "asi" | "northame" | "oce" | "";
   const [areaCode, setArea] = useState<Area>("");
-  type Country = "fr" | "ita" | "ko" | "indo" | "ame" | "sp" | "taiwa" |"aus"| "phi"|"";
+  type Country =
+    | "fr"
+    | "ita"
+    | "ko"
+    | "indo"
+    | "ame"
+    | "sp"
+    | "taiwa"
+    | "aus"
+    | "phi"
+    | "";
   const [country, setCountry] = useState<Country>("");
   type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
   const [city, setCity] = useState<City>("");
@@ -61,9 +71,9 @@ const SearchPage = () => {
         } else {
           query = query + `abroad=${abroad}&areaCode=${areaCode}`;
         }
-      } else if(prefecture.length>0){
-        query = query + `prefecture=${prefecture}`
-      } else{
+      } else if (prefecture.length > 0) {
+        query = query + `prefecture=${prefecture}`;
+      } else {
         query = query + `abroad=${abroad}`;
       }
     }
@@ -129,28 +139,27 @@ const SearchPage = () => {
                     onCountryChanege={onCountryChange}
                   />
                 )}
-                 {"oce" === areaCode && (
+                {"oce" === areaCode && (
                   <OceCountry
                     country={country}
                     onCountryChanege={onCountryChange}
                   />
                 )}
 
-
                 {"fr" === country && <France city={city} setCity={setCity} />}
                 {"ita" === country && <Italy city={city} setCity={setCity} />}
                 {"ko" === country && <Korea city={city} setCity={setCity} />}
                 {"ame" === country && <Uni city={city} setCity={setCity} />}
                 {"sp" === country && <Spain city={city} setCity={setCity} />}
-                {"phi" === country && <Philippines city={city} setCity={setCity} />}
+                {"phi" === country && (
+                  <Philippines city={city} setCity={setCity} />
+                )}
                 {"taiwa" === country && (
                   <Taiwan city={city} setCity={setCity} />
                 )}
-                 {"aus" === country && (
+                {"aus" === country && (
                   <Australia city={city} setCity={setCity} />
                 )}
-                
-
               </div>
               <button className={styles.search_submit}>検索</button>
             </form>
@@ -169,49 +178,53 @@ const SearchPage = () => {
               <>
                 <div id="content" className={styles.eachcontent}>
                   <div key={item.id} className={styles.flex}>
-                    <div>
+                    <div  className={styles.result_image}>
                       <Image
                         src={item.img1}
-                        width={300}
-                        height={196}
+                        layout="fill"
                         alt="画像"
                         className={styles.image}
                       />
                     </div>
                     <div>
-                      <div className={styles.title}>{item.tourName}</div>
-                      <div className={styles.place}>
-                        {item.area}&nbsp;{item.country}&nbsp;{item.city}&nbsp;
-                      </div>
-                      <div>
-                        <div className={styles.flex}>
-                          <div className={styles.flex}>
-                            <div id="info">
-                              <ul className={styles.list}>
-                                <span className={styles.span}>概要</span>
-                                <li>{item.tourName}</li>
-                                <li>価格：{item.price}円</li>
-                              </ul>
-                            </div>
-                            <div id="tourcontent">
-                              <ul className={styles.list}>
-                                <span className={styles.span}>
-                                  含まれるもの
-                                </span>
-                                <li>{item.content1}</li>
-                                <li>{item.content2}</li>
-                                <li>{item.content3}</li>
-                              </ul>
-                            </div>
-                          </div>
+                      <div className={styles.title}><span>{item.tourName}</span></div>
 
-                          <div id="button" className={styles.button_around}>
-                            <Link href={`/tour/${item.id}`}>
-                              <button className={styles.button}>
-                                詳細はこちら{" "}
-                              </button>
-                            </Link>
-                          </div>
+                      <div className={styles.tour_tags}>
+                        {item.area.length > 0 && (
+                          <div className={styles.tour_tag}>{item.area}</div>
+                        )}
+                        {item.country.length > 0 && (
+                          <div className={styles.tour_tag}>{item.country}</div>
+                        )}
+                        {item.city.length > 0 && (
+                          <div className={styles.tour_tag}>{item.city}</div>
+                        )}
+                      </div>
+
+                      <div className={styles.flex}>
+                        <div id="info">
+                          <ul className={styles.list}>
+                            <span className={styles.span}>概要</span>
+                            <li>価格: {item.price}円 ~</li>
+                            <li>集合: {item.meetingPlace}</li>
+                          </ul>
+                        </div>
+
+                        <div id="tourcontent">
+                          <ul className={styles.list_includes}>
+                            <span className={styles.span}>含まれるもの</span>
+                            <li>{item.content1}</li>
+                            <li>{item.content2}</li>
+                            <li>{item.content3}</li>
+                          </ul>
+                        </div>
+
+                        <div id="button" className={styles.button_around}>    {/* 詳細ボタン */}
+                          <Link href={`/tour/${item.id}`}>
+                            <button className={styles.button}>
+                              詳細はこちら{" "}
+                            </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -239,7 +252,7 @@ const Abroad = ({ abroad, onAbroadChange }) => {
           <div>
             <label htmlFor="">国内 or 海外</label>
           </div>
-          <select value={abroad} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={abroad} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="abroad">海外</option>
             <option value="domestic">国内</option>
@@ -264,7 +277,7 @@ const RouteAbroad = ({ area, onAreaChange }) => {
         <div>
           <label htmlFor="">エリア</label>
         </div>
-        <select value={area} name="" id="" onChange={changeHandler}>
+        <select className={styles.search_input} value={area} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
           <option value="eu">ヨーロッパ</option>
           <option value="asi">アジア</option>
@@ -289,8 +302,8 @@ const RouteJapan = ({ setPrefecture, prefecture }) => {
         <div>
           <label htmlFor="">都道府県</label>
         </div>
-        <select value={prefecture} name="" id="" onChange={changeHandler}>
-        <option value="-">-</option>
+        <select className={styles.search_input} value={prefecture} name="" id="" onChange={changeHandler}>
+          <option value="-">-</option>
           <option value="hoka">北海道</option>
           <option value="miya"> 宮城</option>
           <option value="osk">大阪</option>
@@ -298,7 +311,6 @@ const RouteJapan = ({ setPrefecture, prefecture }) => {
           <option value="naga">長崎</option>
           <option value="fuku">福岡</option>
           <option value="oki"> 沖縄</option>
-      
         </select>
       </div>
     </div>

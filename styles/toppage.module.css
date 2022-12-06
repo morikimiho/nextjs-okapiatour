@@ -47,6 +47,17 @@
   font-size: 20px;
   font-weight: bold;
   text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.pick_title {
+  line-height: 1.6;
+  background-image: linear-gradient(rgba(0, 0, 0, 0) 70%, #FFC896 70%);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-style: italic;
 }
 
 .overseas {
@@ -103,4 +114,16 @@
 
 .tour_title {
   font-weight: 700;
+}
+
+.scr_top {
+  position: fixed;
+  right: 20px;
+  bottom: 60px;
+}
+
+.scr_top_btn {
+  width: 30px;
+  height: 30px;
+  background: rgb(227, 87, 87);
 }

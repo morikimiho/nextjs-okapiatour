@@ -9,8 +9,7 @@ import Styles from "../../styles/cartlist.module.css";
 
 
 export function CartItems({tours,amount,setAmount,deleteHandler}) {
-
-
+  
   return (
     <>
       <Head>
@@ -35,14 +34,14 @@ export function CartItems({tours,amount,setAmount,deleteHandler}) {
             <div className={styles.buttonsubmit}>
               <div>
                 <Link href="http://localhost:3000/tour/pay">
-                  <button className={styles.paysubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     お支払い情報の入力へ進む
                   </button>
                 </Link>
               </div>
               <div>
                 <Link href="http://localhost:3000/tour/search-page">
-                  <button className={styles.searchsubmit} type="submit">
+                  <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>
                 </Link>

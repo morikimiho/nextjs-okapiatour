@@ -17,7 +17,7 @@ export default function Login() {
   };
 
   //ログイン処理（CookieにsignedIn=trueとする）
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     fetch("/api/login", {
       method: "POST",
@@ -33,7 +33,7 @@ export default function Login() {
           console.log("失敗");
           setError(true);
         } else if (response.status === 200) {
-          router.push("/tour");
+          // router.push("/tour");
           console.log("ok");
         }
       })
@@ -43,6 +43,9 @@ export default function Login() {
       .catch((error) => {
         console.error(error);
       });
+
+  
+
   };
   return (
     <>

@@ -2,22 +2,38 @@ import styles from "../styles/header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Router from "next/router";
 
 import useCookie from "../hooks/useCookie";
 
-export function Header() {
-  const router = useRouter();
-  const cookie = useCookie();
-  // console.log(cookie);
-
-  // クッキーにセットされている名前をログイン名として表示
-  const loginId = cookie.loginId;
-  const loginName = cookie.loginName;
-
-  // ログアウト(クッキー削除)
-  function logOut() {
-    document.cookie = "userOkapiaTour=;path=/;max-age=0";
-    router.reload();
+// window.onload = ()=> {
+//   // URLの取得
+//   let url = location.href;
+//   if (url == "http://hoge.com/") {
+  //     // URLが http://hoge.com/ の場合に実行する処理 
+  //   } 
+  // }
+  
+  export function Header() {
+    const router = useRouter();
+    const cookie = useCookie();
+    // console.log(cookie);
+    
+    
+    // クッキーにセットされている名前をログイン名として表示
+    const loginId = cookie.loginId;
+    const loginName = cookie.loginName;
+    
+    // ログアウト(クッキー削除)
+    function logOut() {
+      document.cookie = "userOkapiaTour=;path=/;max-age=0";
+      const url = location.href;
+      console.log(url)
+    if (url == "http://localhost:3000/tour") {
+      Router.reload() as any;
+    } else {
+      Router.push("/tour/") as any;
+    }
   }
 
   return (

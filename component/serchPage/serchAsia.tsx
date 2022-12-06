@@ -12,7 +12,7 @@ export const AsiaCountry = ({ onCountryChanege, country }) => {
           <div>
             <label htmlFor="">国</label>
           </div>
-          <select value={country} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={country} name="" id="" onChange={changeHandler}>
             <option value="">-</option>
             <option value="ko">韓国</option>
             <option value="taiwa">台湾</option>
@@ -37,7 +37,7 @@ export const Korea = ({ city, setCity }) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
             <option value="seoul">ソウル</option>
             <option value="busan">釜山</option>
           </select>
@@ -59,7 +59,7 @@ export const Taiwan = ({ setCity, city }) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
             <option>台北</option>
             <option>台中</option>
           </select>
@@ -81,7 +81,7 @@ export const Philippines = ({ setCity, city }) => {
           <div>
             <label htmlFor="">都市</label>
           </div>
-          <select value={city} name="" id="" onChange={changeHandler}>
+          <select className={styles.search_input} value={city} name="" id="" onChange={changeHandler}>
           <option value="">-</option>
             <option value="mani">マニラ</option>
             <option value="sebu">セブ</option>
