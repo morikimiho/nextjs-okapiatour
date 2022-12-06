@@ -45,11 +45,11 @@
   padding: 10px 30px;
   font-size: 24px;
   font-weight: 400;
-  color: #ffe4cb;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   cursor: pointer;
-  box-shadow: 1px 1px 8px 1px #e39090;
+  box-shadow: 1px 1px 6px 1px #655656;
   transition: all 0.3s ease 0s;
 }
 .button:hover {
@@ -65,7 +65,7 @@
   padding: 10px 30px;
   font-size: 24px;
   font-weight: 400;
-  color: #ffe4cb;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   cursor: pointer;

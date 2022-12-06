@@ -8,6 +8,7 @@ import { TripdetailActivity } from "../../component/tripdetailActivity";
 import { TripdetailImage } from "../../component/tripdetailImage";
 import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
+import { ScrTop } from "../../component/tps";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
@@ -219,6 +220,7 @@ export default function Tripdetail({
           </div>{/* tour_detail_info */}
 
         </main>
+        <ScrTop />
       </Layout>
     </>
   );

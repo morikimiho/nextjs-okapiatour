@@ -5,6 +5,7 @@ import { useState } from "react";
 import { EuropeCountry, Spain } from "../../component/serchPage/serchEurope";
 import { France } from "../../component/serchPage/serchEurope";
 import { Italy } from "../../component/serchPage/serchEurope";
+import { ScrTop } from "../../component/tps";
 import Image from "next/image";
 import useSWR from "swr";
 import {
@@ -235,6 +236,7 @@ const SearchPage = () => {
             );
           })}
         </div>
+        <ScrTop />
       </Layout>
     </>
   );

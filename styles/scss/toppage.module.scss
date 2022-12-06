@@ -31,6 +31,7 @@
   font-family: "Times New Roman", Times, serif;
   max-width: 200px;
   transition: all 0.3s ease 0s;
+  cursor: pointer;
   &:hover {
     transform: scale(1.1);
   }
@@ -147,4 +148,17 @@
     cursor: pointer;
     transform: translateY(-3px);
   }
+
+}
+
+.scr_top {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+.scr_top_bt {
+  transform: rotate(-90deg);
+  font-weight: 900;
+  font-size: 20px;
+  color: pub.$dark_color;
 }
