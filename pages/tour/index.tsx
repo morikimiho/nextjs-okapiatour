@@ -18,98 +18,104 @@ export default function Home({ tours }) {
         <title>Okapia Tour</title>
       </Head>
       <Header />
-      <div className={styles.container}>
-        <Slider />
-        <div className={styles.subtitle}>新しい世界を見に行こう</div>
-        <Link href="/tour/search-page">
-          <button type="button" className={styles.search}>
-            &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <Image
-              src="/images/top/虫眼鏡.png"
-              alt="検索"
-              width={16}
-              height={16}
+      <div className={styles.top_bg}>
+        <div className={styles.container}>
+          <Slider />
+          <div className={styles.subtitle}>新しい世界を見に行こう</div>
+          <Link href="/tour/search-page">
+            <button type="button" className={styles.search}>
+              &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <Image
+                src="/images/top/虫眼鏡.png"
+                alt="検索"
+                width={16}
+                height={16}
+              />
+            </button>
+          </Link>
+        </div>
+        <div className={styles.tourContent}>
+          <div className={styles.areaPickUp}>
+            <img
+              src="/images/top/overseas.png"
+              alt="飛行機"
+              width={32}
+              height={32}
             />
-          </button>
-        </Link>
-      </div>
-      <div className={styles.tourContent}>
-        <div className={styles.areaPickUp}>
-          <img
-            src="/images/top/overseas.png"
-            alt="飛行機"
-            width={32}
-            height={32}
-          />
-          <span className={styles.pick_title}>海外・おすすめツアーPickUp!</span>
-        </div>
-        <div className={styles.overseas}>
-          {tours.map(
-            (tour: {
-              id: number;
-              img1: string;
-              tourName: string;
-              abroad: string;
-            }) => {
-              if (tour.abroad === "abroad" && tour.id < 4) {
-                return (
-                  <div className={styles.blockTourContent}>
-                    <div className={styles.overseas_images}>
-                      <Link href={`/tour/${tour.id}`}>
-                        <Image
-                          src={tour.img1}
-                          alt={"ツアー地域の写真"}
-                          layout="fill"
-                        />
-                      </Link>
+            <span className={styles.pick_title}>
+              海外・おすすめツアーPickUp!
+            </span>
+          </div>
+          <div className={styles.overseas}>
+            {tours.map(
+              (tour: {
+                id: number;
+                img1: string;
+                tourName: string;
+                abroad: string;
+              }) => {
+                if (tour.abroad === "abroad" && tour.id < 4) {
+                  return (
+                    <div className={styles.blockTourContent}>
+                      <div className={styles.overseas_images}>
+                        <Link href={`/tour/${tour.id}`}>
+                          <Image
+                            src={tour.img1}
+                            alt={"ツアー地域の写真"}
+                            layout="fill"
+                          />
+                        </Link>
+                      </div>
+                      <p className={styles.tour_title}>
+                        <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
+                      </p>
                     </div>
-                    <p className={styles.tour_title}>
-                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                    </p>
-                  </div>
-                );
+                  );
+                }
               }
-            }
-          )}
-        </div>
+            )}
+          </div>
 
-        <div className={styles.areaPickUp}>
-          <img
-            src="/images/top/domestic.png"
-            alt="自動車"
-            width={32}
-            height={32}
-          />
-          <span className={styles.pick_title}>国内・おすすめツアーPickUp!</span>
-        </div>
-        <div className={styles.overseas}>
-          {tours.map(
-            (tour: {
-              id: number;
-              img1: string;
-              tourName: string;
-              abroad: string;
-            }) => {
-              if (tour.abroad === "domestic" && tour.id < 7) {
-                return (
-                  <div className={styles.blockTourContent}>
-                    <div className={styles.overseas_images}>
-                      <Link href={`/tour/${tour.id}`}>
-                        <Image
-                          src={tour.img1}
-                          alt={"ツアー地域の写真"}
-                          layout="fill"
-                        />
-                      </Link>
+          <div className={styles.areaPickUp}>
+            <img
+              src="/images/top/domestic.png"
+              alt="自動車"
+              width={32}
+              height={32}
+            />
+            <span className={styles.pick_title}>
+              国内・おすすめツアーPickUp!
+            </span>
+          </div>
+          <div className={styles.overseas}>
+            {tours.map(
+              (tour: {
+                id: number;
+                img1: string;
+                tourName: string;
+                abroad: string;
+              }) => {
+                if (tour.abroad === "domestic" && tour.id < 7) {
+                  return (
+                    <div className={styles.blockTourContent}>
+                      <div className={styles.overseas_images}>
+                        <Link href={`/tour/${tour.id}`}>
+                          <Image
+                            src={tour.img1}
+                            alt={"ツアー地域の写真"}
+                            layout="fill"
+                          />
+                        </Link>
+                      </div>
+                      <p className={styles.tour_title}>
+                        <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
+                      </p>
                     </div>
-                    <p className={styles.tour_title}>
-                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                    </p>
-                  </div>
-                );
+                  );
+                }
               }
-            }
-          )}
+            )}
+          </div>
         </div>
       </div>
       <ScrTop />

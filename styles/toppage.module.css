@@ -169,3 +169,14 @@
   font-size: 20px;
   color: #eb6100;
 }
+
+.top_bg {
+  background: #fff7ee;
+  position: relative;
+  height: 1691px;
+}
+@media (max-width: 1199px) {
+  .top_bg {
+    height: 2761px;
+  }
+}

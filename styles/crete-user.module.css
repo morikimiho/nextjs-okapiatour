@@ -67,7 +67,7 @@
 .container .form_birth_group {
   display: flex;
   justify-content: space-around;
-  border: n;
+  border: none;
   border-radius: 10px;
   padding: 10px;
   background-color: #fff;
@@ -129,7 +129,7 @@
   height: 25px;
   width: 80px;
   border-radius: 10px;
-  border: none;
+  border: solid 2px rgb(184, 184, 184);
 }
 @media (max-width: 1199px) {
   .input_select {
@@ -152,7 +152,7 @@
   font-size: 24px;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 3px 5px 17px 5px #DEDEDE;
+  box-shadow: 1px 1px 6px 1px #655656;
   color: #fff7ee;
   background-color: #9a2727;
   border: none;

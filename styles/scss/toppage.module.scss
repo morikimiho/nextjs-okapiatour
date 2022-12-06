@@ -162,3 +162,12 @@
   font-size: 20px;
   color: pub.$dark_color;
 }
+
+.top_bg {
+  background: pub.$highlight_color;
+  position: relative;
+  height: 1691px;
+  @include pub.mq("res") {
+    height: 2761px;
+  }
+}
