@@ -20,9 +20,9 @@
     border: none;
     transition: all 0.3s ease 0s;
     @include pub.mq("res") {
-      font-size: 14px;
+      font-size: 12px;
       padding: 10px 0;
-      width: 200px;
+      width: 160px;
       margin-top: 10px;
       border-radius: 12px;
     }

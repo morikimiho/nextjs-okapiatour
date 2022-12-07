@@ -60,7 +60,7 @@
   @include pub.mq("res") {
     display: flex;
     margin-top: 10px;
-    margin-left: 0;
+    margin-left: 3px;
     width: 100%;
   }
   .delete_button {
@@ -75,12 +75,13 @@
     border: none;
     transition: all 0.3s ease 0s;
     &:hover{
-        position: relative;
-        transform: translate(1px, 1px);
+      position: relative;
+      transform: translate(1px, 1px);
         box-shadow:none;
-    }
-    @include pub.mq("res") {
-      margin-right: 20px;
+      }
+      @include pub.mq("res") {
+        margin-right: 10px;
+        padding: 5px 14px;
     }
 }
 .cartlist_items {
@@ -93,7 +94,8 @@
       margin-top: 10px;
       @include pub.mq("res") {
         margin-top: 0;
-        margin-left: 20px;
+        margin-left: 8px;
+        // font-size: 14px;
       }
     }
   }
@@ -111,4 +113,8 @@
   position: relative;
   bottom: 4px;
   text-align: center;
+  @include pub.mq("res") {
+    width: 50px;
+    height: 26px;
+  }
 }

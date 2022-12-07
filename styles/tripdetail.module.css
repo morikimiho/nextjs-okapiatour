@@ -140,13 +140,14 @@
   .tour_detail_info_items .detail_form {
     margin: 10px 0px 10px;
     position: relative;
-    left: 180px;
+    left: 154px;
   }
 }
 
 .button_position {
   padding-top: 80px;
   text-align: center;
+  margin-top: 10px;
 }
 @media (max-width: 1199px) {
   .button_position {
@@ -230,9 +231,4 @@
     width: 30vw;
     height: 25vw;
   }
-}
-
-.valid {
-  color: red;
-  font-size: 12px;
 }
