@@ -48,20 +48,21 @@ export default function BookingDone() {
             <p>ご予約番号</p>
 
             <p className={styles.booking_RsNumber}>{rsNumber.rsNumber}</p>
-            <p className={styles.booking_message}>お問合せに必要な番号です。大切に保管してください。</p>
-        </div>
+            <p className={styles.booking_message}>
+              お問合せに必要な番号です。大切に保管してください。
+            </p>
+          </div>
 
           <p className={styles.booking_message}>
             ご予約確認ページよりお申し込み内容お申し込み内容をご確認いただけます。
           </p>
 
           <div className={styles.booking_button}>
-          <Link href="http://localhost:3000/tour/booking_confirmation">
-            <button className={styles.booking_btn} type="submit">
-             
+            <Link href="http://localhost:3000/tour/booking_confirmation">
+              <button className={styles.booking_btn} type="submit">
                 予約確認へ
-             
-            </button> </Link>
+              </button>{" "}
+            </Link>
           </div>
 
           <div className={styles.booking_note}>
