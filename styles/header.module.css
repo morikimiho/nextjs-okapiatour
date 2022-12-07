@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 .header {
   background-color: #FFC896;
+  box-shadow: 0px 5px 5px rgb(210, 201, 201);
 }
 .header .header_items {
   height: 60px;
@@ -36,7 +37,7 @@
   padding: 8px;
   font-size: 8px;
   font-weight: 700;
-  color: #fff3e9;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   position: relative;
@@ -49,7 +50,7 @@
   padding: 12px 8px;
   font-size: 8px;
   font-weight: 700;
-  color: #fff3e9;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
 }
@@ -111,7 +112,7 @@
   .res_login_user {
     display: block;
     height: 40px;
-    background: #fff3e9;
+    background: #fff7ee;
     padding-top: 9px;
   }
 }

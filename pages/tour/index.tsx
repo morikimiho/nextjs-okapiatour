@@ -16,7 +16,7 @@ export default function Home({ tours }) {
   const [isOpen, setIsOpen] = useState(true);
   setTimeout(() => {
     setIsOpen(false);
-  }, 1 * 1000);
+  }, 0.8 * 1000);
   const [isDisplay, setIsDisplay] = useState(true);
   setTimeout(() => {
     setIsDisplay(false);
@@ -47,8 +47,6 @@ export default function Home({ tours }) {
       </div>
       
       <Header />
-
-      <div className={styles.top_bg}>
         <div className={styles.container}>
           <Slider />
           <div className={styles.subtitle}>新しい世界を見に行こう</div>
@@ -147,7 +145,6 @@ export default function Home({ tours }) {
             )}
           </div>
         </div>
-      </div>
 
       <ScrTop />
       <Footer />

@@ -90,7 +90,7 @@
 .top_image {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 58px);
 }
 @media (max-width: 1199px) {
   .top_image {
@@ -170,17 +170,6 @@
   color: #eb6100;
 }
 
-.top_bg {
-  background: #fff7ee;
-  position: relative;
-  height: 1691px;
-}
-@media (max-width: 1199px) {
-  .top_bg {
-    height: 2761px;
-  }
-}
-
 .logos {
   position: fixed;
   width: 100%;
@@ -197,13 +186,19 @@
   width: 420px;
   height: 300px;
 }
+@media (max-width: 1199px) {
+  .logo {
+    width: 320px;
+    height: 220px;
+  }
+}
 
 /* fadeUpをするアイコンの動き */
 .fadeUp {
   -webkit-animation-name: fadeUpAnime;
           animation-name: fadeUpAnime;
-  -webkit-animation-duration: 0.8s;
-          animation-duration: 0.8s;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
   opacity: 0;

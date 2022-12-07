@@ -36,7 +36,7 @@
   font-weight: 700;
   cursor: pointer;
   box-shadow: 3px 5px 17px 5px #DEDEDE;
-  color: #ffe4cb;
+  color: #fff7ee;
   background-color: #9a2727;
   border: none;
   transition: all 0.3s ease 0s;
@@ -49,8 +49,16 @@
 
 .flex {
   display: flex;
+  margin-top: 10px;
 }
 
 .list {
   list-style-type: none;
+}
+@media (max-width: 1199px) {
+  .list {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 14px;
+  }
 }

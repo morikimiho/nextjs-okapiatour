@@ -88,7 +88,7 @@
 .top_image {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 58px);
   @include pub.mq("res") {
     height: calc(100vh - 100px);
   }
@@ -162,15 +162,6 @@
   color: pub.$dark_color;
 }
 
-.top_bg {
-  background: pub.$highlight_color;
-  position: relative;
-  height: 1691px;
-  @include pub.mq("res") {
-    height: 2761px;
-  }
-}
-
 .logos {
   position: fixed;
   width: 100%;
@@ -186,11 +177,15 @@
   transform: translate(-50%, -50%);
   width: 420px;
   height: 300px;
+  @include pub.mq("res") {
+    width: 320px;
+    height: 220px;
+  }
 }
 /* fadeUpをするアイコンの動き */
 .fadeUp {
   animation-name: fadeUpAnime;
-  animation-duration: 0.8s;
+  animation-duration: 0.5s;
   animation-fill-mode: forwards;
   opacity: 0;
 }
