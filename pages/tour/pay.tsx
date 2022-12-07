@@ -17,10 +17,7 @@ export default function Pay() {
   const [amount, setAmount] = useState(0);
   const fetcher = (resource: any, init: any) =>
     fetch(resource, init).then((res) => res.json());
-  const { data, error } = useSWR(
-    `/api/inCarts?userId=${loginId}`,
-    fetcher
-  );
+  const { data, error } = useSWR(`/api/inCarts?userId=${loginId}`, fetcher);
   useEffect(() => {
     if (loginId.length === 0) {
       return;
@@ -131,7 +128,7 @@ export default function Pay() {
           <div className={styles.input}>
             <form>
               <div className={styles.radio}>
-                <input type="radio" id="01" name="pay"  />
+                <input type="radio" id="01" name="pay" />
                 クレジットカード
               </div>
               <br />
@@ -144,9 +141,16 @@ export default function Pay() {
                 <input type="radio" id="03" name="pay" />
                 コンビニ支払い
               </div>
-              <button type="button" className={styles.button} onClick={onClick}>
-                <Link href="/tour/booking_done">決済する</Link>
-              </button>
+              
+              <Link href="/tour/booking_done">
+                <button
+                  type="button"
+                  className={styles.button}
+                  onClick={onClick}
+                >
+                  決済する
+                </button>
+              </Link>
             </form>
           </div>
         </div>

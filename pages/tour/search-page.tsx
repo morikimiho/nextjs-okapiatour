@@ -171,9 +171,9 @@ const SearchPage = () => {
 
         <div id="serch_result" className={styles.search_result}>
           {url.indexOf("recommend=true") > 0 ? (
-            <span className={styles.headline}>おすすめ</span>
+            <div className={styles.headline}>おすすめ</div>
           ) : (
-            <span className={styles.headline}>検索結果</span>
+            <div className={styles.headline}>検索結果</div>
           )}
 
           {data.map((item: any) => {

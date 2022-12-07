@@ -68,7 +68,7 @@
 .search_input {
   border: solid 3px #FFC896;
   height: 30px;
-  width: 100px;
+  width: 136px;
   border-radius: 12px;
   text-align: center;
   outline: none;
@@ -188,13 +188,36 @@
 }
 
 .place {
-  padding-left: 20px;
+  padding-left: 24px;
 }
 
 .headline {
   font-size: 2rem;
   font-weight: bold;
-  margin-left: 4vw;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+  width: 162px;
+}
+.headline::before {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 40px;
+  background-color: #eb6100;
+  transform: rotate(60deg);
+  bottom: 21px;
+  left: -31px;
+}
+.headline::after {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 40px;
+  background-color: #eb6100;
+  transform: rotate(-60deg);
+  bottom: 21px;
+  right: -31px;
 }
 
 .button {

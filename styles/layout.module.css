@@ -12,6 +12,8 @@
 .tour_trip_contents {
   margin: 80px auto;
   width: calc(100vw - 200px);
+  position: relative;
+  min-height: 72vh;
 }
 @media (max-width: 1199px) {
   .tour_trip_contents {
