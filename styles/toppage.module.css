@@ -4,13 +4,13 @@
   z-index: -1;
 }
 
-.search {
+.search_box {
   position: absolute;
   top: 25%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  min-width: 80vw;
 }
 
 .search:hover {
