@@ -9,7 +9,7 @@ export function TripdetailCount({setNumberOfPeople}:{setNumberOfPeople: Dispatch
       <div className={styles.count}>
         <form action="get">
           <select className={styles.detail_form} onChange={(e) => setNumberOfPeople(Number(e.target.value))}>
-            <option value="1" selected>1</option>
+            <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>

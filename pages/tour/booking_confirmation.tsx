@@ -23,8 +23,7 @@ export default function BookingConfirmation() {
     fetch(`http://localhost:8000/orders?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
+        // console.log(data);
         setData(data);
       })
       .catch((error) => {
@@ -44,7 +43,9 @@ export default function BookingConfirmation() {
           </h1>
           <h2 className={styles.bookingC_message}>ご予約内容</h2>
           {data.length ? (
-            <p className={styles.bookingC_ok}>現在ご予約いただいているツアーの確認が可能です。</p>
+            <p className={styles.bookingC_ok}>
+              現在ご予約いただいているツアーの確認が可能です。
+            </p>
           ) : (
             <p className={styles.bookingC_error}>
               お客様が予約されているツアーはありません。
@@ -61,15 +62,23 @@ export default function BookingConfirmation() {
               </div>
             </Link>
           )}
-
-          {data.map((d) => {
+          {data.map((d: { id: number; tours: []; rsNumber: string }) => {
             return (
-              <div className={styles.bookings}>
+              <div key={d.id} className={styles.bookings}>
                 <h4 className={styles.booking_id}>予約番号: {d.rsNumber}</h4>
-                {d.tours.map((tour) => {
-                  return (
-                    <>
-                      <div className={styles.booking_flex}>
+                {d.tours.map(
+                  (tour: {
+                    id: number;
+                    img1: string;
+                    tourName: string;
+                    tourDate: string;
+                    startTime: string;
+                    numberOfPeople: string;
+                    total: number;
+                  }) => {
+                    console.log(tour);
+                    return (
+                      <div key={tour.id} className={styles.booking_flex}>
                         <div className={styles.booking_image}>
                           <Image src={tour.img1} layout="fill" alt="画像" />
                         </div>
@@ -83,9 +92,9 @@ export default function BookingConfirmation() {
                           <div>合計価格：{tour.total.toLocaleString()}円</div>
                         </div>
                       </div>
-                    </>
-                  );
-                })}
+                    );
+                  }
+                )}
               </div>
             );
           })}

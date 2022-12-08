@@ -4,10 +4,6 @@ import { useState } from "react";
 import Layout from "../../component/layout";
 import Router from "next/router";
 
-type User = {
-  users: User[];
-};
-
 const CreateUser = () => {
   const [firstName, setFirstName] = useState("");
   const [firstNameKana, setFirstNameKana] = useState("");
@@ -20,10 +16,10 @@ const CreateUser = () => {
   const [birthY, setBirthY] = useState("");
   const [birthM, setBirthM] = useState("");
   const [birthD, setBirthD] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  
+  const [isChecked, setIsChecked] = useState(false);
   // チェクボックスクリックでboolean反転
   const toggleCheckbox = () => {
     setIsChecked(!isChecked);
@@ -207,7 +203,6 @@ const CreateUser = () => {
                     </label>
                     <select
                       className={styles.input_select}
-                      id=""
                       name="birthY"
                       value={birthY}
                       onChange={(e) => setBirthY(e.target.value)}
@@ -221,7 +216,6 @@ const CreateUser = () => {
                     </label>
                     <select
                       className={styles.input_select}
-                      id=""
                       name="birthM"
                       value={birthM}
                       onChange={(e) => setBirthM(e.target.value)}
@@ -235,7 +229,6 @@ const CreateUser = () => {
                     </label>
                     <select
                       className={styles.input_select}
-                      id=""
                       name="birthD"
                       value={birthD}
                       onChange={(e) => setBirthD(e.target.value)}
@@ -308,6 +301,8 @@ const CreateUser = () => {
                   />
                 </div>
               </div>
+
+
               <div className={styles.privacy}>
                 <input type="checkbox" onChange={() => toggleCheckbox()} />
                 <span>
@@ -317,6 +312,11 @@ const CreateUser = () => {
                   に同意する
                 </span>
               </div>
+
+
+
+
+
               <span
                 className={styles.error_message}
                 style={{ display: error ? "block" : "none" }}
@@ -388,9 +388,7 @@ const SelectYear = () => {
       <option value="1992">1992</option>
       <option value="1993">1993</option>
       <option value="1994">1994</option>
-      <option value="1995" selected>
-        1995
-      </option>
+      <option value="1995">1995</option>
       <option value="1996">1996</option>
       <option value="1997">1997</option>
       <option value="1998">1998</option>

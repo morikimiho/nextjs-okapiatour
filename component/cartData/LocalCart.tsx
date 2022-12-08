@@ -8,7 +8,7 @@ type Props = {
   loginId: string;
 };
 
-export function LocalCart({ amount, setAmount, loginId}: Props) {
+export function LocalCart({ amount, setAmount, loginId }: Props) {
   const [tours, setTours] = useState<Tour[]>([]);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export function LocalCart({ amount, setAmount, loginId}: Props) {
     const newTours = tours.filter((tour) => tour.id != val);
     setTours(newTours);
     // console.log(newTours);
-    localStorage.setItem("tours", JSON.stringify({tours: newTours}));
+    localStorage.setItem("tours", JSON.stringify({ tours: newTours }));
   };
 
   return (

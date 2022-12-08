@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 export default function BookingDone() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
-
   const [rsNumber, setRsNumber] = useState("");
 
   useEffect(() => {
@@ -28,7 +27,7 @@ export default function BookingDone() {
         console.error("Error:", error);
       });
   }, [loginId]);
-
+console.log(rsNumber)
   return (
     <>
       <Head>
