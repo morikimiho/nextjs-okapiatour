@@ -4,20 +4,28 @@ import Link from "next/link";
 import useCookie from "../../hooks/useCookie";
 import Layout from "../../component/layout";
 import { useEffect, useState } from "react";
+import { Tour } from "../../types/types";
+
+interface rsNumber {
+  id: number;
+  rsNumber: string;
+  tours: Array<Tour>;
+  userId: number;
+}
 
 export default function BookingDone() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
-  const [rsNumber, setRsNumber] = useState("");
+  const [rsNumber, setRsNumber] = useState<rsNumber>();
 
   useEffect(() => {
     if (loginId.length === 0) {
       return;
     }
-    fetch(`http://localhost:8000/orders?userId=${loginId}`)
+    fetch(`/api/orders?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data);
+
         const cartitem = data[0];
         if (cartitem) {
           setRsNumber(cartitem);
@@ -27,7 +35,8 @@ export default function BookingDone() {
         console.error("Error:", error);
       });
   }, [loginId]);
-console.log(rsNumber)
+
+
   return (
     <>
       <Head>
@@ -46,7 +55,7 @@ console.log(rsNumber)
             <p>ご予約を承りました。</p>
             <p>ご予約番号</p>
 
-            <p className={styles.booking_RsNumber}>{rsNumber.rsNumber}</p>
+            <p className={styles.booking_RsNumber}>{rsNumber?.rsNumber}</p>
             <p className={styles.booking_message}>
               お問合せに必要な番号です。大切に保管してください。
             </p>
@@ -60,7 +69,7 @@ console.log(rsNumber)
             <Link href="http://localhost:3000/tour/booking_confirmation">
               <button className={styles.booking_btn} type="submit">
                 予約確認へ
-              </button>{" "}
+              </button>
             </Link>
           </div>
 

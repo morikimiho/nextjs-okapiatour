@@ -1,7 +1,12 @@
 import Image from "next/image";
 import styles from "../styles/tripdetail.module.css";
+import { Tour } from "../types/types";
 
-export function TripdetailImage({ tour }) {
+type Props = {
+  tour:Tour;
+}
+
+export function TripdetailImage({ tour }:Props) {
   return (
     <div className={styles.tour_detail_images}>
       <div className={styles.tour_detail_images_top}>

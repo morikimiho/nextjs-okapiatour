@@ -1,11 +1,10 @@
 import styles from "../../styles/pay.module.css";
 import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Layout from "../../component/layout";
 import Head from "next/head";
 import Image from "next/image";
-import { Tour } from "../../types/types";
+import { Cart, Tour } from "../../types/types";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 
@@ -24,7 +23,7 @@ export default function Pay() {
   };
 
 
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
   const fetcher = (resource: any, init: any) =>
     fetch(resource, init).then((res) => res.json());
@@ -54,7 +53,7 @@ export default function Pay() {
   if (!data) return <div>loading...</div>;
 
   console.log(loginId);
-  //   useEffect(() => {  }, [loginId]);
+
   const onClick = async () => {
     if (loginId.length === 0) {
       return;
@@ -70,8 +69,8 @@ export default function Pay() {
     await fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
-        const cart = data[0];
-        // console.log(deta);
+        const cart= data[0];
+
 
         let randomstring = require("randomstring");
         fetch("/api/orders", {
@@ -92,7 +91,7 @@ export default function Pay() {
         });
       });
     if (cart) {
-      fetch(`/api/inCarts/${cart.id}`, {
+      fetch(`/api/inCarts/${cart?.id}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",

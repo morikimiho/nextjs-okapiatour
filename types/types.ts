@@ -1,3 +1,5 @@
+import { type } from "os";
+
 type Users = {
   id: number;
   name: string;
@@ -43,10 +45,16 @@ type Tour = {
   total:number;
 };
 
+type Cart = {
+  tours: Array<Tour>;
+  userId: number;
+  id: number;
+}
+
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
 type Country = | "fr" | "ita"| "ko"| "indo"| "ame"| "sp"| "taiwa"| "aus"| "phi"| "bra"| "egy"| "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
-export type { Users, Tour, Abroad, Prefecture, Area,Country,City };
+export type { Users, Tour, Cart, Abroad, Prefecture, Area,Country,City };

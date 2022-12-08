@@ -5,9 +5,10 @@ import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
 import { Dispatch, SetStateAction } from "react";
+import { Tour } from "../../types/types";
 
 type Props = {
-  tours: [];
+  tours: Array<Tour>;
   amount: number;
   setAmount: Dispatch<SetStateAction<number>>;
   deleteHandler: Function;
@@ -59,7 +60,7 @@ export function CartItems({
                 )}
               </div>
               <div>
-                <Link href="http://localhost:3000/tour/search-page">
+                <Link href="http://localhost:3000/tour">
                   <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>

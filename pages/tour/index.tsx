@@ -19,6 +19,7 @@ export default function Home() {
   const [areaCode, setArea] = useState<Area>("");
   const [country, setCountry] = useState<Country>("");
   const [city, setCity] = useState<City>("");
+
   const [isOpen, setIsOpen] = useState(true);
 
   setTimeout(() => {

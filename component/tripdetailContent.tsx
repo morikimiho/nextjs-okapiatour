@@ -1,8 +1,11 @@
 import styles from "../styles/tripdetail.module.css";
+import { Tour } from "../types/types";
 
+type Props = {
+  tour:Tour;
+}
 
-
-export function TripdetailContent({tour}) {
+export function TripdetailContent({tour}:Props) {
   return (
     <div className={styles.tripcontent}>
       <div>

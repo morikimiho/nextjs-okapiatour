@@ -1,6 +1,10 @@
 import styles from "../styles/tripdetail.module.css";
+import { Tour } from "../types/types";
 
-export function TripdetailActivity({tour}) {
+type Props = {
+  tour:Tour;
+}
+export function TripdetailActivity({tour}:Props) {
     return (
       <div className={styles.activity}>
         <h2>アクティビティ概要</h2>
