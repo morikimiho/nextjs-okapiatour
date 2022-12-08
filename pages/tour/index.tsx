@@ -23,6 +23,7 @@ export default function Home() {
   const [city, setCity] = useState<City>("");
 
 
+export default function Home({ tours }) {
   const [isOpen, setIsOpen] = useState(true);
   setTimeout(() => {
     setIsOpen(false);
@@ -130,6 +131,7 @@ export default function Home() {
       </div>
   );
 }
+
 {/* <svg
   width="218"
   height="60"

@@ -1,3 +1,17 @@
 {
-    "dartsass.targetDirectory": "../Okapia-Tour/styles"
+    "dartsass.targetDirectory": "../Okapia-Tour/styles",
+    "cSpell.words": [
+        "cartcontent",
+        "cartitem",
+        "Cartlist",
+        "const",
+        "Item",
+        "localtours",
+        "Open",
+        "randomstring",
+        "State",
+        "tourinfo",
+        "true",
+        "userdata"
+    ]
 }

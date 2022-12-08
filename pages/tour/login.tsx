@@ -33,14 +33,21 @@ export default function Login() {
           console.log("失敗");
           setError(true);
         } else if (response.status === 200) {
-          router.push("/tour");
-          console.log("ok");
+          const localTourJSON = localStorage.getItem("tours");
+          if (localTourJSON === null) {
+            router.push("/tour");
+            console.log("peyに遷移");
+          } else {
+            router.push("/tour/pay");
+            console.log("トップページに遷移");
+          }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-          const response =  fetch(
+
+          const response = fetch(
             `/api/users?mailAddress=${mailAddress}&password=${password}`
           );
-          const userdata =  await (await response).json();
+          const userdata = await (await response).json();
           const user = userdata[0];
           console.log(user);
           const id = user.id;
@@ -79,9 +86,6 @@ export default function Login() {
       .catch((error) => {
         console.error(error);
       });
-
-  
-
   };
   return (
     <>
@@ -132,9 +136,10 @@ export default function Login() {
         </div>
         {/* container */}
         <Link href="create-user">
-        <button type="button" className={styles.reg_button}>
-        新規登録はこちら
-        </button></Link>
+          <button type="button" className={styles.reg_button}>
+            新規登録はこちら
+          </button>
+        </Link>
       </Layout>
     </>
   );
