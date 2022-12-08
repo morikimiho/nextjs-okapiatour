@@ -236,3 +236,10 @@
 .valid {
   color: red;
 }
+
+.error_message {
+  color: red;
+  text-align: center;
+  position: relative;
+  top: 40px;
+}
