@@ -38,7 +38,7 @@ export default function Login() {
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
           const response =  fetch(
-            `/api/users?mailAddress=${mailAddress}&password=${password}`
+            `http://localhost:3000/users?mailAddress=${mailAddress}&password=${password}`
           );
           const userdata =  await (await response).json();
           const user = userdata[0];

@@ -14,7 +14,6 @@ const nextConfig = {
       },
       {
         source: '/api/inCarts',
-
         destination: 'http://localhost:8000/inCarts',
       },
       {
@@ -34,7 +33,7 @@ const nextConfig = {
       },
       {
         source: '/api/users/:slug',
-        destination: 'http://localhost:8000/users',
+        destination: 'http://localhost:8000/users/:slug',
 
       },
     ];
