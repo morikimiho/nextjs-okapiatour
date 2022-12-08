@@ -16,7 +16,8 @@ export default function Pay() {
 
   //お支払い方法未選択の場合
   const router = useRouter()
-  
+  const [error_message, setErrorMessage] = useState(false);
+
   const [checkPayment, setCheckPayment] = useState<boolean>(false);
   const checkPay = () => {
     setCheckPayment(!checkPayment);
@@ -61,7 +62,7 @@ export default function Pay() {
 
     //お支払い方法が未選択の場合
     if (checkPayment === false){
-      alert("お支払い方法を選択してください。") 
+      setErrorMessage(true);
       return;
     }
 
@@ -144,6 +145,11 @@ export default function Pay() {
             下記からお支払いの方法を選択してください。
           </h3>
           <div className={styles.input}>
+            <span
+              style={{ display: error_message ? "block" : "none" }}
+            >
+               <div className={styles.error_message}>*お支払い方法を選択してください。*</div>
+            </span>
             <form>
               <div className={styles.radio}>
                 <input type="radio" id="01" name="pay" value="credit"  onChange={() => checkPay()}/>
@@ -159,6 +165,7 @@ export default function Pay() {
                 <input type="radio" id="03" name="pay" value="convenience" onChange={() => checkPay()}/>
                 コンビニ支払い
               </div>
+
                 <button
                   type="button"
                   className={styles.button}
@@ -166,6 +173,7 @@ export default function Pay() {
                 >
                   決済する
                 </button>
+            
             </form>
           </div>
         </div>
