@@ -44,16 +44,16 @@ export default function Login() {
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
 
-          const response =  fetch(
-            `http://localhost:3000/users?mailAddress=${mailAddress}&password=${password}`
-
-          );
-          const userdata = await (await response).json();
-          const user = userdata[0];
+          await fetch(
+            `/api/users?mailAddress=${mailAddress}&password=${password}`
+          ).then ((response)=>response.json())
+          .then (async (data)=>{
+          
+          const user = data[0];
           console.log(user);
           const id = user.id;
           console.log(id);
-
+      
           const localtours = JSON.parse(
             localStorage.getItem("tours") ?? '{"tours:[]}'
           );
@@ -63,22 +63,22 @@ export default function Login() {
           }
           //バックデータのカートの中身を取得
           await fetch(`/api/inCarts?userId=${id}`)
-          .then((response) => response.json())
-          .then((data) => {
-              const cart=data[0]
+            .then((response) => response.json())
+            .then((data) => {
+              const cart = data[0];
               //ローカルをバックカートに追加、元々のバックのツアーは残したまま
-          localtours.tours.map((tour:Tour)=>
-          fetch(`/api/inCarts/${id}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({tours:[...cart.tours,tour] }),
-          }));
-          localStorage.clear();
-              
+              localtours.tours.map((tour: Tour) =>
+                fetch(`/api/inCarts/${id}`, {
+                  method: "PATCH",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ tours: [...cart.tours, tour] }),
+                })
+              );
+              localStorage.clear();
+            });
           })
-          
         }
       })
       .then((data) => {
