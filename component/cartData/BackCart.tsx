@@ -56,7 +56,7 @@ export function BackCart({loginId, amount, setAmount}:Props) {
     setTours(newTours);
     
     
-    router.reload();
+
   };
 
   return (
