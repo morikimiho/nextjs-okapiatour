@@ -83,7 +83,7 @@ export default function Home() {
         <title>Okapia Tour</title>
       </Head>
 
-      {/* トップアニメーション */}
+      {/* トップページアニメーション */}
       {/* <div
         className={styles.logos}
         style={{
