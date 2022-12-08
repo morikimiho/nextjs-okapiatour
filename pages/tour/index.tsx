@@ -22,8 +22,6 @@ export default function Home() {
   const [country, setCountry] = useState<Country>("");
   const [city, setCity] = useState<City>("");
 
-
-export default function Home({ tours }) {
   const [isOpen, setIsOpen] = useState(true);
   setTimeout(() => {
     setIsOpen(false);
