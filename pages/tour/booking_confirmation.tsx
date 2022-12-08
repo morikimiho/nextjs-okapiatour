@@ -20,7 +20,7 @@ export default function BookingConfirmation() {
     if (loginName.length === 0) {
       return;
     }
-    fetch(`http://localhost:8000/orders?userId=${loginId}`)
+    fetch(`/api/orders?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);
