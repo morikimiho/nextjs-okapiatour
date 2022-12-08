@@ -7,11 +7,21 @@ import Head from "next/head";
 import Image from "next/image";
 import { Tour } from "../../types/types";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   //文字列になっていた
+
+  //お支払い方法未選択の場合
+  const router = useRouter()
+  
+  const [checkPayment, setCheckPayment] = useState<boolean>(false);
+  const checkPay = () => {
+    setCheckPayment(!checkPayment);
+  };
+
 
   const [cart, setCart] = useState();
   const [amount, setAmount] = useState(0);
@@ -48,6 +58,13 @@ export default function Pay() {
     if (loginId.length === 0) {
       return;
     }
+
+    //お支払い方法が未選択の場合
+    if (checkPayment === false){
+      alert("お支払い方法を選択してください。") 
+      return;
+    }
+
     //cartの中身を取得し、ordersへ格納する。
     await fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
@@ -83,6 +100,7 @@ export default function Pay() {
         body: JSON.stringify({ tours: [] }),
       });
     }
+    router.push("/tour/booking_done");
   };
   return (
     <>
@@ -128,21 +146,19 @@ export default function Pay() {
           <div className={styles.input}>
             <form>
               <div className={styles.radio}>
-                <input type="radio" id="01" name="pay" />
+                <input type="radio" id="01" name="pay" value="credit"  onChange={() => checkPay()}/>
                 クレジットカード
               </div>
               <br />
               <div className={styles.radio}>
-                <input type="radio" id="02" name="pay" />
+                <input type="radio" id="02" name="pay" value="bank" onChange={() => checkPay()}/>
                 銀行振込
               </div>
               <br />
               <div className={styles.radio}>
-                <input type="radio" id="03" name="pay" />
+                <input type="radio" id="03" name="pay" value="convenience" onChange={() => checkPay()}/>
                 コンビニ支払い
               </div>
-              
-              <Link href="/tour/booking_done">
                 <button
                   type="button"
                   className={styles.button}
@@ -150,7 +166,6 @@ export default function Pay() {
                 >
                   決済する
                 </button>
-              </Link>
             </form>
           </div>
         </div>

@@ -1181,7 +1181,41 @@
       "id": 2
     },
     {
-      "tours": [],
+      "tours": [
+        {
+          "id": 1,
+          "tourDate": "2022-12-07",
+          "startTime": 10,
+          "img1": "/images/france/paris/mont-saint-michel/mont-saint-michel01.jpg",
+          "tourName": "モン サン ミッシェル 1日ツアー",
+          "description": "ユネスコ世界遺産のモン サン ミッシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
+          "numberOfPeople": 1,
+          "price": 17000,
+          "total": 17000
+        },
+        {
+          "id": 6,
+          "tourDate": "2022-12-07",
+          "startTime": 11,
+          "img1": "/images/kyoto/kyoto01.jpg",
+          "tourName": "京都で着物とお茶体験",
+          "description": "着物を着て、お茶体験ができます。清水寺で写真撮影も可能です。",
+          "numberOfPeople": 1,
+          "price": 6000,
+          "total": 6000
+        },
+        {
+          "id": 8,
+          "tourDate": "2022-12-20",
+          "startTime": 11,
+          "img1": "/images/milan/domo/domo01.jpg",
+          "tourName": "ドゥオーモ（ミラノ大聖堂）＆テラス ガイド付きツアー",
+          "description": "ミラノ大聖堂を少人数ツアーまたはプライベートツアーで見学しましょう。優先入場口からの入場とテラスへのアクセスが含まれます。",
+          "numberOfPeople": 1,
+          "price": 4000,
+          "total": 4000
+        }
+      ],
       "userId": 3,
       "id": 3
     },
@@ -1196,5 +1230,7 @@
       "id": 5
     }
   ],
+
   "orders": []
 }
+

@@ -74,6 +74,9 @@
     border-radius: 12px;
     text-align: center;
     outline: none;
+    width: 200px;
+    height: 45px;
+    font-size: 18px;
     @include pub.mq("res") {
         width: 200px;
     }

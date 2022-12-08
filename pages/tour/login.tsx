@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
+import { Tour } from "../../types/types";
 
 export default function Login() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function Login() {
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
+
           const response = fetch(
             `/api/users?mailAddress=${mailAddress}&password=${password}`
           );
@@ -58,14 +60,24 @@ export default function Login() {
           if (localtours.tours.length === 0) {
             return;
           }
+          //バックデータのカートの中身を取得
+          await fetch(`/api/inCarts?userId=${id}`)
+          .then((response) => response.json())
+          .then((data) => {
+              const cart=data[0]
+              //ローカルをバックカートに追加、元々のバックのツアーは残したまま
+          localtours.tours.map((tour:Tour)=>
           fetch(`/api/inCarts/${id}`, {
             method: "PATCH",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ tours: localtours.tours }),
-          });
+            body: JSON.stringify({tours:[...cart.tours,tour] }),
+          }));
           localStorage.clear();
+              
+          })
+          
         }
       })
       .then((data) => {

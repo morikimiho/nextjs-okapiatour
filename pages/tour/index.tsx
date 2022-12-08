@@ -6,11 +6,24 @@ import { Footer } from "../../component/footer";
 import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import Link from "next/link";
 import { useState } from "react";
+import { SearchBox } from "../../component/serchPage/SearchBox";
+import { SearchResult } from "../../component/serchPage/SearchResult";
+import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
+
+export default function Home() {
+
+
+  const [url, setUrl] = useState("/api/tours?recommend=true");
+
+  const [abroad, setAbroad] = useState<Abroad>("abroad");
+  const [prefecture, setPrefecture] = useState<Prefecture>("");
+  const [areaCode, setArea] = useState<Area>("");
+  const [country, setCountry] = useState<Country>("");
+  const [city, setCity] = useState<City>("");
+
 
 export default function Home({ tours }) {
-  
   const [isOpen, setIsOpen] = useState(true);
   setTimeout(() => {
     setIsOpen(false);
@@ -20,217 +33,130 @@ export default function Home({ tours }) {
     setIsDisplay(false);
   }, 2 * 1000);
 
+  const Slider = () => {
+    return (
+      <>
+        <Splide
+          aria-label="トップページ"
+          options={{
+            autoplay: true, // 自動再生を有効
+            interval: 3000, // 自動再生の間隔を3秒に設定
+          }}
+        >
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/scenery.jpg"
+                alt="風景の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/flower.jpg"
+                alt="花の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide>
+          {/* <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/fuji.jpg"
+                alt="富士山の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide> */}
+        </Splide>
+      </>
+    );
+  }
+
   return (
-    <>
-      <Head>
-        <title>Okapia Tour</title>
-      </Head>
+    <div> 
+        <Head>
+          <title>Okapia Tour</title>
+        </Head>
 
-      {/* トップページアニメーション */}
-      {/* <div
-        className={styles.logos}
-        style={{
-          transition: "1s",
-          opacity: isOpen ? 1 : 0,
-          display: isDisplay ? 'block' : 'none', 
-        }}
-      >
-        <div className={styles.logo}>
-          <Image
-            className={styles.fadeUp}
-            src="/images/logo_cover3.png"
-            alt="検索"
-            layout="fill"
-          />
-        </div>
-      </div> */}
-
-      <Header />
-      <div className={styles.container}>
-        <Slider />
-        <div className={styles.subtitle}>新しい世界を見に行こう</div>
-        <Link href="/tour/search-page">
-          <button type="button" className={styles.search}>
-            &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div
+          className={styles.logos}
+          style={{
+            transition: "1s",
+            opacity: isOpen ? 1 : 0,
+            display: isDisplay ? 'block' : 'none', 
+            }}
+          >
+          <div className={styles.logo}>
             <Image
-              src="/images/top/虫眼鏡.png"
+              className={styles.fadeUp}
+              src="/images/logo_cover3.png"
               alt="検索"
-              width={16}
-              height={16}
+              layout="fill"
             />
-          </button>
-        </Link>
+          </div>
+        </div>
+      
+        <Header />
+        <div className={styles.container}>
+          <Slider />
+          </div>
+            <div className={styles.search}>
+              <SearchBox
+                abroad={abroad}
+                country={country}
+                prefecture={prefecture}
+                areaCode={areaCode}
+                city={city}
+                setAbroad={setAbroad}
+                setCountry={setCountry}
+                setPrefecture={setPrefecture}
+                setArea={setArea}
+                setCity={setCity}
+                setUrl={setUrl}
+               />
+            </div>
+            <SearchResult url={url}/>
+          <ScrTop />
+          <Footer />
+
       </div>
-      <div className={styles.tourContent}>
-        <div className={styles.areaPickUp}>
-          <img
-            src="/images/top/overseas.png"
-            alt="飛行機"
-            width={32}
-            height={32}
-          />
-          <span className={styles.pick_title}>海外・おすすめツアーPickUp!</span>
-        </div>
-        <div className={styles.overseas}>
-          {tours.map(
-            (tour: {
-              id: number;
-              img1: string;
-              tourName: string;
-              abroad: string;
-            }) => {
-              if (tour.abroad === "abroad" && tour.id < 4) {
-                return (
-                  <div key={tour.id} className={styles.blockTourContent}>
-                    <div className={styles.overseas_images}>
-                      <Link href={`/tour/${tour.id}`}>
-                        <Image
-                          src={tour.img1}
-                          alt={"ツアー地域の写真"}
-                          layout="fill"
-                        />
-                      </Link>
-                    </div>
-                    <p className={styles.tour_title}>
-                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                    </p>
-                  </div>
-                );
-              }
-            }
-          )}
-        </div>
-
-        <div className={styles.areaPickUp}>
-          <img
-            src="/images/top/domestic.png"
-            alt="自動車"
-            width={32}
-            height={32}
-          />
-          <span className={styles.pick_title}>国内・おすすめツアーPickUp!</span>
-        </div>
-        <div className={styles.overseas}>
-          {tours.map(
-            (tour: {
-              id: number;
-              img1: string;
-              tourName: string;
-              abroad: string;
-            }) => {
-              if (tour.abroad === "domestic" && tour.id < 7) {
-                return (
-                  <div key={tour.id} className={styles.blockTourContent}>
-                    <div className={styles.overseas_images}>
-                      <Link href={`/tour/${tour.id}`}>
-                        <Image
-                          src={tour.img1}
-                          alt={"ツアー地域の写真"}
-                          layout="fill"
-                        />
-                      </Link>
-                    </div>
-                    <p className={styles.tour_title}>
-                      <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                    </p>
-                  </div>
-                );
-              }
-            }
-          )}
-        </div>
-      </div>
-
-      <ScrTop />
-      <Footer />
-    </>
   );
 }
 
-const Slider = () => {
-  return (
-    <>
-      <Splide
-        aria-label="トップページ"
-        options={{
-          autoplay: true, // 自動再生を有効
-          interval: 3000, // 自動再生の間隔を3秒に設定
-        }}
-      >
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/scenery.jpg"
-              alt="風景の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/flower.jpg"
-              alt="花の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/fuji.jpg"
-              alt="富士山の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-      </Splide>
-
-      {/* 画像の高さを揃えて表示させるために以下スタイルを適用 */}
-      <style jsx>{`
-        .slide-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      `}</style>
-    </>
-  );
-};
-
-function ItemDetail({
-  ...tours
-}: {
-  id: number;
-  img1: string;
-  tourName: string;
-}) {
-  return (
-    <div>
-      <Image
-        src={tours.img1}
-        width={100}
-        height={75}
-        alt="ツアーパッケージ"
-        title={tours.tourName}
-        className={styles.image}
-      />
-      <p>{tours.tourName}</p>
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:8000/tours");
-  const tours = await res.json();
-  return {
-    props: { tours },
-  };
-}
+{/* <svg
+  width="218"
+  height="60"
+  viewBox="0 0 218 60"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M21.8103 15.0251C19.3045 15.0251 16.4555 14.6635 14.2038 15.9502C12.5532 16.8934 11.8139 19.131 10.6061 20.473C8.05752 23.3048 5.15812 27.805 5.15812 31.6773C5.15812 36.1221 2.88925 42.649 7.93349 45.4514C10.3423 46.7896 13.7512 46.9418 16.4652 46.9418C20.293 46.9418 22.7093 46.0335 25.9734 43.9352C33.3695 39.1805 33.784 30.9276 35.1989 23.1456C36.2835 17.1807 34.8139 7.63808 28.389 5.41408C23.1804 3.61112 16.7712 2.87521 11.8653 5.51688C7.79314 7.70956 3.30787 8.89307 3.30787 14.5625C3.30787 19.8576 2.41141 23.9566 7.67651 26.5891C11.6053 28.5535 14.3852 30.2896 18.8037 30.2896C21.8156 30.2896 24.6682 30.2512 27.5924 29.8014C29.8802 29.4494 33.3418 26.6478 34.4023 24.7389C35.4599 22.8352 38.5008 20.7432 40.0558 19.1881C41.5445 17.6995 43.3342 16.0593 45.144 15.0251C45.7277 14.6916 49.637 12.9878 47.6881 13.6374C45.6773 14.3077 44.5289 17.3541 43.2938 18.8798C42.4071 19.975 41.1454 20.6498 40.4156 21.9635C38.4398 25.5199 36.8772 29.0838 35.5844 32.9622C34.2597 36.9362 32.4493 41.1083 32.4493 45.3229C32.4493 45.6352 33.8411 42.8811 34.1967 41.9565C34.6776 40.7062 34.9954 39.3313 35.5844 38.1532C36.7438 35.8343 37.2647 33.0706 38.1028 30.6494C39.0377 27.9485 40.3807 25.664 43.3195 25.664C45.64 25.664 46.9877 26.6997 48.8702 27.7455C49.4964 28.0934 50.7242 28.3988 51.4143 28.4394C52.7641 28.5188 51.37 29.7781 50.4892 29.8271C48.8612 29.9175 47.349 32.5242 46.0948 33.5276C44.4831 34.817 43.0882 37.0657 43.0882 39.0783C43.0882 40.8972 42.2854 44.4816 44.9384 44.629C47.2047 44.7549 50.4269 43.8441 51.4143 41.6224C52.2651 39.708 53.2549 35.7556 54.8835 34.4527C55.6257 33.8589 55.7068 32.3444 56.3997 31.5745C57.0683 30.8317 57.5368 29.9748 58.2499 29.2617C59.6139 27.8977 62.9713 29.1659 64.2632 27.874C65.2293 26.908 62.5661 27.0517 62.2588 27.0517C60.6118 27.0517 58.0521 27.613 56.7594 28.6707C54.7763 30.2932 53.7369 31.9555 52.3394 34.0929C50.8977 36.2979 50.9517 38.6046 50.9517 41.1598C50.9517 43.716 56.007 42.7788 57.6589 42.7788C61.2573 42.7788 63.0828 38.1786 65.2911 35.8404C66.7604 34.2847 67.1414 30.4538 67.1414 28.4394C67.1414 24.36 66.5889 31.7466 65.985 32.8337C65.0336 34.5463 65.2911 37.3555 65.2911 39.3096C65.2911 40.3065 65.2359 41.321 65.2911 42.3162C65.4039 44.3454 66.744 42.4618 67.1414 42.2134C68.8019 41.1756 69.2689 37.6541 70.148 36.0716C72.512 31.8166 75.8693 29.9859 80.0931 27.874C86.0324 24.9044 83.5338 32.0372 82.8428 35.1465C82.3574 37.3309 81.0334 38.8575 79.5278 40.3632C77.9217 41.9693 75.3227 41.5995 73.72 42.8816C72.1073 44.1718 69.9168 43.9044 69.9168 41.6224C69.9168 39.6608 69.3348 36.4989 70.148 34.7097C71.1463 32.5135 72.4144 30.6395 73.5145 28.4394C74.4687 26.5309 73.9011 30.0385 73.72 30.6494C73.34 31.932 73.2062 33.4724 73.1547 34.8125C73.0696 37.0255 71.5196 39.1857 70.6106 41.1855C69.7446 43.0908 69.4835 47.0109 67.8352 48.3295C66.8013 49.1567 65.8569 52.155 65.1884 53.4177C64.215 55.2562 62.4787 56.7298 61.5906 58.5059"
+    stroke="#FC1E1E"
+    stroke-width="6"
+  />
+  <path
+    d="M94.8951 20.1133C93.3621 20.2836 92.3798 22.296 91.1946 22.8886"
+    stroke="#FC1E1E"
+    stroke-width="6"
+  />
+  <path
+    d="M92.1197 27.0517C89.0712 30.4813 87.9567 35.5314 87.9567 40.0034C87.9567 42.3417 89.4862 44.6287 91.9141 43.2414C94.6281 41.6905 96.0225 38.2948 96.7453 35.4035C97.3936 32.8103 100.051 31.4113 101.834 29.8271C103.369 28.4626 105.922 28.2174 107.847 27.9768C108.435 27.9032 114.062 27.0517 111.188 27.0517C104.113 27.0517 98.4264 28.8004 96.2828 36.3029C95.6055 38.6735 93.725 43.4847 97.6705 43.7039C100.991 43.8884 101.469 43.246 102.322 40.2604C102.888 38.2801 103.4 34.3447 104.712 32.7052C105.342 31.917 108.249 29.29 107.024 30.3924C105.029 32.1882 99.5077 44.629 105.303 44.629C107.99 44.629 108.698 42.5272 109.594 40.1062C110.015 38.9712 111.282 32.9664 112.01 32.6024"
+    stroke="#FC1E1E"
+    stroke-width="6"
+  />
+  <path
+    d="M154.103 21.0384C153.788 23.87 145.864 25.664 143.695 25.664C141.753 25.664 138.838 24.6512 138.838 22.4261C138.838 19.6927 138.167 15.8173 140.226 13.6374C143.687 9.97283 147.854 7.62411 152.947 7.62411C157.285 7.62411 160.257 11.7872 164.511 11.7872C167.032 11.7872 169.464 12.6169 172.04 12.7123C173.732 12.775 175.448 13.5752 177.128 13.6374C178.355 13.6828 179.352 14.4968 180.469 14.5625C184.031 14.772 189.584 16.4734 191.802 12.481C192.753 10.7682 188.878 8.54923 187.407 8.54923C184.89 8.54923 181.137 8.47016 178.722 7.7269C172.9 5.9355 173.462 12.9138 171.115 15.8474C168.493 19.1253 166.14 23.518 164.048 27.283C163.14 28.917 162.978 31.5696 161.864 32.9622C160.769 34.3311 160.996 36.8792 159.757 38.256C159.129 38.9532 159.058 39.9435 158.472 40.6973C157.608 41.8071 156.239 42.4302 155.028 43.0358C152.924 44.088 151.422 45.8247 149.22 46.4536C143.772 48.0102 139.52 47.3477 134.444 45.0916C129.155 42.7409 116.186 24.2763 128.893 24.2763C130.583 24.2763 132.74 23.8138 134.675 23.8138C136.288 23.8138 137.741 24.4622 139.301 24.8417C142.627 25.6508 146.114 26.3373 149.477 26.9489C154.445 27.8522 159.714 29.8743 164.279 32.0371C166.744 33.2047 168.661 32.737 171.218 32.6024C173.217 32.4972 175.398 31.7927 177 30.5466C179.117 28.8995 174.398 29.4107 173.299 30.2896C171.563 31.679 170.336 33.8917 169.47 35.8404C168.971 36.9644 168.869 42.181 169.933 43.1386C171.431 44.4867 175.258 42.4221 176.537 41.8537C179.013 40.7535 180.063 37.5606 180.932 35.1722C181.713 33.0226 182.353 30.0939 181.831 27.7455C181.592 26.6687 179.662 27.0517 178.85 27.0517C178.5 27.0517 176.357 26.2294 176.357 26.8461C176.357 29.8438 181.17 31.4872 179.647 34.9152C179.18 35.9645 177.606 39.7107 178.722 40.8258C181.017 43.1209 186.67 31.9523 187.639 30.9835C188.41 30.212 189.11 29.3987 189.617 28.4394C189.936 27.8384 190.655 26.44 190.645 26.5891C190.546 28.1795 188.587 30.244 187.87 31.6773C186.896 33.6249 186.377 35.7426 185.454 37.6906C184.906 38.8493 184.382 43.969 185.197 44.9888C187.048 47.3019 189.902 43.5221 191.108 42.3162C194.568 38.8557 197.92 33.5182 198.997 28.6707C199.029 28.5255 199.828 25.8696 199.434 25.8696C198.871 25.8696 197.783 29.4423 197.687 29.8271C197.137 32.0246 196.253 34.1251 195.631 36.3029C195.446 36.9497 194.622 39.4269 194.243 39.9006C193.342 41.0264 193.624 46.4566 195.271 44.3978C196.802 42.4843 199.001 41.3346 199.897 38.8727C201.802 33.6324 204.757 28.4218 205.936 23.1199C206.474 20.6971 205.857 26.6098 205.91 27.5143C205.945 28.1171 210.779 28.1715 211.563 28.7992C213.558 30.3951 212.947 29.5881 211.461 31.446C210.251 32.9577 208.827 34.362 207.555 35.6348C206.407 36.782 205.447 39.3 205.447 40.9286C205.447 43.6879 205.602 44.9715 208.685 43.6011C213.355 41.5257 214.236 35.3533 214.236 30.7522"
+    stroke="#FC1E1E"
+    stroke-width="6"
+  />
+</svg> */}
