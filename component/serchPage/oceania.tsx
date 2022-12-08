@@ -3,7 +3,7 @@ import { City, Country } from "../../types/types";
 
 //海外→オセアニアを選んだ場合
 export const OceCountry = ({ onCountryChanege, country }:{onCountryChanege:Function,country:Country}) => {
-  const changeHandler = (e) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     onCountryChanege(e.target.value);
   };
   return (
@@ -27,7 +27,7 @@ export const OceCountry = ({ onCountryChanege, country }:{onCountryChanege:Funct
 
 //海外→オセアニア→オーストラリアを選んだ場合
 export const Australia = ({ city, setCity }:{city:City,setCity:Function}) => {
-  const changeHandler = (e) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     setCity(e.target.value);
   };
   return (

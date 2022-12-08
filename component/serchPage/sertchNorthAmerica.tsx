@@ -6,7 +6,7 @@ import { City, Country } from "../../types/types";
 
 //海外→北米を選んだ場合
 export const NorthameCountry = ({ onCountryChanege,country }:{onCountryChanege:Function,country:Country}) => {
-  const changeHandler = (e) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     onCountryChanege(e.target.value);
   };
   return (
@@ -30,7 +30,7 @@ export const NorthameCountry = ({ onCountryChanege,country }:{onCountryChanege:F
 
 //海外→北米→アメリカを選んだ場合
 export const Uni = ({city,setCity}:{city:City,setCity:Function}) => {
-const changeHandler=(e)=>{
+const changeHandler=(e: { target: { value: any; }; })=>{
   setCity(e.target.value)
 }
   return (

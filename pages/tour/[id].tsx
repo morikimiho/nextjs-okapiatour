@@ -12,7 +12,7 @@ import { ScrTop } from "../../component/tps";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
-// import { ErrorCheck } from "../../component/errorCheck";
+import { Tour } from "../../types/types";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -39,20 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function Tripdetail({
-  tour,
-}: {
-  tour: {
-    id: number;
-    img1: string;
-    tourName: string;
-    description: string;
-    price: number;
-    times: number;
-    area: string;
-    country: string;
-  };
-}) {
+export default function Tripdetail({tour}:{tour: Tour}) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
