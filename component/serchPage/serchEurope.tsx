@@ -4,8 +4,8 @@ import { City, Country } from "../../types/types";
 
 
 //海外→ヨーロッパを選んだ場合
-export const EuropeCountry = ({ onCountryChanege,country }:{onCountryChanege:Function,country:Country}) => {
-  const changeHandler = (e) => {
+export const EuropeCountry = ({ onCountryChanege, country }:{onCountryChanege:Function,country:Country}) => {
+  const changeHandler = (e: { target: { value: any; }; }) => {
     onCountryChanege(e.target.value)
   };
   return (
@@ -30,7 +30,7 @@ export const EuropeCountry = ({ onCountryChanege,country }:{onCountryChanege:Fun
 
 //海外→ヨーロッパ→フランスを選んだ場合
 export const France = ({city,setCity}:{city:City,setCity:Function}) => {
-  const changeHandler=(e)=>{
+  const changeHandler=(e: { target: { value: any; }; })=>{
     setCity(e.target.value)
   }
   return (
@@ -53,7 +53,7 @@ export const France = ({city,setCity}:{city:City,setCity:Function}) => {
 
 //海外→ヨーロッパ→フランスを選んだ場合
 export const Italy = ({city,setCity}:{city:City,setCity:Function}) => {
-  const changeHandler=(e)=>{
+  const changeHandler=(e: { target: { value: any; }; })=>{
     setCity(e.target.value)
   }
   return (
@@ -76,7 +76,7 @@ export const Italy = ({city,setCity}:{city:City,setCity:Function}) => {
 
 //海外→ヨーロッパ→スペインを選んだ場合
 export const Spain = ({city,setCity}:{city:City,setCity:Function}) => {
-  const changeHandler=(e)=>{
+  const changeHandler=(e: { target: { value: any; }; })=>{
     setCity(e.target.value)
   }
   return (

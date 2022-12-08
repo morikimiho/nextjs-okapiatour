@@ -11,7 +11,7 @@ const Layout = ({
 }) => {
   return (
     <>
-    {/* index.tsx に　home入れる */}
+    {/* index.tsx に home入れる */}
     {home ? (
         <>
         <Header />

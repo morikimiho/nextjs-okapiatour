@@ -6,13 +6,24 @@ import { Footer } from "../../component/footer";
 import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { GetStaticProps } from "next";
-import { getActiveTrips } from "../../service/trip";
-import Link from "next/link";
 import { useState } from "react";
+import { SearchBox } from "../../component/serchPage/SearchBox";
+import { SearchResult } from "../../component/serchPage/SearchResult";
+import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
+
+export default function Home() {
+
+
+  const [url, setUrl] = useState("/api/tours?recommend=true");
+
+  const [abroad, setAbroad] = useState<Abroad>("abroad");
+  const [prefecture, setPrefecture] = useState<Prefecture>("");
+  const [areaCode, setArea] = useState<Area>("");
+  const [country, setCountry] = useState<Country>("");
+  const [city, setCity] = useState<City>("");
+
 
 export default function Home({ tours }) {
-
   const [isOpen, setIsOpen] = useState(true);
   setTimeout(() => {
     setIsOpen(false);
@@ -22,225 +33,106 @@ export default function Home({ tours }) {
     setIsDisplay(false);
   }, 2 * 1000);
 
-  return (
-    <>
-      <Head>
-        <title>Okapia Tour</title>
-      </Head>
+  const Slider = () => {
+    return (
+      <>
+        <Splide
+          aria-label="トップページ"
+          options={{
+            autoplay: true, // 自動再生を有効
+            interval: 3000, // 自動再生の間隔を3秒に設定
+          }}
+        >
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/scenery.jpg"
+                alt="風景の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide>
+          <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/flower.jpg"
+                alt="花の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide>
+          {/* <SplideSlide>
+            <div className={styles.top_image}>
+              <Image
+                className="slide-img"
+                src="/images/top/fuji.jpg"
+                alt="富士山の画像"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          </SplideSlide> */}
+        </Splide>
+      </>
+    );
+  }
 
-      <div
-        className={styles.logos}
-        style={{
-          transition: "1s",
-          opacity: isOpen ? 1 : 0,
-          display: isDisplay ? 'block' : 'none', 
-        }}
-      >
-        <div className={styles.logo}>
-          <Image
-            className={styles.fadeUp}
-            src="/images/logo_cover3.png"
-            alt="検索"
-            layout="fill"
-          />
+  return (
+    <div> 
+        <Head>
+          <title>Okapia Tour</title>
+        </Head>
+
+        <div
+          className={styles.logos}
+          style={{
+            transition: "1s",
+            opacity: isOpen ? 1 : 0,
+            display: isDisplay ? 'block' : 'none', 
+            }}
+          >
+          <div className={styles.logo}>
+            <Image
+              className={styles.fadeUp}
+              src="/images/logo_cover3.png"
+              alt="検索"
+              layout="fill"
+            />
+          </div>
         </div>
-      </div>
       
-      <Header />
+        <Header />
         <div className={styles.container}>
           <Slider />
-          <div className={styles.subtitle}>新しい世界を見に行こう</div>
-          <Link href="/tour/search-page">
-            <button type="button" className={styles.search}>
-              &nbsp;&nbsp;search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <Image
-                src="/images/top/虫眼鏡.png"
-                alt="検索"
-                width={16}
-                height={16}
-              />
-            </button>
-          </Link>
-        </div>
-        <div className={styles.tourContent}>
-          <div className={styles.areaPickUp}>
-            <img
-              src="/images/top/overseas.png"
-              alt="飛行機"
-              width={32}
-              height={32}
-            />
-            <span className={styles.pick_title}>
-              海外・おすすめツアーPickUp!
-            </span>
           </div>
-          <div className={styles.overseas}>
-            {tours.map(
-              (tour: {
-                id: number;
-                img1: string;
-                tourName: string;
-                abroad: string;
-              }) => {
-                if (tour.abroad === "abroad" && tour.id < 4) {
-                  return (
-                    <div className={styles.blockTourContent}>
-                      <div className={styles.overseas_images}>
-                        <Link href={`/tour/${tour.id}`}>
-                          <Image
-                            src={tour.img1}
-                            alt={"ツアー地域の写真"}
-                            layout="fill"
-                          />
-                        </Link>
-                      </div>
-                      <p className={styles.tour_title}>
-                        <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                      </p>
-                    </div>
-                  );
-                }
-              }
-            )}
-          </div>
+            <div className={styles.search}>
+              <SearchBox
+                abroad={abroad}
+                country={country}
+                prefecture={prefecture}
+                areaCode={areaCode}
+                city={city}
+                setAbroad={setAbroad}
+                setCountry={setCountry}
+                setPrefecture={setPrefecture}
+                setArea={setArea}
+                setCity={setCity}
+                setUrl={setUrl}
+               />
+            </div>
+            <SearchResult url={url}/>
+          <ScrTop />
+          <Footer />
 
-          <div className={styles.areaPickUp}>
-            <img
-              src="/images/top/domestic.png"
-              alt="自動車"
-              width={32}
-              height={32}
-            />
-            <span className={styles.pick_title}>
-              国内・おすすめツアーPickUp!
-            </span>
-          </div>
-          <div className={styles.overseas}>
-            {tours.map(
-              (tour: {
-                id: number;
-                img1: string;
-                tourName: string;
-                abroad: string;
-              }) => {
-                if (tour.abroad === "domestic" && tour.id < 7) {
-                  return (
-                    <div className={styles.blockTourContent}>
-                      <div className={styles.overseas_images}>
-                        <Link href={`/tour/${tour.id}`}>
-                          <Image
-                            src={tour.img1}
-                            alt={"ツアー地域の写真"}
-                            layout="fill"
-                          />
-                        </Link>
-                      </div>
-                      <p className={styles.tour_title}>
-                        <Link href={`/tour/${tour.id}`}>{tour.tourName}</Link>
-                      </p>
-                    </div>
-                  );
-                }
-              }
-            )}
-          </div>
-        </div>
-
-      <ScrTop />
-      <Footer />
-    </>
+      </div>
   );
 }
 
-const Slider = () => {
-  return (
-    <>
-      <Splide
-        aria-label="トップページ"
-        options={{
-          autoplay: true, // 自動再生を有効
-          interval: 3000, // 自動再生の間隔を3秒に設定
-        }}
-      >
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/scenery.jpg"
-              alt="風景の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/flower.jpg"
-              alt="花の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-        <SplideSlide>
-          <div className={styles.top_image}>
-            <Image
-              className="slide-img"
-              src="/images/top/fuji.jpg"
-              alt="富士山の画像"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        </SplideSlide>
-      </Splide>
-
-      {/* 画像の高さを揃えて表示させるために以下スタイルを適用 */}
-      <style jsx>{`
-        .slide-img {
-          display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-      `}</style>
-    </>
-  );
-};
-
-function ItemDetail({
-  ...tours
-}: {
-  id: number;
-  img1: string;
-  tourName: string;
-}) {
-  return (
-    <div>
-      <Image
-        src={tours.img1}
-        width={100}
-        height={75}
-        alt="ツアーパッケージ"
-        title={tours.tourName}
-        className={styles.image}
-      />
-      <p>{tours.tourName}</p>
-    </div>
-  );
-}
-
-export async function getStaticProps() {
-  const res = await fetch("http://localhost:8000/tours");
-  const tours = await res.json();
-  return {
-    props: { tours },
-  };
-}
-
-<svg
+{/* <svg
   width="218"
   height="60"
   viewBox="0 0 218 60"
@@ -267,4 +159,4 @@ export async function getStaticProps() {
     stroke="#FC1E1E"
     stroke-width="6"
   />
-</svg>;
+</svg> */}
