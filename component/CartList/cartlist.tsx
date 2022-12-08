@@ -24,6 +24,11 @@ export const Cartlist = ({ tour, setAmount, deleteHandler}: Props) => {
     setAmount((prev: number) => prev - tour.price * num + tour.price * newNum);
   };
 
+  const deletesumHandler=(val:number)=>{
+    deleteHandler(val);
+    setAmount((prev:number)=>prev-tour.price*num);
+  }
+
   return (
     <>
       <div className={Styles.each_tour} key={tour.id}>
@@ -42,7 +47,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler}: Props) => {
             <button
               className={Styles.delete_button}
               type="submit"
-              onClick={(e) => deleteHandler(tour.id)}
+              onClick={(e) => deletesumHandler(tour.id)}
             >
               削除
             </button>
