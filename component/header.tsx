@@ -29,7 +29,7 @@ import useCookie from "../hooks/useCookie";
       document.cookie = "userOkapiaTour=;path=/;max-age=0";
       const url = location.href;
       console.log(url)
-    if (url == "http://localhost:3000/tour") {
+    if (url == `${process.env.NEXT_PUBLIC_BASE_URL}/tour`) {
       Router.reload() as any;
     } else {
       Router.push("/tour/") as any;
@@ -134,4 +134,3 @@ import useCookie from "../hooks/useCookie";
     </>
   );
 }     
-
