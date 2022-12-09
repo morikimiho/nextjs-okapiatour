@@ -67,15 +67,16 @@ export default function Login() {
             .then((data) => {
               const cart = data[0];
               //ローカルをバックカートに追加、元々のバックのツアーは残したまま
-              localtours.tours.map((tour: Tour) =>
+            
                 fetch(`/api/inCarts/${id}`, {
                   method: "PATCH",
                   headers: {
                     "Content-Type": "application/json",
                   },
-                  body: JSON.stringify({ tours: [...cart.tours, tour] }),
+                  body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
                 })
-              );
+              ;
+
               localStorage.clear();
             });
           })
