@@ -1188,15 +1188,15 @@
     {
       "tours": [
         {
-          "id": 67,
-          "tourDate": "2022-12-28",
-          "startTime": 12,
-          "img1": "/images/america/los/bivery/bivery01.jpg",
-          "tourName": "ビバリーヒルズ豪邸ツアー",
-          "description": "オープントップ バスで移動しながら、富裕層や有名人が日常を過ごす場所を巡りましょう",
+          "id": 7,
+          "tourDate": "2022-12-21",
+          "startTime": 13,
+          "img1": "/images/milan/last_supper/last_supper01.jpg",
+          "tourName": "ダ・ヴィンチ「最後の晩餐」ガイドツアー",
+          "description": "このツアーでは、長い歴史を持つ修道院の食堂の中に入り、「最後の晩餐」を15分間鑑賞することができます。ガイドが同行し、案内と解説をご提供します。名画「最後の晩餐」の歴史について詳細に学ぶことができます。",
           "numberOfPeople": 1,
-          "price": 4000,
-          "total": 4000
+          "price": 6000,
+          "total": 6000
         }
       ],
       "userId": 4,
@@ -1208,7 +1208,5 @@
       "id": 5
     }
   ],
-
   "orders": []
-
 }

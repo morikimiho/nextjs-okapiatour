@@ -6,6 +6,8 @@ import { Cartlist } from "../../component/CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
 import { Dispatch, SetStateAction } from "react";
 import { Tour } from "../../types/types";
+import { useState } from "react";
+import Router from "next/router";
 
 type Props = {
   tours: Array<Tour>;
@@ -21,6 +23,20 @@ export function CartItems({
   deleteHandler,
   loginId,
 }: Props) {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: any) => {
+    // 無効な入力値で送信されないために初めにキャンセルする
+    e.preventDefault();
+
+    if (tours.length === 0) {
+      setErrorMessage("*カートに商品を追加してください。*");
+    } else if (!loginId) {
+      Router.push("/tour/login") as any;
+    } else {
+      Router.push("/tour/pay") as any;
+    }
+  };
   return (
     <>
       <Head>
@@ -43,24 +59,23 @@ export function CartItems({
               })}
             </div>
             <h2>合計：{Number(amount).toLocaleString()}円</h2>
+            <p className={styles.error_message}>{errorMessage}</p>
             <div className={styles.buttonsubmit}>
               <div>
-                {!loginId ? (
-                  <Link href="http://localhost:3000/tour/login">
+                <form onSubmit={handleSubmit}>
+                  {!loginId ? (
                     <button className={styles.submit} type="submit">
                       お支払い情報の入力へ進む
                     </button>
-                  </Link>
-                ) : (
-                  <Link href="http://localhost:3000/tour/pay">
+                  ) : (
                     <button className={styles.submit} type="submit">
                       お支払い情報の入力へ進む
                     </button>
-                  </Link>
-                )}
+                  )}
+                </form>
               </div>
               <div>
-                <Link href="http://localhost:3000/tour">
+                <Link href="/tour">
                   <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>

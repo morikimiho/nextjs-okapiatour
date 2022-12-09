@@ -30,3 +30,9 @@
   transform: translate(2px, 2px);
   box-shadow: none;
 }
+
+.error_message {
+  color: red;
+  text-align: center;
+  margin-bottom: 40px;
+}
