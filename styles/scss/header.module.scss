@@ -2,7 +2,7 @@
 @use "public" as pub;
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-@include pub.mq("res") { 
+@include pub.mq("sp") { 
 }
 
 .header {
@@ -21,7 +21,7 @@
             font-size: 45px;
             font-style: italic;
             margin: auto 10px;
-            @include pub.mq("res") { 
+            @include pub.mq("sp") { 
                 font-size: 30px;
             }
         }
@@ -29,7 +29,7 @@
     .buttons {
         margin: auto 20px;
         display: flex; 
-        @include pub.mq("res") { 
+        @include pub.mq("sp") { 
             margin: auto 0;
         }  
     }
@@ -83,7 +83,7 @@
     .header_logo_items {
         display: flex;
         margin-left: 30px;
-        @include pub.mq("res") { 
+        @include pub.mq("sp") { 
             margin: 0;
         }
         .icon {
@@ -91,7 +91,7 @@
             height: 45px;
             width: 45px;
             margin-top: 8px;
-            @include pub.mq("res") { 
+            @include pub.mq("sp") { 
                 margin-top: 4px;
             }
         }
@@ -102,7 +102,7 @@
 .login_user {
     font-size: 12px;
     margin: 10px;
-    @include pub.mq("res") { 
+    @include pub.mq("sp") { 
         display: none;
     }
 }
@@ -110,7 +110,7 @@
 .res_login_user {
     display: none;
 
-    @include pub.mq("res") { 
+    @include pub.mq("sp") { 
         display: block;
         height: 40px;
         background: pub.$highlight_color;

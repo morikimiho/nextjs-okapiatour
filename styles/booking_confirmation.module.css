@@ -2,7 +2,7 @@
   padding-left: 50px;
   margin: 0 20px 40px 20px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .bookingC_title {
     font-size: 25px;
     padding-left: 0px;
@@ -20,7 +20,7 @@
   margin-top: 0;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .bookingC_ok {
     font-size: 14px;
   }
@@ -30,7 +30,7 @@
   margin-left: 16px;
   margin-bottom: calc(100vh - 362px);
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .bookingC_error {
     margin-bottom: calc(100vh - 358px);
   }
@@ -55,7 +55,7 @@
   border: none;
   transition: all 0.3s ease 0s;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .bookingC_btn .bookingC_btn_search {
     font-size: 18px;
   }
@@ -77,7 +77,7 @@
   margin-top: 40px;
   padding: 0 40px 40px 40px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .bookings {
     margin-top: 20px;
     padding: 0 20px 20px 20px;
@@ -97,7 +97,7 @@
   justify-content: center;
   padding-top: 20px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .booking_flex {
     flex-wrap: wrap;
   }
@@ -116,10 +116,44 @@
   font-weight: 700;
   line-height: 1.8;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .list {
     line-height: 1.6;
     margin-left: 10px;
     margin-top: 10px;
   }
+}
+
+.user_comment {
+  margin-top: 140px;
+}
+.user_comment .user_comment_btn {
+  color: #fff;
+  background-color: #eb6100;
+  border-radius: 100vh;
+  padding: 10px 25px 10px 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #dedede;
+  color: #fff7ee;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .user_comment .user_comment_btn {
+    margin: 20px 0 20px 20px;
+  }
+}
+@media (max-width: 767px) {
+  .user_comment .user_comment_btn {
+    font-size: 18px;
+    padding: 7px 20px;
+    margin: 20px 0 20px 20px;
+  }
+}
+.user_comment .user_comment_btn:hover {
+  position: relative;
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }

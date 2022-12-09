@@ -54,7 +54,7 @@ export default function BookingConfirmation() {
           {data.length ? (
             <p className={styles.dpn}></p>
           ) : (
-            <Link href="/tour/search-page">
+            <Link href="/tour/">
               <div className={styles.bookingC_btn}>
                 <button className={styles.bookingC_btn_search}>
                   ツアーを探す
@@ -82,6 +82,7 @@ export default function BookingConfirmation() {
                         <div className={styles.booking_image}>
                           <Image src={tour.img1} layout="fill" alt="画像" />
                         </div>
+
                         <div className={styles.list}>
                           <div className={styles.booking_items}>
                             {tour.tourName}
@@ -90,6 +91,12 @@ export default function BookingConfirmation() {
                           <div>開始時刻：{tour.startTime}時</div>
                           <div>人数：{tour.numberOfPeople}人</div>
                           <div>合計価格：{tour.total.toLocaleString()}円</div>
+                        </div>
+
+                        <div className={styles.user_comment}>
+                          <Link href={`/tour/comment/${tour.id}`}>
+                          <button className={styles.user_comment_btn}>クチコミ</button>
+                          </Link>
                         </div>
                       </div>
                     );

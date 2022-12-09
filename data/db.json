@@ -1187,7 +1187,6 @@
     },
     {
       "tours": [],
-
       "userId": 4,
       "id": 4
     },
@@ -1198,5 +1197,31 @@
     }
   ],
   "orders": [
+    {
+      "tours": [
+        {
+          "id": 4,
+          "tourDate": "2022-12-19",
+          "startTime": 11,
+          "img1": "/images/osaka/osaka01.jpg",
+          "tourName": "大阪・なんばでグルメツアー",
+          "description": "地元の人がおすすめするたこ焼きとお好み焼きを味わうツアー。最後はなんばグランド花月で新喜劇を見てたくさん笑いましょう！",
+          "numberOfPeople": 1,
+          "price": 4000,
+          "total": 4000
+        }
+      ],
+      "userId": 4,
+      "rsNumber": "OkapiTour9lic82tll2a6",
+      "id": 1
+    }
+  ],
+  "comment": [
+    {
+      "tourid": 2,
+      "name": "ddd",
+      "text": "ddd",
+      "id": 3
+    }
   ]
 }

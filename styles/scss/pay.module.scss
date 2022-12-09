@@ -17,7 +17,7 @@
 .total {
     border: 1px slategray dotted;
     padding: 20px 100px;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         padding: 20px;
     } 
 }
@@ -55,7 +55,7 @@
 
 .list{
     list-style-type: none;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         margin: 0;
         padding-left: 20px;
         font-size: 14px;
