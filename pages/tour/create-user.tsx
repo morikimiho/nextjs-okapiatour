@@ -16,7 +16,7 @@ const CreateUser = () => {
   const [birthY, setBirthY] = useState("");
   const [birthM, setBirthM] = useState("");
   const [birthD, setBirthD] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState  (false);
   const [errorMessage, setErrorMessage] = useState("");
   
   const [isChecked, setIsChecked] = useState(false);

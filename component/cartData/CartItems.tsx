@@ -46,13 +46,13 @@ export function CartItems({
             <div className={styles.buttonsubmit}>
               <div>
                 {!loginId ? (
-                  <Link href="http://localhost:3000/tour/login">
+                  <Link href="/tour/login">
                     <button className={styles.submit} type="submit">
                       お支払い情報の入力へ進む
                     </button>
                   </Link>
                 ) : (
-                  <Link href="http://localhost:3000/tour/pay">
+                  <Link href="/tour/pay">
                     <button className={styles.submit} type="submit">
                       お支払い情報の入力へ進む
                     </button>
@@ -60,7 +60,7 @@ export function CartItems({
                 )}
               </div>
               <div>
-                <Link href="http://localhost:3000/tour">
+                <Link href="/tour">
                   <button className={styles.submit} type="submit">
                     他のツアーを追加する
                   </button>
