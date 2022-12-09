@@ -47,10 +47,11 @@ export default function Tripdetail({tour}:{tour: Tour}) {
   const cookie = useCookie();
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
+  const [error_message, setErrorMessage] = useState(false);
 
   async function PostData(e: { preventDefault: () => any; }) {
     if(dateError === false || timeError === false) {
-      alert("日付もしくは時間が指定されていません");
+      setErrorMessage(true);
       return e.preventDefault();
     } 
 
@@ -94,7 +95,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
         localStorage.setItem('tours',JSON.stringify(addTourData));
       }
 
-      router.push("http://localhost:3000/tour/cart");
+      router.push("/tour/cart");
     } else {
       const res = await fetch(
         `http://localhost:8000/inCarts?userId=${loginId}`
@@ -143,7 +144,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               .then((response) => response.json())
               .then((data) => {
                 console.log(data);
-                router.push("http://localhost:3000/tour/cart");
+                router.push("/tour/cart");
               })
               .catch((error) => {
                 console.error("Error:", error);
@@ -198,7 +199,11 @@ export default function Tripdetail({tour}:{tour: Tour}) {
             </div>
 
 
-
+            <span
+                style={{ display: error_message ? "block" : "none" }}
+            >
+               <div className={styles.error_message}>*日付もしくは時間が指定されていません。*</div>
+            </span>
             <div className={styles.button_position}>
               <button className={styles.button} onClick={PostData}>
                 カートに入れる

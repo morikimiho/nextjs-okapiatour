@@ -16,7 +16,7 @@ const CreateUser = () => {
   const [birthY, setBirthY] = useState("");
   const [birthM, setBirthM] = useState("");
   const [birthD, setBirthD] = useState("");
-  const [error, setError] = useState(false);
+  const [error, setError] = useState  (false);
   const [errorMessage, setErrorMessage] = useState("");
   
   const [isChecked, setIsChecked] = useState(false);
@@ -87,7 +87,7 @@ const CreateUser = () => {
         birthM,
         birthD,
       };
-      const res = await fetch("http://localhost:8000/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -102,7 +102,7 @@ const CreateUser = () => {
         tours: [],
       };
 
-      const addInCarts = await fetch("http://localhost:8000/inCarts", {
+      const addInCarts = await fetch("/api/inCarts", {
         method: "POST",
         headers: {
           Accept: "application/json",
