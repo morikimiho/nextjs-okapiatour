@@ -27,20 +27,17 @@ export function SearchResult({ url }: Props) {
           <div className={styles.headline}>検索結果</div>
         )}
 
-
-        <ul>
         {data.map((item: any) => {
           return (
-            <>
-              <div id="content" className={styles.eachcontent}>
-                <li key={item.id} className={styles.flex}>
-                  <div className={styles.result_image}>
-                    <Image
-                      src={item.img1}
-                      layout="fill"
-                      alt="画像"
-                      className={styles.image}
-                    />
+            <div key={item.id} id="content" className={styles.eachcontent}>
+              <div className={styles.flex}>
+                <div className={styles.result_image}>
+                  <Image
+                    src={item.img1}
+                    layout="fill"
+                    alt="画像"
+                    className={styles.image}
+                  />
                 </div>
                 <div>
                   <div className={styles.title}>
@@ -85,12 +82,11 @@ export function SearchResult({ url }: Props) {
                       </Link>
                     </div>
                   </div>
-                </li>
+                </div>
               </div>
             </div>
           );
         })}
-        </ul>
       </div>
       <ScrTop />
     </>
