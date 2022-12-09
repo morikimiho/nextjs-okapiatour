@@ -43,17 +43,14 @@ export default function Login() {
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-
           await fetch(
             `/api/users?mailAddress=${mailAddress}&password=${password}`
           ).then ((response)=>response.json())
           .then (async (data)=>{
-          
           const user = data[0];
           console.log(user);
           const id = user.id;
           console.log(id);
-      
           const localtours = JSON.parse(
             localStorage.getItem("tours") ?? '{"tours:[]}'
           );
@@ -67,15 +64,16 @@ export default function Login() {
             .then((data) => {
               const cart = data[0];
               //ローカルをバックカートに追加、元々のバックのツアーは残したまま
-              localtours.tours.map((tour: Tour) =>
+            
                 fetch(`/api/inCarts/${id}`, {
                   method: "PATCH",
                   headers: {
                     "Content-Type": "application/json",
                   },
-                  body: JSON.stringify({ tours: [...cart.tours, tour] }),
+                  body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
                 })
-              );
+              ;
+
               localStorage.clear();
             });
           })

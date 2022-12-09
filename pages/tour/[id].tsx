@@ -95,7 +95,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
         localStorage.setItem('tours',JSON.stringify(addTourData));
       }
 
-      router.push("http://localhost:3000/tour/cart");
+      router.push("/tour/cart");
     } else {
       const res = await fetch(
         `http://localhost:8000/inCarts?userId=${loginId}`
@@ -144,7 +144,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               .then((response) => response.json())
               .then((data) => {
                 console.log(data);
-                router.push("http://localhost:3000/tour/cart");
+                router.push("/tour/cart");
               })
               .catch((error) => {
                 console.error("Error:", error);

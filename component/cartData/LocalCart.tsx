@@ -32,7 +32,7 @@ export function LocalCart({ amount, setAmount, loginId }: Props) {
         0
       )
     );
-  }, [tours]);
+  }, []);
 
   const deleteHandler = (val: number) => {
     const newTours = tours.filter((tour) => tour.id != val);
