@@ -54,7 +54,7 @@ export default function BookingConfirmation() {
           {data.length ? (
             <p className={styles.dpn}></p>
           ) : (
-            <Link href="/tour/search-page">
+            <Link href="/tour">
               <div className={styles.bookingC_btn}>
                 <button className={styles.bookingC_btn_search}>
                   ツアーを探す
