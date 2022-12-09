@@ -6,19 +6,17 @@ import { Tour } from "../../types/types";
 import useSWR from "swr";
 
 type Props = {
-    url:string;
-}
-
+  url: string;
+};
 
 const fetcher = (resource: any, init: any) =>
-fetch(resource, init).then((res) => res.json());
+  fetch(resource, init).then((res) => res.json());
 
-export function SearchResult({url}:Props) {
+export function SearchResult({ url }: Props) {
+  const { data, error } = useSWR(url, fetcher);
 
-    const { data, error } = useSWR(url, fetcher);
-
-    if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   return (
     <>
@@ -29,11 +27,12 @@ export function SearchResult({url}:Props) {
           <div className={styles.headline}>検索結果</div>
         )}
 
-        {data.map((item:any) => {
+        <ul>
+        {data.map((item: any) => {
           return (
             <>
               <div id="content" className={styles.eachcontent}>
-                <div key={item.id} className={styles.flex}>
+                <li key={item.id} className={styles.flex}>
                   <div className={styles.result_image}>
                     <Image
                       src={item.img1}
@@ -88,11 +87,12 @@ export function SearchResult({url}:Props) {
                       </div>
                     </div>
                   </div>
-                </div>
+                </li>
               </div>
             </>
           );
         })}
+        </ul>
       </div>
       <ScrTop />
     </>

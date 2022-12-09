@@ -8,17 +8,19 @@ type Props = {
   loginId: string;
 };
 
-export function LocalCart({ amount, setAmount, loginId }: Props) {
+export function LocalCart({ amount, setAmount, loginId}: Props) {
   const [tours, setTours] = useState<Tour[]>([]);
+
 
   useEffect(() => {
     let localTourJSON = localStorage.getItem("tours");
     if (localTourJSON === null) {
       return;
     }
-
+  
     const localTourData = JSON.parse(localTourJSON);
-
+  
+    
     if (!localTourData) return;
 
     if (tours.length === 0) {
@@ -32,7 +34,7 @@ export function LocalCart({ amount, setAmount, loginId }: Props) {
         0
       )
     );
-  }, [tours]);
+  }, []);
 
   const deleteHandler = (val: number) => {
     const newTours = tours.filter((tour) => tour.id != val);

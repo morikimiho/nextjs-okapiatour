@@ -1186,19 +1186,7 @@
       "id": 3
     },
     {
-      "tours": [
-        {
-          "id": 67,
-          "tourDate": "2022-12-28",
-          "startTime": 12,
-          "img1": "/images/america/los/bivery/bivery01.jpg",
-          "tourName": "ビバリーヒルズ豪邸ツアー",
-          "description": "オープントップ バスで移動しながら、富裕層や有名人が日常を過ごす場所を巡りましょう",
-          "numberOfPeople": 1,
-          "price": 4000,
-          "total": 4000
-        }
-      ],
+      "tours": [],
       "userId": 4,
       "id": 4
     },
@@ -1208,7 +1196,7 @@
       "id": 5
     }
   ],
-
-  "orders": []
-
+  "orders": [
+    
+  ]
 }
