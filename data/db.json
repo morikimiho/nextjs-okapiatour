@@ -1196,52 +1196,5 @@
       "id": 5
     }
   ],
-  "orders": [
-    {
-      "tours": [
-        {
-          "id": 67,
-          "tourDate": "2022-12-28",
-          "startTime": 12,
-          "img1": "/images/america/los/bivery/bivery01.jpg",
-          "tourName": "ビバリーヒルズ豪邸ツアー",
-          "description": "オープントップ バスで移動しながら、富裕層や有名人が日常を過ごす場所を巡りましょう",
-          "numberOfPeople": 1,
-          "price": 4000,
-          "total": 4000
-        },
-        {
-          "id": 3,
-          "tourDate": "2022-12-14",
-          "startTime": 11,
-          "img1": "/images/france/paris/versailles/versailles01.jpg",
-          "tourName": "ヴェルサイユ宮殿ツアー",
-          "description": "ヴェルサイユ宮殿への半日ツアーです。優先入場サービスをご利用いただけますので、通常の入場時の待ち列を回避して速やかにご入場いただけます。",
-          "numberOfPeople": 1,
-          "price": 11000,
-          "total": 11000
-        },
-        {
-          "id": 5,
-          "tourDate": "2022-12-07",
-          "startTime": 10,
-          "img1": "/images/miyagi/miyagi01.jpg",
-          "tourName": "東北のおいしい名産グルメツアー",
-          "description": "宮城名物・牡蠣や牛タン、ずんだ餅などを堪能できるツアーです。日本三景の松島にも訪れます。",
-          "numberOfPeople": 1,
-          "price": 6000,
-          "total": 6000
-        }
-      ],
-      "userId": 4,
-      "rsNumber": "OkapiTour54c06ee9ac2c",
-      "id": 1
-    },
-    {
-      "tours": [],
-      "userId": 4,
-      "rsNumber": "OkapiTour86c84lc84i4e",
-      "id": 2
-    }
-  ]
+  "orders": []
 }

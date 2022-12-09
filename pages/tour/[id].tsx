@@ -98,7 +98,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
       router.push("/tour/cart");
     } else {
       const res = await fetch(
-        `http://localhost:8000/inCarts?userId=${loginId}`
+        `/api/inCarts?userId=${loginId}`
       );
       const inCarts = await res.json();
       {
@@ -117,7 +117,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               total: number;
             }[];
           }) => {
-            await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+            await fetch(`/api/inCarts/${cart.id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",

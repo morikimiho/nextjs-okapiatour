@@ -16,7 +16,7 @@ export function BackCart({loginId, amount, setAmount}:Props) {
   const router=useRouter();
 
   const { data, error } = useSWR(
-    `http://localhost:8000/inCarts?userId=${loginId}`,
+    `/api/inCarts?userId=${loginId}`,
     fetcher
   );
   const [tours, setTours] = useState<Tour[]>([]);
@@ -45,7 +45,7 @@ export function BackCart({loginId, amount, setAmount}:Props) {
     const newTours = tours.filter((tour) => tour.id != val);
       
       // console.log("yo",logid);
-      fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+      fetch(`/api/inCarts/${cart.id}`, {
         method: "PATCH",
         headers: {
           Accept: "application/json",
