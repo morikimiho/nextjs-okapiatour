@@ -30,7 +30,7 @@ export function SearchResult({ url }: Props) {
         {data.map((item: any) => {
           return (
             <div key={item.id} id="content" className={styles.eachcontent}>
-              <div className={styles.flex}>
+              <div className={styles.result__flex}>
                 <div className={styles.result_image}>
                   <Image
                     src={item.img1}
@@ -42,6 +42,7 @@ export function SearchResult({ url }: Props) {
                 <div>
                   <div className={styles.title}>
                     <span>{item.tourName}</span>
+                    <span>{item.id}</span>
                   </div>
 
                   <div className={styles.tour_tags}>
@@ -56,22 +57,24 @@ export function SearchResult({ url }: Props) {
                     )}
                   </div>
 
-                  <div className={styles.flex}>
-                    <div id="info">
-                      <ul className={styles.list}>
-                        <span className={styles.span}>概要</span>
-                        <li>価格: {item.price.toLocaleString()}円 ~</li>
-                        <li>集合: {item.meetingPlace}</li>
-                      </ul>
-                    </div>
+                  <div className={styles.result__flex_items}>
+                    <div className={styles.result__flex_item}>
+                      <div id="info">
+                        <ul className={styles.list}>
+                          <span className={styles.span}>概要</span>
+                          <li>価格: {item.price.toLocaleString()}円 ~</li>
+                          <li>集合: {item.meetingPlace}</li>
+                        </ul>
+                      </div>
 
-                    <div id="tourcontent">
-                      <ul className={styles.list_includes}>
-                        <span className={styles.span}>含まれるもの</span>
-                        <li>{item.content1}</li>
-                        <li>{item.content2}</li>
-                        <li>{item.content3}</li>
-                      </ul>
+                      <div id="tourcontent">
+                        <ul className={styles.list_includes}>
+                          <span className={styles.span}>含まれるもの</span>
+                          <li>{item.content1}</li>
+                          <li>{item.content2}</li>
+                          <li>{item.content3}</li>
+                        </ul>
+                      </div>
                     </div>
 
                     <div id="button" className={styles.button_around}>

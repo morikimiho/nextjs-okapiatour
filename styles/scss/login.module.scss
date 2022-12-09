@@ -10,7 +10,7 @@
   padding-bottom: 20px;
   font-size: 26px;
   text-align: center;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     font-size: 18px;
   }
 }

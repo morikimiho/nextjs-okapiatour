@@ -10,7 +10,7 @@
 //   justify-content: center;
 //   margin-right: 684px;
 margin-left: 12vw;
-@include pub.mq("res") {
+@include pub.mq("sp") {
       margin-left: 4vw;
   }
   .tour_tag {
@@ -31,7 +31,7 @@ margin-left: 12vw;
   width: fit-content;
   line-height: 1.2;
   font-style: italic;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     margin-left: 8vw;
     font-size: 19px;
   }
@@ -46,14 +46,14 @@ margin-left: 12vw;
 .tour_detail_info {
   width: 840px;
   margin: 0 auto;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     width: 100%;
   }
 }
 .tour_detail_info_items {
   display: flex;
   justify-content: center;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     display: block;
   }
 
@@ -64,7 +64,7 @@ margin-left: 12vw;
     width: calc(100% - 460px);
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
       width: 100%;
       max-width: 340px;
       margin: 10px auto;
@@ -77,7 +77,7 @@ margin-left: 12vw;
     width: calc(100% - 460px);
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
         margin: 10px auto;
@@ -90,7 +90,7 @@ margin-left: 12vw;
     width: 460px;
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
         margin: 10px auto;
@@ -103,7 +103,7 @@ margin-left: 12vw;
     width: 460px;
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
         margin: 10px auto;
@@ -122,7 +122,7 @@ margin-left: 12vw;
     margin: 10px 0;
     position: relative;
     left: 180px;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         margin: 10px 0px 10px;
         position: relative;
         left: 154px;
@@ -133,7 +133,7 @@ margin-left: 12vw;
 .button_position {
   padding-top: 80px;
   text-align: center;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     padding-top: 40px;
   }
   .button {
@@ -147,7 +147,7 @@ margin-left: 12vw;
     background-color: pub.$sub_color;
     border: none;
     transition: all 0.3s ease 0s;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
       font-size: 18px;
       padding: 7px 20px;
     }
@@ -164,7 +164,7 @@ margin-left: 12vw;
   display: flex;
   justify-content: center;
   position: relative;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     //   display: block;
   }
 
@@ -187,7 +187,7 @@ margin-left: 12vw;
     border-image-repeat: round;
     border-style: solid;
     border-width: 22px;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 77vw;
         height: 47vw;
     }
@@ -202,7 +202,7 @@ margin-left: 12vw;
   position: relative;
   width: 586px;
   height: 400px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
       width: 50vw;
       height: 50vw;
     }
@@ -212,7 +212,7 @@ margin-left: 12vw;
     position: relative;
     width: 293px;
     height: 200px;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 30vw;
         height: 25vw;
     }
