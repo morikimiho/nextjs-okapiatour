@@ -46,6 +46,9 @@ margin-left: 12vw;
 .tour_detail_info {
   width: 840px;
   margin: 0 auto;
+  @include pub.mq("tab") {
+    width: 100%;
+  }
   @include pub.mq("sp") {
     width: 100%;
   }
@@ -64,6 +67,9 @@ margin-left: 12vw;
     width: calc(100% - 460px);
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
+    @include pub.mq("tab") {
+      width: 100%;
+    }
     @include pub.mq("sp") {
       width: 100%;
       max-width: 340px;
@@ -77,6 +83,9 @@ margin-left: 12vw;
     width: calc(100% - 460px);
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
+    @include pub.mq("tab") {
+      width: 100%;
+    }
     @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
@@ -90,6 +99,9 @@ margin-left: 12vw;
     width: 460px;
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
+    @include pub.mq("tab") {
+      width: 100%;
+    }
     @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
@@ -103,6 +115,9 @@ margin-left: 12vw;
     width: 460px;
     background: pub.$highlight_color;
     border: solid 5px pub.$main_color;
+    @include pub.mq("tab") {
+      width: 100%;
+    }
     @include pub.mq("sp") {
         width: 100%;
         max-width: 340px;
@@ -122,13 +137,16 @@ margin-left: 12vw;
     margin: 10px 0;
     position: relative;
     left: 180px;
+    @include pub.mq("tab") {
+      left: 100px;
+    }
     @include pub.mq("sp") {
         margin: 10px 0px 10px;
         position: relative;
         left: 154px;
     }
   }
-}
+} 
 
 .button_position {
   padding-top: 80px;
