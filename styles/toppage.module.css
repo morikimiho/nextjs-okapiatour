@@ -1,7 +1,6 @@
 @charset "UTF-8";
 .container {
   position: relative;
-  z-index: -1;
 }
 
 .search_box {
@@ -13,6 +12,34 @@
   min-width: 80vw;
 }
 
+.subtitle {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  color: rgb(102, 102, 108);
+  font-size: 20px;
+  text-shadow: 1px 2px 3px #808080;
+  font-family: "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", "Yu Mincho Light", "YuMincho", "Yu Mincho", "游明朝体", "MS Ｐ明朝", "MS PMincho", sans-serif;
+}
+
+.search {
+  position: absolute;
+  color: black;
+  font-size: 22px;
+  top: 80%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  border: 1px grey solid;
+  border-radius: 15px;
+  background: rgba(237, 237, 243, 0.5);
+  padding: 10px 40px;
+  display: flex;
+  font-family: "Times New Roman", Times, serif;
+  max-width: 200px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
 .search:hover {
   transform: scale(1.1);
 }
@@ -72,7 +99,7 @@
 .top_image {
   position: relative;
   width: 100vw;
-  height: 70vh;
+  height: calc(100vh - 58px);
 }
 @media (max-width: 1199px) {
   .top_image {

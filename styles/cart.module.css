@@ -16,7 +16,7 @@
   border: none;
   transition: all 0.3s ease 0s;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .buttonsubmit .submit {
     font-size: 12px;
     padding: 10px 0;

@@ -3,7 +3,7 @@
   margin: 0 auto;
   transition: all 0.3s ease 0s;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .register {
     width: 330px;
     transition: all 0.3s ease 0s;
@@ -21,7 +21,7 @@
   padding: 40px;
   background-color: #FFC896;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container {
     padding: 20px;
   }
@@ -29,12 +29,12 @@
 .container .form_name {
   width: 100%;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_name {
     display: block;
   }
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_name {
     margin-bottom: 20px;
   }
@@ -42,7 +42,7 @@
 .container .form_name .form_name_side {
   display: flex;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_name .form_name_side {
     width: 274px;
     display: block;
@@ -51,7 +51,7 @@
 .container .form_name .name_kanji {
   margin-bottom: 40px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_name .name_kanji {
     margin-bottom: 20px;
   }
@@ -59,7 +59,7 @@
 .container .form_name .name_kana {
   margin-left: auto;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_name .name_kana {
     margin-bottom: 20px;
   }
@@ -73,7 +73,7 @@
   background-color: #fff;
   margin-bottom: 40px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_birth_group {
     margin-bottom: 20px;
   }
@@ -81,7 +81,7 @@
 .container .form_tmp {
   margin-bottom: 40px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .form_tmp {
     margin-bottom: 20px;
   }
@@ -89,7 +89,7 @@
 .container .privacy {
   margin-bottom: 40px;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .container .privacy {
     margin-bottom: 20px;
     font-size: 16px;
@@ -105,7 +105,7 @@
   content: "*";
   color: #f63131;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .form_label {
     margin: 0 14px;
   }
@@ -131,7 +131,7 @@
   border-radius: 10px;
   border: solid 2px rgb(184, 184, 184);
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .input_select {
     width: 58px;
     margin-left: 14px;
@@ -158,7 +158,7 @@
   border: none;
   transition: all 0.3s ease 0s;
 }
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .create_user_btn .btn {
     font-size: 18px;
     padding: 7px 20px;
