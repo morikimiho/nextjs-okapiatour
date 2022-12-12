@@ -26,8 +26,40 @@ export function CartItems({
   const [errorMessage, setErrorMessage] = useState("");
 
   const judgeError = async () => {
-  const [errorDate, setErrorDate] = useState(false);
-  const res = await fetch("/api/inCarts");
+    // const res = await fetch(`/api/inCarts/${loginId}`);
+    // const inCarts = await res.json();
+
+    // let userId = inCarts[Number(loginId) - 1];
+
+    if (typeof tours === "undefined"){
+      return;
+    }
+    let tourContents = tours.length;
+    // console.log(tourContents);
+
+    
+    const arrayDate = [];
+    for (let i = 0; i < tourContents; i++) {
+       arrayDate.push(tours[i].tourDate);
+      // console.log(arrayDate);
+    }
+    const compareDates = {}
+    for (let entry of arrayDate) {
+      let count = compareDates[entry];
+
+      if (count === undefined) {
+        compareDates[entry] = 1;
+      } else {
+        compareDates[entry]++;
+      }
+      // console.log(compareDates)
+    }
+
+    for (let compareDate in compareDates) {
+      let count = compareDates[compareDate];
+      if ( count >= 2) {
+        setErrorDate(true);
+      }
   }
   judgeError ();
 

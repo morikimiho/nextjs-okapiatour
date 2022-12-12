@@ -33,13 +33,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(`http://localhost:8000/tours/${params?.id}`);
   const tour = await res.json();
+
+  const comRes = await fetch(
+    `http://localhost:8000/comment?tourid=${params?.id}`
+  );
+  const comment = await comRes.json();
   return {
-    props: { tour },
+    props: { tour, comment },
     revalidate: 10,
   };
 };
 
-export default function Tripdetail({ tour }: { tour: Tour }) {
+export default function Tripdetail({
+  tour,
+  comment,
+}: {
+  tour: Tour;
+  comment: any;
+}) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
@@ -48,6 +59,7 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
   const [error_message, setErrorMessage] = useState(false);
+  console.log(comment);
 
   async function PostData(e: { preventDefault: () => any }) {
     if (dateError === false || timeError === false) {
@@ -170,14 +182,23 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
           <TripdetailImage tour={tour} />
           <p className={styles.tour_description}>{tour.description}</p>
 
-          <div className={styles.tour_detail_info}>
+
+{/* タブ切り替え */}
+<section>
+  <div>
+    <button>ツアー詳細</button>
+    <button>口コミを見る</button>
+  </div>
+</section>
+
+
+          <section className={styles.tour_detail_info}>
             <div className={styles.tour_detail_info_items}>
               <TripdetailActivity tour={tour} /> {/* // アクティビティ概要 */}
               <TripdetailContent tour={tour} /> {/* // 含まれるもの */}
             </div>
 
             <div className={styles.tour_detail_info_items}>
-              {" "}
               {/* // 人数 時間 時間 */}
               <div className={styles.times}>
                 <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
@@ -195,40 +216,56 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
             </div>
 
             <span style={{ display: error_message ? "block" : "none" }}>
-              <div className={styles.error_message}>
+              {/* <div className={styles.error_message}> */}
+              <p className={styles.error_message}>
                 *日付もしくは時間が指定されていません。*
-              </div>
+              </p>
+              {/* </div> */}
             </span>
             <div className={styles.button_position}>
               <button className={styles.button} onClick={PostData}>
                 カートに入れる
               </button>
             </div>
-          </div>
-          {/* tour_detail_info */}
+          </section>
 
-          <section className={styles.user_comment}>
-            <div>
-              <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div>
+
+          {/* tour_detail_info */}
+          <section className={styles.user__comment}>
+            <div className={styles.user__comment_contents}>
+              {/* <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div> */}
+              {comment.map(
+                (com: {
+                  id: number;
+                  name: string;
+                  text: string;
+                  date: string;
+                }) => {
+                  return (
+                    <div key={com.id} className={styles.user__comment_items}>
+                      <div className={styles.user__comment_item}>
+                        <div className={styles.user__comment_left}>ニックネーム: </div>
+                        <div className={styles.user__comment_right}>{com.name}</div>
+                      </div>
+                      <div className={styles.user__comment_item}>
+                        <div className={styles.user__comment_left}>投稿日: </div>
+                        <div className={styles.user__comment_right}>{com.date}</div>
+                      </div>
+                      <div className={styles.user__comment_item}>
+                        <div className={styles.user__comment_left}>口コミ: </div>
+                        <div className={styles.user__comment_right}>{com.text}</div>
+                      </div>
+                    </div>
+                  );
+                }
+              )}
             </div>
           </section>
+
+
         </main>
         <ScrTop />
       </Layout>
     </>
   );
 }
-
-
-
-
-// import { GetStaticPaths, GetStaticProps } from "next";
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const res = await fetch(`http://localhost:8000/comment/${params?.tourid}`);
-//   const tour = await res.json();
-//   return {
-//     props: { tour },
-//     revalidate: 10,
-//   };
-// };

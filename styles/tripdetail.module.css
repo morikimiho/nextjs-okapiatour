@@ -261,3 +261,36 @@
     height: 25vw;
   }
 }
+
+.error_message {
+  color: red;
+  text-align: center;
+  position: relative;
+  top: 32px;
+}
+
+.valid {
+  color: red;
+}
+
+.user__comment_contents {
+  margin: 80px;
+}
+.user__comment_contents .user__comment_items {
+  margin: 20px 0;
+  padding: 40px;
+  background: #fff7ee;
+  border: solid 5px #FFC896;
+  border-radius: 20px;
+}
+.user__comment_contents .user__comment_items .user__comment_item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 2px solid #eb6100;
+}
+.user__comment_contents .user__comment_items .user__comment_item .user__comment_left {
+  width: 20%;
+}
+.user__comment_contents .user__comment_items .user__comment_item .user__comment_right {
+  width: 80%;
+}
