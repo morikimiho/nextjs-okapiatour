@@ -30,38 +30,37 @@ export const getStaticProps = async ({ params }) => {
 export default function Comment({ tour }) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
-  const[tourid,setTourid]=useState(0)
-  const[thanksmessage,setThanksmessage]=useState(false)
-  const router = useRouter()
+  const [tourid, setTourid] = useState(0);
+  const [thanksmessage, setThanksmessage] = useState(false);
+  const router = useRouter();
 
+  useEffect(() => {
+    setTourid(tour.id);
+  }, [tour]);
 
-useEffect(()=>{
-  setTourid(tour.id)
-},[tour])
-
-
-const submitHandler = async (e) => {
-  e.preventDefault();
-if(!text){   
-} else{
-    const data = {
-      tourid,
-      name,
-      text,
-    };
-    console.log(data);
-    await fetch("/api/comment", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-    setThanksmessage(prev=>!prev);
-    setTimeout(()=>{
-       router.push('http://localhost:3000/tour')
-    },2000)
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (!text) {
+    } else {
+      const data = {
+        tourid,
+        name,
+        text,
+      };
+      console.log(data);
+      await fetch("/api/comment", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      setThanksmessage((prev) => !prev);
+      setTimeout(() => {
+        router.push("/tour");
+      }, 2000);
+    }
   };
 
   //リセット
@@ -107,9 +106,14 @@ if(!text){
           <br />
           <button type="submit">送信</button>
           <button onClick={clickHandler}>リセット</button>
-          {thanksmessage? <div>
-            <p>口コミありがとうございました。</p><p>3秒後にトップ画面へ遷移します。</p>
-          </div>:""}
+          {thanksmessage ? (
+            <div>
+              <p>口コミありがとうございました。</p>
+              <p>3秒後にトップ画面へ遷移します。</p>
+            </div>
+          ) : (
+            ""
+          )}
         </form>
       </Layout>
     </div>
