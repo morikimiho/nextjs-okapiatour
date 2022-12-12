@@ -39,9 +39,9 @@ export default function Comment({tour}) {
   const router = useRouter()
 
 
-// useEffect(()=>{
-//   setTourid(tour.id)
-// },[tour])
+useEffect(()=>{
+  setTourid(tour.id)
+},[tour])
 
 
 const submitHandler = async (e) => {
