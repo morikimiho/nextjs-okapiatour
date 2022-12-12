@@ -4,10 +4,11 @@ import Layout from "../../component/layout";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { Tour } from "../../types/types";
 import { useState } from "react";
 import Router from "next/router";
+import { Any } from "typeorm";
 
 type Props = {
   tours: Array<Tour>;
@@ -24,7 +25,50 @@ export function CartItems({
   loginId,
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorDate, setErrorDate] = useState(false);
 
+  useEffect(()=>{
+    judgeError();
+  })
+
+  const judgeError = async () => {
+    const res = await fetch(`/api/inCarts/${loginId}`);
+    const inCarts = await res.json();
+
+    // let userId = inCarts[Number(loginId) - 1];
+
+    if (typeof inCarts.tours === "undefined"){
+      return;
+    }
+    let tourContents = inCarts.tours.length;
+    console.log(tourContents);
+
+    
+    const arrayDate = [];
+    for (let i = 0; i < tourContents; i++) {
+       arrayDate.push(inCarts.tours[i].tourDate);
+      // console.log(arrayDate);
+    }
+    const compareDates = {}
+    for (let entry of arrayDate) {
+      let count = compareDates[entry];
+
+      if (count === undefined) {
+        compareDates[entry] = 1;
+      } else {
+        compareDates[entry]++;
+      }
+      // console.log(compareDates)
+    }
+
+    for (let compareDate in compareDates) {
+      let count = compareDates[compareDate];
+      if ( count >= 2) {
+        setErrorDate(true);
+      }
+  }
+  };
+  
   const handleSubmit = async (e: any) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
@@ -46,6 +90,12 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
+            <p
+              className={styles.errorDate}
+              style={{ display: errorDate ? "block" : "none" }}
+            >
+              *カートの中に同じ日付のツアーが存在しています*
+            </p>
             <div className={Styles.cartcontents}>
               {tours.map((tour: any) => {
                 return (
