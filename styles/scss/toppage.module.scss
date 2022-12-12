@@ -5,11 +5,14 @@
 }
 .search_box {
   position: absolute;
-  top: 25%;
+  top: 17%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   min-width: 80vw;
+  @include pub.mq("res") {
+    top: 25%;
+  }
 }
 
 .subtitle {
@@ -96,7 +99,7 @@
 .top_image {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 58px);
+  height: 60vh;
   @include pub.mq("res") {
     height: calc(100vh - 100px);
   }

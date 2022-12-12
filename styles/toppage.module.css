@@ -5,11 +5,16 @@
 
 .search_box {
   position: absolute;
-  top: 25%;
+  top: 17%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
   min-width: 80vw;
+}
+@media (max-width: 1199px) {
+  .search_box {
+    top: 25%;
+  }
 }
 
 .subtitle {
@@ -99,7 +104,7 @@
 .top_image {
   position: relative;
   width: 100vw;
-  height: calc(100vh - 58px);
+  height: 60vh;
 }
 @media (max-width: 1199px) {
   .top_image {
