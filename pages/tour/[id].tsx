@@ -33,13 +33,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const res = await fetch(`http://localhost:8000/tours/${params?.id}`);
   const tour = await res.json();
+
+  const comRes = await fetch(`http://localhost:8000/comment?tourid=${params?.id}`);
+  const comment = await comRes.json();
   return {
-    props: { tour },
+    props: { tour, comment },
     revalidate: 10,
   };
 };
 
-export default function Tripdetail({ tour }: { tour: Tour }) {
+export default function Tripdetail({ tour, comment }: { tour: Tour; comment:any }) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
@@ -48,6 +51,7 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
   const [error_message, setErrorMessage] = useState(false);
+  console.log(comment)
 
   async function PostData(e: { preventDefault: () => any }) {
     if (dateError === false || timeError === false) {
@@ -151,6 +155,11 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
       }
     }
   }
+
+// 口コミ表示
+
+
+
   return (
     <>
       <Head>
@@ -210,6 +219,14 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
           <section className={styles.user_comment}>
             <div>
               <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div>
+              {comment.map((com: {id: number; name: string; text: string}) => {
+                return (
+                  <div key={com.id}>
+                    <div>{com.name}</div>
+                    <div>{com.text}</div>
+                  </div>
+                )
+              })}
             </div>
           </section>
         </main>
