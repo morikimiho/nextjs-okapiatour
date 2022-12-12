@@ -195,9 +195,9 @@ export default function Tripdetail({ tour }: { tour: Tour }) {
             </div>
 
             <span style={{ display: error_message ? "block" : "none" }}>
-              <div className={styles.error_message}>
-                *日付もしくは時間が指定されていません。*
-              </div>
+              {/* <div className={styles.error_message}> */}
+                <p className={styles.error_message}>*日付もしくは時間が指定されていません。*</p>
+              {/* </div> */}
             </span>
             <div className={styles.button_position}>
               <button className={styles.button} onClick={PostData}>

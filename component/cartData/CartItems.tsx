@@ -32,21 +32,21 @@ export function CartItems({
   })
 
   const judgeError = async () => {
-    const res = await fetch(`/api/inCarts/${loginId}`);
-    const inCarts = await res.json();
+    // const res = await fetch(`/api/inCarts/${loginId}`);
+    // const inCarts = await res.json();
 
     // let userId = inCarts[Number(loginId) - 1];
 
-    if (typeof inCarts.tours === "undefined"){
+    if (typeof tours === "undefined"){
       return;
     }
-    let tourContents = inCarts.tours.length;
-    console.log(tourContents);
+    let tourContents = tours.length;
+    // console.log(tourContents);
 
     
     const arrayDate = [];
     for (let i = 0; i < tourContents; i++) {
-       arrayDate.push(inCarts.tours[i].tourDate);
+       arrayDate.push(tours[i].tourDate);
       // console.log(arrayDate);
     }
     const compareDates = {}
