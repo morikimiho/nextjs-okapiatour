@@ -6,7 +6,7 @@
     width: 700px;
     margin: 0 auto;
     transition: all 0.3s ease 0s;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 330px;  
         transition: all 0.3s ease 0s;
     }
@@ -22,35 +22,35 @@
     border-radius: 16px;
     padding: 40px;
     background-color: pub.$main_color;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         padding: 20px;
     } 
 
     .form_name {
         width: 100%;
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             display: block;
         }
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             margin-bottom: 20px;
         }
         .form_name_side {
             display: flex;
 
-            @include pub.mq("res") {
+            @include pub.mq("sp") {
                 width: 274px;  
                 display: block;
             }
         }
         .name_kanji {
             margin-bottom: 40px;
-            @include pub.mq("res") {
+            @include pub.mq("sp") {
                 margin-bottom: 20px; 
             }
         }
         .name_kana {
             margin-left: auto;
-            @include pub.mq("res") {
+            @include pub.mq("sp") {
                 margin-bottom: 20px; 
             }
         }
@@ -64,19 +64,19 @@
         padding: 10px;
         background-color: #fff;
         margin-bottom: 40px;
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             margin-bottom: 20px; 
         }
     }
     .form_tmp {
         margin-bottom: 40px;
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             margin-bottom: 20px; 
         }
     }
     .privacy {
         margin-bottom: 40px;
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             margin-bottom: 20px; 
             font-size: 16px;
         }
@@ -90,7 +90,7 @@
         content: "*";
         color: #f63131;
     }
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         margin: 0 14px;
     }
 }
@@ -111,7 +111,7 @@
     width: 80px;
     border-radius: 10px;
     border: solid 2px rgb(184, 184, 184);
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         width: 58px; 
         margin-left: 14px;
     }
@@ -134,7 +134,7 @@
         background-color: pub.$sub_color;
         border: none;
         transition: all 0.3s ease 0s;
-        @include pub.mq("res") {
+        @include pub.mq("sp") {
             font-size: 18px;
             padding: 7px 20px;
         } 

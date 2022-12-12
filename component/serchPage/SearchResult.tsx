@@ -6,19 +6,17 @@ import { Tour } from "../../types/types";
 import useSWR from "swr";
 
 type Props = {
-    url:string;
-}
-
+  url: string;
+};
 
 const fetcher = (resource: any, init: any) =>
-fetch(resource, init).then((res) => res.json());
+  fetch(resource, init).then((res) => res.json());
 
-export function SearchResult({url}:Props) {
+export function SearchResult({ url }: Props) {
+  const { data, error } = useSWR(url, fetcher);
 
-    const { data, error } = useSWR(url, fetcher);
-
-    if (error) return <div>failed to load</div>
-    if (!data) return <div>loading...</div>
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
 
   return (
     <>
@@ -29,37 +27,38 @@ export function SearchResult({url}:Props) {
           <div className={styles.headline}>検索結果</div>
         )}
 
-        {data.map((item:any) => {
+        {data.map((item: any) => {
           return (
-            <>
-              <div id="content" className={styles.eachcontent}>
-                <div key={item.id} className={styles.flex}>
-                  <div className={styles.result_image}>
-                    <Image
-                      src={item.img1}
-                      layout="fill"
-                      alt="画像"
-                      className={styles.image}
-                    />
+            <div key={item.id} id="content" className={styles.eachcontent}>
+              <div className={styles.result__flex}>
+                <div className={styles.result_image}>
+                  <Image
+                    src={item.img1}
+                    layout="fill"
+                    alt="画像"
+                    className={styles.image}
+                  />
+                </div>
+                <div>
+                  <div className={styles.title}>
+                    <span>{item.tourName}</span>
+                    <span>{item.id}</span>
                   </div>
-                  <div>
-                    <div className={styles.title}>
-                      <span>{item.tourName}</span>
-                    </div>
 
-                    <div className={styles.tour_tags}>
-                      {item.area.length > 0 && (
-                        <div className={styles.tour_tag}>{item.area}</div>
-                      )}
-                      {item.country.length > 0 && (
-                        <div className={styles.tour_tag}>{item.country}</div>
-                      )}
-                      {item.city.length > 0 && (
-                        <div className={styles.tour_tag}>{item.city}</div>
-                      )}
-                    </div>
+                  <div className={styles.tour_tags}>
+                    {item.area.length > 0 && (
+                      <div className={styles.tour_tag}>{item.area}</div>
+                    )}
+                    {item.country.length > 0 && (
+                      <div className={styles.tour_tag}>{item.country}</div>
+                    )}
+                    {item.city.length > 0 && (
+                      <div className={styles.tour_tag}>{item.city}</div>
+                    )}
+                  </div>
 
-                    <div className={styles.flex}>
+                  <div className={styles.result__flex_items}>
+                    <div className={styles.result__flex_item}>
                       <div id="info">
                         <ul className={styles.list}>
                           <span className={styles.span}>概要</span>
@@ -76,21 +75,19 @@ export function SearchResult({url}:Props) {
                           <li>{item.content3}</li>
                         </ul>
                       </div>
+                    </div>
 
-                      <div id="button" className={styles.button_around}>
-                        {" "}
-                        {/* 詳細ボタン */}
-                        <Link href={`/tour/${item.id}`}>
-                          <button className={styles.button}>
-                            詳細はこちら{" "}
-                          </button>
-                        </Link>
-                      </div>
+                    <div id="button" className={styles.button_around}>
+                      {" "}
+                      {/* 詳細ボタン */}
+                      <Link href={`/tour/${item.id}`}>
+                        <button className={styles.button}>詳細はこちら </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </div>

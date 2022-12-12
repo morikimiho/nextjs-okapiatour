@@ -19,7 +19,7 @@
     background-color: pub.$sub_color;
     border: none;
     transition: all 0.3s ease 0s;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
       font-size: 12px;
       padding: 10px 0;
       width: 160px;

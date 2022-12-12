@@ -43,17 +43,14 @@ export default function Login() {
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-
           await fetch(
             `/api/users?mailAddress=${mailAddress}&password=${password}`
           ).then ((response)=>response.json())
           .then (async (data)=>{
-          
           const user = data[0];
           console.log(user);
           const id = user.id;
           console.log(id);
-      
           const localtours = JSON.parse(
             localStorage.getItem("tours") ?? '{"tours:[]}'
           );

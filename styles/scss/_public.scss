@@ -6,7 +6,7 @@ $breakpoints: (
 //キー : 値
 'sp': "(max-width: 767px)", 
 'res': "(max-width: #{$layout-width-inner - 1px})", 
-// 'wide': "(min-width: 768px) and (max-width: 1050px)", 
+'tab': "(min-width: 768px) and (max-width: 1050px)", 
 'pc': "(min-width: #{$layout-width-inner})"
 ) ;
 
@@ -20,4 +20,3 @@ $main_color: #FFC896;
 $sub_color: #9a2727;
 $dark_color: #eb6100;
 $highlight_color: #fff7ee;;
-

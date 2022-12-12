@@ -64,7 +64,7 @@ export function SearchBox (
        
         return (
           <>
-            <div className={styles.flex}>
+            <div className={styles.search__flex}>
               <div>
                 <div>
                   <label htmlFor="">国内 or 海外</label>

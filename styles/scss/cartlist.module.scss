@@ -4,7 +4,7 @@
 .flex {
   display: flex;
   justify-content: center;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     display: block;
   }
 }
@@ -13,7 +13,7 @@
   list-style: none;
   margin: 0;
   line-height: 1.6;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     padding: 0;
   }
 }
@@ -28,7 +28,7 @@
   border: 1px slategray dotted;
   padding: 40px 120px;
   margin-top: 20px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     padding: 0 20px;
   }
 }
@@ -47,7 +47,7 @@
 
 .tourinfo {
   width: calc(858px - (180px + 142px));
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     width: 100%;
     max-width: 600px;
   }
@@ -57,7 +57,7 @@
   margin-left: 26px;
   width: 142px;
   margin-left: 20px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     display: flex;
     margin-top: 10px;
     margin-left: 3px;
@@ -79,20 +79,20 @@
       transform: translate(1px, 1px);
         box-shadow:none;
       }
-      @include pub.mq("res") {
+      @include pub.mq("sp") {
         margin-right: 10px;
         padding: 5px 14px;
     }
 }
 .cartlist_items {
     display: block;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
         display: flex;
     }
       padding-top: 4px;
     .total_value {
       margin-top: 10px;
-      @include pub.mq("res") {
+      @include pub.mq("sp") {
         margin-top: 0;
         margin-left: 8px;
         // font-size: 14px;
@@ -113,7 +113,7 @@
   position: relative;
   bottom: 4px;
   text-align: center;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     width: 50px;
     height: 26px;
   }

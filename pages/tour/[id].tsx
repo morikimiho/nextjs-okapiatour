@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function Tripdetail({tour}:{tour: Tour}) {
+export default function Tripdetail({ tour }: { tour: Tour }) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
   const [numberOfPeople, setNumberOfPeople] = useState(1);
@@ -49,14 +49,12 @@ export default function Tripdetail({tour}:{tour: Tour}) {
   const [timeError, setTimeError] = useState(false);
   const [error_message, setErrorMessage] = useState(false);
 
-  async function PostData(e: { preventDefault: () => any; }) {
-    if(dateError === false || timeError === false) {
+  async function PostData(e: { preventDefault: () => any }) {
+    if (dateError === false || timeError === false) {
       setErrorMessage(true);
       return e.preventDefault();
-    } 
-
+    }
     const loginId = cookie.loginId;
-
     if (!loginId) {
       const toursJSON = localStorage.getItem("tours");
       const setNewData = {
@@ -79,27 +77,26 @@ export default function Tripdetail({tour}:{tour: Tour}) {
       } else {
         const tours = JSON.parse(toursJSON);
         const addTourData = {
-           tours:
-          [...tours.tours,
-          {id:tour.id,
-            tourDate: tourDate, //新規データ
-            startTime: startTime, //新規データ
-            img1: tour.img1,
-            tourName: tour.tourName,
-            description: tour.description,
-            numberOfPeople: numberOfPeople, //新規データ
-            price: Number(tour.price),
-            total: Number(tour.price * numberOfPeople),
-
-          }]};
-        localStorage.setItem('tours',JSON.stringify(addTourData));
+          tours: [
+            ...tours.tours,
+            {
+              id: tour.id,
+              tourDate: tourDate, //新規データ
+              startTime: startTime, //新規データ
+              img1: tour.img1,
+              tourName: tour.tourName,
+              description: tour.description,
+              numberOfPeople: numberOfPeople, //新規データ
+              price: Number(tour.price),
+              total: Number(tour.price * numberOfPeople),
+            },
+          ],
+        };
+        localStorage.setItem("tours", JSON.stringify(addTourData));
       }
-
-      router.push("http://localhost:3000/tour/cart");
+      router.push("/tour/cart");
     } else {
-      const res = await fetch(
-        `http://localhost:8000/inCarts?userId=${loginId}`
-      );
+      const res = await fetch(`/api/inCarts?userId=${loginId}`);
       const inCarts = await res.json();
       {
         inCarts.map(
@@ -117,7 +114,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               total: number;
             }[];
           }) => {
-            await fetch(`http://localhost:8000/inCarts/${cart.id}`, {
+            await fetch(`/api/inCarts/${cart.id}`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -144,7 +141,7 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               .then((response) => response.json())
               .then((data) => {
                 console.log(data);
-                router.push("http://localhost:3000/tour/cart");
+                router.push("/tour/cart");
               })
               .catch((error) => {
                 console.error("Error:", error);
@@ -154,7 +151,6 @@ export default function Tripdetail({tour}:{tour: Tour}) {
       }
     }
   }
-
   return (
     <>
       <Head>
@@ -168,21 +164,21 @@ export default function Tripdetail({tour}:{tour: Tour}) {
             )}
             <div className={styles.tour_tag}>{tour.country}</div>
           </div>
-          <h1 className={styles.tour_title}><span>{tour.tourName}</span></h1>
+          <h1 className={styles.tour_title}>
+            <span>{tour.tourName}</span>
+          </h1>
           <TripdetailImage tour={tour} />
           <p className={styles.tour_description}>{tour.description}</p>
 
-
           <div className={styles.tour_detail_info}>
+            <div className={styles.tour_detail_info_items}>
+              <TripdetailActivity tour={tour} /> {/* // アクティビティ概要 */}
+              <TripdetailContent tour={tour} /> {/* // 含まれるもの */}
+            </div>
 
-           <div className={styles.tour_detail_info_items}>
-            <TripdetailActivity tour={tour} />  {/* // アクティビティ概要 */}
-            <TripdetailContent tour={tour} />   {/* // 含まれるもの */}
-           </div>
-
-
-
-            <div className={styles.tour_detail_info_items}> {/* // 人数 時間 時間 */}
+            <div className={styles.tour_detail_info_items}>
+              {" "}
+              {/* // 人数 時間 時間 */}
               <div className={styles.times}>
                 <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
                 <TripdetailTimes
@@ -198,22 +194,41 @@ export default function Tripdetail({tour}:{tour: Tour}) {
               <TripdetailAttention /> {/* // 注意事項 */}
             </div>
 
-
-            <span
-                style={{ display: error_message ? "block" : "none" }}
-            >
-               <div className={styles.error_message}>*日付もしくは時間が指定されていません。*</div>
+            <span style={{ display: error_message ? "block" : "none" }}>
+              <div className={styles.error_message}>
+                *日付もしくは時間が指定されていません。*
+              </div>
             </span>
             <div className={styles.button_position}>
               <button className={styles.button} onClick={PostData}>
                 カートに入れる
               </button>
             </div>
-          </div>{/* tour_detail_info */}
+          </div>
+          {/* tour_detail_info */}
 
+          <section className={styles.user_comment}>
+            <div>
+              <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div>
+            </div>
+          </section>
         </main>
         <ScrTop />
       </Layout>
     </>
   );
 }
+
+
+
+
+// import { GetStaticPaths, GetStaticProps } from "next";
+
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const res = await fetch(`http://localhost:8000/comment/${params?.tourid}`);
+//   const tour = await res.json();
+//   return {
+//     props: { tour },
+//     revalidate: 10,
+//   };
+// };

@@ -3,7 +3,7 @@
 .bookingC_title {
   padding-left: 50px;
   margin: 0 20px 40px 20px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     font-size: 25px;
     padding-left: 0px;
   }
@@ -20,14 +20,14 @@
   margin-top: 0;
 }
 .bookingC_ok {
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     font-size: 14px;
   }
 }
 .bookingC_error {
   margin-left: 16px;
   margin-bottom: calc(100vh - 362px);
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     margin-bottom: calc(100vh - 358px);
   }
 }
@@ -49,7 +49,7 @@
     background-color: pub.$sub_color;
     border: none;
     transition: all 0.3s ease 0s;
-    @include pub.mq("res") {
+    @include pub.mq("sp") {
       font-size: 18px;
       //   padding: 7px 20px;
     }
@@ -73,7 +73,7 @@
   border-radius: 20px;
   margin-top: 40px;
   padding: 0 40px 40px 40px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     margin-top: 20px;
     padding: 0 20px 20px 20px;
     max-width: 660px;
@@ -89,7 +89,7 @@
   display: flex;
   justify-content: center;
   padding-top: 20px;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     // display: block;
     flex-wrap: wrap;
   }
@@ -105,9 +105,39 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 1.8;
-  @include pub.mq("res") {
+  @include pub.mq("sp") {
     line-height: 1.6;
     margin-left: 10px;
     margin-top: 10px;
   } 
+}
+
+.user_comment {
+  margin-top: 140px;
+  .user_comment_btn {
+    color: #fff;
+  background-color: pub.$dark_color;
+  border-radius: 100vh;
+  padding: 10px 25px 10px 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #dedede;
+  color: pub.$highlight_color;
+  border: none;
+  transition: all 0.3s ease 0s;
+  @include pub.mq("tab") {
+    margin: 20px 0 20px 20px;
+  }
+  @include pub.mq("sp") {
+    font-size: 18px;
+    padding: 7px 20px;
+    margin: 20px 0 20px 20px;
+  }
+  &:hover {
+    position: relative;
+    transform: translate(2px, 2px);
+    box-shadow: none;
+  }
+  }
 }
