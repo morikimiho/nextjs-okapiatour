@@ -4,11 +4,10 @@ import Layout from "../../component/layout";
 import styles from "../../styles/cart.module.css";
 import { Cartlist } from "../../component/CartList/cartlist";
 import Styles from "../../styles/cartlist.module.css";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Tour } from "../../types/types";
 import { useState } from "react";
 import Router from "next/router";
-import { Any } from "typeorm";
 
 type Props = {
   tours: Array<Tour>;
@@ -25,11 +24,6 @@ export function CartItems({
   loginId,
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
-  const [errorDate, setErrorDate] = useState(false);
-
-  useEffect(()=>{
-    judgeError();
-  })
 
   const judgeError = async () => {
     // const res = await fetch(`/api/inCarts/${loginId}`);
@@ -67,8 +61,8 @@ export function CartItems({
         setErrorDate(true);
       }
   }
-  };
-  
+  judgeError ();
+
   const handleSubmit = async (e: any) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
@@ -90,12 +84,7 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
-            <p
-              className={styles.errorDate}
-              style={{ display: errorDate ? "block" : "none" }}
-            >
-              *カートの中に同じ日付のツアーが存在しています*
-            </p>
+            <p>警告</p>
             <div className={Styles.cartcontents}>
               {tours.map((tour: any) => {
                 return (
@@ -137,4 +126,5 @@ export function CartItems({
       </Layout>
     </>
   );
+}
 }
