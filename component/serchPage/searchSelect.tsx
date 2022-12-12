@@ -23,7 +23,6 @@ export function SearchSelect({ data }) {
               <div>
                 <div className={styles.title}>
                   <span>{item.tourName}</span>
-                  <span>{item.id}</span>
                 </div>
 
                 <div className={styles.tour_tags}>

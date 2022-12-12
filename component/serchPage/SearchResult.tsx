@@ -1,10 +1,5 @@
-import Link from "next/link";
-import { ScrTop } from "../tps";
-import Image from "next/image";
 import styles from "../../styles/search-page.module.css";
-import { Tour } from "../../types/types";
 import useSWR from "swr";
-import { useEffect } from "react";
 import { SearchSelect } from "./searchSelect";
 import { Recommend } from "./Recommend";
 
@@ -20,8 +15,6 @@ export function SearchResult({ url }: Props) {
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
-
-  console.log(data);
 
 
   return (
