@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { SetStateAction, useEffect, useState } from "react";
 import Layout from "../../../component/layout";
 
@@ -20,7 +21,7 @@ export const getStaticPaths = async () => {
 
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:8000/tours/${params?.id}`);
+  const res = await fetch(`http://localhost:8000/tours/${params.id}`);
   const tour = await res.json();
   return {
     props: { tour },
@@ -34,19 +35,19 @@ export default function Comment({tour}) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const[tourid,setTourid]=useState(0)
-
-useEffect(()=>{
-  setTourid(tour.id)
-},[])
+  const[thanksmessage,setThanksmessage]=useState(false)
+  const router = useRouter()
 
 
+// useEffect(()=>{
+//   setTourid(tour.id)
+// },[tour])
 
-  const submitHandler = async (e: { preventdefault: () => void; }) => {
-    // e.preventdefault();
-if(!text){
-    
+
+const submitHandler = async (e) => {
+  e.preventDefault();
+if(!text){   
 } else{
- 
     const data = {
       tourid,
       name,
@@ -60,7 +61,12 @@ if(!text){
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    });
+    })
+    setThanksmessage(prev=>!prev);
+    setTimeout(()=>{
+       router.push('http://localhost:3000/tour')
+    },2000)
+
   };
 }
 
@@ -105,6 +111,9 @@ if(!text){
           <br />
           <button type="submit">送信</button>
           <button onClick={clickHandler}>リセット</button>
+          {thanksmessage? <div>
+            <p>口コミありがとうございました。</p><p>3秒後にトップ画面へ遷移します。</p>
+          </div>:""}
         </form>
       </Layout>
     </div>
