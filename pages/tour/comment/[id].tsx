@@ -1,7 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import Layout from "../../../component/layout";
 
-
 export const getStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
   const tours = await res.json();
@@ -18,7 +17,6 @@ export const getStaticPaths = async () => {
   };
 };
 
-
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(`http://localhost:8000/tours/${params?.id}`);
   const tour = await res.json();
@@ -28,41 +26,35 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-
-
-export default function Comment({tour}) {
+export default function Comment({ tour }) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
-  const[tourid,setTourid]=useState(0)
+  const [tourid, setTourid] = useState(0);
 
-useEffect(()=>{
-  setTourid(tour.id)
-},[])
+  useEffect(() => {
+    setTourid(tour.id);
+  }, []);
 
-
-
-  const submitHandler = async (e: { preventdefault: () => void; }) => {
+  const submitHandler = async (e: { preventdefault: () => void }) => {
     // e.preventdefault();
-if(!text){
-    
-} else{
- 
-    const data = {
-      tourid,
-      name,
-      text,
-    };
-    console.log(data);
-    await fetch("/api/comment", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    if (!text) {
+    } else {
+      const data = {
+        tourid,
+        name,
+        text,
+      };
+      console.log(data);
+      await fetch("/api/comment", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    }
   };
-}
 
   //リセット
   const clickHandler = () => {

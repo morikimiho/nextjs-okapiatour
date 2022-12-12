@@ -246,3 +246,28 @@ margin-left: 12vw;
 .valid {
   color: red;
 }
+
+
+
+// ユーザーコメント
+.user__comment_contents {
+  margin: 80px;
+  .user__comment_items {
+    margin: 20px 0;
+    padding: 40px;
+    background: pub.$highlight_color;
+    border: solid 5px pub.$main_color;
+    border-radius: 20px;
+    .user__comment_item {
+      display: flex;
+      padding: 10px 0;
+      border-bottom: 2px solid pub.$dark_color;
+      .user__comment_left {
+        width: 20%;
+      }
+      .user__comment_right {
+        width: 80%;
+      }
+    }
+  }
+}
