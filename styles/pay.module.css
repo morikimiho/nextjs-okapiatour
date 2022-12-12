@@ -62,3 +62,8 @@
     font-size: 14px;
   }
 }
+
+.error_message {
+  color: red;
+  text-align: center;
+}
