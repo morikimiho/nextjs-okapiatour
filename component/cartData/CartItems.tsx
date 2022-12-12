@@ -32,10 +32,6 @@ export function CartItems({
   })
 
   const judgeError = async () => {
-    // const res = await fetch(`/api/inCarts/${loginId}`);
-    // const inCarts = await res.json();
-
-    // let userId = inCarts[Number(loginId) - 1];
 
     if (typeof tours === "undefined"){
       return;
