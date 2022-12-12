@@ -1197,12 +1197,17 @@
     }
   ],
   "comment": [
- 
     {
       "tourid": 2,
       "name": "ddd",
       "text": "ddd",
       "id": 3
+    },
+    {
+      "tourid": 2,
+      "name": "rgh",
+      "text": "asdfg",
+      "id": 4
     }
   ],
   "orders": [
@@ -1235,6 +1240,7 @@
           "description": "ユネスコ世界遺産のモン サン ミッシェルを訪れる1日ツアーです。中世に建造されたゴシック様式の修道院をご見学ください。",
           "numberOfPeople": 1,
           "price": 17000,
+          
           "total": 17000
         }
       ],
@@ -1270,7 +1276,24 @@
       "userId": 3,
       "rsNumber": "OkapiTour04h281t34ph1",
       "id": 2
-
+    },
+    {
+      "tours": [
+        {
+          "id": 2,
+          "tourDate": "2022-12-12",
+          "startTime": 9,
+          "img1": "/images/france/paris/loire/loire01.jpg",
+          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
+          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
+          "numberOfPeople": 1,
+          "price": 15000,
+          "total": 15000
+        }
+      ],
+      "userId": 4,
+      "rsNumber": "OkapiTour1623t4b6ah4a",
+      "id": 3
     }
   ]
 }
