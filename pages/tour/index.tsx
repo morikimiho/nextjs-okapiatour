@@ -85,7 +85,7 @@ export default function Home() {
       </Head>
 
       {/* トップページアニメーション */}
-      {/* <div
+      <div
         className={styles.logos}
         style={{
           transition: "1s",
@@ -100,8 +100,9 @@ export default function Home() {
             alt="検索"
             layout="fill"
           />
+          
         </div>
-      </div> */}
+      </div>
 
       <Header />
       <div className={styles.container}>

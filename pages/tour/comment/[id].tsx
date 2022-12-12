@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { SetStateAction, useEffect, useState } from "react";
 import Layout from "../../../component/layout";
 
-
 export const getStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
   const tours = await res.json();
@@ -19,7 +18,6 @@ export const getStaticPaths = async () => {
   };
 };
 
-
 export const getStaticProps = async ({ params }) => {
   const res = await fetch(`http://localhost:8000/tours/${params.id}`);
   const tour = await res.json();
@@ -29,9 +27,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-
-
-export default function Comment({tour}) {
+export default function Comment({ tour }) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const[tourid,setTourid]=useState(0)
@@ -66,9 +62,7 @@ if(!text){
     setTimeout(()=>{
        router.push('http://localhost:3000/tour')
     },2000)
-
   };
-}
 
   //リセット
   const clickHandler = () => {
