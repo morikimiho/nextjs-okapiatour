@@ -40,12 +40,21 @@ export default function Comment({ tour }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const newdate=new Date();
+    let year=newdate.getFullYear();
+    let month=newdate.getMonth()+1;
+    let aday=newdate.getDate();
+
+    let date=`${year}-${month}-${aday}`;
+    console.log(date);
+
     if (!text) {
     } else {
       const data = {
         tourid,
         name,
         text,
+        date
       };
       console.log(data);
       await fetch("/api/comment", {
