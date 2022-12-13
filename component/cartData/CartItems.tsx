@@ -8,7 +8,6 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { Tour } from "../../types/types";
 import { useState } from "react";
 import Router from "next/router";
-import { Any } from "typeorm";
 
 type Props = {
   tours: Array<Tour>;
