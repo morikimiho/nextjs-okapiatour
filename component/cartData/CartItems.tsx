@@ -24,7 +24,12 @@ export function CartItems({
   loginId,
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [errorDate, setErrorDate] = useState(false);
+  
+  useEffect(() => {
+    judgeError();
+  })
+  
   const judgeError = async () => {
 
     if (typeof tours === "undefined"){
@@ -57,7 +62,7 @@ export function CartItems({
         setErrorDate(true);
       }
   }
-  judgeError ();
+  };
 
   const handleSubmit = async (e: any) => {
     // 無効な入力値で送信されないために初めにキャンセルする
@@ -80,7 +85,12 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
-            <p>警告</p>
+            <p
+              className={styles.errorDate}
+              style={{display: errorDate ? "block" : "none"}}
+             >
+              *カートの中に同じ日付のツアーが存在しています。*
+            </p>
             <div className={Styles.cartcontents}>
               {tours.map((tour: any) => {
                 return (
@@ -122,5 +132,4 @@ export function CartItems({
       </Layout>
     </>
   );
-}
 }
