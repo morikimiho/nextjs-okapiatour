@@ -59,7 +59,6 @@ export default function Tripdetail({
   const [dateError, setDateError] = useState(false);
   const [timeError, setTimeError] = useState(false);
   const [error_message, setErrorMessage] = useState(false);
-  console.log(comment);
 
   async function PostData(e: { preventDefault: () => any }) {
     if (dateError === false || timeError === false) {
@@ -163,6 +162,14 @@ export default function Tripdetail({
       }
     }
   }
+  const [tab, setTab] = useState(true);
+  const ChangeTrue = () => {
+    setTab(true);
+  };
+  const ChangeFalse = () => {
+    setTab(false);
+  };
+
   return (
     <>
       <Head>
@@ -182,87 +189,99 @@ export default function Tripdetail({
           <TripdetailImage tour={tour} />
           <p className={styles.tour_description}>{tour.description}</p>
 
-
-{/* タブ切り替え */}
-<section>
-  <div>
-    <button>ツアー詳細</button>
-    <button>口コミを見る</button>
-  </div>
-</section>
-
-
-          <section className={styles.tour_detail_info}>
-            <div className={styles.tour_detail_info_items}>
-              <TripdetailActivity tour={tour} /> {/* // アクティビティ概要 */}
-              <TripdetailContent tour={tour} /> {/* // 含まれるもの */}
-            </div>
-
-            <div className={styles.tour_detail_info_items}>
-              {/* // 人数 時間 時間 */}
-              <div className={styles.times}>
-                <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
-                <TripdetailTimes
-                  tour={tour}
-                  setTourDate={setTourDate}
-                  setStartTime={setStartTime}
-                  dateError={dateError}
-                  setDateError={setDateError}
-                  timeError={timeError}
-                  setTimeError={setTimeError}
-                />
-              </div>
-              <TripdetailAttention /> {/* // 注意事項 */}
-            </div>
-
-            <span style={{ display: error_message ? "block" : "none" }}>
-              {/* <div className={styles.error_message}> */}
-              <p className={styles.error_message}>
-                *日付もしくは時間が指定されていません。*
-              </p>
-              {/* </div> */}
-            </span>
-            <div className={styles.button_position}>
-              <button className={styles.button} onClick={PostData}>
-                カートに入れる
+          {/* タブ切り替え */}
+          <section className={styles.detail__tab}>
+            <div className={styles.detail__tab_items}>
+              <button className={styles.detail__tab_btn} onClick={ChangeTrue}>
+                ツアー詳細
+              </button>
+              <button className={styles.detail__tab_btn} onClick={ChangeFalse}>
+                口コミを見る
               </button>
             </div>
           </section>
 
+          {tab ? (
+            <section className={styles.tour_detail_info}>
+              <div className={styles.tour_detail_info_items}>
+                <TripdetailActivity tour={tour} /> {/* // アクティビティ概要 */}
+                <TripdetailContent tour={tour} /> {/* // 含まれるもの */}
+              </div>
 
-          {/* tour_detail_info */}
-          <section className={styles.user__comment}>
-            <div className={styles.user__comment_contents}>
-              {/* <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div> */}
-              {comment.map(
-                (com: {
-                  id: number;
-                  name: string;
-                  text: string;
-                  date: string;
-                }) => {
-                  return (
-                    <div key={com.id} className={styles.user__comment_items}>
-                      <div className={styles.user__comment_item}>
-                        <div className={styles.user__comment_left}>ニックネーム: </div>
-                        <div className={styles.user__comment_right}>{com.name}</div>
-                      </div>
-                      <div className={styles.user__comment_item}>
-                        <div className={styles.user__comment_left}>投稿日: </div>
-                        <div className={styles.user__comment_right}>{com.date}</div>
-                      </div>
-                      <div className={styles.user__comment_item}>
-                        <div className={styles.user__comment_left}>口コミ: </div>
-                        <div className={styles.user__comment_right}>{com.text}</div>
-                      </div>
-                    </div>
-                  );
-                }
-              )}
-            </div>
-          </section>
+              <div className={styles.tour_detail_info_items}>
+                {/* // 人数 時間 時間 */}
+                <div className={styles.tour_detail_info_item}>
+                  <TripdetailCount setNumberOfPeople={setNumberOfPeople} />
+                  <TripdetailTimes
+                    tour={tour}
+                    setTourDate={setTourDate}
+                    setStartTime={setStartTime}
+                    dateError={dateError}
+                    setDateError={setDateError}
+                    timeError={timeError}
+                    setTimeError={setTimeError}
+                  />
+                </div>
+                <TripdetailAttention /> {/* // 注意事項 */}
+              </div>
 
-
+              <span style={{ display: error_message ? "block" : "none" }}>
+                {/* <div className={styles.error_message}> */}
+                <p className={styles.error_message}>
+                  *日付もしくは時間が指定されていません。*
+                </p>
+                {/* </div> */}
+              </span>
+              <div className={styles.button_position}>
+                <button className={styles.button} onClick={PostData}>
+                  カートに入れる
+                </button>
+              </div>
+            </section>
+          ) : (
+            <section className={styles.user__comment}>
+              <div className={styles.user__comment_contents}>
+                {/* <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div> */}
+                {comment.map(
+                  (com: {
+                    id: number;
+                    name: string;
+                    text: string;
+                    date: string;
+                  }) => {
+                    return (
+                      <div key={com.id} className={styles.user__comment_items}>
+                        <div className={styles.user__comment_item}>
+                          <div className={styles.user__comment_left}>
+                            ニックネーム:
+                          </div>
+                          <div className={styles.user__comment_right}>
+                            {com.name}
+                          </div>
+                        </div>
+                        <div className={styles.user__comment_item}>
+                          <div className={styles.user__comment_left}>
+                            投稿日:
+                          </div>
+                          <div className={styles.user__comment_right}>
+                            {com.date}
+                          </div>
+                        </div>
+                        <div className={styles.user__comment_item}>
+                          <div className={styles.user__comment_left}>
+                            口コミ:
+                          </div>
+                          <div className={styles.user__comment_right}>
+                            {com.text}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
+            </section>
+          )}
         </main>
         <ScrTop />
       </Layout>

@@ -6,7 +6,7 @@ type Props = {
 }
 export function TripdetailActivity({tour}:Props) {
     return (
-      <div className={styles.activity}>
+      <div className={styles.tour_detail_info_item}>
         <h2>アクティビティ概要</h2>
         <ul className={styles.detail_list}>
           <li>無料キャンセル(ご出発日三日目まで)</li>
