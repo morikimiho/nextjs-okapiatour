@@ -8,7 +8,6 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { Tour } from "../../types/types";
 import { useState } from "react";
 import Router from "next/router";
-import { Any } from "typeorm";
 
 type Props = {
   tours: Array<Tour>;
@@ -27,14 +26,12 @@ export function CartItems({
   const [errorMessage, setErrorMessage] = useState("");
   const [errorDate, setErrorDate] = useState(false);
 
+  
   useEffect(() => {
     judgeError();
-  });
-
+  })
+  
   const judgeError = async () => {
-    // const res = await fetch(`/api/inCarts/${loginId}`);
-    // const inCarts = await res.json();
-    // let userId = inCarts[Number(loginId) - 1];
 
     if (typeof tours === "undefined") {
       return;
@@ -88,6 +85,7 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
+
             {tours.length ? (
               <>
                 <p
@@ -138,6 +136,7 @@ export function CartItems({
                 <p className={styles.bookingC_error}>
                   カートにツアーが追加されていません
                 </p>
+
                 <Link href="/tour">
                   <div className={styles.bookingC_btn}>
                     <button className={styles.bookingC_btn_search}>
