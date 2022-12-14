@@ -11,24 +11,11 @@ type Props = {
   deleteHandler: Function;
 };
 
-export const Cartlist = ({ tour, setAmount, deleteHandler,tourNew}: Props) => {
+export const Cartlist = ({ tour, setAmount, deleteHandler}: Props) => {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   const [num, setNum] = useState(tour.numberOfPeople);
   const router = useRouter();
-
-  console.log(tourNew);
-
- 
-  
-  if (Array.isArray(tourNew.get('2022-12-29'))) {
-    const result3 = tourNew.get('2022-12-29').length;
-    console.log(result3);
-  } else {
-    console.log('arr is NOT an array');
-  }
- 
-  
 
   const HandleNumChange = (e: { target: { value: any } }) => {
     const newNum = e.target.value;
@@ -44,15 +31,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler,tourNew}: Props) => {
   return (
     <>
       <div className={Styles.each_tour} >
-      <p className={Styles.duplicate}>
-        {Array.isArray(tourNew.get(tour.tourDate))&&
-        tourNew.get(tour.tourDate).length>1&& "※"+(tourNew.get(tour.tourDate)).filter(function(value){
-          return value !=tour.tourName
-        })+"と日程が重複しています。"}
-      </p>
-      
         <h3 className={Styles.padding}>{tour.tourName}</h3>
-       
         <div className={Styles.flex}>
           <Image src={tour.img1} width={180} height={130} alt="ツアー画像" />
           <div className={Styles.tourinfo}>
