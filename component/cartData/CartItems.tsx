@@ -8,7 +8,6 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { Tour } from "../../types/types";
 import { useState } from "react";
 import Router from "next/router";
-import { Any } from "typeorm";
 
 type Props = {
   tours: Array<Tour>;
@@ -25,46 +24,31 @@ export function CartItems({
   loginId,
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
-  const [errorDate, setErrorDate] = useState(false);
+
+  const [tourNew, setTourNew] = useState([]);
 
   useEffect(() => {
     judgeError();
-  });
+  }, [tours]);
+
 
   const judgeError = async () => {
-    // const res = await fetch(`/api/inCarts/${loginId}`);
-    // const inCarts = await res.json();
-    // let userId = inCarts[Number(loginId) - 1];
-
     if (typeof tours === "undefined") {
       return;
     }
-    let tourContents = tours.length;
-    // console.log(tourContents);
-
-    const arrayDate = [];
-    for (let i = 0; i < tourContents; i++) {
-      arrayDate.push(tours[i].tourDate);
-      // console.log(arrayDate);
-    }
-    const compareDates = {};
-    for (let entry of arrayDate) {
-      let count = compareDates[entry];
-
-      if (count === undefined) {
-        compareDates[entry] = 1;
-      } else {
-        compareDates[entry]++;
+    let newTour = new Map();
+    tours.map((tour) => {
+      const v = newTour.get(tour.tourDate);
+      if (v === undefined) {
+        newTour.set(tour.tourDate, [tour.tourName]);
+      } else if (Array.isArray(v)) {
+        newTour.set(tour.tourDate, [...v, tour.tourName]);
       }
-      // console.log(compareDates)
-    }
+    });
+   
+    setTourNew(newTour)
+    console.log(tourNew);
 
-    for (let compareDate in compareDates) {
-      let count = compareDates[compareDate];
-      if (count >= 2) {
-        setErrorDate(true);
-      }
-    }
   };
 
   const handleSubmit = async (e: any) => {
@@ -88,14 +72,11 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
+
+
             {tours.length ? (
               <>
-                <p
-                  className={styles.errorDate}
-                  style={{ display: errorDate ? "block" : "none" }}
-                >
-                  *カートの中に同じ日付のツアーが存在しています*
-                </p>
+              
                 <div className={Styles.cartcontents}>
                   {tours.map((tour: any) => {
                     return (
@@ -104,6 +85,7 @@ export function CartItems({
                         tour={tour}
                         setAmount={setAmount}
                         deleteHandler={deleteHandler}
+                        tourNew={tourNew}
                       />
                     );
                   })}
@@ -138,6 +120,8 @@ export function CartItems({
                 <p className={styles.bookingC_error}>
                   カートにツアーが追加されていません
                 </p>
+
+
                 <Link href="/tour">
                   <div className={styles.bookingC_btn}>
                     <button className={styles.bookingC_btn_search}>
