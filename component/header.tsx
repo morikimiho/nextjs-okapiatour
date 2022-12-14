@@ -3,16 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Router from "next/router";
-
 import useCookie from "../hooks/useCookie";
-
-// window.onload = ()=> {
-//   // URLの取得
-//   let url = location.href;
-//   if (url == "http://hoge.com/") {
-  //     // URLが http://hoge.com/ の場合に実行する処理 
-  //   } 
-  // }
   
   export function Header() {
     const router = useRouter();
