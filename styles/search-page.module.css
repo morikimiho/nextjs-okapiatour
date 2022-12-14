@@ -82,6 +82,23 @@
   }
 }
 
+.flex {
+  display: flex;
+  padding: 0 10px;
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .flex {
+    display: block;
+    padding: 0;
+  }
+}
+@media (max-width: 767px) {
+  .flex {
+    display: block;
+    padding: 0;
+  }
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -124,10 +141,6 @@
   }
 }
 
-.search_result {
-  padding-top: 20px;
-}
-
 .search__flex {
   display: flex;
 }
@@ -140,6 +153,10 @@
   .search__flex {
     display: block;
   }
+}
+
+.search_result {
+  padding-top: 20px;
 }
 
 .result__flex {

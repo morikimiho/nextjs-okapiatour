@@ -13,6 +13,7 @@ import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
 import { Tour } from "../../types/types";
+import Link from "next/link";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("http://localhost:8000/tours");
@@ -169,6 +170,7 @@ export default function Tripdetail({
   const ChangeFalse = () => {
     setTab(false);
   };
+  console.log(comment);
 
   return (
     <>
@@ -239,48 +241,66 @@ export default function Tripdetail({
               </div>
             </section>
           ) : (
-            <section className={styles.user__comment}>
-              <div className={styles.user__comment_contents}>
-                {/* <div> "tourid": 2, "name": "ddd", "text": "ddd", "id": 3</div> */}
-                {comment.map(
-                  (com: {
-                    id: number;
-                    name: string;
-                    text: string;
-                    date: string;
-                  }) => {
-                    return (
-                      <div key={com.id} className={styles.user__comment_items}>
-                        <div className={styles.user__comment_item}>
-                          <div className={styles.user__comment_left}>
-                            ニックネーム:
+            <>
+              {comment.length > 0 && (
+                <section className={styles.user__comment}>
+                  <div className={styles.user__comment_contents}>
+                    {comment.map(
+                      (com: {
+                        id: number;
+                        name: string;
+                        text: string;
+                        date: string;
+                      }) => {
+                        return (
+                          <div
+                            key={com.id}
+                            className={styles.user__comment_items}
+                          >
+                            <div className={styles.user__comment_item}>
+                              <div className={styles.user__comment_left}>
+                                ニックネーム:
+                              </div>
+                              <div className={styles.user__comment_right}>
+                                {com.name}
+                              </div>
+                            </div>
+                            <div className={styles.user__comment_item}>
+                              <div className={styles.user__comment_left}>
+                                投稿日:
+                              </div>
+                              <div className={styles.user__comment_right}>
+                                {com.date}
+                              </div>
+                            </div>
+                            <div className={styles.user__comment_item}>
+                              <div className={styles.user__comment_left}>
+                                口コミ:
+                              </div>
+                              <div className={styles.user__comment_right}>
+                                {com.text}
+                              </div>
+                            </div>
                           </div>
-                          <div className={styles.user__comment_right}>
-                            {com.name}
-                          </div>
-                        </div>
-                        <div className={styles.user__comment_item}>
-                          <div className={styles.user__comment_left}>
-                            投稿日:
-                          </div>
-                          <div className={styles.user__comment_right}>
-                            {com.date}
-                          </div>
-                        </div>
-                        <div className={styles.user__comment_item}>
-                          <div className={styles.user__comment_left}>
-                            口コミ:
-                          </div>
-                          <div className={styles.user__comment_right}>
-                            {com.text}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  }
-                )}
-              </div>
-            </section>
+                        );
+                      }
+                    )}
+                  </div>
+                </section>
+              )}
+              {comment.length == 0 && (
+                <>
+                  <p className={styles.user__comment_none}>
+                    口コミはまだありません
+                  </p>
+                  <Link href={`/tour/comment/${tour.id}`}>
+                    <button className={styles.user__comment_btn}>
+                      口コミをかく
+                    </button>
+                  </Link>
+                </>
+              )}
+            </>
           )}
         </main>
         <ScrTop />

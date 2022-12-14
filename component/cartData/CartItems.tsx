@@ -27,29 +27,27 @@ export function CartItems({
   const [errorMessage, setErrorMessage] = useState("");
   const [errorDate, setErrorDate] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     judgeError();
-  })
+  });
 
   const judgeError = async () => {
     // const res = await fetch(`/api/inCarts/${loginId}`);
     // const inCarts = await res.json();
-
     // let userId = inCarts[Number(loginId) - 1];
 
-    if (typeof tours === "undefined"){
+    if (typeof tours === "undefined") {
       return;
     }
     let tourContents = tours.length;
     // console.log(tourContents);
 
-    
     const arrayDate = [];
     for (let i = 0; i < tourContents; i++) {
-       arrayDate.push(tours[i].tourDate);
+      arrayDate.push(tours[i].tourDate);
       // console.log(arrayDate);
     }
-    const compareDates = {}
+    const compareDates = {};
     for (let entry of arrayDate) {
       let count = compareDates[entry];
 
@@ -63,12 +61,12 @@ export function CartItems({
 
     for (let compareDate in compareDates) {
       let count = compareDates[compareDate];
-      if ( count >= 2) {
+      if (count >= 2) {
         setErrorDate(true);
       }
-  }
+    }
   };
-  
+
   const handleSubmit = async (e: any) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
@@ -90,48 +88,65 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
-            <p
-              className={styles.errorDate}
-              style={{ display: errorDate ? "block" : "none" }}
-            >
-              *カートの中に同じ日付のツアーが存在しています*
-            </p>
-            <div className={Styles.cartcontents}>
-              {tours.map((tour: any) => {
-                return (
-                  <Cartlist
-                    key={tour.id}
-                    tour={tour}
-                    setAmount={setAmount}
-                    deleteHandler={deleteHandler}
-                  />
-                );
-              })}
-            </div>
-            <h2>合計：{Number(amount).toLocaleString()}円</h2>
-            <p className={styles.error_message}>{errorMessage}</p>
-            <div className={styles.buttonsubmit}>
-              <div>
-                <form onSubmit={handleSubmit}>
-                  {!loginId ? (
-                    <button className={styles.submit} type="submit">
-                      お支払い情報の入力へ進む
-                    </button>
-                  ) : (
-                    <button className={styles.submit} type="submit">
-                      お支払い情報の入力へ進む
-                    </button>
-                  )}
-                </form>
-              </div>
-              <div>
+            {tours.length ? (
+              <>
+                <p
+                  className={styles.errorDate}
+                  style={{ display: errorDate ? "block" : "none" }}
+                >
+                  *カートの中に同じ日付のツアーが存在しています*
+                </p>
+                <div className={Styles.cartcontents}>
+                  {tours.map((tour: any) => {
+                    return (
+                      <Cartlist
+                        key={tour.id}
+                        tour={tour}
+                        setAmount={setAmount}
+                        deleteHandler={deleteHandler}
+                      />
+                    );
+                  })}
+                </div>
+                <h2>合計：{Number(amount).toLocaleString()}円</h2>
+                <p className={styles.error_message}>{errorMessage}</p>
+                <div className={styles.buttonsubmit}>
+                  <div>
+                    <form onSubmit={handleSubmit}>
+                      {!loginId ? (
+                        <button className={styles.submit} type="submit">
+                          お支払い情報の入力へ進む
+                        </button>
+                      ) : (
+                        <button className={styles.submit} type="submit">
+                          お支払い情報の入力へ進む
+                        </button>
+                      )}
+                    </form>
+                  </div>
+                  <div>
+                    <Link href="/tour">
+                      <button className={styles.submit} type="submit">
+                        他のツアーを追加する
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <p className={styles.bookingC_error}>
+                  カートにツアーが追加されていません
+                </p>
                 <Link href="/tour">
-                  <button className={styles.submit} type="submit">
-                    他のツアーを追加する
-                  </button>
+                  <div className={styles.bookingC_btn}>
+                    <button className={styles.bookingC_btn_search}>
+                      ツアーを探す
+                    </button>
+                  </div>
                 </Link>
-              </div>
-            </div>
+              </>
+            )}
           </div>
         </main>
       </Layout>

@@ -7,21 +7,26 @@ import Image from "next/image";
 import { Cart, Tour } from "../../types/types";
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import { init, send } from "@emailjs/browser";
+
+// メール送信時利用する環境変数定義
+const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
+const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
+const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
-  //文字列になっていた
+  const loginName = cookie.loginName;
 
   //お支払い方法未選択の場合
-  const router = useRouter()
+  const router = useRouter();
   const [error_message, setErrorMessage] = useState(false);
-
   const [checkPayment, setCheckPayment] = useState<boolean>(false);
+
   const checkPay = () => {
     setCheckPayment(!checkPayment);
   };
-
 
   const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
@@ -52,27 +57,31 @@ export default function Pay() {
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
 
-  console.log(loginId);
-
+  // 決済する押下時の挙動
   const onClick = async () => {
     if (loginId.length === 0) {
       return;
     }
 
     //お支払い方法が未選択の場合
-    if (checkPayment === false){
+    if (checkPayment === false) {
       setErrorMessage(true);
       return;
     }
+    const randomstring = require("randomstring");
+    const rsNumber =
+      "OkapiTour" +
+      randomstring.generate({
+        length: 12,
+        charset: "alphabetic123456890",
+      });
 
     //cartの中身を取得し、ordersへ格納する。
     await fetch(`/api/inCarts?userId=${loginId}`)
       .then((response) => response.json())
       .then((data) => {
-        const cart= data[0];
+        const cart = data[0];
 
-
-        let randomstring = require("randomstring");
         fetch("/api/orders", {
           method: "POST",
           headers: {
@@ -81,12 +90,7 @@ export default function Pay() {
           body: JSON.stringify({
             tours: cart.tours,
             userId: cart.userId,
-            rsNumber:
-              "OkapiTour" +
-              randomstring.generate({
-                length: 12,
-                charset: "alphabetic123456890",
-              }),
+            rsNumber: rsNumber,
           }),
         });
       });
@@ -99,6 +103,29 @@ export default function Pay() {
         },
         body: JSON.stringify({ tours: [] }),
       });
+    }
+
+    // メール送信の内容を抽出
+    const uni = data[0];
+    const tako = uni.tours;
+    const kani = tako[0];
+
+    // 予約確認メールを送る
+    if (publicKey && serviceId && templateId) {
+      init(publicKey);  // publicKey初期化
+      const params = {
+        to_name: loginName,
+        to_tourName: kani.tourName,
+        to_tourDate: kani.tourDate,
+        to_tourTime: kani.startTime,
+        to_tourNum: rsNumber,
+      };  // 送信内容
+      try {
+        await send(serviceId, templateId, params);
+        console.log("成功");
+      } catch (error) {
+        console.log(error);
+      }
     }
     router.push("/tour/booking_done");
   };
@@ -114,7 +141,7 @@ export default function Pay() {
             {cart &&
               cart.tours.map((tour: Tour) => {
                 return (
-                  <>
+                  <div key={tour.id}>
                     <h3>{tour.tourName}</h3>
                     <div className={styles.flex}>
                       <div>
@@ -133,7 +160,7 @@ export default function Pay() {
                         </ul>
                       </div>
                     </div>
-                  </>
+                  </div>
                 );
               })}
             <div>
@@ -144,35 +171,48 @@ export default function Pay() {
             下記からお支払いの方法を選択してください。
           </h3>
           <div className={styles.input}>
-            <span
-              style={{ display: error_message ? "block" : "none" }}
-            >
-               <div className={styles.error_message}>*お支払い方法を選択してください。*</div>
+            <span style={{ display: error_message ? "block" : "none" }}>
+              <div className={styles.error_message}>
+                *お支払い方法を選択してください。*
+              </div>
             </span>
             <form>
               <div className={styles.radio}>
-                <input type="radio" id="01" name="pay" value="credit"  onChange={() => checkPay()}/>
+                <input
+                  type="radio"
+                  id="01"
+                  name="pay"
+                  value="credit"
+                  onChange={() => checkPay()}
+                />
                 クレジットカード
               </div>
               <br />
               <div className={styles.radio}>
-                <input type="radio" id="02" name="pay" value="bank" onChange={() => checkPay()}/>
+                <input
+                  type="radio"
+                  id="02"
+                  name="pay"
+                  value="bank"
+                  onChange={() => checkPay()}
+                />
                 銀行振込
               </div>
               <br />
               <div className={styles.radio}>
-                <input type="radio" id="03" name="pay" value="convenience" onChange={() => checkPay()}/>
+                <input
+                  type="radio"
+                  id="03"
+                  name="pay"
+                  value="convenience"
+                  onChange={() => checkPay()}
+                />
                 コンビニ支払い
               </div>
 
-                <button
-                  type="button"
-                  className={styles.button}
-                  onClick={onClick}
-                >
-                  決済する
-                </button>
-            
+              <button type="button" className={styles.button} onClick={onClick}>
+                決済する
+              </button>
             </form>
           </div>
         </div>
