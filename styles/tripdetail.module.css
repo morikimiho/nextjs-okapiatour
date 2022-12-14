@@ -260,3 +260,45 @@
 .user__comment_contents .user__comment_items .user__comment_item .user__comment_right {
   width: 80%;
 }
+
+.user__comment_none {
+  padding-top: 40px;
+  text-align: center;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.user__comment_btn {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: #eb6100;
+  border-radius: 20px;
+  padding: 20px 40px;
+  margin-top: 40px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 3px 5px 17px 5px #dedede;
+  color: #fff7ee;
+  border: none;
+  transition: all 0.3s ease 0s;
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .user__comment_btn {
+    margin: 20px 0 20px 20px;
+  }
+}
+@media (max-width: 767px) {
+  .user__comment_btn {
+    font-size: 18px;
+    padding: 7px 20px;
+    margin: 20px 0 20px 20px;
+  }
+}
+.user__comment_btn:hover {
+  position: relative;
+  transform: translate(-48%, 2px);
+  box-shadow: none;
+}

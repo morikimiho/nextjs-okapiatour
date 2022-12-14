@@ -11,6 +11,7 @@
     "mock-api": "json-server --watch data/db.json --port 8000"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/typeorm": "^9.0.1",
     "@splidejs/react-splide": "^0.7.12",
@@ -19,6 +20,8 @@
     "@types/randomstring": "^1.1.8",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "emailjs": "^4.0.1",
+    "emailjs-com": "^3.2.0",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "express-session": "^1.17.3",
