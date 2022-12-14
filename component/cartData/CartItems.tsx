@@ -24,44 +24,28 @@ export function CartItems({
   loginId,
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
-  const [errorDate, setErrorDate] = useState(false);
-  
+  const [tourNew, setTourNew] = useState([]);
+
   useEffect(() => {
     judgeError();
-  })
-  
-  const judgeError = async () => {
+  }, [tours]);
 
-    if (typeof tours === "undefined"){
+  const judgeError = async () => {
+    if (typeof tours === "undefined") {
       return;
     }
-    let tourContents = tours.length;
-    // console.log(tourContents);
-
-    
-    const arrayDate = [];
-    for (let i = 0; i < tourContents; i++) {
-       arrayDate.push(tours[i].tourDate);
-      // console.log(arrayDate);
-    }
-    const compareDates = {}
-    for (let entry of arrayDate) {
-      let count = compareDates[entry];
-
-      if (count === undefined) {
-        compareDates[entry] = 1;
-      } else {
-        compareDates[entry]++;
+    let newTour = new Map();
+    tours.map((tour) => {
+      const v = newTour.get(tour.tourDate);
+      if (v === undefined) {
+        newTour.set(tour.tourDate, [tour.tourName]);
+      } else if (Array.isArray(v)) {
+        newTour.set(tour.tourDate, [...v, tour.tourName]);
       }
-      // console.log(compareDates)
-    }
-
-    for (let compareDate in compareDates) {
-      let count = compareDates[compareDate];
-      if ( count >= 2) {
-        setErrorDate(true);
-      }
-  }
+    });
+   
+    setTourNew(newTour)
+    console.log(tourNew);
   };
 
   const handleSubmit = async (e: any) => {
@@ -85,12 +69,8 @@ export function CartItems({
         <main>
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
-            <p
-              className={styles.errorDate}
-              style={{display: errorDate ? "block" : "none"}}
-             >
-              *カートの中に同じ日付のツアーが存在しています。*
-            </p>
+          
+            <p className={styles.errorDate}></p>
             <div className={Styles.cartcontents}>
               {tours.map((tour: any) => {
                 return (
@@ -99,6 +79,7 @@ export function CartItems({
                     tour={tour}
                     setAmount={setAmount}
                     deleteHandler={deleteHandler}
+                    tourNew={tourNew}
                   />
                 );
               })}
