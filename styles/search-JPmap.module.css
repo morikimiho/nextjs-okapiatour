@@ -1,0 +1,177 @@
+.pageWrapper {
+    min-width: 700px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tab_item {
+    color: White;
+    background: LightGray;
+    margin-right: 5px;
+    padding: 3px 12px;
+    order: -1;
+}
+
+.tab_item:hover {
+    opacity: 0.75;
+}
+
+  
+  /* 選択されているタブのスタイルを変える */
+  .tabs input:checked + .tab_item {
+    background-color: #549a65;
+    color: #fff;
+  }
+
+
+  .tab_content {
+    width: 100%;
+    display: none;
+  }
+
+.tabSwitch:checked + .tab_item + .tab_content {
+    display: block;
+}
+
+.wrapperjpMap {
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 518px;
+    background-size: 518px;
+    border-radius: 0 3px 3px 3px;
+    border: 1px solid #02530f;
+    margin: 0 auto;
+    background-position: center;
+}
+
+.wrapperworldMap {
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 518px;
+    background-size: 600px;
+    border-radius: 0 3px 3px 3px;
+    border: 1px solid #02530f;
+    margin: 0 auto;
+    background-position: center;
+}
+
+
+
+.jpregion li {
+    position: absolute;
+    list-style: none;
+    border: 1px solid grey;
+    color: grey;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 13px;
+    background-color: white;
+    border-radius: 3px;
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+}
+
+
+.hoka {
+    top: 85px;
+    right: 140px;
+}
+
+.miya {
+    top: 220px;
+    right: 210px;
+}
+
+.kyo {
+    top:305px;
+    left: 310px;
+}
+
+.osk {
+    top:340px;
+    left: 300px;
+}
+
+.fuku {
+    bottom: 120px;
+    left: 155px;
+}
+
+.oki {
+    top:380px;
+    right: 170px;
+}
+
+.naga {
+    top:380px;
+    left: 105px;
+}
+
+.worldregion li {
+    position: absolute;
+    list-style: none;
+    border: 1px solid grey;
+    color: grey;
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 13px;
+    background-color: white;
+    border-radius: 3px;
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+}
+
+.ame {
+    top: 200px;
+    right: 200px;
+}
+
+.aus {
+    bottom: 100px;
+    right: 340px;
+}
+
+.fr {
+    top: 208px;
+    left: 80px;
+}
+
+.egy {
+    top: 280px;
+    left: 110px;
+}
+
+.ko {
+    top: 230px;
+    left: 280px;
+}
+
+.ita {
+    top: 240px;
+    left: 105px;
+}
+
+.phi {
+    bottom: 180px;
+    right: 350px;
+}
+
+.bra {
+    bottom: 170px;
+    right: 100px;
+}
+
+.sp {
+    top: 240px;
+    left: 40px;
+}
+
+.taiwa {
+    bottom: 220px;
+    right: 400px;
+}

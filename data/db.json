@@ -741,7 +741,7 @@
       "areaCode": "asi",
       "area": "アジア",
       "country": "台湾",
-      "countryCode": "taiwa",
+      "countryCode": "p",
       "cityCode": "taichu",
       "city": "台中",
       "tourName": "台中まるっと旅!",
@@ -959,7 +959,7 @@
       "minPeople": 2,
       "content1": "送迎付き",
       "content2": "日本語ガイド",
-      "content3": "ビュッフェ式ディナー",
+      "content3": "ビュッフェ式ディナー", 
       "recommend": true
     },
     {
@@ -1187,30 +1187,7 @@
       "id": 3
     },
     {
-      "tours": [
-        {
-          "id": 26,
-          "tourDate": "2023-01-04",
-          "startTime": 11,
-          "img1": "/images/okinawa/dive/dive01.jpeg",
-          "tourName": "【青の洞窟】ダイビング体験ツアー！",
-          "description": "経験年数5年以上のスタッフが、安全で楽しいツアーをお約束します!",
-          "numberOfPeople": 4,
-          "price": 6000,
-          "total": 24000
-        },
-        {
-          "id": 12,
-          "tourDate": "2023-01-04",
-          "startTime": 10,
-          "img1": "/images/korea/seoul/chimachogori/chima01.jpg",
-          "tourName": "チマチョゴリレンタル(ヘアアレンジ・写真撮影付）",
-          "description": "「景福宮(キョンボックン)」をはじめとした古宮や韓国伝統家屋・韓屋(ハノッ)の集まるエリアでチマチョゴリを身にまとえば、まるで王朝時代にタイムスリップ！？韓国でしか体験できない散策を楽しむことができます。 ",
-          "numberOfPeople": 1,
-          "price": 3000,
-          "total": 3000
-        }
-      ],
+      "tours": [],
       "userId": 4,
       "id": 4
     },
