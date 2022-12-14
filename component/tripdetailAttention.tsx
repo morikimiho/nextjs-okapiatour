@@ -3,7 +3,7 @@ import styles from "../styles/tripdetail.module.css";
 
 export function TripdetailAttention(){
 return  (
-    <div className={styles.attention}>
+    <div className={styles.tour_detail_info_item}>
     <h3>注意事項</h3>
     <ul className={styles.detail_list}>
       <li>表示価格は全て税込表示です。</li>

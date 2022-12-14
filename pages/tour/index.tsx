@@ -100,7 +100,6 @@ export default function Home() {
             alt="検索"
             layout="fill"
           />
-          
         </div>
       </div>
 

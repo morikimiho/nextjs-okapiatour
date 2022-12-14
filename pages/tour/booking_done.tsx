@@ -26,10 +26,12 @@ export default function BookingDone() {
       .then((response) => response.json())
       .then((data) => {
 
-        const cartitem = data[0];
+        // 最新の予約情報を取得
+        const cartitem = data[data.length-1];
         if (cartitem) {
           setRsNumber(cartitem);
         }
+        console.log(cartitem)
       })
       .catch((error) => {
         console.error("Error:", error);

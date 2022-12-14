@@ -80,8 +80,20 @@
     @include pub.mq("sp") {
         width: 200px;
     }
+  }
+  
+  .flex {
+    display: flex;
+    padding: 0 10px;
+    @include pub.mq("tab") {
+      display: block;
+      padding: 0;
+    }
+    @include pub.mq("sp") {
+      display: block;
+      padding: 0;
+    }
 }
-
 // 228
 // 検索結果　=================================================
 .title {
@@ -116,10 +128,6 @@
       }
   }
 }
-
-.search_result {
-  padding-top: 20px;
-}
 .search__flex {
   display: flex;
   @include pub.mq("tab") {
@@ -130,6 +138,9 @@
   } 
 }
 
+.search_result {
+  padding-top: 20px;
+}
 .result__flex {
   display: flex;
   @include pub.mq("tab") {

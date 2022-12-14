@@ -7,7 +7,7 @@ type Props = {
 
 export function TripdetailContent({tour}:Props) {
   return (
-    <div className={styles.tripcontent}>
+    <div className={styles.tour_detail_info_item}>
       <div>
         <h2>含まれるもの</h2>
         <ul className={styles.detail_list}>
