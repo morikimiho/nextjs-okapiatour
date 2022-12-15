@@ -19,5 +19,5 @@ npm install @emailjs/browser
 ```
 
 テストログイン:
- - メールアドレス : keisuke@honda.com
- - パスワード : keisuke04
+ - メールアドレス : okapia@example.com
+ - パスワード : okapiatour
