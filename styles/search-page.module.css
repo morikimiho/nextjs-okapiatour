@@ -338,7 +338,7 @@
 .howtosearch{
   display: flex;
   min-width: 40vw;
-  height: 55px;
+  /* height: 55px; */
   
 }
 
