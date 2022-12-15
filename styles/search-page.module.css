@@ -286,6 +286,14 @@
   right: -31px;
 }
 
+.headlineArea {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  margin: 0 auto;
+}
+
 .button {
   color: #fff;
   background-color: #eb6100;

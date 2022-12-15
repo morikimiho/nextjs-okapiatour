@@ -25,10 +25,12 @@ type Tour = {
   abroad: string;
   areaCode: string;
   area: string;
+  areaId:number;
   countryCode: string;
   country: string;
   cityCode: string;
   city: string;
+  prefecture: string;
   tourName: string;
   price: number;
   description: string;
