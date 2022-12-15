@@ -13,8 +13,10 @@
     color: White;
     background: LightGray;
     margin-right: 5px;
-    padding: 3px 12px;
+    padding: 10px 87px;
     order: -1;
+    margin: 0 auto;
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
 }
 
 .tab_item:hover {
@@ -24,7 +26,7 @@
   
   /* 選択されているタブのスタイルを変える */
   .tabs input:checked + .tab_item {
-    background-color: #549a65;
+    background-color: #43c8f9;
     color: #fff;
   }
 
@@ -175,3 +177,27 @@
     bottom: 220px;
     right: 400px;
 }
+
+ 
+.tab_content a{
+  padding-bottom: 5px;
+  position: relative;
+}
+.tab_content a::before {
+  background: #57c267;
+  content: '';
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  transform-origin: right top;
+  transform: scale(0, 1);
+  transition: transform .3s;
+}
+.tab_content a:hover::before {
+  transform-origin: left top;
+  transform: scale(1, 1);
+}
+  
