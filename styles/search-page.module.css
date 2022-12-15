@@ -3,14 +3,17 @@
 }
 
 .search_box_container {
-  border: 3px solid #FFC896;
-  border-radius: 20px;
+  border-bottom: 3px solid #FFC896;
+  border-left: 3px solid #FFC896;
+  border-right: 3px solid #FFC896;
+  border-radius: 0 20px 20px 20px;
   text-align: center;
-  background-color: rgba(230, 225, 204, 0.7);
+  background-color: rgba(251, 251, 250, 0.7);
 }
 
 .search_title {
-  margin: 20px 0 0;
+  margin: 0px 0 0;
+  padding-top: 20px ;
   font-size: 32px;
   display: flex;
   align-items: center;
@@ -322,4 +325,33 @@
   color: #eb6100;
   font-size: 18px;
   font-weight: 700;
+}
+
+.howtosearch{
+  display: flex;
+  min-width: 40vw;
+  height: 55px;
+  
+}
+
+.searchareaname{
+  background-color: rgba(251, 251, 250, 0.7);
+  min-width: 20vw;
+  text-align: center;
+  border-top: 3px solid #FFC896;
+  border-left: 3px solid #FFC896;  
+  border-right: 3px solid #FFC896;  
+  border-radius: 20px 10px 0 0;
+  padding: 10px;
+}
+
+.searchmap{
+  background-color: rgba(251, 251, 250, 0.8);
+  min-width: 20vw;
+  text-align: center;
+  border-top: 3px solid #FFC896;
+  border-right: 3px solid #FFC896;
+  border-bottom: 3px solid #FFC896; 
+  border-radius: 10px 15px 0 0;
+  padding: 10px;
 }

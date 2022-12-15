@@ -14,6 +14,7 @@ import { Australia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import { Dispatch, SetStateAction } from "react";
+import Link from "next/link";
 
 type Props = {
   setAbroad: Dispatch<SetStateAction<Abroad>>;
@@ -194,6 +195,7 @@ export function SearchBox({
   };
   return (
     <>
+    <div className={styles.howtosearch}><div className={styles.searchareaname}>地名から探す</div><div className={styles.searchmap}><Link href="http://localhost:3000/tour/map/search-map">地図から探す</Link></div></div>
       <div className={styles.search_box_container}>
         <h3 className={styles.search_title}>Search tour</h3>
         <div className={styles.search_items}>
