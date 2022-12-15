@@ -51,6 +51,19 @@
       "birthM": "5",
       "birthD": "12",
       "id": 5
+    },
+    {
+      "firstName": "岡陽",
+      "firstNameKana": "おかぴ",
+      "lastName": "りんご",
+      "lastNameKana": "りんご",
+      "mailAddress": "okapia@example.com",
+      "tel": "00000000000",
+      "password": "okapiatour",
+      "birthY": "1986",
+      "birthM": "5",
+      "birthD": "12",
+      "id": 5
     }
   ],
   "tours": [
@@ -1187,30 +1200,7 @@
       "id": 3
     },
     {
-      "tours": [
-        {
-          "id": 26,
-          "tourDate": "2023-01-04",
-          "startTime": 11,
-          "img1": "/images/okinawa/dive/dive01.jpeg",
-          "tourName": "【青の洞窟】ダイビング体験ツアー！",
-          "description": "経験年数5年以上のスタッフが、安全で楽しいツアーをお約束します!",
-          "numberOfPeople": 4,
-          "price": 6000,
-          "total": 24000
-        },
-        {
-          "id": 12,
-          "tourDate": "2023-01-04",
-          "startTime": 10,
-          "img1": "/images/korea/seoul/chimachogori/chima01.jpg",
-          "tourName": "チマチョゴリレンタル(ヘアアレンジ・写真撮影付）",
-          "description": "「景福宮(キョンボックン)」をはじめとした古宮や韓国伝統家屋・韓屋(ハノッ)の集まるエリアでチマチョゴリを身にまとえば、まるで王朝時代にタイムスリップ！？韓国でしか体験できない散策を楽しむことができます。 ",
-          "numberOfPeople": 1,
-          "price": 3000,
-          "total": 3000
-        }
-      ],
+      "tours": [],
       "userId": 4,
       "id": 4
     },
@@ -1261,7 +1251,24 @@
       "userId": 4,
       "rsNumber": "OkapiTouri6c4002ci1ii",
       "id": 1
-
+    },
+    {
+      "tours": [
+        {
+          "id": 2,
+          "tourDate": "2022-12-27",
+          "startTime": 9,
+          "img1": "/images/france/paris/loire/loire01.jpg",
+          "tourName": "ロワール渓谷 古城めぐり 1日ツアー",
+          "description": "フランス中部に位置するロワール渓谷を巡る1日ツアーで、フランスの国王、王妃、貴族たちの気分を味わいましょう。シャンボール城、シュノンソー城、シュヴェルニー城を訪れます。フランス ルネサンス期の名城の美しさに、きっと心を奪われることでしょう。 。",
+          "numberOfPeople": 1,
+          "price": 15000,
+          "total": 15000
+        }
+      ],
+      "userId": 4,
+      "rsNumber": "OkapiTour528p59lep0b9",
+      "id": 2
     }
   ]
 }

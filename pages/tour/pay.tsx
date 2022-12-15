@@ -214,6 +214,7 @@ export default function Pay() {
                 決済する
               </button>
             </form>
+            
           </div>
         </div>
       </Layout>

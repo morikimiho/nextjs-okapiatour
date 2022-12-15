@@ -16,6 +16,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@splidejs/react-splide": "^0.7.12",
     "@stripe/stripe-js": "^1.44.1",
+    "@supabase/supabase-js": "^2.2.0",
     "@types/node": "18.11.9",
     "@types/randomstring": "^1.1.8",
     "@types/react": "18.0.25",
