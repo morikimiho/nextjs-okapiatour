@@ -15,7 +15,8 @@ yarn dev
 
 モジュール追加:
 ```
-npm install @emailjs/browser 
+npm install @emailjs/browser
+npm install @supabase/supabase-js
 ```
 
 テストログイン:
