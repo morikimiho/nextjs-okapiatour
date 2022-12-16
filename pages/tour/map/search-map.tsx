@@ -30,34 +30,34 @@ export default function searchJPmap() {
                 <div className={style.worldregion}>
                   <ul>
                     <li className={style.ame}>
-                      <a href="http://localhost:3000/tour/map/9">アメリカ</a>
+                      <a href="/tour/map/9">アメリカ</a>
                     </li>
                     <li className={style.aus}>
-                      <a href="http://localhost:3000/tour/map/5">オーストラリア</a>
+                      <a href="/tour/map/5">オーストラリア</a>
                     </li>
                     <li className={style.fr}>
-                      <a href="http://localhost:3000/tour/map/1">フランス</a>
+                      <a href="/tour/map/1">フランス</a>
                     </li>
                     <li className={style.egy}>
-                      <a href="http://localhost:3000/tour/map/8">エジプト</a>
+                      <a href="/tour/map/8">エジプト</a>
                     </li>
                     <li className={style.ko}>
-                      <a href="http://localhost:3000/tour/map/3">韓国</a>
+                      <a href="/tour/map/3">韓国</a>
                     </li>
                     <li className={style.ita}>
-                      <a href="http://localhost:3000/tour/map/2">イタリア</a>
+                      <a href="/tour/map/2">イタリア</a>
                     </li>
                     <li className={style.phi}>
-                      <a href="http://localhost:3000/tour/map/4">フィリピン</a>
+                      <a href="/tour/map/4">フィリピン</a>
                     </li>
                     <li className={style.bra}>
-                      <a href="http://localhost:3000/tour/map/7">ブラジル</a>
+                      <a href="/tour/map/7">ブラジル</a>
                     </li>
                     <li className={style.sp}>
-                      <a href="http://localhost:3000/tour/map/10">スペイン</a>
+                      <a href="/tour/map/10">スペイン</a>
                     </li>
                     <li className={style.taiwa}>
-                      <a href="http://localhost:3000/tour/map/6">台湾</a>
+                      <a href="/tour/map/6">台湾</a>
                     </li>
                   </ul>
                 </div>
@@ -83,25 +83,25 @@ export default function searchJPmap() {
                 <div className={style.jpregion}>
                   <ul>
                     <li className={style.hoka}>
-                      <a href="http://localhost:3000/tour/map/14">北海道</a>
+                      <a href="/tour/map/14">北海道</a>
                     </li>
                     <li className={style.miya}>
-                      <a href="http://localhost:3000/tour/map/12">宮城</a>
+                      <a href="/tour/map/12">宮城</a>
                     </li>
                     <li className={style.kyo}>
-                      <a href="http://localhost:3000/tour/map/13">京都</a>
+                      <a href="/tour/map/13">京都</a>
                     </li>
                     <li className={style.osk}>
-                      <a href="http://localhost:3000/tour/map/11">大阪</a>
+                      <a href="/tour/map/11">大阪</a>
                     </li>
                     <li className={style.fuku}>
-                      <a href="http://localhost:3000/tour/map/15">福岡</a>
+                      <a href="/tour/map/15">福岡</a>
                     </li>
                     <li className={style.naga}>
-                      <a href="http://localhost:3000/tour/map/16">長崎</a>
+                      <a href="/tour/map/16">長崎</a>
                     </li>
                     <li className={style.oki}>
-                      <a href="http://localhost:3000/tour/map/17">沖縄</a>
+                      <a href="/tour/map/17">沖縄</a>
                     </li>
                   </ul>
                 </div>

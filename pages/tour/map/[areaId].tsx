@@ -5,10 +5,15 @@ import { Tour } from "../../../types/types";
 import styles from "../../../styles/search-page.module.css";
 import Layout from "../../../component/layout";
 import Head from "next/head";
+import { supabase } from "../../../utils/supabaseClient";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("http://localhost:8000/tours");
-  const tours = await res.json();
+export const getStaticPaths = async () => {
+  const { data, error } = await supabase.from("tours").select("*"); 
+  if(!data) return;
+  if(error) {
+    console.log(error);
+  }
+  const tours = await data;
   const paths = tours.map((tour: { areaId: number }) => {
     return {
       params: {
@@ -22,11 +27,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(
-    `http://localhost:8000/tours?areaId=${params?.areaId}`
-  );
-  const tour = await res.json();
+export const getStaticProps = async ({ params }) => {
+  if(!params) return;
+  const { data, error } = await supabase.from("tours").select("*").eq("areaId", params.areaId);
+  if(!data) return;
+  if(error) {
+    console.log(error);
+  }
+  // const res = await fetch(
+  //   `http://localhost:8000/tours?areaId=${params?.areaId}`
+  // );
+  const tour = await data;
 
   return {
     props: { tour },
@@ -66,15 +77,9 @@ export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
                   </div>
 
                   <div className={styles.tour_tags}>
-                    {to.area.length > 0 && (
-                      <div className={styles.tour_tag}>{to.area}</div>
-                    )}
-                    {to.country.length > 0 && (
+                      <div className={styles.tour_tag} style={{display: (to.area===null)? "none":"block"}}>{to.area}</div>
                       <div className={styles.tour_tag}>{to.country}</div>
-                    )}
-                    {to.city.length > 0 && (
                       <div className={styles.tour_tag}>{to.city}</div>
-                    )}
                   </div>
 
                   <div className={styles.result__flex_items}>
