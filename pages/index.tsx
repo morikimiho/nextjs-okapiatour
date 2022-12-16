@@ -13,10 +13,12 @@ import { useState, useEffect } from "react";
 const Form = () => {
   // データ送信
   const [name, setTitle] = useState("");
+  const [userId, setid] = useState("");
+  const tours = ['tours', 2];
   const submit = async (e: any) => {
     e.preventDefault();
     await supabase.from("testTable").insert({ name });  // 入れたい("テーブル名")と({カラム名})
-    setTitle("");
+    await supabase.from("inCarts").insert({ tours, userId });  // 入れたい("テーブル名")と({カラム名})
   };
 
   // データ取得
@@ -26,7 +28,7 @@ const Form = () => {
   }, []);
   const [data, setData] = useState<any>([]);  // データを配列で受け取る
   const getData = async () => {
-    let { data, error } = await supabase.from("testTable").select("*"); // テーブル名 "testTable" のデータを取得
+    let { data, error } = await supabase.from("users").select("*"); // テーブル名 "testTable" のデータを取得
     setData(data); // 取得したデータをステートで保持
   };
   console.log(data);
@@ -39,6 +41,11 @@ const Form = () => {
           type="text"
           value={name}
           onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          value={userid}
+          onChange={(e) => setid(e.target.value)}
         />
         <button>送信</button>
       </form>

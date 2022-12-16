@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useState } from "react";
 import Layout from "../../component/layout";
 import Router from "next/router";
+import { supabase } from "../../utils/supabaseClient";
 
 const CreateUser = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,9 +17,9 @@ const CreateUser = () => {
   const [birthY, setBirthY] = useState("");
   const [birthM, setBirthM] = useState("");
   const [birthD, setBirthD] = useState("");
-  const [error, setError] = useState  (false);
+  const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-  
+
   const [isChecked, setIsChecked] = useState(false);
   // チェクボックスクリックでboolean反転
   const toggleCheckbox = () => {
@@ -29,6 +30,7 @@ const CreateUser = () => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
     //半角英数字のみ(空文字OK)
+
     const regex =
       /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
 
@@ -75,7 +77,8 @@ const CreateUser = () => {
       setError(true);
       setErrorMessage("");
     } else {
-      const data = {
+      // supabaseに登録情報を送信
+      await supabase.from("users").insert({
         firstName,
         firstNameKana,
         lastName,
@@ -86,32 +89,19 @@ const CreateUser = () => {
         birthY,
         birthM,
         birthD,
-      };
-      const res = await fetch("/api/users", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
       });
 
-      const resResult = await res.json();
-      const inCartsData = {
-        userId: resResult.id,
-        tours: [],
-      };
-
-      const addInCarts = await fetch("/api/inCarts", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(inCartsData),
-      });
-      console.log(await addInCarts.json());
-      await Router.push("/tour/login") as any; // .reloaded()リロード
+      // 送信したユーザーのIDを取得
+      const { data, error } = await supabase
+        .from("users")
+        .select()
+        .eq("mailAddress", `${mailAddress}`);
+      const id = data[0];
+      const userId = id.id;
+      const tours = [] as [];
+      // inCartsにユーザーのかごを作る
+      await supabase.from("inCarts").insert({ userId, tours });
+      (await Router.push("/tour/login")) as any; // .reloaded()リロード
     }
   };
 
@@ -302,7 +292,6 @@ const CreateUser = () => {
                 </div>
               </div>
 
-
               <div className={styles.privacy}>
                 <input type="checkbox" onChange={() => toggleCheckbox()} />
                 <span>
@@ -312,10 +301,6 @@ const CreateUser = () => {
                   に同意する
                 </span>
               </div>
-
-
-
-
 
               <span
                 className={styles.error_message}
@@ -464,3 +449,42 @@ const SelectDays = () => {
     </>
   );
 };
+
+// const data = {
+//   firstName,
+//   firstNameKana,
+//   lastName,
+//   lastNameKana,
+//   mailAddress,
+//   tel,
+//   password,
+//   birthY,
+//   birthM,
+//   birthD,
+// };
+// const res = await fetch("/api/users", {
+//   method: "POST",
+//   headers: {
+//     Accept: "application/json",
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(data),
+// });
+
+// const resResult = await res.json();
+// const inCartsData = {
+//   userId: resResult.id,
+//   tours: [],
+// };
+
+// const addInCarts = await fetch("/api/inCarts", {
+//   method: "POST",
+//   headers: {
+//     Accept: "application/json",
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(inCartsData),
+// });
+// console.log(await addInCarts.json());
+// await Router.push("/tour/login") as any; // .reloaded()リロード
+// }
