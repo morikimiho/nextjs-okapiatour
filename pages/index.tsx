@@ -4,7 +4,7 @@
 supabase上でテーブルの設定が`No active RLS enabled`になっていると
 取得できないので、
 `RLS is not enabled`
-に切り替える
+に切り替える！
 */
 
 import { supabase } from "../utils/supabaseClient";  // supabaseをコンポーネントで使うときはかく
