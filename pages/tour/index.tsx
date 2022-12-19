@@ -13,8 +13,7 @@ import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
 import useSWR from "swr";
 
-// const fetcher = (resource: any, init: any) =>
-//   fetch(resource, init).then((res) => res.json());
+
   
 export default function Home() {
   const [url, setUrl] = useState("/api/supabase");
@@ -35,11 +34,6 @@ export default function Home() {
     setIsDisplay(false);
   }, 2 * 1000);
 
-  // const { data, error } = useSWR('../api/supabase', fetcher, { refreshInterval: 1000 });
-  // if (error) return <div>failed to load</div>;
-  // if (!data) return <div>loading...</div>;
-  // console.log("data",data);
-  // console.log("url",url);
 
   const Slider = () => {
     return (
