@@ -13,6 +13,7 @@ export const getStaticPaths = async () => {
   if(error) {
     console.log(error);
   }
+
   const tours = await data;
   const paths = tours.map((tour: { areaId: number }) => {
     return {
@@ -34,9 +35,7 @@ export const getStaticProps = async ({ params }) => {
   if(error) {
     console.log(error);
   }
-  // const res = await fetch(
-  //   `http://localhost:8000/tours?areaId=${params?.areaId}`
-  // );
+
   const tour = await data;
 
   return {
