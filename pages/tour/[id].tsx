@@ -120,8 +120,14 @@ export default function Tripdetail({
       }
       router.push("/tour/cart");
     } else {
-      const res = await fetch(`/api/inCarts?userId=${loginId}`);
-      const inCarts = await res.json();
+      const { data, error } = await supabase.from("inCarts").select("*").eq("userId", loginId); 
+      if(!data) return;
+      if(error) {
+        console.log(error);
+      }
+
+      const inCarts = await data;
+      console.log(inCarts);
       {
         inCarts.map(
           async (cart: {
@@ -138,38 +144,24 @@ export default function Tripdetail({
               total: number;
             }[];
           }) => {
-            await fetch(`/api/inCarts/${cart.id}`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                tours: [
-                  ...cart.tours,
-                  {
-                    id: tour.id,
-                    tourDate: tourDate, //新規データ
-                    startTime: startTime, //新規データ
-                    img1: tour.img1,
-                    tourName: tour.tourName,
-                    description: tour.description,
-                    numberOfPeople: numberOfPeople, //新規データ
-                    price: Number(tour.price),
-                    total: Number(tour.price * numberOfPeople),
-                  },
-                ],
-                userId: loginId,
-                id: cart.id,
-              }),
-            })
-              .then((response) => response.json())
-              .then((data) => {
-                console.log(data);
+            await supabase.from("inCarts").upsert({
+              tours: [
+                ...cart.tours,
+                {
+                  id: tour.id,
+                  tourDate: tourDate, //新規データ
+                  startTime: startTime, //新規データ
+                  img1: tour.img1,
+                  tourName: tour.tourName,
+                  description: tour.description,
+                  numberOfPeople: numberOfPeople, //新規データ
+                  price: Number(tour.price),
+                  total: Number(tour.price * numberOfPeople),
+                }],
+                    userId: loginId,
+                    id: cart.id,
+                }).eq("userId", loginId);
                 router.push("/tour/cart");
-              })
-              .catch((error) => {
-                console.error("Error:", error);
-              });
           }
         );
       }
