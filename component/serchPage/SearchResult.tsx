@@ -13,6 +13,7 @@ const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
 export function SearchResult({ url }: Props) {
+  
   const { data, error } = useSWR(url, fetcher);
 
   if (error) return <div>failed to load</div>;
