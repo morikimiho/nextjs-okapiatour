@@ -15,33 +15,18 @@ import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
 type Props = {
-  setAbroad: Dispatch<SetStateAction<Abroad>>;
-  setArea: Dispatch<SetStateAction<Area>>;
-  setCountry: Dispatch<SetStateAction<Country>>;
-  setCity: Dispatch<SetStateAction<City>>;
-  setPrefecture: Dispatch<SetStateAction<Prefecture>>;
   setUrl: Function;
-  prefecture: Prefecture;
-  abroad: Abroad;
-  areaCode: Area;
-  country: Country;
-  city: City;
 };
-export function SearchBox({
-  setAbroad,
-  setArea,
-  setCountry,
-  setCity,
-  setPrefecture,
-  setUrl,
-  prefecture,
-  abroad,
-  areaCode,
-  country,
-  city,
-}: Props) {
+
+export function SearchBox({ setUrl }: Props) {
+  const [abroad, setAbroad] = useState<Abroad>("abroad");
+  const [prefecture, setPrefecture] = useState<Prefecture>("");
+  const [areaCode, setArea] = useState<Area>("");
+  const [country, setCountry] = useState<Country>("");
+  const [city, setCity] = useState<City>("");
   const onAbroadChange = (val: Abroad) => {
     setAbroad(val);
     setArea("");
@@ -70,24 +55,24 @@ export function SearchBox({
     };
 
     return (
-          <div className={styles.search__flex}>
-            <div>
-              <div>
-                <label htmlFor="">国内 or 海外</label>
-              </div>
-              <select
-                className={styles.search_input}
-                value={abroad}
-                name=""
-                id=""
-                onChange={changeHandler}
-              >
-                <option value="">-</option>
-                <option value="abroad">海外</option>
-                <option value="domestic">国内</option>
-              </select>
-            </div>
+      <div className={styles.search__flex}>
+        <div>
+          <div>
+            <label htmlFor="">国内 or 海外</label>
           </div>
+          <select
+            className={styles.search_input}
+            value={abroad}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="abroad">海外</option>
+            <option value="domestic">国内</option>
+          </select>
+        </div>
+      </div>
     );
   };
 
@@ -195,7 +180,12 @@ export function SearchBox({
   };
   return (
     <>
-    <div className={styles.howtosearch}><div className={styles.searchareaname}>地名から探す</div><Link href="/tour/map/search-map"><div className={styles.searchmap}>地図から探す</div></Link></div>
+      <div className={styles.howtosearch}>
+        <div className={styles.searchareaname}>地名から探す</div>
+        <Link href="/tour/map/search-map">
+          <div className={styles.searchmap}>地図から探す</div>
+        </Link>
+      </div>
       <div className={styles.search_box_container}>
         <h3 className={styles.search_title}>Search tour</h3>
         <div className={styles.search_items}>

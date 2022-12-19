@@ -6,23 +6,15 @@ import { Footer } from "../../component/footer";
 import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { useState,useMemo } from "react";
+import { useState, useMemo } from "react";
 import { SearchBox } from "../../component/serchPage/SearchBox";
 import { SearchResult } from "../../component/serchPage/SearchResult";
 import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
 import useSWR from "swr";
 
-
-  
 export default function Home() {
   const [url, setUrl] = useState("/api/supabase");
-
-  const [abroad, setAbroad] = useState<Abroad>("abroad");
-  const [prefecture, setPrefecture] = useState<Prefecture>("");
-  const [areaCode, setArea] = useState<Area>("");
-  const [country, setCountry] = useState<Country>("");
-  const [city, setCity] = useState<City>("");
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -33,7 +25,6 @@ export default function Home() {
   setTimeout(() => {
     setIsDisplay(false);
   }, 2 * 1000);
-
 
   const Slider = () => {
     return (
@@ -82,7 +73,7 @@ export default function Home() {
       </>
     );
   };
-  // const SearchResultMemo=useMemo(()=> <SearchResult  url={url}/>,[url])
+  const SearchResultMemo=useMemo(()=> <SearchResult  url={url}/>,[url])
   return (
     <div>
       <Head>
@@ -113,22 +104,10 @@ export default function Home() {
         <Slider />
       </div>
       <div className={styles.search_box}>
-        <SearchBox
-          abroad={abroad}
-          country={country}
-          prefecture={prefecture}
-          areaCode={areaCode}
-          city={city}
-          setAbroad={setAbroad}
-          setCountry={setCountry}
-          setPrefecture={setPrefecture}
-          setArea={setArea}
-          setCity={setCity}
-          setUrl={setUrl}
-        />
+        <SearchBox setUrl={setUrl} />
       </div>
-      {/* {SearchResultMemo} */}
-      <SearchResult url={url} />
+      {SearchResultMemo}
+      {/* <SearchResult url={url} /> */}
       <Footer />
     </div>
   );
