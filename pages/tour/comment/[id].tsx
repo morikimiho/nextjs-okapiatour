@@ -1,10 +1,15 @@
 import { useRouter } from "next/router";
 import { SetStateAction, useEffect, useState } from "react";
 import Layout from "../../../component/layout";
+import { supabase } from "../../../utils/supabaseClient";
 
+// データ取得
+// ページ読み込み時にsupabaseのデータ取得
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:8000/tours");
-  const tours = await res.json();
+  const { data, error } = await supabase.from("tours").select("*"); // テーブル名 "tours" のデータを取得
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  const tours = await data;
   const paths = tours.map((tour: { id: number }) => {
     return {
       params: {
@@ -19,8 +24,14 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:8000/tours/${params.id}`);
-  const tour = await res.json();
+  const { data, error } = await supabase
+    .from("tours")
+    .select("*")
+    .eq("id", params.id); // テーブル名 "tours.id" のデータを取得
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+  const tour = await data;
+  console.log(tour)
   return {
     props: { tour },
     revalidate: 10,
@@ -35,36 +46,23 @@ export default function Comment({ tour }) {
   const router = useRouter();
 
   useEffect(() => {
-    setTourid(tour.id);
+    setTourid(tour[0].id);
   }, [tour]);
+  
 
-  const submitHandler = async (e) => {
+  const submitHandler = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const newdate=new Date();
-    let year=newdate.getFullYear();
-    let month=newdate.getMonth()+1;
-    let aday=newdate.getDate();
+    const newdate = new Date();
+    let year = newdate.getFullYear();
+    let month = newdate.getMonth() + 1;
+    let aday = newdate.getDate();
 
-    let date=`${year}-${month}-${aday}`;
+    let date = `${year}-${month}-${aday}`;
     console.log(date);
 
     if (!text) {
     } else {
-      const data = {
-        tourid,
-        name,
-        text,
-        date
-      };
-      console.log(data);
-      await fetch("/api/comment", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      await supabase.from("comment").insert({tourid, name, text, date});
       setThanksmessage((prev) => !prev);
       setTimeout(() => {
         router.push("/tour");
@@ -84,7 +82,7 @@ export default function Comment({ tour }) {
     setText(e.target.value);
   };
 
-  const changenameHandler = (e) => {
+  const changenameHandler = (e: { target: { value: SetStateAction<string>; }; }) => {
     setName(e.target.value);
   };
 
@@ -94,7 +92,7 @@ export default function Comment({ tour }) {
         <h2>口コミ</h2>
         <form onSubmit={submitHandler}>
           <h2>ツアーの感想ご記入をお願いいたします。</h2>
-          <p>参加ツアー：{tour.tourName}</p>
+          <p>参加ツアー：{tour[0].tourName}</p>
           <br />
           <label htmlFor="">
             ニックネーム
