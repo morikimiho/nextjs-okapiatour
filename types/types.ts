@@ -25,7 +25,7 @@ type Tour = {
   abroad: string;
   areaCode: string;
   area: string;
-  areaId:number;
+  areaId: number;
   countryCode: string;
   country: string;
   cityCode: string;
@@ -44,19 +44,39 @@ type Tour = {
   tourDate?: string;
   startTime?: number;
   numberOfPeople?: number;
-  total:number;
+  total: number;
 };
 
 type Cart = {
   tours: Array<Tour>;
   userId: number;
   id: number;
-}
+};
+
+type Comment = {
+  id: number;
+  tourid: number;
+  name: string;
+  text: string;
+  date: string;
+};
 
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
-type Country = | "fr" | "ita"| "ko"| "indo"| "ame"| "sp"| "taiwa"| "aus"| "phi"| "bra"| "egy"| "";
+type Country =
+  | "fr"
+  | "ita"
+  | "ko"
+  | "indo"
+  | "ame"
+  | "sp"
+  | "taiwa"
+  | "aus"
+  | "phi"
+  | "bra"
+  | "egy"
+  | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
-export type { Users, Tour, Cart, Abroad, Prefecture, Area,Country,City };
+export type { Users, Tour, Cart, Abroad, Prefecture, Area, Country, City,Comment };

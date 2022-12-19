@@ -12,12 +12,19 @@ import { ScrTop } from "../../component/tps";
 import { useState } from "react";
 import router, { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
-import { Tour } from "../../types/types";
+import { Tour,Comment } from "../../types/types";
 import Link from "next/link";
+import { supabase } from "../../utils/supabaseClient";
+import { ReviewComment } from "../../component/reviewComment";
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("http://localhost:8000/tours");
-  const tours = await res.json();
+export const getStaticPaths= async () => {
+  const { data, error } = await supabase.from("tours").select("*"); 
+  if(!data) return;
+  if(error) {
+    console.log(error);
+  }
+
+  const tours = await data;
   const paths = tours.map((tour: { id: number }) => {
     return {
       params: {
@@ -25,32 +32,37 @@ export const getStaticPaths: GetStaticPaths = async () => {
       },
     };
   });
-  return {
+  return { 
     paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const res = await fetch(`http://localhost:8000/tours/${params?.id}`);
-  const tour = await res.json();
+export const getStaticProps= async ({ params }) => {
+  if(!params) return;
+  const { data, error } = await supabase.from("tours").select("*").eq("id", params.id); 
+  if(!data) return;
+  if(error) {
+    console.log(error);
+  }
+  const tour = await data[0];
 
-  const comRes = await fetch(
-    `http://localhost:8000/comment?tourid=${params?.id}`
-  );
-  const comment = await comRes.json();
+  const comRes = await supabase.from("comment").select("*").eq("tourid", params.id);
+  const comment = await comRes.data;
+  console.log(comment);
   return {
     props: { tour, comment },
     revalidate: 10,
   };
 };
 
+
 export default function Tripdetail({
   tour,
   comment,
 }: {
   tour: Tour;
-  comment: any;
+  comment: Comment[];
 }) {
   const [tourDate, setTourDate] = useState("");
   const [startTime, setStartTime] = useState("");
@@ -170,19 +182,17 @@ export default function Tripdetail({
   const ChangeFalse = () => {
     setTab(false);
   };
-  console.log(comment);
 
   return (
     <>
+    
       <Head>
         <title>{tour.tourName}</title>
       </Head>
       <Layout>
         <main className={styles.main}>
           <div className={styles.tour_tags}>
-            {tour.area.length > 0 && (
-              <div className={styles.tour_tag}>{tour.area}</div>
-            )}
+              <div className={styles.tour_tag} style={{display: (tour.area===null)? "none":"block"}}>{tour.area}</div>
             <div className={styles.tour_tag}>{tour.country}</div>
           </div>
           <h1 className={styles.tour_title}>
@@ -241,66 +251,7 @@ export default function Tripdetail({
               </div>
             </section>
           ) : (
-            <>
-              {comment.length > 0 && (
-                <section className={styles.user__comment}>
-                  <div className={styles.user__comment_contents}>
-                    {comment.map(
-                      (com: {
-                        id: number;
-                        name: string;
-                        text: string;
-                        date: string;
-                      }) => {
-                        return (
-                          <div
-                            key={com.id}
-                            className={styles.user__comment_items}
-                          >
-                            <div className={styles.user__comment_item}>
-                              <div className={styles.user__comment_left}>
-                                ニックネーム:
-                              </div>
-                              <div className={styles.user__comment_right}>
-                                {com.name}
-                              </div>
-                            </div>
-                            <div className={styles.user__comment_item}>
-                              <div className={styles.user__comment_left}>
-                                投稿日:
-                              </div>
-                              <div className={styles.user__comment_right}>
-                                {com.date}
-                              </div>
-                            </div>
-                            <div className={styles.user__comment_item}>
-                              <div className={styles.user__comment_left}>
-                                口コミ:
-                              </div>
-                              <div className={styles.user__comment_right}>
-                                {com.text}
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      }
-                    )}
-                  </div>
-                </section>
-              )}
-              {comment.length == 0 && (
-                <>
-                  <p className={styles.user__comment_none}>
-                    口コミはまだありません
-                  </p>
-                  <Link href={`/tour/comment/${tour.id}`}>
-                    <button className={styles.user__comment_btn}>
-                      口コミをかく
-                    </button>
-                  </Link>
-                </>
-              )}
-            </>
+            <ReviewComment comment={comment} tour={tour}/>
           )}
         </main>
         <ScrTop />
