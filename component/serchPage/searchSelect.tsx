@@ -4,7 +4,25 @@ import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 import { ScrTop } from "../tps";
 
-export function SearchSelect({ data }) {
+
+
+export function SearchSelect({ data,length }) {
+
+
+ console.log(length)
+
+  for (let i =length-2; i > 0 ; i--) {
+    let r = Math.floor(Math.random() * (i + 1));
+    let tmp = data[i];
+    data[i] = data[r];
+    data[r] = tmp;
+  }
+
+
+  console.log("select",data)
+
+
+ 
   return (
     <>
       <div className={styles.headline}>検索結果</div>
@@ -26,13 +44,13 @@ export function SearchSelect({ data }) {
                 </div>
 
                 <div className={styles.tour_tags}>
-                  {item.area.length > 0 && (
+                  {item.area && (
                     <div className={styles.tour_tag}>{item.area}</div>
                   )}
-                  {item.country.length > 0 && (
+                  {item.country&& (
                     <div className={styles.tour_tag}>{item.country}</div>
                   )}
-                  {item.city.length > 0 && (
+                  {item.city&& (
                     <div className={styles.tour_tag}>{item.city}</div>
                   )}
                 </div>

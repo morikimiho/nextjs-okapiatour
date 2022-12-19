@@ -6,13 +6,18 @@ import { Footer } from "../../component/footer";
 import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
-import { useState } from "react";
+import { useState,useMemo } from "react";
 import { SearchBox } from "../../component/serchPage/SearchBox";
 import { SearchResult } from "../../component/serchPage/SearchResult";
 import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
+import { supabase } from "../../utils/supabaseClient";
+import useSWR from "swr";
 
+// const fetcher = (resource: any, init: any) =>
+//   fetch(resource, init).then((res) => res.json());
+  
 export default function Home() {
-  const [url, setUrl] = useState("/api/tours?recommend=true");
+  const [url, setUrl] = useState("/api/supabase");
 
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
@@ -29,6 +34,12 @@ export default function Home() {
   setTimeout(() => {
     setIsDisplay(false);
   }, 2 * 1000);
+
+  // const { data, error } = useSWR('../api/supabase', fetcher, { refreshInterval: 1000 });
+  // if (error) return <div>failed to load</div>;
+  // if (!data) return <div>loading...</div>;
+  // console.log("data",data);
+  // console.log("url",url);
 
   const Slider = () => {
     return (
@@ -77,7 +88,7 @@ export default function Home() {
       </>
     );
   };
-
+  // const SearchResultMemo=useMemo(()=> <SearchResult  url={url}/>,[url])
   return (
     <div>
       <Head>
@@ -122,6 +133,7 @@ export default function Home() {
           setUrl={setUrl}
         />
       </div>
+      {/* {SearchResultMemo} */}
       <SearchResult url={url} />
       <Footer />
     </div>
