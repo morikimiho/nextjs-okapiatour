@@ -11,6 +11,9 @@ yarn
 npm run dev
 # or
 yarn dev
+
+# and
+yarn mock-api
 ```
 
 モジュール追加:
