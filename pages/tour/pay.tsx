@@ -8,16 +8,22 @@ import { Cart, Tour } from "../../types/types";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { init, send } from "@emailjs/browser";
+import { supabase } from "../../utils/supabaseClient";
 
 // メール送信時利用する環境変数定義
 const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
 const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 
+const fetcher = (resource: any, init: any) =>
+  fetch(resource, init).then((res) => res.json());
+
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   const loginName = cookie.loginName;
+
+  const { data, error } = useSWR(`/api/supabaseCart`, fetcher);
 
   //お支払い方法未選択の場合
   const router = useRouter();
@@ -27,16 +33,12 @@ export default function Pay() {
   const checkPay = () => {
     setCheckPayment(!checkPayment);
   };
-
   const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
-  const fetcher = (resource: any, init: any) =>
-    fetch(resource, init).then((res) => res.json());
-  const { data, error } = useSWR(`/api/inCarts?userId=${loginId}`, fetcher);
+
   useEffect(() => {
-    if (loginId.length === 0) {
-      return;
-    }
+    if (!data) return;
+
     //カート
     const cartcontent = data[0];
     if (cartcontent) {
@@ -77,33 +79,53 @@ export default function Pay() {
       });
 
     //cartの中身を取得し、ordersへ格納する。
-    await fetch(`/api/inCarts?userId=${loginId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const cart = data[0];
+    const { data } = await supabase
+      .from("inCarts")
+      .select("*")
+      .eq("userId", loginId);
+    if (!data) return;
+    const cart = data[0];
+    await supabase.from("orders").insert({
+      tours: cart.tours,
+      userId: cart.userId,
+      rsNumber: rsNumber,
+    });
+    console.log("cart", cart);
 
-        fetch("/api/orders", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            tours: cart.tours,
-            userId: cart.userId,
-            rsNumber: rsNumber,
-          }),
-        });
-      });
-    if (cart) {
-      fetch(`/api/inCarts/${cart?.id}`, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tours: [] }),
-      });
-    }
+    // await fetch(`/api/inCarts?userId=${loginId}`)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     const cart = data[0];
+
+    //     fetch("/api/orders", {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         tours: cart.tours,
+    //         userId: cart.userId,
+    //         rsNumber: rsNumber,
+    //       }),
+    //     });
+    //   });
+
+    //cartを空にする
+    await supabase
+    .from("inCarts")
+    .update({ tours: [] })
+    .eq("userId", loginId);
+
+    // if (cart) {
+    //   fetch(`/api/inCarts/${cart?.id}`, {
+    //     method: "PATCH",
+    //     headers: {
+    //       Accept: "application/json",
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ tours: [] }),
+    //   });
+    // }
 
     // メール送信の内容を抽出
     const uni = data[0];
@@ -112,14 +134,14 @@ export default function Pay() {
 
     // 予約確認メールを送る
     if (publicKey && serviceId && templateId) {
-      init(publicKey);  // publicKey初期化
+      init(publicKey); // publicKey初期化
       const params = {
         to_name: loginName,
         to_tourName: kani.tourName,
         to_tourDate: kani.tourDate,
         to_tourTime: kani.startTime,
         to_tourNum: rsNumber,
-      };  // 送信内容
+      }; // 送信内容
       try {
         await send(serviceId, templateId, params);
         console.log("成功");
@@ -214,7 +236,6 @@ export default function Pay() {
                 決済する
               </button>
             </form>
-            
           </div>
         </div>
       </Layout>
