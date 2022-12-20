@@ -5,7 +5,8 @@ import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Tour } from "../../types/types";
+import { Order, Tour } from "../../types/types";
+import { supabase } from "../../utils/supabaseClient";
 
 export default function BookingConfirmation() {
   const cookie = useCookie();
@@ -14,22 +15,26 @@ export default function BookingConfirmation() {
   const loginId = cookie.loginId;
 
   // const [userData, setUserData] = useState([]);
-  const [data, setData] = useState([]);
-
   useEffect(() => {
-    if (loginName.length === 0) {
-      return;
-    }
-    fetch(`/api/orders?userId=${loginId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        // console.log(data);
-        setData(data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }, [loginName]);
+    ConfData();
+  },[loginId]);
+  const [data, setData] = useState<Order[]>([]);  // データを配列で受け取る
+  const ConfData = async () => {
+    let { data, error } = await supabase.from("orders").select("*").eq("userId", loginId);
+    if (!data) return; 
+    console.log("data", data);
+
+    setData(data); // 取得したデータをステートで保持
+  };
+
+    // fetch(`/api/orders?userId=${loginId}`)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log({data});
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
 
   return (
     <>
@@ -62,20 +67,12 @@ export default function BookingConfirmation() {
               </div>
             </Link>
           )}
-          {data.map((d: { id: number; tours: []; rsNumber: string }) => {
+          {data.map((d:Order) => {
             return (
               <div key={d.id} className={styles.bookings}>
                 <h4 className={styles.booking_id}>予約番号: {d.rsNumber}</h4>
                 {d.tours.map(
-                  (tour: {
-                    id: number;
-                    img1: string;
-                    tourName: string;
-                    tourDate: string;
-                    startTime: string;
-                    numberOfPeople: string;
-                    total: number;
-                  }) => {
+                  (tour) => {
                     console.log(tour);
                     return (
                       <div key={tour.id} className={styles.booking_flex}>
