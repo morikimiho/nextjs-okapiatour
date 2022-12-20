@@ -1,14 +1,20 @@
 import { Dispatch, SetStateAction } from "react";
 import styles from "../styles/tripdetail.module.css";
 
-export function TripdetailCount({setNumberOfPeople}:{setNumberOfPeople: Dispatch<SetStateAction<number>>}){
-
+export function TripdetailCount({
+  setNumberOfPeople,
+}: {
+  setNumberOfPeople: Dispatch<SetStateAction<number>>;
+}) {
   return (
     <div>
       <p>参加人数を選択してください</p>
       <div className={styles.count}>
         <form action="get">
-          <select className={styles.detail_form} onChange={(e) => setNumberOfPeople(Number(e.target.value))}>
+          <select
+            className={styles.detail_form}
+            onChange={(e) => setNumberOfPeople(Number(e.target.value))}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

@@ -3,15 +3,11 @@ import Image from "next/image";
 import styles from "../../styles/toppage.module.css";
 import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
-import { ScrTop } from "../../component/tps";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/css";
 import { useState, useMemo } from "react";
 import { SearchBox } from "../../component/serchPage/SearchBox";
 import { SearchResult } from "../../component/serchPage/SearchResult";
-import { Abroad, Area, City, Country, Prefecture } from "../../types/types";
-import { supabase } from "../../utils/supabaseClient";
-import useSWR from "swr";
 
 export default function Home() {
   const [url, setUrl] = useState("/api/supabaseTours");
@@ -58,22 +54,11 @@ export default function Home() {
               />
             </div>
           </SplideSlide>
-          {/* <SplideSlide>
-            <div className={styles.top_image}>
-              <Image
-                className="slide-img"
-                src="/images/top/fuji.jpg"
-                alt="富士山の画像"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SplideSlide> */}
         </Splide>
       </>
     );
   };
-  const SearchResultMemo=useMemo(()=> <SearchResult  url={url}/>,[url])
+  const SearchResultMemo = useMemo(() => <SearchResult url={url} />, [url]);
   return (
     <div>
       <Head>

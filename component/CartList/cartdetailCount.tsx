@@ -4,12 +4,16 @@ type Props = {
   HandleNumChange: any;
 };
 
-export const CartdetailCount = ({num, HandleNumChange}:Props) => {
+export const CartdetailCount = ({ num, HandleNumChange }: Props) => {
   return (
     <>
       <div>
         <label htmlFor="">人数</label>
-        <select className={Styles.cart_detail_count} value={num} onChange= {HandleNumChange}>
+        <select
+          className={Styles.cart_detail_count}
+          value={num}
+          onChange={HandleNumChange}
+        >
           <option value=""></option>
           <option value="1">1</option>
           <option value="2">2</option>

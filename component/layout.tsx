@@ -11,24 +11,22 @@ const Layout = ({
 }) => {
   return (
     <>
-    {/* index.tsx に home入れる */}
-    {home ? (
+      {/* index.tsx に home入れる */}
+      {home ? (
         <>
-        <Header />
-        <div className={styles.tour_trip_home}>
-             {children}
-           </div>
-        <Footer />
+          <Header />
+          <div className={styles.tour_trip_home}>{children}</div>
+          <Footer />
         </>
-        ) : !home && (
-         <>
-           <Header />
-           <div className={styles.tour_trip_contents}>
-             {children}
-           </div>
-           <Footer />
-           </>
-        )}
+      ) : (
+        !home && (
+          <>
+            <Header />
+            <div className={styles.tour_trip_contents}>{children}</div>
+            <Footer />
+          </>
+        )
+      )}
     </>
   );
 };

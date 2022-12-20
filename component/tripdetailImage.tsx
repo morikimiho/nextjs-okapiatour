@@ -3,10 +3,10 @@ import styles from "../styles/tripdetail.module.css";
 import { Tour } from "../types/types";
 
 type Props = {
-  tour:Tour;
-}
+  tour: Tour;
+};
 
-export function TripdetailImage({ tour }:Props) {
+export function TripdetailImage({ tour }: Props) {
   return (
     <div className={styles.tour_detail_images}>
       <div className={styles.tour_detail_images_top}>

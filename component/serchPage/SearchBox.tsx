@@ -13,7 +13,6 @@ import { NorthameCountry, Uni } from "./sertchNorthAmerica";
 import { Australia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
-import { Dispatch, SetStateAction } from "react";
 import Link from "next/link";
 import { useState } from "react";
 

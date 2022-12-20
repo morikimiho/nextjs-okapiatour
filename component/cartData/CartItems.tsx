@@ -31,7 +31,6 @@ export function CartItems({
     judgeError();
   }, [tours]);
 
-
   const judgeError = async () => {
     if (typeof tours === "undefined") {
       return;
@@ -45,10 +44,8 @@ export function CartItems({
         newTour.set(tour.tourDate, [...v, tour.tourName]);
       }
     });
-   
-    setTourNew(newTour)
-    console.log(tourNew);
 
+    setTourNew(newTour);
   };
 
   const handleSubmit = async (e: any) => {
@@ -73,10 +70,8 @@ export function CartItems({
           <div className={Styles.cart_width}>
             <h1>ツアーカート</h1>
 
-
             {tours.length ? (
               <>
-              
                 <div className={Styles.cartcontents}>
                   {tours.map((tour: any) => {
                     return (
@@ -120,7 +115,6 @@ export function CartItems({
                 <p className={styles.bookingC_error}>
                   カートにツアーが追加されていません
                 </p>
-
 
                 <Link href="/tour">
                   <div className={styles.bookingC_btn}>

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { SetStateAction, useEffect, useState } from "react";
 import Layout from "../../../component/layout";
+import { Tour } from "../../../types/types";
 import { supabase } from "../../../utils/supabaseClient";
 
 // データ取得
@@ -31,14 +32,13 @@ export const getStaticProps = async ({ params }) => {
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   const tour = await data;
-  console.log(tour)
   return {
     props: { tour },
     revalidate: 10,
   };
 };
 
-export default function Comment({ tour }) {
+export default function Comment({ tour }: { tour: Array<Tour> }) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const [tourid, setTourid] = useState(0);
@@ -48,9 +48,8 @@ export default function Comment({ tour }) {
   useEffect(() => {
     setTourid(tour[0].id);
   }, [tour]);
-  
 
-  const submitHandler = async (e: { preventDefault: () => void; }) => {
+  const submitHandler = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     const newdate = new Date();
     let year = newdate.getFullYear();
@@ -58,11 +57,10 @@ export default function Comment({ tour }) {
     let aday = newdate.getDate();
 
     let date = `${year}-${month}-${aday}`;
-    console.log(date);
 
     if (!text) {
     } else {
-      await supabase.from("comment").insert({tourid, name, text, date});
+      await supabase.from("comment").insert({ tourid, name, text, date });
       setThanksmessage((prev) => !prev);
       setTimeout(() => {
         router.push("/tour");
@@ -82,7 +80,9 @@ export default function Comment({ tour }) {
     setText(e.target.value);
   };
 
-  const changenameHandler = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const changenameHandler = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setName(e.target.value);
   };
 
