@@ -60,7 +60,12 @@ type Comment = {
   text: string;
   date: string;
 };
-
+type Order = {
+  id: number;
+  userId: number;
+  rsNumber: string;
+  tours: any;
+}
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
@@ -79,4 +84,4 @@ type Country =
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
-export type { Users, Tour, Cart, Abroad, Prefecture, Area, Country, City,Comment };
+export type { Users, Tour, Cart, Abroad, Prefecture, Area, Country, City,Comment, Order };
