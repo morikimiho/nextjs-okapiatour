@@ -4,22 +4,21 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Router from "next/router";
 import useCookie from "../hooks/useCookie";
-  
-  export function Header() {
-    const router = useRouter();
-    const cookie = useCookie();
-    // console.log(cookie);
-    
-    
-    // クッキーにセットされている名前をログイン名として表示
-    const loginId = cookie.loginId;
-    const loginName = cookie.loginName;
-    
-    // ログアウト(クッキー削除)
-    function logOut() {
-      document.cookie = "userOkapiaTour=;path=/;max-age=0";
-      const url = location.href;
-      console.log(url)
+
+export function Header() {
+  const router = useRouter();
+  const cookie = useCookie();
+  // console.log(cookie);
+
+  // クッキーにセットされている名前をログイン名として表示
+  const loginId = cookie.loginId;
+  const loginName = cookie.loginName;
+
+  // ログアウト(クッキー削除)
+  function logOut() {
+    document.cookie = "userOkapiaTour=;path=/;max-age=0";
+    const url = location.href;
+    console.log(url);
     if (url == `${process.env.NEXT_PUBLIC_BASE_URL}/tour`) {
       Router.reload() as any;
     } else {
@@ -70,11 +69,7 @@ import useCookie from "../hooks/useCookie";
                 <div className={styles.login_user}>
                   <Link href="/tour/booking_confirmation">
                     <div className={styles.cart_size}>
-                      <Image
-                        src="/images/user.png"
-                        alt="ロゴ"
-                        layout="fill"
-                      />
+                      <Image src="/images/user.png" alt="ロゴ" layout="fill" />
                     </div>
                     <div className={styles.icon_name}>{loginName}さん</div>
                   </Link>
@@ -92,7 +87,6 @@ import useCookie from "../hooks/useCookie";
                   </Link>
                 </div>
 
-
                 <button className={styles.button} onClick={logOut}>
                   ログアウト
                 </button>
@@ -101,7 +95,6 @@ import useCookie from "../hooks/useCookie";
           </div>
         </div>
       </div>
-
 
       {loginName.length > 0 && (
         <div className={styles.res_login_user}>
@@ -124,4 +117,4 @@ import useCookie from "../hooks/useCookie";
       )}
     </>
   );
-}     
+}

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
 import styles from "../../styles/tripdetail.module.css";
 import { TripdetailContent } from "../../component/tripdetailContent";
 import { TripdetailCount } from "../../component/tripdetailCount";
@@ -10,17 +9,16 @@ import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
 import { ScrTop } from "../../component/tps";
 import { useState } from "react";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
-import { Tour,Comment } from "../../types/types";
-import Link from "next/link";
+import { Tour, Comment } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
 import { ReviewComment } from "../../component/reviewComment";
 
-export const getStaticPaths= async () => {
-  const { data, error } = await supabase.from("tours").select("*"); 
-  if(!data) return;
-  if(error) {
+export const getStaticPaths = async () => {
+  const { data, error } = await supabase.from("tours").select("*");
+  if (!data) return;
+  if (error) {
     console.log(error);
   }
 
@@ -32,22 +30,28 @@ export const getStaticPaths= async () => {
       },
     };
   });
-  return { 
+  return {
     paths,
     fallback: false,
   };
 };
 
-export const getStaticProps= async ({ params }) => {
-  if(!params) return;
-  const { data, error } = await supabase.from("tours").select("*").eq("id", params.id); 
-  if(!data) return;
-  if(error) {
+export const getStaticProps = async ({ params }) => {
+  if (!params) return;
+  const { data, error } = await supabase
+    .from("tours")
+    .select("*")
+    .eq("id", params.id);
+  if (!data) return;
+  if (error) {
     console.log(error);
   }
   const tour = await data[0];
 
-  const comRes = await supabase.from("comment").select("*").eq("tourid", params.id);
+  const comRes = await supabase
+    .from("comment")
+    .select("*")
+    .eq("tourid", params.id);
   const comment = await comRes.data;
   console.log(comment);
   return {
@@ -55,7 +59,6 @@ export const getStaticProps= async ({ params }) => {
     revalidate: 10,
   };
 };
-
 
 export default function Tripdetail({
   tour,
@@ -120,9 +123,12 @@ export default function Tripdetail({
       }
       router.push("/tour/cart");
     } else {
-      const { data, error } = await supabase.from("inCarts").select("*").eq("userId", loginId); 
-      if(!data) return;
-      if(error) {
+      const { data, error } = await supabase
+        .from("inCarts")
+        .select("*")
+        .eq("userId", loginId);
+      if (!data) return;
+      if (error) {
         console.log(error);
       }
 
@@ -144,24 +150,28 @@ export default function Tripdetail({
               total: number;
             }[];
           }) => {
-            await supabase.from("inCarts").upsert({
-              tours: [
-                ...cart.tours,
-                {
-                  id: tour.id,
-                  tourDate: tourDate, //新規データ
-                  startTime: startTime, //新規データ
-                  img1: tour.img1,
-                  tourName: tour.tourName,
-                  description: tour.description,
-                  numberOfPeople: numberOfPeople, //新規データ
-                  price: Number(tour.price),
-                  total: Number(tour.price * numberOfPeople),
-                }],
-                    userId: loginId,
-                    id: cart.id,
-                }).eq("userId", loginId);
-                router.push("/tour/cart");
+            await supabase
+              .from("inCarts")
+              .upsert({
+                tours: [
+                  ...cart.tours,
+                  {
+                    id: tour.id,
+                    tourDate: tourDate, //新規データ
+                    startTime: startTime, //新規データ
+                    img1: tour.img1,
+                    tourName: tour.tourName,
+                    description: tour.description,
+                    numberOfPeople: numberOfPeople, //新規データ
+                    price: Number(tour.price),
+                    total: Number(tour.price * numberOfPeople),
+                  },
+                ],
+                userId: loginId,
+                id: cart.id,
+              })
+              .eq("userId", loginId);
+            router.push("/tour/cart");
           }
         );
       }
@@ -177,14 +187,18 @@ export default function Tripdetail({
 
   return (
     <>
-    
       <Head>
         <title>{tour.tourName}</title>
       </Head>
       <Layout>
         <main className={styles.main}>
           <div className={styles.tour_tags}>
-              <div className={styles.tour_tag} style={{display: (tour.area===null)? "none":"block"}}>{tour.area}</div>
+            <div
+              className={styles.tour_tag}
+              style={{ display: tour.area === null ? "none" : "block" }}
+            >
+              {tour.area}
+            </div>
             <div className={styles.tour_tag}>{tour.country}</div>
           </div>
           <h1 className={styles.tour_title}>
@@ -243,7 +257,7 @@ export default function Tripdetail({
               </div>
             </section>
           ) : (
-            <ReviewComment comment={comment} tour={tour}/>
+            <ReviewComment comment={comment} tour={tour} />
           )}
         </main>
         <ScrTop />

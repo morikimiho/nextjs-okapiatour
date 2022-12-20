@@ -5,36 +5,28 @@ import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Order, Tour } from "../../types/types";
+import { Order } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
 
 export default function BookingConfirmation() {
   const cookie = useCookie();
-  // クッキーにセットされている名前をログイン名として表示
+
   const loginName = cookie.loginName;
   const loginId = cookie.loginId;
 
-  // const [userData, setUserData] = useState([]);
   useEffect(() => {
     ConfData();
-  },[loginId]);
-  const [data, setData] = useState<Order[]>([]);  // データを配列で受け取る
+  }, [loginId]);
+  const [data, setData] = useState<Order[]>([]);
   const ConfData = async () => {
-    let { data, error } = await supabase.from("orders").select("*").eq("userId", loginId);
-    if (!data) return; 
-    console.log("data", data);
+    let { data, error } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("userId", loginId);
+    if (!data) return;
 
-    setData(data); // 取得したデータをステートで保持
+    setData(data);
   };
-
-    // fetch(`/api/orders?userId=${loginId}`)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log({data});
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error:", error);
-    //   });
 
   return (
     <>
@@ -67,38 +59,37 @@ export default function BookingConfirmation() {
               </div>
             </Link>
           )}
-          {data.map((d:Order) => {
+          {data.map((d: Order) => {
             return (
               <div key={d.id} className={styles.bookings}>
                 <h4 className={styles.booking_id}>予約番号: {d.rsNumber}</h4>
-                {d.tours.map(
-                  (tour) => {
-                    console.log(tour);
-                    return (
-                      <div key={tour.id} className={styles.booking_flex}>
-                        <div className={styles.booking_image}>
-                          <Image src={tour.img1} layout="fill" alt="画像" />
-                        </div>
-
-                        <div className={styles.list}>
-                          <div className={styles.booking_items}>
-                            {tour.tourName}
-                          </div>
-                          <div>日程：{tour.tourDate}</div>
-                          <div>開始時刻：{tour.startTime}時</div>
-                          <div>人数：{tour.numberOfPeople}人</div>
-                          <div>合計価格：{tour.total.toLocaleString()}円</div>
-                        </div>
-
-                        <div className={styles.user_comment}>
-                          <Link href={`/tour/comment/${tour.id}`}>
-                          <button className={styles.user_comment_btn}>クチコミ</button>
-                          </Link>
-                        </div>
+                {d.tours.map((tour) => {
+                  return (
+                    <div key={tour.id} className={styles.booking_flex}>
+                      <div className={styles.booking_image}>
+                        <Image src={tour.img1} layout="fill" alt="画像" />
                       </div>
-                    );
-                  }
-                )}
+
+                      <div className={styles.list}>
+                        <div className={styles.booking_items}>
+                          {tour.tourName}
+                        </div>
+                        <div>日程：{tour.tourDate}</div>
+                        <div>開始時刻：{tour.startTime}時</div>
+                        <div>人数：{tour.numberOfPeople}人</div>
+                        <div>合計価格：{tour.total.toLocaleString()}円</div>
+                      </div>
+
+                      <div className={styles.user_comment}>
+                        <Link href={`/tour/comment/${tour.id}`}>
+                          <button className={styles.user_comment_btn}>
+                            クチコミ
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             );
           })}

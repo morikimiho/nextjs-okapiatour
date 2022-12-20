@@ -1,4 +1,3 @@
-import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Tour } from "../../../types/types";
@@ -8,9 +7,9 @@ import Head from "next/head";
 import { supabase } from "../../../utils/supabaseClient";
 
 export const getStaticPaths = async () => {
-  const { data, error } = await supabase.from("tours").select("*"); 
-  if(!data) return;
-  if(error) {
+  const { data, error } = await supabase.from("tours").select("*");
+  if (!data) return;
+  if (error) {
     console.log(error);
   }
 
@@ -29,10 +28,13 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  if(!params) return;
-  const { data, error } = await supabase.from("tours").select("*").eq("areaId", params.areaId);
-  if(!data) return;
-  if(error) {
+  if (!params) return;
+  const { data, error } = await supabase
+    .from("tours")
+    .select("*")
+    .eq("areaId", params.areaId);
+  if (!data) return;
+  if (error) {
     console.log(error);
   }
 
@@ -76,9 +78,14 @@ export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
                   </div>
 
                   <div className={styles.tour_tags}>
-                      <div className={styles.tour_tag} style={{display: (to.area===null)? "none":"block"}}>{to.area}</div>
-                      <div className={styles.tour_tag}>{to.country}</div>
-                      <div className={styles.tour_tag}>{to.city}</div>
+                    <div
+                      className={styles.tour_tag}
+                      style={{ display: to.area === null ? "none" : "block" }}
+                    >
+                      {to.area}
+                    </div>
+                    <div className={styles.tour_tag}>{to.country}</div>
+                    <div className={styles.tour_tag}>{to.city}</div>
                   </div>
 
                   <div className={styles.result__flex_items}>

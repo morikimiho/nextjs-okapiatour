@@ -1,14 +1,7 @@
 import useSWR from "swr";
-import {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { CartItems } from "./CartItems";
 import { Tour } from "../../types/types";
-import { useRouter } from "next/router";
 import { supabase } from "../../utils/supabaseClient";
 
 type Props = {
@@ -27,7 +20,6 @@ export function BackCart({ loginId, amount, setAmount }: Props) {
     if (!data) return;
     const cart = data[0];
     setTours(cart.tours);
-    // console.log(tours);
 
     setAmount(
       cart.tours.reduce(
@@ -43,9 +35,9 @@ export function BackCart({ loginId, amount, setAmount }: Props) {
   if (!data) return <div>loading...</div>;
   const cart = data[0];
 
-  const deleteHandler = async(val: number) => {
+  const deleteHandler = async (val: number) => {
     const newTours = tours.filter((tour) => tour.id != val);
-    const { error } =  await supabase
+    const { error } = await supabase
       .from("inCarts")
       .update({ tours: newTours })
       .eq("userId", loginId);

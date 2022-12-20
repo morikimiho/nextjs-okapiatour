@@ -17,7 +17,6 @@ export default function searchJPmap() {
               type="radio"
               name="tab_item"
               className={style.tabSwitch}
-
             />
             <label className={style.tab_item} htmlFor="world">
               海外のツアーを検索する

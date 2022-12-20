@@ -22,7 +22,7 @@ export default function BookingDone() {
       .eq("userId", loginId);
     if (!data) return <div>loading...</div>;
     setData(data);
-    console.log("data", data);
+
   };
 
   return (
