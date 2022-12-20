@@ -61,13 +61,13 @@ type Comment = {
   date: string;
 };
 
+
 type Order = {
   id:number;
   rsNumber:string;
   tours:Array<Tour>;
   userId:number;
 }
-
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
@@ -86,4 +86,6 @@ type Country =
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
+
 export type { Users, Tour, Cart, Abroad, Prefecture, Area, Country, City, Comment, Order };
+

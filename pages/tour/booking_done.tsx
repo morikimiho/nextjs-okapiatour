@@ -4,40 +4,26 @@ import Link from "next/link";
 import useCookie from "../../hooks/useCookie";
 import Layout from "../../component/layout";
 import { useEffect, useState } from "react";
-import { Tour } from "../../types/types";
-
-interface rsNumber {
-  id: number;
-  rsNumber: string;
-  tours: Array<Tour>;
-  userId: number;
-}
+import { supabase } from "../../utils/supabaseClient";
+import { Order } from "../../types/types";
 
 export default function BookingDone() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
-  const [rsNumber, setRsNumber] = useState<rsNumber>();
 
   useEffect(() => {
-    if (loginId.length === 0) {
-      return;
-    }
-    fetch(`/api/orders?userId=${loginId}`)
-      .then((response) => response.json())
-      .then((data) => {
-
-        // 最新の予約情報を取得
-        const cartitem = data[data.length-1];
-        if (cartitem) {
-          setRsNumber(cartitem);
-        }
-        console.log(cartitem)
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    getOrders();
   }, [loginId]);
-
+  const [data, setData] = useState<Order[]>([]);
+  const getOrders = async () => {
+    let { data, error } = await supabase
+      .from("orders")
+      .select("*")
+      .eq("userId", loginId);
+    if (!data) return <div>loading...</div>;
+    setData(data);
+    console.log("data", data);
+  };
 
   return (
     <>
@@ -56,8 +42,13 @@ export default function BookingDone() {
           <div className={styles.booking_number}>
             <p>ご予約を承りました。</p>
             <p>ご予約番号</p>
-
-            <p className={styles.booking_RsNumber}>{rsNumber?.rsNumber}</p>
+            {data.map((d: Order) => {
+              return (
+                <div key={d.userId}>
+                  <p className={styles.booking_RsNumber}>{d.rsNumber}</p>
+                </div>
+              );
+            })}
             <p className={styles.booking_message}>
               お問合せに必要な番号です。大切に保管してください。
             </p>

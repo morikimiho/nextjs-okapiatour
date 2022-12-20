@@ -1,24 +1,26 @@
 import useSWR from "swr";
-import { Dispatch, SetStateAction, useEffect, useReducer, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { CartItems } from "./CartItems";
 import { Tour } from "../../types/types";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
+import { supabase } from "../../utils/supabaseClient";
 
 type Props = {
-    loginId: string;
-    amount:number;
-    setAmount:Dispatch<SetStateAction<number>>;
+  loginId: string;
+  amount: number;
+  setAmount: Dispatch<SetStateAction<number>>;
 };
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
-export function BackCart({loginId, amount, setAmount}:Props) {
-  const router=useRouter();
-
-  const { data, error } = useSWR(
-    `/api/inCarts?userId=${loginId}`,
-    fetcher
-  );
+export function BackCart({ loginId, amount, setAmount }: Props) {
+  const { data, error } = useSWR(`/api/supabaseCart`, fetcher);
   const [tours, setTours] = useState<Tour[]>([]);
 
   useEffect(() => {
@@ -35,33 +37,30 @@ export function BackCart({loginId, amount, setAmount}:Props) {
       )
     );
   }, [data]);
-    // エラーになった場合は一覧は表示できないのでここで終わり
-    if (error) return <div>failed to load</div>;
-    // データ取得が完了していないときはローディング画面
-    if (!data) return <div>loading...</div>;
-    const cart=data[0];
+  // エラーになった場合は一覧は表示できないのでここで終わり
+  if (error) return <div>failed to load</div>;
+  // データ取得が完了していないときはローディング画面
+  if (!data) return <div>loading...</div>;
+  const cart = data[0];
 
-  const deleteHandler = (val: number) => {
+  const deleteHandler = async(val: number) => {
     const newTours = tours.filter((tour) => tour.id != val);
-      
-      // console.log("yo",logid);
-      fetch(`/api/inCarts/${cart.id}`, {
-        method: "PATCH",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tours: newTours }),
-      });
+    const { error } =  await supabase
+      .from("inCarts")
+      .update({ tours: newTours })
+      .eq("userId", loginId);
     setTours(newTours);
-    
-    
-
   };
 
   return (
     <>
-     <CartItems tours={tours} amount={amount} setAmount={setAmount} deleteHandler={deleteHandler} loginId={loginId}/>
+      <CartItems
+        tours={tours}
+        amount={amount}
+        setAmount={setAmount}
+        deleteHandler={deleteHandler}
+        loginId={loginId}
+      />
     </>
   );
 }

@@ -14,7 +14,7 @@ import { supabase } from "../../utils/supabaseClient";
 import useSWR from "swr";
 
 export default function Home() {
-  const [url, setUrl] = useState("/api/supabase");
+  const [url, setUrl] = useState("/api/supabaseTours");
 
   const [isOpen, setIsOpen] = useState(true);
 
