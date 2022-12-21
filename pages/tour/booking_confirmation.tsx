@@ -3,7 +3,7 @@ import Head from "next/head";
 import Layout from "../../component/layout";
 import useCookie from "../../hooks/useCookie";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import { Order } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
