@@ -7,7 +7,6 @@ import { TripdetailActivity } from "../../component/tripdetailActivity";
 import { TripdetailImage } from "../../component/tripdetailImage";
 import Layout from "../../component/layout";
 import { TripdetailTimes } from "../../component/tripdetailTimes";
-import { ScrTop } from "../../component/tps";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import useCookie from "../../hooks/useCookie";
@@ -260,7 +259,6 @@ export default function Tripdetail({
             <ReviewComment comment={comment} tour={tour} />
           )}
         </main>
-        <ScrTop />
       </Layout>
     </>
   );
