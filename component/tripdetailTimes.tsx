@@ -20,13 +20,23 @@ export function TripdetailTimes({
   setTimeError,
 }: Props) {
   function changeDate(e: { target: { value: any } }) {
+    if(dateError === true && e.target.value === "") {
+      setDateError(false);
+    }else {
     setTourDate(e.target.value);
     setDateError(true);
   }
+}
 
-  function changeTime(e: { target: { value: any } }) {
+  function changeTime(e: { target: { value: string } }) {
+
+    if(timeError === true && e.target.value === "0") {
+      setTimeError(false);
+    }else {
     setStartTime(Number(e.target.value));
     setTimeError(true);
+    }
+
   }
 
   return (
@@ -53,7 +63,7 @@ export function TripdetailTimes({
         <div>
           {tour.times >= 7 && (
             <select className={styles.detail_form} onChange={changeTime}>
-              <option value="">---</option>
+              <option value="0">---</option>
               <option value="9">9:00</option>
               <option value="10">10:00</option>
             </select>
@@ -61,7 +71,7 @@ export function TripdetailTimes({
 
           {tour.times < 7 && tour.times >= 3 && (
             <select className={styles.detail_form} onChange={changeTime}>
-              <option value="">---</option>
+              <option value="0">---</option>
               <option value="9">9:00</option>
               <option value="10">10:00</option>
               <option value="11">11:00</option>
@@ -72,7 +82,7 @@ export function TripdetailTimes({
 
           {tour.times < 3 && (
             <select className={styles.detail_form} onChange={changeTime}>
-              <option value="">---</option>
+              <option value="0">---</option>
               <option value="9">9:00</option>
               <option value="10">10:00</option>
               <option value="11">11:00</option>
