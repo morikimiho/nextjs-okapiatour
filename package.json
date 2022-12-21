@@ -2,6 +2,7 @@
   "name": "nextjs-tour-trip",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "prepare": "git config --local core.hooksPath '.git-hooks'",
     "dev": "next dev",

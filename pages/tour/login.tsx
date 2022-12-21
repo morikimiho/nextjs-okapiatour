@@ -79,6 +79,7 @@ export default function Login() {
           //     const cart = data[0];
           //     //ローカルをバックカートに追加、元々のバックのツアーは残したまま
             
+
           //       // fetch(`/api/inCarts/${id}`, {
           //       //   method: "PATCH",
           //       //   headers: {
@@ -90,6 +91,7 @@ export default function Login() {
 
           //     localStorage.clear();
           //   });
+
           })
         }
       })
