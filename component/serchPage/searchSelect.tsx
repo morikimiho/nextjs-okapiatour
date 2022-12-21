@@ -4,7 +4,7 @@ import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 import { ScrTop } from "../tps";
 
-export function SearchSelect({ data, length }) {
+export function SearchSelect({ data, length ,subtitle}) {
   for (let i = length - 2; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
@@ -14,7 +14,9 @@ export function SearchSelect({ data, length }) {
 
   return (
     <>
-      <div className={styles.headline}>検索結果</div>
+   
+ {subtitle?<div className={styles.headline}>検索結果</div>:<div className={styles.headline}>おすすめ</div>}
+      
       {data.map((item: Tour) => {
         return (
           <div key={item.id} id="content" className={styles.eachcontent}>
