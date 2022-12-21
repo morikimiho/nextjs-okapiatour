@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styles from "../../styles/toppage.module.css";
 import { Header } from "../../component/header";
 import { Footer } from "../../component/footer";
@@ -40,6 +40,7 @@ export default function Home() {
                 alt="風景の画像"
                 layout="fill"
                 objectFit="cover"
+                priority
               />
             </div>
           </SplideSlide>
@@ -80,6 +81,7 @@ export default function Home() {
             src="/images/logo_cover3.png"
             alt="検索"
             layout="fill"
+            priority
           />
         </div>
       </div>
