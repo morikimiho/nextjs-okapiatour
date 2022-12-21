@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
-import { Tour } from "../../types/types";
 import { supabase } from "../../utils/supabaseClient";
 
 export default function Login() {
@@ -37,18 +36,26 @@ export default function Login() {
           const localTourJSON = localStorage.getItem("tours");
           if (localTourJSON === null) {
             router.push("/tour");
-            console.log("payに遷移");
+            console.log("トップページに遷移");
           } else {
             router.push("/tour/pay");
-            console.log("トップページに遷移");
+            console.log("payに遷移");
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-          await fetch(
-            `/api/users?mailAddress=${mailAddress}&password=${password}`
-          ).then ((response)=>response.json())
-          .then (async (dat)=>{
-          const user = dat[0];
+          const { data, error } = await supabase
+            .from("users")
+            .select("*")
+            .eq("mailAddress", mailAddress)
+            .eq("password", password);
+
+          // await fetch(
+          //   `/api/users?mailAddress=${mailAddress}&password=${password}`
+          // )
+          //   .then((response) => response.json())
+          //   .then(async (dat) => {
+
+          const user = data[0];
           // console.log(user);
           const id = user.id;
           // console.log(id);
@@ -58,28 +65,26 @@ export default function Login() {
 
           if (localtours.tours.length === 0) {
             return;
+          } else {
+            //バックデータのカートの中身を取得
+            const { data } = await supabase
+              .from("inCarts")
+              .select("*")
+              .eq("userId", id);
+            console.log("datam", data);
+            const cart = data[0];
+            //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
+            await supabase
+              .from("inCarts")
+              .update({ tours: [...cart.tours, ...localtours.tours] })
+              .eq("userId", id);
           }
-          //バックデータのカートの中身を取得
-          const { data } = await supabase
-          .from("inCarts")
-          .select("*")
-          .eq("userId", id);
-          console.log("datam",data);
-          const cart = data[0];
-          //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
-          await supabase
-      .from("inCarts")
-      .update({ tours: [...cart.tours, ...localtours.tours] })
-      .eq("userId", id);
-    
-  
+          localStorage.clear();
           // await fetch(`/api/inCarts?userId=${id}`)
           //   .then((response) => response.json())
           //   .then((data) => {
           //     const cart = data[0];
           //     //ローカルをバックカートに追加、元々のバックのツアーは残したまま
-            
-
           //       // fetch(`/api/inCarts/${id}`, {
           //       //   method: "PATCH",
           //       //   headers: {
@@ -88,11 +93,7 @@ export default function Login() {
           //       //   body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
           //       // })
           //     ;
-
-          //     localStorage.clear();
           //   });
-
-          })
         }
       })
       .then((data) => {
