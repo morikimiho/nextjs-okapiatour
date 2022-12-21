@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
 import { Tour } from "../../types/types";
+import { supabase } from "../../utils/supabaseClient";
 
 export default function Login() {
   const router = useRouter();
@@ -46,11 +47,11 @@ export default function Login() {
           await fetch(
             `/api/users?mailAddress=${mailAddress}&password=${password}`
           ).then ((response)=>response.json())
-          .then (async (data)=>{
-          const user = data[0];
-          console.log(user);
+          .then (async (dat)=>{
+          const user = dat[0];
+          // console.log(user);
           const id = user.id;
-          console.log(id);
+          // console.log(id);
           const localtours = JSON.parse(
             localStorage.getItem("tours") ?? '{"tours:[]}'
           );
@@ -59,22 +60,38 @@ export default function Login() {
             return;
           }
           //バックデータのカートの中身を取得
-          await fetch(`/api/inCarts?userId=${id}`)
-            .then((response) => response.json())
-            .then((data) => {
-              const cart = data[0];
-              //ローカルをバックカートに追加、元々のバックのツアーは残したまま
+          const { data } = await supabase
+          .from("inCarts")
+          .select("*")
+          .eq("userId", id);
+          console.log("datam",data);
+          const cart = data[0];
+          //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
+          await supabase
+      .from("inCarts")
+      .update({ tours: [...cart.tours, ...localtours.tours] })
+      .eq("userId", id);
+    
+  
+          // await fetch(`/api/inCarts?userId=${id}`)
+          //   .then((response) => response.json())
+          //   .then((data) => {
+          //     const cart = data[0];
+          //     //ローカルをバックカートに追加、元々のバックのツアーは残したまま
             
-                fetch(`/api/inCarts/${id}`, {
-                  method: "PATCH",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
-                })
-              ;
-              localStorage.clear();
-            });
+
+          //       // fetch(`/api/inCarts/${id}`, {
+          //       //   method: "PATCH",
+          //       //   headers: {
+          //       //     "Content-Type": "application/json",
+          //       //   },
+          //       //   body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
+          //       // })
+          //     ;
+
+          //     localStorage.clear();
+          //   });
+
           })
         }
       })
