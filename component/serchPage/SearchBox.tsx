@@ -18,10 +18,9 @@ import { useState } from "react";
 
 type Props = {
   setUrl: Function;
-  setSubtitle:Function
 };
 
-export function SearchBox({ setUrl, setSubtitle }: Props) {
+export function SearchBox({ setUrl }: Props) {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   const [areaCode, setArea] = useState<Area>("");
@@ -152,7 +151,6 @@ export function SearchBox({ setUrl, setSubtitle }: Props) {
   };
   const onsubmitHandler = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setSubtitle(true);
     let query = "?";
 
     if (abroad.length > 0) {

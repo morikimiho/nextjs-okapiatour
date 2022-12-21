@@ -13,7 +13,6 @@ export default function Home() {
   const [url, setUrl] = useState("/api/supabaseTours");
 
   const [isOpen, setIsOpen] = useState(true);
-  const [subtitle,setSubtitle]=useState(false);
 
   setTimeout(() => {
     setIsOpen(false);
@@ -60,7 +59,7 @@ export default function Home() {
       </>
     );
   };
-  const SearchResultMemo = useMemo(() => <SearchResult url={url} subtitle={subtitle} />, [url]);
+  const SearchResultMemo = useMemo(() => <SearchResult url={url} />, [url]);
   return (
     <div>
       <Head>
@@ -92,10 +91,10 @@ export default function Home() {
         <Slider />
       </div>
       <div className={styles.search_box}>
-        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
+        <SearchBox setUrl={setUrl} />
       </div>
       {SearchResultMemo}
-  
+      <SearchResult url={url} />
       <Footer />
     </div>
   );
