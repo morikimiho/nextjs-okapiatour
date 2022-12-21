@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Tour } from "../../types/types";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
