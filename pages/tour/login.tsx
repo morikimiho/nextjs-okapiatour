@@ -36,7 +36,7 @@ export default function Login() {
           const localTourJSON = localStorage.getItem("tours");
           if (localTourJSON === null) {
             router.push("/tour");
-            console.log("peyに遷移");
+            console.log("payに遷移");
           } else {
             router.push("/tour/pay");
             console.log("トップページに遷移");
@@ -73,7 +73,6 @@ export default function Login() {
                   body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
                 })
               ;
-
               localStorage.clear();
             });
           })
