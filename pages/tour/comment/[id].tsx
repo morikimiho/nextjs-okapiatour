@@ -24,7 +24,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async ({ params }: { params: any }) => {
   const { data, error } = await supabase
     .from("tours")
     .select("*")
@@ -104,8 +104,8 @@ export default function Comment({ tour }: { tour: Array<Tour> }) {
             コメント
             <br />
             <textarea
-              cols="50"
-              rows="10"
+              cols={50}
+              rows={10}
               value={text}
               onChange={changetextHandler}
             ></textarea>

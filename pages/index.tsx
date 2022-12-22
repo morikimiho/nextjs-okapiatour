@@ -11,6 +11,7 @@ https://tech-blog.rakus.co.jp/entry/20220928/vercel#Supabase%E3%81%A8%E3%81%AF
 
 import { supabase } from "../utils/supabaseClient"; // supabaseをコンポーネントで使うときはかく
 import { useState, useEffect } from "react";
+import Error from "next/error";
 
 const Form = () => {
   // データ送信
@@ -33,18 +34,17 @@ const Form = () => {
   const [data, setData] = useState<any>([]); // データを配列で受け取る
   const getData = async (e: any) => {
     e.preventDefault();
-    let { data, error } = await supabase
-    .from("users")
-    .select() // テーブル名 "testTable" のデータを取得
-    .eq("mailAddress", mailAddress)
+    let { data, error }: { data: any; error: any } = await supabase
+      .from("users")
+      .select() // テーブル名 "testTable" のデータを取得
+      .eq("mailAddress", mailAddress);
     // .eq("password", password);
     setData(data); // 取得したデータをステートで保持
-    const uni = data[0]
-    const userId = uni.id
-    console.log(userId)
+    const uni = data[0];
+    const userId = uni.id;
+    console.log(userId);
   };
-  console.log(data)
-
+  console.log(data);
 
   return (
     <>
@@ -66,7 +66,9 @@ const Form = () => {
       {/* 取得したデータを表示 */}
       {data.map((d: { id: number; firstName: string; lastName: any }) => (
         <ul key={d.id}>
-          <li>{d.firstName} {d.lastName}</li>
+          <li>
+            {d.firstName} {d.lastName}
+          </li>
         </ul>
       ))}
       <form onSubmit={getData}>

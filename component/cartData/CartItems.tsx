@@ -25,7 +25,7 @@ export function CartItems({
 }: Props) {
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [tourNew, setTourNew] = useState([]);
+  const [tourNew, setTourNew] = useState<any>([]);
 
   useEffect(() => {
     judgeError();
