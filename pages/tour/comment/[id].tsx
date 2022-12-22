@@ -89,6 +89,7 @@ export default function Comment({ tour }: { tour: Array<Tour> }) {
   return (
     <div>
       <Layout>
+        <title>オカピツアーコメント記入</title>
         <h2>口コミ</h2>
         <form onSubmit={submitHandler}>
           <h2>ツアーの感想ご記入をお願いいたします。</h2>

@@ -4,7 +4,7 @@ import { supabase } from "../../utils/supabaseClient";
 const getAirportAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const { abroad, areaCode, countryCode, cityCode, prefecture } = req.query;
 
-  console.log(abroad, areaCode, countryCode,cityCode,  prefecture);
+  // console.log(abroad, areaCode, countryCode,cityCode,  prefecture);
   let query = supabase.from("tours").select("*");
   if (abroad) {
     if (areaCode) {
