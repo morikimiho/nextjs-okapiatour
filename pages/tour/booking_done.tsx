@@ -26,14 +26,14 @@ export default function BookingDone() {
       .eq("userId", loginId);
     if (!data) return <div>loading...</div>;
     setData(data);
-    console.log("data", data)
+    // console.log("data", data)
 
     const cartItem = data[data.length - 1];
     setNumData(cartItem);
-    console.log("numData", numData);
+    // console.log("numData", numData);
   };
 
-  console.log("numData", numData);
+  // console.log("numData", numData);
 
   
 

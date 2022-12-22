@@ -90,7 +90,29 @@ export default function Pay() {
       userId: cart.userId,
       rsNumber: rsNumber,
     });
-    console.log("cart", cart);
+    // console.log("cart", cart);
+
+    //ポイントをuserに加算する
+    //まずは現在ポイントを取得
+    let currentP = await supabase
+      .from("users")
+      .select("OkaPoint")
+      .eq("id", loginId);
+
+    let userp = currentP.data;
+    if (!userp) return;
+    // console.log(userp);
+    let OkaP = userp.map((p) => {
+      return p.OkaPoint;
+    });
+ //ツアーの加算ポイント
+    let touramount = amount / 100;
+    let Total = OkaP[0] + touramount;
+  //現在ポイント+加算ポイント
+    console.log("total", Total);
+
+  //合計ポイントをデータに保存
+  await supabase.from('users').update({OkaPoint:Total}).eq("id",loginId);
 
     // await fetch(`/api/inCarts?userId=${loginId}`)
     //   .then((response) => response.json())
@@ -111,10 +133,7 @@ export default function Pay() {
     //   });
 
     //cartを空にする
-    await supabase
-    .from("inCarts")
-    .update({ tours: [] })
-    .eq("userId", loginId);
+    await supabase.from("inCarts").update({ tours: [] }).eq("userId", loginId);
 
     // if (cart) {
     //   fetch(`/api/inCarts/${cart?.id}`, {
@@ -187,6 +206,7 @@ export default function Pay() {
               })}
             <div>
               <h2>合計:{amount.toLocaleString()}円</h2>
+              <h3>加算OkaPonint:{amount / 100}ポイント</h3>
             </div>
           </div>
           <h3 className={styles.title}>

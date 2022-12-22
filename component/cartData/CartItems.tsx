@@ -86,6 +86,7 @@ export function CartItems({
                   })}
                 </div>
                 <h2>合計：{Number(amount).toLocaleString()}円</h2>
+                <h3>加算OkaPoint:{amount/100}ポイント</h3>
                 <p className={styles.error_message}>{errorMessage}</p>
                 <div className={styles.buttonsubmit}>
                   <div>

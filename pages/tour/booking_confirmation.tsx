@@ -18,16 +18,27 @@ export default function BookingConfirmation() {
     ConfData();
   }, [loginId]);
   const [data, setData] = useState<Order[]>([]);
+  const[point,setPoint]=useState<any>(0);
   const ConfData = async () => {
     let { data, error } = await supabase
       .from("orders")
-      .select("*")
+      .select(`*`)
       .eq("userId", loginId);
-    if (!data) return;
+      if (!data) return;
+      if(error)return ;
+      setData(data);
+   
+      //ポイント情報を取得
+    let point=await supabase.from(`users`).select(`OkaPoint`).eq("id", loginId);
 
-    setData(data);
+      //usersのポイントを取得
+    let userp=point.data;
+   if(!userp)return 
+    setPoint(userp[0].OkaPoint);
+   
   };
 
+  
   return (
     <>
       <Head>
@@ -37,7 +48,9 @@ export default function BookingConfirmation() {
         <main>
           <h1 className={styles.bookingC_title}>
             {loginName}さん、こんにちは！
+          
           </h1>
+          <h3>現在のOkaPointは<div className={styles.point}>{point}</div>ポイントです。ツアーを追加してポイントを貯めましょう！</h3>
           <h2 className={styles.bookingC_message}>ご予約内容</h2>
           {data.length ? (
             <p className={styles.bookingC_ok}>
@@ -59,9 +72,9 @@ export default function BookingConfirmation() {
               </div>
             </Link>
           )}
-          {data.map((d: Order) => {
+          {data.map((d: Order,index) => {
             return (
-              <div key={d.id} className={styles.bookings}>
+              <div key={index} className={styles.bookings}>
                 <h4 className={styles.booking_id}>予約番号: {d.rsNumber}</h4>
                 {d.tours.map((tour) => {
                   return (
