@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
 import { supabase } from "../../utils/supabaseClient";
+import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
@@ -17,8 +18,8 @@ export default function Login() {
   };
 
   //ログイン処理（CookieにsignedIn=trueとする）
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -105,6 +106,9 @@ export default function Login() {
   };
   return (
     <>
+        <Head>
+        <title>ログインページ</title>
+      </Head>
       <Layout>
         <div className={styles.container}>
           <h3 className={styles.title}>下記からログインしてください。</h3>

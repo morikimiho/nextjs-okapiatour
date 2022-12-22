@@ -18,7 +18,7 @@ const Form = () => {
   const [name, setTitle] = useState("");
   const [userId, setId] = useState("");
   const tours = ["tours", 2];
-  const submit = async (e: any) => {
+  const submit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     await supabase.from("testTable").insert({ name }); // 入れたい("テーブル名")と({カラム名})
     await supabase.from("inCarts").insert({ tours, userId }); // 入れたい("テーブル名")と({カラム名})
@@ -32,7 +32,7 @@ const Form = () => {
   const mailAddress = "keisuke@honda.com";
   const password = "keisuke04";
   const [data, setData] = useState<any>([]); // データを配列で受け取る
-  const getData = async (e: any) => {
+  const getData = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     let { data, error }: { data: any; error: any } = await supabase
       .from("users")
