@@ -92,7 +92,7 @@ const CreateUser = () => {
       });
 
       // 送信したユーザーのIDを取得
-      const { data, error } = await supabase
+      const { data, error }: {data: any, error: any} = await supabase
         .from("users")
         .select()
         .eq("mailAddress", `${mailAddress}`);
