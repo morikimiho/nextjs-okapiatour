@@ -6,10 +6,10 @@ import Router from "next/router";
 import { supabase } from "../../utils/supabaseClient";
 
 const CreateUser = () => {
-  const [firstName, setFirstName] = useState("");
-  const [firstNameKana, setFirstNameKana] = useState("");
   const [lastName, setLastName] = useState("");
   const [lastNameKana, setLastNameKana] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [firstNameKana, setFirstNameKana] = useState("");
   const [tel, setTel] = useState("");
   const [mailAddress, setMailAddress] = useState("");
   const [password, setPassword] = useState("");
@@ -34,16 +34,16 @@ const CreateUser = () => {
     const regex =
       /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
 
-    if (!firstName) {
+    if (!lastName) {
       setError(true);
       setErrorMessage("*姓を入力してください*");
-    } else if (!lastName) {
+    } else if (!firstName) {
       setError(true);
       setErrorMessage("名を入力してください");
-    } else if (!firstNameKana) {
+    } else if (!lastNameKana) {
       setError(true);
       setErrorMessage("姓(ふりがな)を入力してください");
-    } else if (!lastNameKana) {
+    } else if (!firstNameKana) {
       setError(true);
       setErrorMessage("名(ふりがな)を入力してください");
     } else if (!tel) {
@@ -79,10 +79,10 @@ const CreateUser = () => {
     } else {
       // supabaseに登録情報を送信
       await supabase.from("users").insert({
-        firstName,
-        firstNameKana,
         lastName,
         lastNameKana,
+        firstName,
+        firstNameKana,
         mailAddress,
         tel,
         password,
@@ -125,9 +125,9 @@ const CreateUser = () => {
                       <input
                         className={styles.input_name}
                         type="text"
-                        name="firstName"
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        name="lastName"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -138,10 +138,10 @@ const CreateUser = () => {
                     <div>
                       <input
                         className={styles.input_name}
-                        type="text"
+                        type="lastName"
                         name="lastName"
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -158,8 +158,8 @@ const CreateUser = () => {
                         className={styles.input_name}
                         type="text"
                         name="firstNameKana"
-                        value={firstNameKana}
-                        onChange={(e) => setFirstNameKana(e.target.value)}
+                        value={lastNameKana}
+                        onChange={(e) => setLastNameKana(e.target.value)}
                       />
                     </div>
                   </div>
@@ -172,8 +172,8 @@ const CreateUser = () => {
                         className={styles.input_name}
                         type="text"
                         name="lastNameKana"
-                        value={lastNameKana}
-                        onChange={(e) => setLastNameKana(e.target.value)}
+                        value={firstNameKana}
+                        onChange={(e) => setFirstNameKana(e.target.value)}
                       />
                     </div>
                   </div>
@@ -184,7 +184,7 @@ const CreateUser = () => {
 
               <div className={styles.form_birth}>
                 <label className={styles.form_label} htmlFor="">
-                  生年月日
+                  生年月日  
                 </label>
                 <div className={styles.form_birth_group}>
                   <div className={styles.form_birth_group_y}>

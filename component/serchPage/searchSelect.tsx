@@ -2,7 +2,6 @@ import Image from "next/legacy/image";
 import { Tour } from "../../types/types";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
-import { ScrTop } from "../tps";
 
 export function SearchSelect({ data, length }) {
   for (let i = length - 2; i > 0; i--) {
@@ -78,7 +77,6 @@ export function SearchSelect({ data, length }) {
           </div>
         );
       })}
-      <ScrTop />
     </>
   );
 }

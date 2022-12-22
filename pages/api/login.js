@@ -11,7 +11,7 @@ export default async function Handler(req, res) {
   .eq("password", password)
   const user = data[0];
   const id = user.id;
-  const name = encodeURI(user.firstName); // 日本語がクッキーに入らないので(?)エンコード
+  const name = encodeURI(user.lastName); // 日本語がクッキーに入らないので(?)エンコード
   
   res.setHeader("Set-Cookie", [
     `userOkapiaTour={"id":${id},"name":"${name}"}; max-age=86400; path=/`,

@@ -2,7 +2,6 @@ import { Tour } from "../../types/types";
 import Image from "next/image";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
-import { ScrTop } from "../tps";
 
 function arrayRandom(data) {
   for (let i = 48; i > 0; i--) {
@@ -78,7 +77,6 @@ export function Recommend({ data }) {
           </div>
         );
       })}
-      <ScrTop />
     </>
   );
 }
