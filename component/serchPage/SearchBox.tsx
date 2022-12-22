@@ -30,6 +30,7 @@ export function SearchBox({ setUrl }: Props) {
     setAbroad(val);
     setArea("");
     setCountry("");
+    setPrefecture("");
   };
 
   const onAreaChange = (val: Area) => {
@@ -82,6 +83,7 @@ export function SearchBox({ setUrl }: Props) {
     area: Area;
     onAreaChange: Function;
   }) => {
+
     const changeHandler = (e: { target: { value: any } }) => {
       onAreaChange(e.target.value);
     };
@@ -112,6 +114,8 @@ export function SearchBox({ setUrl }: Props) {
       </div>
     );
   };
+
+
   // 国内を選んだ場合
   const RouteJapan = ({
     setPrefecture,
@@ -168,8 +172,8 @@ export function SearchBox({ setUrl }: Props) {
         } else {
           query = query + `abroad=${abroad}&areaCode=${areaCode}`;
         }
-      } else if (prefecture.length > 0) {
-        query = query + `prefecture=${prefecture}`;
+      } else if (prefecture) {
+        query = query + `abroad=${abroad}&prefecture=${prefecture}`;
       } else {
         query = (query + `abroad=${abroad}`);
       }
