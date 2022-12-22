@@ -13,7 +13,7 @@ export function SearchSelect({ data, length, subtitle }) {
     data[r] = tmp;
   }
 
-  console.log(data);
+  // console.log(data);
   return (
     <>
     {subtitle?<div className={styles.headline}>検索結果</div>:<div className={styles.headline}>おすすめ</div>}
