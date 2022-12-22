@@ -1,3 +1,5 @@
+import { type } from "os";
+
 type Users = {
   id: number;
   name: string;
@@ -65,6 +67,13 @@ type Order = {
   tours: Array<Tour>;
   userId: number;
 };
+
+type Info = {
+  id: number;
+  date: string;
+  topic: string;
+  content:string;
+}
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
@@ -94,4 +103,5 @@ export type {
   City,
   Comment,
   Order,
+  Info
 };
