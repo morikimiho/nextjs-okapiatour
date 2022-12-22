@@ -4,12 +4,13 @@ import { SearchSelect } from "./searchSelect";
 
 type Props = {
   url: string;
+  subtitle:boolean
 };
 
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
-export function SearchResult({ url }: Props) {
+export function SearchResult({ url,subtitle }: Props) {
   const { data, error } = useSWR(url, fetcher);
 
   if (error) return <div>failed to load</div>;
@@ -19,7 +20,7 @@ export function SearchResult({ url }: Props) {
   return (
     <>
       <div id="serch_result" className={styles.search_result}>
-        <SearchSelect data={data} length={length} />
+        <SearchSelect data={data} length={length} subtitle={subtitle} />
       </div>
     </>
   );

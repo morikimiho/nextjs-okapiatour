@@ -11,6 +11,7 @@ import { SearchResult } from "../../component/serchPage/SearchResult";
 
 export default function Home() {
   const [url, setUrl] = useState("/api/supabaseTours");
+  const[subtitle,setSubtitle]=useState(false);
 
   const [isOpen, setIsOpen] = useState(true);
 
@@ -59,7 +60,7 @@ export default function Home() {
       </>
     );
   };
-  const SearchResultMemo = useMemo(() => <SearchResult url={url} />, [url]);
+  const SearchResultMemo = useMemo(() => <SearchResult url={url} subtitle={subtitle}/>, [url]);
   return (
     <div>
       <Head>
@@ -91,7 +92,7 @@ export default function Home() {
         <Slider />
       </div>
       <div className={styles.search_box}>
-        <SearchBox setUrl={setUrl} />
+        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
       </div>
       {SearchResultMemo}
     

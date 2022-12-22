@@ -20,7 +20,7 @@ type Props = {
   setUrl: Function;
 };
 
-export function SearchBox({ setUrl }: Props) {
+export function SearchBox({ setUrl,setSubtitle }: Props) {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   const [areaCode, setArea] = useState<Area>("");
@@ -154,6 +154,7 @@ export function SearchBox({ setUrl }: Props) {
     );
   };
   const onsubmitHandler = (e: { preventDefault: () => void }) => {
+    setSubtitle(true);
     e.preventDefault();
     let query = "?";
 
