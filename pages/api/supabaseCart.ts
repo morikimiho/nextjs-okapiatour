@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../utils/supabaseClient";
 
 const getAirportAPI = async (req: NextApiRequest, res: NextApiResponse) => {
-  const Req = JSON.parse(req.cookies.userOkapiaTour) as Cookie;
+  const Req = JSON.parse(req.cookies.userOkapiaTour as string);
   const Id = Req.id;
   //  console.log(Req);
   const { data, error } = await supabase

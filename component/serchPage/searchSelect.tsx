@@ -3,7 +3,7 @@ import { Tour } from "../../types/types";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 
-export function SearchSelect({ data, length }) {
+export function SearchSelect({ data, length }: {data: any, length: any}) {
   for (let i = length - 2; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
