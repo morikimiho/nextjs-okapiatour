@@ -12,6 +12,7 @@ export function SearchSelect({ data, length }) {
     data[r] = tmp;
   }
 
+  console.log(data);
   return (
     <>
       <div className={styles.headline}>検索結果</div>

@@ -94,7 +94,7 @@ export default function Home() {
         <SearchBox setUrl={setUrl} />
       </div>
       {SearchResultMemo}
-      <SearchResult url={url} />
+    
       <Footer />
     </div>
   );
