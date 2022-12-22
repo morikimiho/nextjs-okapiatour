@@ -48,7 +48,7 @@ export function CartItems({
     setTourNew(newTour);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
 
@@ -73,7 +73,7 @@ export function CartItems({
             {tours.length ? (
               <>
                 <div className={Styles.cartcontents}>
-                  {tours.map((tour: any) => {
+                  {tours.map((tour: { id: number }) => {
                     return (
                       <Cartlist
                         key={tour.id}

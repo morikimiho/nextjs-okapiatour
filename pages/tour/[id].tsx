@@ -75,7 +75,7 @@ export default function Tripdetail({
   const [timeError, setTimeError] = useState(false);
   const [error_message, setErrorMessage] = useState(false);
 
-  async function PostData(e: { preventDefault: () => any }) {
+  async function PostData(e: { preventDefault: () => void }) {
     if (dateError === false || timeError === false) {
       setErrorMessage(true);
       return e.preventDefault();

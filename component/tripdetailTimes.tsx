@@ -1,7 +1,9 @@
 import styles from "../styles/tripdetail.module.css";
 
 type Props = {
-  tour: any;
+  tour: {
+    times: number
+  };
   setTourDate: Function;
   setStartTime: Function;
   dateError: boolean;
@@ -19,7 +21,7 @@ export function TripdetailTimes({
   timeError,
   setTimeError,
 }: Props) {
-  function changeDate(e: { target: { value: any } }) {
+  function changeDate(e: { target: { value: string } }) {
     if(dateError === true && e.target.value === "") {
       setDateError(false);
     }else {

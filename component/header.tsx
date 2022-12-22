@@ -20,9 +20,9 @@ export function Header() {
     const url = location.href;
     console.log(url);
     if (url == `${process.env.NEXT_PUBLIC_BASE_URL}/tour`) {
-      Router.reload() as any;
+      Router.reload();
     } else {
-      Router.push("/tour/") as any;
+      Router.push("/tour/");
     }
   }
 

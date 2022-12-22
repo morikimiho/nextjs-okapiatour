@@ -26,7 +26,7 @@ const CreateUser = () => {
     setIsChecked(!isChecked);
   };
 
-  const handleSubmit = async (e: any) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     // 無効な入力値で送信されないために初めにキャンセルする
     e.preventDefault();
     //半角英数字のみ(空文字OK)
