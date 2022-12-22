@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 
-function arrayRandom(data) {
+function arrayRandom( data : any) {
   for (let i = 48; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
@@ -13,7 +13,7 @@ function arrayRandom(data) {
   return data;
 }
 
-export function Recommend({ data }) {
+export function Recommend({ data }:{data: any}) {
   return (
     <>
       <div className={styles.headline}>おすすめ</div>;

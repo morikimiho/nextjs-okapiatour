@@ -9,6 +9,7 @@ type Props = {
   tour:any;
   setAmount: Dispatch<SetStateAction<number>>;
   deleteHandler: Function;
+  tourNew:any;
 };
 
 export const Cartlist = ({ tour, setAmount, deleteHandler,tourNew}: Props) => {
@@ -34,7 +35,7 @@ export const Cartlist = ({ tour, setAmount, deleteHandler,tourNew}: Props) => {
         <p className={Styles.duplicate}>
           {Array.isArray(tourNew.get(tour.tourDate))&&
           tourNew.get(tour.tourDate).length>1&&
-          "※"+(tourNew.get(tour.tourDate)).filter(function(value){
+          "※"+(tourNew.get(tour.tourDate)).filter(function(value : any){
             return value !=tour.tourName
           })+"と日程が重複しています。"}
         </p>
