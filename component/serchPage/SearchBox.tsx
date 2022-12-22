@@ -171,11 +171,11 @@ export function SearchBox({ setUrl }: Props) {
       } else if (prefecture.length > 0) {
         query = query + `prefecture=${prefecture}`;
       } else {
-        query = query + `abroad=${abroad}`;
+        query = (query + `abroad=${abroad}`);
       }
     }
-
-    setUrl(`/api/tours${query}`);
+   
+    setUrl(`/api/supabaseTours${query}`);
   };
   return (
     <>
