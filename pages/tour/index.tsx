@@ -8,8 +8,6 @@ import "@splidejs/splide/css";
 import { useState, useMemo } from "react";
 import { SearchBox } from "../../component/serchPage/SearchBox";
 import { SearchResult } from "../../component/serchPage/SearchResult";
-import { Info } from "../../component/info";
-import { supabase } from "../../utils/supabaseClient";
 
 export default async function Home() {
   const [url, setUrl] = useState("/api/supabaseTours");
@@ -63,11 +61,6 @@ export default async function Home() {
     );
   };
 
- 
-    const {data, error} = await supabase.from("info").select("*");
-    if(!data) return;
-    if(error) console.log(error);
-
   const SearchResultMemo = useMemo(() => <SearchResult url={url} subtitle={subtitle}/>, [url]);
   return (
     <div>
@@ -99,7 +92,6 @@ export default async function Home() {
       <div className={styles.container}>
         <Slider />
       </div>
-        <Info data={data} />
       <div className={styles.search_box}>
         <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
       </div>
