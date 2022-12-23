@@ -157,3 +157,8 @@
   transform: translate(2px, 2px);
   box-shadow: none;
 }
+
+.point{
+  color: red;
+  display: inline;
+}
