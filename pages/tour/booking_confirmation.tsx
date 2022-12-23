@@ -13,33 +13,53 @@ export default function BookingConfirmation() {
 
   const loginName = cookie.loginName;
   const loginId = cookie.loginId;
+  const [okastatus, setOkastatus] = useState("/images/status/worm.png");
 
   useEffect(() => {
     ConfData();
   }, [loginId]);
   const [data, setData] = useState<Order[]>([]);
-  const[point,setPoint]=useState<any>(0);
+  const [point, setPoint] = useState<any>(0);
   const ConfData = async () => {
-    if(!loginId)return 
+    if (!loginId) return;
     let { data, error } = await supabase
       .from("orders")
       .select(`*`)
-      .eq("userId", loginId).order(`id`,{ ascending: false })
-      if (!data) return;
-      if(error)return ;
-      setData(data);
-   
-      //ポイント情報を取得
-    let point=await supabase.from(`users`).select(`OkaPoint`).eq("id", loginId);
+      .eq("userId", loginId)
+      .order(`id`, { ascending: false });
+    if (!data) return;
+    if (error) return;
+    setData(data);
 
-      //usersのポイントを取得
-    let userp=point.data;
-   if(!userp)return 
+    //ポイント情報を取得
+    let point = await supabase
+      .from(`users`)
+      .select(`OkaPoint`)
+      .eq("id", loginId);
+
+    //usersのポイントを取得
+    let userp = point.data;
+    if (!userp) return;
     setPoint(userp[0].OkaPoint);
-   
   };
 
-  
+  //ステータス表示
+  useEffect(()=>{
+    if (point >= 500) {
+      setOkastatus("/images/status/hamster.png");
+      if (point >= 1000) {
+        setOkastatus("/images/status/cat.png");
+        if (point >= 1500) {
+          setOkastatus("/images/status/lion.png");
+          if(point>=2000){
+            setOkastatus("/images/status/muscle-man.png")
+          }
+        }
+      }
+    }
+  })
+ 
+
   return (
     <>
       <Head>
@@ -47,11 +67,17 @@ export default function BookingConfirmation() {
       </Head>
       <Layout>
         <main>
-          <h1 className={styles.bookingC_title}>
-            {loginName}さん、こんにちは！
-          
-          </h1>
-          <h3>現在のOkaPointは<div className={styles.point}>{point}</div>ポイントです。ツアーを追加してポイントを貯めましょう！</h3>
+          <div className={styles.flex}>
+            <h1 className={styles.bookingC_title}>
+              {loginName}さん、こんにちは！
+            </h1>
+            <h2 className={styles.status}>現在のステータス</h2>
+            <Image src={okastatus} width={110} height={90} alt="画像"></Image>
+          </div>
+          <h3>
+            現在のOkaPointは<div className={styles.point}>{point}</div>
+            ポイントです。
+          </h3>
           <h2 className={styles.bookingC_message}>ご予約内容</h2>
           {data.length ? (
             <p className={styles.bookingC_ok}>
@@ -73,7 +99,7 @@ export default function BookingConfirmation() {
               </div>
             </Link>
           )}
-          {data.map((d: Order,index) => {
+          {data.map((d: Order, index) => {
             return (
               <div key={index} className={styles.bookings}>
                 <h4 className={styles.booking_id}>予約番号: {d.rsNumber}</h4>
