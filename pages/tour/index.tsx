@@ -8,12 +8,27 @@ import "@splidejs/splide/css";
 import { useState, useMemo } from "react";
 import { SearchBox } from "../../component/serchPage/SearchBox";
 import { SearchResult } from "../../component/serchPage/SearchResult";
+import { supabase } from "../../utils/supabaseClient";
+import { Info } from "../../types/types";
+import { Infomation } from "../../component/info";
 
-export default async function Home() {
+export const getStaticProps = async () => {
+  const {data, error} = await supabase.from("info").select("*");
+  if (!data) return;
+  if (error) return;
+
+  return {
+    props: {
+      data
+    }
+  }
+}
+export default function Home({data}:{data:Info[]}) {
   const [url, setUrl] = useState("/api/supabaseTours");
   const[subtitle,setSubtitle]=useState(false);
 
   const [isOpen, setIsOpen] = useState(true);
+
 
   setTimeout(() => {
     setIsOpen(false);
@@ -95,8 +110,8 @@ export default async function Home() {
       <div className={styles.search_box}>
         <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
       </div>
-      {SearchResultMemo}
-    
+      <Infomation data={data}/>
+      <div>{SearchResultMemo}</div>
       <Footer />
     </div>
   );

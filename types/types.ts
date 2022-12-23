@@ -45,6 +45,7 @@ type Tour = {
   startTime?: number;
   numberOfPeople?: number;
   total: number;
+  winterplan:boolean;
 };
 
 type Cart = {
@@ -73,6 +74,7 @@ type Info = {
   date: string;
   topic: string;
   content:string;
+  src:string;
 }
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";

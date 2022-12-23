@@ -1,21 +1,29 @@
-import { supabase } from "../utils/supabaseClient";
+import Link from "next/link";
 import style from "../styles/info.module.css"
 import { Info } from "../types/types";
 
-export function Info ({data}:{data: Info[]}) {
 
+
+export function Infomation ({data}:{data:Info[]}) {
+    const slicedata = data.slice(data.length-3, data.length);
+    const reversedArr = slicedata.reverse()
     return (
-        <div>
-            <div className={style.infotitle}>お知らせ</div>
-                {data.map((info)=> {
+        <>
+            {/* <div className={style.infotitle}>お知らせ</div> */}
+            <div className={style.infowrapper}>      
+                {reversedArr.map((info)=> {
                     return (
-                        <>
-                            <div className={style.infodate}>{info.date}</div>
-                            <div className={style.infotopic}>{info.topic}</div>
-                            <div className={style.intocont}>{info.content}</div>
-                        </>
+                        <div>
+                            <div className={style.flexbox}>
+                                <div className={style.infodate}>{info.date}</div>
+                                <div className={style.infotopic}>{info.topic}</div>
+                                <div className={style.infocont}><Link href={info.src}>{info.content}</Link></div>
+                            </div>
+                        </div>
                     );
                 })}
-        </div>
+            </div>
+        </>
     );
+
 } 
