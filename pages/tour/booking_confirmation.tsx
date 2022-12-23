@@ -44,21 +44,23 @@ export default function BookingConfirmation() {
   };
 
   //ステータス表示
-  useEffect(()=>{
-    if (point >= 500) {
-      setOkastatus("/images/status/hamster.png");
-      if (point >= 1000) {
-        setOkastatus("/images/status/cat.png");
-        if (point >= 1500) {
-          setOkastatus("/images/status/lion.png");
-          if(point>=2000){
-            setOkastatus("/images/status/muscle-man.png")
-          }
+  let status = "/images/status/hamster.png";
+  if (point >= 500) {
+    status = "/images/status/hamster.png";
+    if (point >= 1000) {
+      status = "/images/status/cat.png";
+      if (point >= 1500) {
+        status = "/images/status/lion.png";
+        if (point >= 2000) {
+          status = "/images/status/mascle-human.png";
         }
       }
     }
-  })
- 
+  }
+
+  useEffect(() => {
+    setOkastatus(status);
+  },[status]);
 
   return (
     <>
