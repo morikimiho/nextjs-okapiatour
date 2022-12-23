@@ -20,6 +20,7 @@ export default function BookingConfirmation() {
   const [data, setData] = useState<Order[]>([]);
   const[point,setPoint]=useState<any>(0);
   const ConfData = async () => {
+    if(!loginId)return 
     let { data, error } = await supabase
       .from("orders")
       .select(`*`)

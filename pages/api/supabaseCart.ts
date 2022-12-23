@@ -8,7 +8,7 @@ const getAirportAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   //  console.log(Req);
   const { data, error } = await supabase
     .from("inCarts")
-    .select("*")
+    .select("tours")
     .eq("userId", Id);
 
   // 401 Unauthorized、認証が必要

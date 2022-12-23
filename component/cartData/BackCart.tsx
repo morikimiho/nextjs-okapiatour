@@ -33,7 +33,7 @@ export function BackCart({ loginId, amount, setAmount }: Props) {
   if (error) return <div>failed to load</div>;
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
-  const cart = data[0];
+  
 
   const deleteHandler = async (val: number) => {
     const newTours = tours.filter((tour) => tour.id != val);

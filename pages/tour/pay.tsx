@@ -109,7 +109,7 @@ export default function Pay() {
     let touramount = amount / 100;
     let Total = OkaP[0] + touramount;
   //現在ポイント+加算ポイント
-    console.log("total", Total);
+    // console.log("total", Total);
 
   //合計ポイントをデータに保存
   await supabase.from('users').update({OkaPoint:Total}).eq("id",loginId);

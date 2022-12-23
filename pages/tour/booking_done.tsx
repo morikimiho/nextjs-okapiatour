@@ -11,7 +11,7 @@ import { Order } from "../../types/types";
 export default function BookingDone() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
-  const [numData, setNumData] = useState<Order>();
+  const [numData, setNumData] = useState<any>();
   //  if (!numData) return;
    
 
@@ -20,14 +20,16 @@ export default function BookingDone() {
   }, [loginId]);
   const [data, setData] = useState<Order[]>([]);
   const getOrders = async () => {
+    if(!loginId)return 
     let { data, error } = await supabase
       .from("orders")
-      .select("*")
+      .select("rsNumber")
       .eq("userId", loginId);
+      if(error)return ;
     if (!data) return <div>loading...</div>;
-    setData(data);
+   
+    // setData(data);
     // console.log("data", data)
-
     const cartItem = data[data.length - 1];
     setNumData(cartItem);
     // console.log("numData", numData);
