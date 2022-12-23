@@ -52,7 +52,7 @@ export const getStaticProps = async ({ params }:{params: any}) => {
     .select("*")
     .eq("tourid", params.id);
   const comment = await comRes.data;
-  console.log(comment);
+  // console.log(comment);
   return {
     props: { tour, comment },
     revalidate: 10,
