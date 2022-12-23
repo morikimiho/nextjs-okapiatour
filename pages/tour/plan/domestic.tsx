@@ -4,6 +4,7 @@ import Image from "next/legacy/image";
 import { supabase } from "../../../utils/supabaseClient";
 import { Tour } from "../../../types/types";
 import Head from "next/head";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
   const { data, error } = await supabase
@@ -49,7 +50,7 @@ export default function WinterPlan({ data }: { data: Tour[] }) {
                       <div className={style.cityname}>{tour.city}</div>
                       <div className={style.tourName}>{tour.tourName}</div>
                       価格：{tour.price}円〜
-                      <div className={style.button}>詳細はこちら</div>
+                      <Link href={`/tour/${tour.id}`}><div className={style.button}>詳細はこちら</div></Link>
                     </div>
                   </div>
                 </>
