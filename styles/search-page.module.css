@@ -78,13 +78,14 @@
   width: 200px;
   height: 45px;
   font-size: 18px;
+  cursor: pointer;
 }
 @media (max-width: 767px) {
   .search_input {
     width: 200px;
+    cursor: pointer;
   }
 }
-
 .flex {
   display: flex;
   padding: 0 10px;
@@ -362,4 +363,8 @@
   border-bottom: 3px solid #FFC896; 
   border-radius: 10px 15px 0 0;
   padding: 10px;
+}
+
+.eu {
+  cursor: pointer;
 }

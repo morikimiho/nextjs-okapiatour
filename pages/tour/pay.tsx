@@ -18,6 +18,8 @@ const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
+type Point = number;
+
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
@@ -35,10 +37,11 @@ export default function Pay() {
   };
   const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
+  const [point, setPoint] = useState<Point>(0);
+  const [usepoint, setUsepoint] = useState(0);
 
   useEffect(() => {
     if (!data) return;
-
     //カート
     const cartcontent = data[0];
     if (cartcontent) {
@@ -54,10 +57,36 @@ export default function Pay() {
     }
   }, [data]);
 
+  useEffect(() => {
+    Point();
+  });
+  const Point = async () => {
+    if (!loginId) return;
+    let currentP = await supabase
+      .from("users")
+      .select("OkaPoint")
+      .eq("id", loginId);
+
+    let userp = currentP.data;
+    if (!userp) return;
+    // console.log(userp);
+    let OkaP: number = userp.map((p) => {
+      return p.OkaPoint;
+    });
+    if (!OkaP) return;
+    setPoint(OkaP[0]);
+    // console.log(OkaP);
+  };
+
   // エラーになった場合は一覧は表示できないのでここで終わり
   if (error) return <div>failed to load</div>;
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
+
+  const changePoint = (e) => {
+    // console.log(e.target.value);
+    setUsepoint(e.target.value);
+  };
 
   // 決済する押下時の挙動
   const onClick = async () => {
@@ -90,7 +119,14 @@ export default function Pay() {
       userId: cart.userId,
       rsNumber: rsNumber,
     });
-    console.log("cart", cart);
+
+    //ツアーの加算ポイント
+    let touramount = Math.floor((amount - usepoint) / 100);
+
+    let Total = point + touramount - usepoint;
+
+    //合計ポイントをデータに保存
+    await supabase.from("users").update({ OkaPoint: Total }).eq("id", loginId);
 
     // await fetch(`/api/inCarts?userId=${loginId}`)
     //   .then((response) => response.json())
@@ -111,10 +147,7 @@ export default function Pay() {
     //   });
 
     //cartを空にする
-    await supabase
-    .from("inCarts")
-    .update({ tours: [] })
-    .eq("userId", loginId);
+    await supabase.from("inCarts").update({ tours: [] }).eq("userId", loginId);
 
     // if (cart) {
     //   fetch(`/api/inCarts/${cart?.id}`, {
@@ -186,7 +219,15 @@ export default function Pay() {
                 );
               })}
             <div>
-              <h2>合計:{amount.toLocaleString()}円</h2>
+              <h3>OkaPoint:{point}ポイント</h3>
+              <label htmlFor="">
+                使用ポイント：
+                <input type="text" onChange={changePoint} />
+              </label>
+              <h2>合計:{(amount - usepoint).toLocaleString()}円</h2>
+              <h3>
+                加算OkaPonint:{Math.floor((amount - usepoint) / 100)}ポイント
+              </h3>
             </div>
           </div>
           <h3 className={styles.title}>
