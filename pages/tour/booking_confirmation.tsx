@@ -24,7 +24,7 @@ export default function BookingConfirmation() {
     let { data, error } = await supabase
       .from("orders")
       .select(`*`)
-      .eq("userId", loginId);
+      .eq("userId", loginId).order(`id`,{ ascending: false })
       if (!data) return;
       if(error)return ;
       setData(data);
