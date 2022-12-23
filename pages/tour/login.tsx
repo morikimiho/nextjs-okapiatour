@@ -19,7 +19,7 @@ export default function Login() {
 
   //ログイン処理（CookieにsignedIn=trueとする）
   const handleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+    e.preventDefault(); 
     fetch("/api/login", {
       method: "POST",
       headers: {
