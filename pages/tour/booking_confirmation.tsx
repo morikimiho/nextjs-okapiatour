@@ -44,15 +44,15 @@ export default function BookingConfirmation() {
   };
 
   //ステータス表示
-  let status = "/images/status/hamster.png";
+  let status = "/images/status/okapia01.png";
   if (point >= 500) {
-    status = "/images/status/hamster.png";
+    status = "/images/status/okapia02.png";
     if (point >= 1000) {
-      status = "/images/status/cat.png";
+      status = "/images/status/okapia03.png";
       if (point >= 1500) {
-        status = "/images/status/lion.png";
+        status = "/images/status/okapia04.png";
         if (point >= 2000) {
-          status = "/images/status/mascle-human.png";
+          status = "/images/status/okapia05.png";
         }
       }
     }
