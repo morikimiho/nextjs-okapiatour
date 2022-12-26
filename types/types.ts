@@ -94,6 +94,12 @@ type Country =
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
+type Contact={
+  question:string;
+  description:string;
+  answer:string
+}
+
 export type {
   Users,
   Tour,
@@ -105,5 +111,6 @@ export type {
   City,
   Comment,
   Order,
-  Info
+  Info,
+  Contact
 };

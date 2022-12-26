@@ -1,6 +1,6 @@
 import styles from "../../styles/pay.module.css";
 import useCookie from "../../hooks/useCookie";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Layout from "../../component/layout";
 import Head from "next/head";
 import Image from "next/image";
@@ -27,6 +27,9 @@ export default function Pay() {
 
   const { data, error } = useSWR(`/api/supabaseCart`, fetcher);
 
+  //ポイントが保持ポイント以上の場合のバリデーション
+  const [pointcheck, setPointcheck] = useState(false);
+
   //お支払い方法未選択の場合
   const router = useRouter();
   const [error_message, setErrorMessage] = useState(false);
@@ -38,7 +41,10 @@ export default function Pay() {
   const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
   const [point, setPoint] = useState<Point>(0);
+  //使用ポイント数
   const [usepoint, setUsepoint] = useState(0);
+  //インプットに入れたポイント数をカウント
+  const [countpoint, setCountpoint] = useState(0);
 
   useEffect(() => {
     if (!data) return;
@@ -70,7 +76,7 @@ export default function Pay() {
     let userp = currentP.data;
     if (!userp) return;
     // console.log(userp);
-    let OkaP: number = userp.map((p) => {
+    let OkaP = userp.map((p) => {
       return p.OkaPoint;
     });
     if (!OkaP) return;
@@ -83,14 +89,32 @@ export default function Pay() {
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
 
-  const changePoint = (e) => {
-    // console.log(e.target.value);
+  //ポイント入力するごとにstateにセット
+  const changePoint = (e: any) => {
+    setCountpoint(e.target.value);
     setUsepoint(e.target.value);
   };
+
+  const decidePoint = (e:any) => {
+    if (e.target.value === "all") {
+      setUsepoint(point);
+      setCountpoint(0)
+    } else {
+      setUsepoint(countpoint);
+    }
+  };
+
+  console.log(usepoint);
 
   // 決済する押下時の挙動
   const onClick = async () => {
     if (loginId.length === 0) {
+      return;
+    }
+
+    //ポイントバリデーション
+    if (usepoint > point) {
+      setPointcheck(true);
       return;
     }
 
@@ -221,8 +245,38 @@ export default function Pay() {
             <div>
               <h3>OkaPoint:{point}ポイント</h3>
               <label htmlFor="">
-                使用ポイント：
-                <input type="text" onChange={changePoint} />
+                <div>
+                  <input
+                    type="radio"
+                    value="all"
+                    name="howpoint"
+                    onChange={decidePoint}
+                  />
+                  今回の注文で利用可能なポイントをすべて利用する:{point}円分
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    value="partial"
+                    name="howpoint"
+                    onChange={decidePoint}
+                  />
+                  一部のポイントを使用する：
+                  <input
+                    type="number"
+                    value={countpoint}
+                    size={4}
+                   
+                    onChange={changePoint}
+                  />
+                  {pointcheck ? (
+                    <p className={styles.pointcheck}>
+                      {point}ポイント以内で入力してください
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </label>
               <h2>合計:{(amount - usepoint).toLocaleString()}円</h2>
               <h3>
