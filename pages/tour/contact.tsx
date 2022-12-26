@@ -13,7 +13,7 @@ export default function Contact() {
   const [errorMessage, setErrorMessage] = useState("");
   
 
-  const onSubmit = async(e) => {
+  const onSubmit = async(e:any) => {
     e.preventDefault();
     if (!question) {
       setError(true);

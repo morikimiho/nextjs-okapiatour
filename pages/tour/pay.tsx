@@ -76,7 +76,7 @@ export default function Pay() {
     let userp = currentP.data;
     if (!userp) return;
     // console.log(userp);
-    let OkaP: number = userp.map((p) => {
+    let OkaP = userp.map((p) => {
       return p.OkaPoint;
     });
     if (!OkaP) return;
@@ -90,15 +90,15 @@ export default function Pay() {
   if (!data) return <div>loading...</div>;
 
   //ポイント入力するごとにstateにセット
-  const changePoint = (e: number) => {
+  const changePoint = (e: any) => {
     setCountpoint(e.target.value);
     setUsepoint(e.target.value);
   };
 
-  const decidePoint = (e) => {
+  const decidePoint = (e:any) => {
     if (e.target.value === "all") {
       setUsepoint(point);
-      setCountpoint("")
+      setCountpoint(0)
     } else {
       setUsepoint(countpoint);
     }
@@ -262,11 +262,11 @@ export default function Pay() {
                     onChange={decidePoint}
                   />
                   一部のポイントを使用する：
-                  <textarea
-                    type="text"
+                  <input
+                    type="number"
                     value={countpoint}
-                    cols={4}
-                    rows={1}
+                    size={4}
+                   
                     onChange={changePoint}
                   />
                   {pointcheck ? (
