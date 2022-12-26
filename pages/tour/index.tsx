@@ -13,22 +13,24 @@ import { Info } from "../../types/types";
 import { Infomation } from "../../component/info";
 
 export const getStaticProps = async () => {
-  const {data, error} = await supabase.from("info").select("*");
+  const { data, error } = await supabase
+    .from("info")
+    .select("*")
+    .order("id", { ascending: true });
   if (!data) return;
   if (error) return;
 
   return {
     props: {
-      data
-    }
-  }
-}
-export default function Home({data}:{data:Info[]}) {
+      data,
+    },
+  };
+};
+export default function Home({ data }: { data: Info[] }) {
   const [url, setUrl] = useState("/api/supabaseTours");
-  const[subtitle,setSubtitle]=useState(false);
+  const [subtitle, setSubtitle] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
   const [displayInfo, setDisplayInfo] = useState(true);
-
 
   setTimeout(() => {
     setIsOpen(false);
@@ -76,7 +78,10 @@ export default function Home({data}:{data:Info[]}) {
     );
   };
 
-  const SearchResultMemo = useMemo(() => <SearchResult url={url} subtitle={subtitle}/>, [url]);
+  const SearchResultMemo = useMemo(
+    () => <SearchResult url={url} subtitle={subtitle} />,
+    [url]
+  );
   return (
     <div>
       <Head>
@@ -108,10 +113,14 @@ export default function Home({data}:{data:Info[]}) {
         <Slider />
       </div>
       <div className={styles.search_box}>
-        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} setDisplayInfo={setDisplayInfo}/>
+        <SearchBox
+          setUrl={setUrl}
+          setSubtitle={setSubtitle}
+          setDisplayInfo={setDisplayInfo}
+        />
       </div>
-      <div style={{display: displayInfo ? "block" : "none"}} >
-        {<Infomation data={data}  />}
+      <div style={{ display: displayInfo ? "block" : "none" }}>
+        {<Infomation data={data} />}
       </div>
       <div>{SearchResultMemo}</div>
       <Footer />

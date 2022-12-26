@@ -75,6 +75,7 @@ type Info = {
   topic: string;
   content:string;
   src:string;
+  bold: boolean;
 }
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
