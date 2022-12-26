@@ -1,13 +1,14 @@
-import { JSXElementConstructor, Key, ReactElement, ReactFragment, ReactPortal, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Layout from "../../component/layout"
 import { supabase } from "../../utils/supabaseClient"
 import styles from "../../styles/questionhistory.module.css";
 import Link from "next/link";
+import { Contact } from "../../types/types";
 
 
 export default function Questionhistory() {
 
-const[questionhistory,setQuestionhistory]=useState<any>();
+const[questionhistory,setQuestionhistory]=useState<Contact[]>();
 
     useEffect(()=>{
         question()
@@ -15,7 +16,7 @@ const[questionhistory,setQuestionhistory]=useState<any>();
 
 const question=async()=>{
     const {data,error}=await supabase.from("contact").select(`question,description,answer`)
-   
+    if(!data)return;
     setQuestionhistory(data)
     // エラーになった場合は一覧は表示できないのでここで終わり
 if (error) return <div>failed to load</div>;
@@ -28,7 +29,7 @@ return(
     <>
     <Layout>
         <h1>よくある質問</h1>
-       {questionhistory?questionhistory.map((qu: { question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; answer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; },index: Key | null | undefined)=>{
+       {questionhistory?questionhistory.map((qu: Contact,index)=>{
         return (
             <div className={styles.question} key={index}>
                 
