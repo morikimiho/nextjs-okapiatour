@@ -22,9 +22,15 @@
     text-align: center;
 }
 
-/* .down {
-    background-image: url("/images/plan/down.png");
-} */
+.down {
+    display: flex;
+    margin-top: 50px;
+}
+
+.down img {
+    margin: 0 auto;
+    max-width: 96px;
+}
 
 .container {
     max-width: 1000px;

@@ -14,19 +14,21 @@ import { Australia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import Link from "next/link";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type Props = {
   setUrl: Function;
-  setSubtitle:Function
+  setSubtitle: Function;
+  setDisplayInfo: Dispatch<SetStateAction<boolean>>;
 };
 
-export function SearchBox({ setUrl,setSubtitle }: Props) {
+export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   const [areaCode, setArea] = useState<Area>("");
   const [country, setCountry] = useState<Country>("");
   const [city, setCity] = useState<City>("");
+
   const onAbroadChange = (val: Abroad) => {
     setAbroad(val);
     setArea("");
@@ -84,7 +86,6 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
     area: Area;
     onAreaChange: Function;
   }) => {
-
     const changeHandler = (e: { target: { value: any } }) => {
       onAreaChange(e.target.value);
     };
@@ -116,7 +117,6 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
     );
   };
 
-
   // 国内を選んだ場合
   const RouteJapan = ({
     setPrefecture,
@@ -143,12 +143,22 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
           >
             <option value="-">-</option>
             <option value="hoka">北海道</option>
-            <option value="miya"> 宮城</option>
+            <option value="miya">宮城</option>
+            <option value="nii">新潟</option>
+            <option value="ishi">石川</option>
+            <option value="yama">山梨</option>
+            <option value="tochi">栃木</option>
+            <option value="kana">神奈川</option>
             <option value="osk">大阪</option>
             <option value="kyo">京都</option>
+            <option value="mie">三重</option>
+            <option value="hiro">広島</option>
+            <option value="kag">香川</option>
+            <option value="ehi">愛媛</option>
             <option value="naga">長崎</option>
             <option value="fuku">福岡</option>
-            <option value="oki"> 沖縄</option>
+            <option value="oki">沖縄</option>
+
           </select>
         </div>
       </div>
@@ -156,6 +166,7 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
   };
   const onsubmitHandler = (e: { preventDefault: () => void }) => {
     setSubtitle(true);
+    setDisplayInfo(false);
     e.preventDefault();
     let query = "?";
 
@@ -177,10 +188,10 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
       } else if (prefecture) {
         query = query + `abroad=${abroad}&prefecture=${prefecture}`;
       } else {
-        query = (query + `abroad=${abroad}`);
+        query = query + `abroad=${abroad}`;
       }
     }
-   
+
     setUrl(`/api/supabaseTours${query}`);
   };
   return (

@@ -26,8 +26,8 @@ export const getStaticProps = async () => {
 export default function Home({data}:{data:Info[]}) {
   const [url, setUrl] = useState("/api/supabaseTours");
   const[subtitle,setSubtitle]=useState(false);
-
   const [isOpen, setIsOpen] = useState(true);
+  const [displayInfo, setDisplayInfo] = useState(true);
 
 
   setTimeout(() => {
@@ -108,9 +108,11 @@ export default function Home({data}:{data:Info[]}) {
         <Slider />
       </div>
       <div className={styles.search_box}>
-        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} />
+        <SearchBox setUrl={setUrl} setSubtitle={setSubtitle} setDisplayInfo={setDisplayInfo}/>
       </div>
-      <Infomation data={data}/>
+      <div style={{display: displayInfo ? "block" : "none"}} >
+        {<Infomation data={data}  />}
+      </div>
       <div>{SearchResultMemo}</div>
       <Footer />
     </div>
