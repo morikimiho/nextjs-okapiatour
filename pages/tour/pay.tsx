@@ -90,6 +90,8 @@ export default function Pay() {
       userId: cart.userId,
       rsNumber: rsNumber,
     });
+    console.log("cart", cart.tours);
+    console.log("cart", cart.userId);
     console.log("cart", cart);
 
     // await fetch(`/api/inCarts?userId=${loginId}`)
@@ -149,7 +151,7 @@ export default function Pay() {
         console.log(error);
       }
     }
-    router.push("/tour/booking_done");
+    // router.push("/tour/booking_done");
   };
   return (
     <>

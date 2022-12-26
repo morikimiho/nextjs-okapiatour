@@ -1,30 +1,26 @@
 import styles from "../../styles/login.module.css";
 import Link from "next/link";
-import Head from "next/head";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
 import { supabase } from "../../utils/supabaseClient";
-import { useForm, SubmitHandler } from "react-hook-form";
-
-type inputForm = {
-  mailAddress: string;
-  password: string;
-};
+import Head from "next/head";
 
 export default function Login() {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<inputForm>();
+  const [mailAddress, setMailAddress] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const data = {
+    mailAddress: mailAddress,
+    password: password,
+  };
 
   //ログイン処理（CookieにsignedIn=trueとする）
-  const onSubmit: SubmitHandler<inputForm> = async (data, e: any) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    const mailAddress = data.mailAddress;
-    const password = data.password;
-    console.log(data);
+    console.log(data)
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -37,22 +33,29 @@ export default function Login() {
         response.json();
         if (response.status !== 200) {
           console.log("失敗");
+          setError(true);
         } else if (response.status === 200) {
           const localTourJSON = localStorage.getItem("tours");
           if (localTourJSON === null) {
-            // router.push("/tour");
+            router.push("/tour");
             console.log("トップページに遷移");
           } else {
-            // router.push("/tour/pay");
+            router.push("/tour/pay");
             console.log("payに遷移");
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-          const { data }: { data: any } = await supabase
+          const { data, error }: { data: any; error: any } = await supabase
             .from("users")
             .select("*")
             .eq("mailAddress", mailAddress)
             .eq("password", password);
+
+          // await fetch(
+          //   `/api/users?mailAddress=${mailAddress}&password=${password}`
+          // )
+          //   .then((response) => response.json())
+          //   .then(async (dat) => {
 
           const user = data[0];
           // console.log(user);
@@ -79,6 +82,20 @@ export default function Login() {
               .eq("userId", id);
           }
           localStorage.clear();
+          // await fetch(`/api/inCarts?userId=${id}`)
+          //   .then((response) => response.json())
+          //   .then((data) => {
+          //     const cart = data[0];
+          //     //ローカルをバックカートに追加、元々のバックのツアーは残したまま
+          //       // fetch(`/api/inCarts/${id}`, {
+          //       //   method: "PATCH",
+          //       //   headers: {
+          //       //     "Content-Type": "application/json",
+          //       //   },
+          //       //   body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
+          //       // })
+          //     ;
+          //   });
         }
       })
       .then((data) => {
@@ -88,6 +105,44 @@ export default function Login() {
         console.error(error);
       });
   };
+  const supaSub = async () => {
+    console.log("uni");
+    const { data, error } = await supabase.auth.signUp({
+      email: "flambe1191@gmail.com",
+      password: "examplepassword",
+      options: {
+        data: {
+          user_name: "John",
+          employee_position: "John",
+        },
+      },
+    });
+  };
+  const supaLogin = async () => {
+    console.log("tako");
+    const name = "uni";
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: "flambe1191@gmail.com",
+      password: "examplepassword",
+    });
+    await supabase.from("testTable").insert({ name }); // 入れたい("テーブル名")と({カラム名})
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    // const { data, error } = await supabase.auth.getSession();
+
+    // console.log(user);
+    console.log(data);
+  };
+  const supaLogout = async () => {
+    const { error } = await supabase.auth.signOut();
+  };
 
   return (
     <>
@@ -96,14 +151,17 @@ export default function Login() {
       </Head>
       <Layout>
         <div className={styles.container}>
-          {/* <div className={styles.animation_ts}></div> */}
+        {/* <div className={styles.animation_ts}></div> */}
           <h3 className={styles.title}>下記からログインしてください。</h3>
           <div className={styles.inner_border}>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className={styles.input_form}
-            >
+            <form onSubmit={handleSubmit} className={styles.input_form}>
               <div>
+                <span
+                  className={styles.error_message}
+                  style={{ display: error ? "block" : "none" }}
+                >
+                  *入力に誤りがあります。*
+                </span>
                 <div>
                   <label htmlFor="mailAddress">メールアドレス</label>
                   <div>
@@ -111,15 +169,9 @@ export default function Login() {
                       className={styles.input_name}
                       id="mailAddress"
                       type="email"
-                      {...register("mailAddress", {
-                        required: true,
-                      })}
+                      name="mailAddress"
+                      onChange={(e) => setMailAddress(e.target.value)}
                     />
-                    {errors.password?.type === "required" && (
-                      <div className={styles.error_message}>
-                        メールアドレスを入力してください
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -130,15 +182,9 @@ export default function Login() {
                       className={styles.input_name}
                       id="password"
                       type="password"
-                      {...register("password", {
-                        required: true,
-                      })}
+                      name="password"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
-                    {errors.password?.type === "required" && (
-                      <div className={styles.error_message}>
-                        パスワードを入力してください
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -155,6 +201,9 @@ export default function Login() {
             新規登録はこちら
           </button>
         </Link>
+        <button onClick={supaSub}>登録</button>
+        <button onClick={supaLogin}>ログイン</button>
+        <button onClick={supaLogout}>ログアウト</button>
       </Layout>
     </>
   );

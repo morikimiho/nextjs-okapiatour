@@ -83,3 +83,87 @@
   text-align: center;
   padding-bottom: 20px;
 }
+
+.animation_ts {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(103, 238, 135);
+  position: relative;
+  border-radius: 99px;
+  -webkit-animation-name: testAnimation;
+          animation-name: testAnimation;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes testAnimation {
+  0% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 100vw;
+    height: 100vh;
+    top: 100px;
+    left: 50px;
+    background-color: rgb(241, 145, 214);
+    transform: rotate(540deg);
+  }
+  75% {
+    width: 100%;
+    top: -100px;
+    left: 0px;
+    background-color: rgb(226, 249, 112);
+    transform: rotateY(660deg);
+    transform: rotateX(860deg);
+    opacity: 0.1;
+  }
+  100% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    transform: rotate(1360deg);
+    background-color: rgb(255, 0, 0);
+    opacity: 0.3;
+  }
+}
+
+@keyframes testAnimation {
+  0% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 100vw;
+    height: 100vh;
+    top: 100px;
+    left: 50px;
+    background-color: rgb(241, 145, 214);
+    transform: rotate(540deg);
+  }
+  75% {
+    width: 100%;
+    top: -100px;
+    left: 0px;
+    background-color: rgb(226, 249, 112);
+    transform: rotateY(660deg);
+    transform: rotateX(860deg);
+    opacity: 0.1;
+  }
+  100% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    transform: rotate(1360deg);
+    background-color: rgb(255, 0, 0);
+    opacity: 0.3;
+  }
+}
