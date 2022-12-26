@@ -10,6 +10,14 @@
     position: relative;
 }
 
+.natureImage {
+    background-image: url(/images/plan/nature01.jpg);
+    position: relative;
+    width: 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
 .topmessage {
     position: absolute;
     color: azure;
@@ -19,6 +27,19 @@
     left: 10%;
     padding: 20px 40px;
     background-color: rgb(34, 31, 31, 0.8);
+    text-align: center;
+}
+
+.natureMessage {
+    position: absolute;
+    color: azure;
+    font-size: 40px;
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+    top: 50%;
+    right: 10%;
+    padding: 20px 40px;
+    background-color: rgba(168, 223, 218, 0.8);
+    text-shadow: 1px 1px 2px gray;
     text-align: center;
 }
 
@@ -64,14 +85,31 @@
     width: 298px;
     height: 200px;
 }
-.cityname {
+
+.blockCont {
+    display: flex;
+}
+
+.nationName {
     font-size: 15px;
-    background-color: rgb(206, 236, 252);
+    background-color: rgb(236, 254, 245);
     padding: 5px 10px;
     border: 1px solid black;
     text-align: center;
     border-radius: 10px;
-    max-width: 80px;
+    max-width: 140px;
+    font-weight: bold;
+    color: rgb(67, 67, 67);
+    margin-right: 10px;
+}
+.cityname {
+    font-size: 15px;
+    background-color: rgb(236, 254, 245);
+    padding: 5px 10px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+    max-width: 100px;
     font-weight: bold;
     color: rgb(67, 67, 67);
 }
@@ -92,6 +130,6 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
-    background-color: rgb(206, 236, 252);
+    background-color: rgb(236, 254, 245);
     color: rgb(67, 67, 67);
 }
