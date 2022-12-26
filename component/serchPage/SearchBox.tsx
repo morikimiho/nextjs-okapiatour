@@ -86,7 +86,6 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
     area: Area;
     onAreaChange: Function;
   }) => {
-
     const changeHandler = (e: { target: { value: any } }) => {
       onAreaChange(e.target.value);
     };
@@ -118,7 +117,6 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
     );
   };
 
-
   // 国内を選んだ場合
   const RouteJapan = ({
     setPrefecture,
@@ -145,12 +143,22 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
           >
             <option value="-">-</option>
             <option value="hoka">北海道</option>
-            <option value="miya"> 宮城</option>
+            <option value="miya">宮城</option>
+            <option value="nii">新潟</option>
+            <option value="ishi">石川</option>
+            <option value="yama">山梨</option>
+            <option value="tochi">栃木</option>
+            <option value="kana">神奈川</option>
             <option value="osk">大阪</option>
             <option value="kyo">京都</option>
+            <option value="mie">三重</option>
+            <option value="hiro">広島</option>
+            <option value="kag">香川</option>
+            <option value="ehi">愛媛</option>
             <option value="naga">長崎</option>
             <option value="fuku">福岡</option>
-            <option value="oki"> 沖縄</option>
+            <option value="oki">沖縄</option>
+
           </select>
         </div>
       </div>
@@ -180,10 +188,10 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
       } else if (prefecture) {
         query = query + `abroad=${abroad}&prefecture=${prefecture}`;
       } else {
-        query = (query + `abroad=${abroad}`);
+        query = query + `abroad=${abroad}`;
       }
     }
-   
+
     setUrl(`/api/supabaseTours${query}`);
   };
   return (
