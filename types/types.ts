@@ -92,6 +92,10 @@ type Country =
   | "phi"
   | "bra"
   | "egy"
+  | "nor"
+  | "ind"
+  | "thai"
+  | "can"
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 

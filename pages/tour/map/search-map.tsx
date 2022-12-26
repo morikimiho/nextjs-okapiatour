@@ -2,7 +2,7 @@ import Head from "next/head";
 import Layout from "../../../component/layout";
 import style from "../../../styles/search-map.module.css";
 
-export default function searchJPmap() {
+export default function searchmap() {
   return (
     <>
       <Head>
