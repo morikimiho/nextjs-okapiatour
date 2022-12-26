@@ -41,7 +41,20 @@ export function Header() {
             </Link>
           </div>
           <div className={styles.buttons}>
+          <div className={styles.contact}>
+            <Link href="/tour/contact">
+                  <div className={styles.contact_size}>
+                    <Image
+                      src="/images/help-desk.png"
+                      alt="お問合せ"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className={styles.icon_name}>お問合せ</div>
+                </Link>
+          </div>
             <div className={styles.cart}>
+             
               <Link href="/tour/cart">
                 <div className={styles.cart_size}>
                   <Image
