@@ -14,19 +14,21 @@ import { Australia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import Link from "next/link";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type Props = {
   setUrl: Function;
-  setSubtitle:Function
+  setSubtitle: Function;
+  setDisplayInfo: Dispatch<SetStateAction<boolean>>;
 };
 
-export function SearchBox({ setUrl,setSubtitle }: Props) {
+export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   const [areaCode, setArea] = useState<Area>("");
   const [country, setCountry] = useState<Country>("");
   const [city, setCity] = useState<City>("");
+
   const onAbroadChange = (val: Abroad) => {
     setAbroad(val);
     setArea("");
@@ -156,6 +158,7 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
   };
   const onsubmitHandler = (e: { preventDefault: () => void }) => {
     setSubtitle(true);
+    setDisplayInfo(false);
     e.preventDefault();
     let query = "?";
 
