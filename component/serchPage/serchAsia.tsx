@@ -30,6 +30,8 @@ export const AsiaCountry = ({
             <option value="ko">韓国</option>
             <option value="taiwa">台湾</option>
             <option value="phi">フィリピン</option>
+            <option value="ind">インド</option>
+            <option value="thai">タイ</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -129,6 +131,72 @@ export const Philippines = ({
             <option value="">-</option>
             <option value="mani">マニラ</option>
             <option value="sebu">セブ</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const India = ({
+  setCity,
+  city,
+}: {
+  city: City;
+  setCity: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any } }) => {
+    setCity(e.target.value);
+  };
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select
+            className={styles.search_input}
+            value={city}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="agu">アーグラ</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const Thai = ({
+  setCity,
+  city,
+}: {
+  city: City;
+  setCity: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any } }) => {
+    setCity(e.target.value);
+  };
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select
+            className={styles.search_input}
+            value={city}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="ban">バンコク</option>
           </select>
         </div>
       </div>

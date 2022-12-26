@@ -7,9 +7,9 @@ import {
   City,
   Tour,
 } from "../../types/types";
-import { EuropeCountry, France, Italy, Spain } from "./serchEurope";
-import { AsiaCountry, Korea, Philippines, Taiwan } from "./serchAsia";
-import { NorthameCountry, Uni } from "./sertchNorthAmerica";
+import { EuropeCountry, France, Italy, Norway, Spain } from "./serchEurope";
+import { AsiaCountry, India, Korea, Philippines, Taiwan, Thai } from "./serchAsia";
+import { Canada, NorthameCountry, Uni } from "./sertchNorthAmerica";
 import { Australia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
@@ -158,7 +158,6 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
             <option value="naga">長崎</option>
             <option value="fuku">福岡</option>
             <option value="oki">沖縄</option>
-
           </select>
         </div>
       </div>
@@ -252,9 +251,12 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
               )}
               {"fr" === country && <France city={city} setCity={setCity} />}
               {"ita" === country && <Italy city={city} setCity={setCity} />}
+              {"nor" === country && <Norway city={city} setCity={setCity} />}
               {"ko" === country && <Korea city={city} setCity={setCity} />}
               {"ame" === country && <Uni city={city} setCity={setCity} />}
               {"sp" === country && <Spain city={city} setCity={setCity} />}
+              {"thai" === country && <Thai city={city} setCity={setCity} />}
+              {"can" === country && <Canada city={city} setCity={setCity} />}
               {"phi" === country && (
                 <Philippines city={city} setCity={setCity} />
               )}
@@ -262,6 +264,7 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
               {"aus" === country && <Australia city={city} setCity={setCity} />}
               {"bra" === country && <Bra city={city} setCity={setCity} />}
               {"egy" === country && <Egy city={city} setCity={setCity} />}
+              {"ind" === country && <India city={city} setCity={setCity} />}
             </div>
             <button className={styles.search_submit} onClick={onsubmitHandler}>
               検索
