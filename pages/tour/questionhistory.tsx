@@ -15,7 +15,7 @@ const[questionhistory,setQuestionhistory]=useState<any>();
 
 const question=async()=>{
     const {data,error}=await supabase.from("contact").select(`question,description,answer`)
-    
+   
     setQuestionhistory(data)
     // エラーになった場合は一覧は表示できないのでここで終わり
 if (error) return <div>failed to load</div>;
@@ -28,7 +28,7 @@ return(
     <>
     <Layout>
         <h1>よくある質問</h1>
-       {questionhistory.map((qu: { question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; answer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; },index: Key | null | undefined)=>{
+       {questionhistory?questionhistory.map((qu: { question: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; description: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; answer: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined; },index: Key | null | undefined)=>{
         return (
             <div className={styles.question} key={index}>
                 
@@ -39,7 +39,7 @@ return(
                 </ul>
             </div>
         )
-       })}
+       }):""}
        <Link rel="stylesheet" href="/tour/contact">
             <h2 className={styles.questionhistory}>お問合せはこちら</h2>
         </Link>
