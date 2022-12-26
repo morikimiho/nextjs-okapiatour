@@ -35,7 +35,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }:{params: any}) => {
+export const getStaticProps = async ({ params }: { params: any }) => {
   if (!params) return;
   const { data, error } = await supabase
     .from("tours")
