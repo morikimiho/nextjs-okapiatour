@@ -10,7 +10,7 @@ import {
 import { EuropeCountry, France, Italy, Norway, Spain } from "./serchEurope";
 import { AsiaCountry, India, Korea, Philippines, Taiwan, Thai } from "./serchAsia";
 import { Canada, NorthameCountry, Uni } from "./sertchNorthAmerica";
-import { Australia, OceCountry } from "./oceania";
+import { Australia, Micronesia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import Link from "next/link";
@@ -262,6 +262,7 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
               )}
               {"taiwa" === country && <Taiwan city={city} setCity={setCity} />}
               {"aus" === country && <Australia city={city} setCity={setCity} />}
+              {"micro" === country && <Micronesia city={city} setCity={setCity} />}
               {"bra" === country && <Bra city={city} setCity={setCity} />}
               {"egy" === country && <Egy city={city} setCity={setCity} />}
               {"ind" === country && <India city={city} setCity={setCity} />}

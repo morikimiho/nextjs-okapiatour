@@ -59,6 +59,7 @@ export const Uni = ({ city, setCity }: { city: City; setCity: Function }) => {
             <option value="">-</option>
             <option value="vegas">ラスベガス</option>
             <option value="los">ロサンゼルス</option>
+            <option value="haw">ハワイ</option>
           </select>
         </div>
       </div>
