@@ -8,7 +8,7 @@ import {
   Tour,
 } from "../../types/types";
 import { EuropeCountry, France, Italy, Norway, Spain } from "./serchEurope";
-import { AsiaCountry, India, Korea, Philippines, Taiwan, Thai } from "./serchAsia";
+import { AsiaCountry, China, India, Korea, Philippines, Taiwan, Thai } from "./serchAsia";
 import { Canada, NorthameCountry, Uni } from "./sertchNorthAmerica";
 import { Australia, Micronesia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
@@ -266,6 +266,7 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
               {"bra" === country && <Bra city={city} setCity={setCity} />}
               {"egy" === country && <Egy city={city} setCity={setCity} />}
               {"ind" === country && <India city={city} setCity={setCity} />}
+              {"chi" === country && <China city={city} setCity={setCity} />}
             </div>
             <button className={styles.search_submit} onClick={onsubmitHandler}>
               検索

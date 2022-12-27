@@ -58,6 +58,27 @@ export default function searchmap() {
                     <li className={style.taiwa}>
                       <a href="/tour/map/6">台湾</a>
                     </li>
+                    <li className={style.nor}>
+                      <a href="/tour/map/27">ノルウェー</a>
+                    </li>
+                    <li className={style.ind}>
+                      <a href="/tour/map/28">インド</a>
+                    </li>
+                    <li className={style.thai}>
+                      <a href="/tour/map/29">タイ</a>
+                    </li>
+                    <li className={style.can}>
+                      <a href="/tour/map/30">カナダ</a>
+                    </li>
+                    <li className={style.micro}>
+                      <a href="/tour/map/31">ミクロネシア連邦</a>
+                    </li>
+                    <li className={style.haw}>
+                      <a href="/tour/map/32">ハワイ</a>
+                    </li>
+                    <li className={style.chi}>
+                      <a href="/tour/map/33">中国</a>
+                    </li>
                   </ul>
                 </div>
               </div>
