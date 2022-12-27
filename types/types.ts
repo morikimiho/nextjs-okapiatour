@@ -96,6 +96,7 @@ type Country =
   | "ind"
   | "thai"
   | "can"
+  | "micro"
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
 
