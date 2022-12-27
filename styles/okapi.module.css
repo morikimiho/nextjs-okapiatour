@@ -12,14 +12,87 @@
 }
 .cong{
     position: absolute;
-    width: 1000px;
-    height: 400px;
-    top: 190px;
-    left: 250px;
+    width: 1200px;
+    height: 500px;
+    top: 20px;
+    left: 140px;
     background-color:#ffc896;
     border-radius: 40px;
     text-align: center;
+    
 }
+.okapi1{
+    position: absolute;
+    left: 400px;
+    top:20px
+}
+.okapi2{
+    position: absolute;
+    left: 200px;
+    top:230px
+}
+.okapi3{
+    position: absolute;
+    left: 800px;
+    top:320px
+}
+.okapi4{
+    position: absolute;
+    left: 800px;
+    top:5px
+}
+.okapi5{
+    position: absolute;
+    left: 200px;
+    top:5px
+}
+.keyframe0{
+    animation-name: anim_po;
+  }
+  
+  .animation{
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    animation-duration: 1.5s;
+  
+  }
+  @keyframes anim_po {
+    0% {
+      opacity: 0;
+      
+    }
+    100% {
+        opacity: 6;
+    }
+  }
+  .keyframe1{
+    animation:3s linear infinite rotation;
+  }
+  @keyframes rotation{
+    0%{ transform:rotate(0);}
+    100%{ transform:rotate(360deg); }
+  }
+
+  .keyframe2{
+    animation:3s linear infinite rotation;
+    animation-delay: 1.2s;
+  }
+  
+  .keyframe3{
+    animation:3s linear infinite rotation;
+    animation-delay: 1.8s;
+  }
+
+  .keyframe4{
+    animation:3s linear infinite rotation;
+    animation-delay: 2.0s;
+  }
+  .keyframe5{
+    animation:3s linear infinite rotation;
+    animation-delay: 2.2s;
+  }
+
+
 .link{
     color: red;
 }
@@ -31,8 +104,8 @@
 .ome{
     font-weight: bold;
     color:white;
-    position: relative;
-    top: 190px;
+    position: absolute;
+    top: 160px;
     left: 200px;
     border: #3d3b39;
     width: 300px;
@@ -57,7 +130,7 @@
     color:white;
     position: relative;
     top: 190px;
-    left: 750px;
+    left: 1000px;
     border: #3d3b39;
     width: 300px;
     padding: 20px;

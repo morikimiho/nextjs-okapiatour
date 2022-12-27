@@ -43,6 +43,7 @@ export function Header() {
           <div className={styles.buttons}>
           <div className={styles.game}>
             <Link href="/tour/search-okapi">
+    
                   <div className={styles.game_size}>
                     <Image
                       src="/images/video.png"
