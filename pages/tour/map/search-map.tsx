@@ -76,6 +76,9 @@ export default function searchmap() {
                     <li className={style.haw}>
                       <a href="/tour/map/32">ハワイ</a>
                     </li>
+                    <li className={style.chi}>
+                      <a href="/tour/map/33">中国</a>
+                    </li>
                   </ul>
                 </div>
               </div>
