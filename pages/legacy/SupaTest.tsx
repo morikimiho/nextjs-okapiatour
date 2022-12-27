@@ -123,9 +123,6 @@ const Form = () => {
       <button onClick={supaSub}>登録</button>
       <button onClick={supaLogin}>ログイン</button>
       <button onClick={getUser}>取得</button>
-      <Link href="/tst_auth">
-      <button>飛ぶぞ</button>
-      </Link>
     </>
   );
 };
