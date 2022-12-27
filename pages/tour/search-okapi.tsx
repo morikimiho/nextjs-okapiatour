@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Okapi() {
     const cookie = useCookie();
   const loginId = cookie.loginId;
-  const [okapi, setOkapi] = useState(9);
+  const [okapi, setOkapi] = useState(0);
   const [disable1, setDisable1] = useState(false);
   const [disable2, setDisable2] = useState(false);
   const [disable3, setDisable3] = useState(false);
