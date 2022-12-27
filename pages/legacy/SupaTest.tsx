@@ -54,15 +54,23 @@ const Form = () => {
   // create user
   const supaSub = async () => {
     const { data, error } = await supabase.auth.signUp({
-      email: "flamberge191@gmail.com",
+      email: "flamber@example.com",
       password: "examplpassword",
+      options: {
+        data: {
+          first_name: 'John',
+          last_name: 'Beck',
+          age: 27,
+          birth: 1996,
+        }
+      }
     });
     console.log(data);
   };
   // login
   const supaLogin = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({
-      email: "flamberge191@gmail.com",
+      email: "flamber@example.com",
       password: "examplpassword",
     });
     console.log(data);
@@ -71,15 +79,15 @@ const Form = () => {
     // const {
     //   data: { user },
     // } = await supabase.auth.getUser();
-    // console.log(user);
+    // console.log(user.user_metadata);
 
-    const { data: { session } } = await supabase.auth.getSession()
-    console.log(session);
+    // const { data: { session } } = await supabase.auth.getSession()
+    // console.log(session);
 
     // const { data, error } = await supabase.auth.refreshSession();
     // const { session, user } = data;
     // console.log(data);
-    
+      
   };
 
   return (
