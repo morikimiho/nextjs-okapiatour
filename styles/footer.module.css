@@ -1,8 +1,34 @@
+.list{
+    
+    list-style: none;
+    font-size: 0.5rem;
+    margin-left: 20px;
+    padding: 0;
+}
+.trip{
+    padding-left: 20px;
+}
+.horse{
+   
+    margin-bottom: 5px;
+}
+.bigfotter{
+    margin-top: 100px;
+    display: flex;
+    background-color: #FFC896;
+  
+    height: 200px;
+}
+
+.page_link{
+margin-left: 40px;
+display: flex;
+margin-right: 20px;
+}
 
 .footer {
-    background-color: #FFC896;
+    margin-left: 30px;
     height: 50px;
-    text-align: center;
     display: table;
     width: 100%;
     position: relative;
@@ -18,13 +44,12 @@
     display: flex;
     justify-content: center;
     margin-left: -70px;
-    background-color: #FFC896;
+ 
     margin-top: 50px;
 }
 .socials {
     display: flex;
-    justify-content: center;
-    background-color: #FFC896;
+    margin-right: 10px;
 }
 .face {
     margin: 15px;
