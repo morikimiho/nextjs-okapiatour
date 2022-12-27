@@ -66,7 +66,6 @@
   left: 50%;
   transform: translateX(-50%);
 }
-
 .contact_size{
   position: relative;
   width: 30px;
@@ -75,6 +74,17 @@
   transform: translateX(-50%);
 }
 .contact{
+  margin: 10px;
+  font-size: 12px;
+}
+.game_size{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.game{
   margin: 10px;
   font-size: 12px;
 }
