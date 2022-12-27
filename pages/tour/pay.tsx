@@ -143,7 +143,6 @@ export default function Pay() {
       userId: cart.userId,
       rsNumber: rsNumber,
     });
-
     //ツアーの加算ポイント
     let touramount = Math.floor((amount - usepoint) / 100);
 
@@ -206,7 +205,7 @@ export default function Pay() {
         console.log(error);
       }
     }
-    router.push("/tour/booking_done");
+    // router.push("/tour/booking_done");
   };
   return (
     <>

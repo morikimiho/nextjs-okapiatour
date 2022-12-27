@@ -79,3 +79,49 @@
   text-align: center;
   padding-bottom: 20px;
 }
+
+.animation_ts {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(103, 238, 135);
+  position: relative;
+  border-radius: 99px;
+  
+  animation-name: testAnimation;  // アニメーション名
+  animation-duration: 1.2s;  // 時間
+  animation-iteration-count: infinite;  // 繰り返す回数
+  animation-timing-function: linear;
+}
+@keyframes testAnimation {  // animation-name の名前
+  0% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 100vw;
+    height: 100vh;
+    top: 100px;
+    left: 50px;
+    background-color: rgb(241, 145, 214);
+    transform:rotate(540deg);
+  }
+  75% {
+    width: calc(100%);
+    top: -100px;
+    left: 0px;
+    background-color: rgb(226, 249, 112);
+    transform:rotateY(660deg);
+    transform:rotateX(860deg);
+    opacity: 0.1;
+  }
+  100% {
+    width: 0%;
+    top: 0;
+    left: 0;
+    transform:rotate(1360deg);
+    background-color: rgb(255, 0, 0);
+    opacity: 1;
+  }
+}
