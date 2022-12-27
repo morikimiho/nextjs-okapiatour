@@ -9,7 +9,7 @@ import Link from "next/link";
 export default function Okapi() {
     const cookie = useCookie();
   const loginId = cookie.loginId;
-  const [okapi, setOkapi] = useState(0);
+  const [okapi, setOkapi] = useState(9);
   const [disable1, setDisable1] = useState(false);
   const [disable2, setDisable2] = useState(false);
   const [disable3, setDisable3] = useState(false);
@@ -88,14 +88,38 @@ export default function Okapi() {
       <Layout>
         <div style={{
                 display: isDisplay ? "block" : "none",
-              }}>
+              }}className={`${Styles.keyframe0} ${Styles.animation}`}>
             <div
-            className={Styles.cong} 
+            className={`${Styles.cong} `} 
             >
-              <Image
+              <Image className={`${Styles.keyframe1} ${Styles.animation} ${Styles.okapi1}`}
                 src="/images/horse.png"
                 alt="オカピ"
-                width={300} height={400}
+                width={390} height={400}
+                priority
+              />
+               <Image className={`${Styles.keyframe2} ${Styles.animation} ${Styles.okapi2}`}
+                src="/images/horse.png"
+                alt="オカピ"
+                width={170} height={200}
+                priority
+              />
+              <Image className={`${Styles.keyframe4} ${Styles.animation} ${Styles.okapi4}`}
+                src="/images/horse.png"
+                alt="オカピ"
+                width={100} height={150}
+                priority
+              />
+               <Image className={`${Styles.keyframe3} ${Styles.animation} ${Styles.okapi3}`}
+                src="/images/horse.png"
+                alt="オカピ"
+                width={140} height={180}
+                priority
+              />
+               <Image className={`${Styles.keyframe5} ${Styles.animation} ${Styles.okapi5}`}
+                src="/images/horse.png"
+                alt="オカピ"
+                width={110} height={140}
                 priority
               />
             </div>
