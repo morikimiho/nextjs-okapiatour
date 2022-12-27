@@ -3,15 +3,13 @@ import { Tour } from "../../types/types";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 
-
 type Props = {
-  data:[]
-  subtitle:boolean;
-  length:number
+  data: [];
+  subtitle: boolean;
+  length: number;
 };
 
-export function SearchSelect({ data, length, subtitle }:Props) {
-
+export function SearchSelect({ data, length, subtitle }: Props) {
   for (let i = length - 2; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
@@ -22,8 +20,12 @@ export function SearchSelect({ data, length, subtitle }:Props) {
   // console.log(data);
   return (
     <>
-    {subtitle?<div className={styles.headline}>検索結果</div>:<div className={styles.headline}>おすすめ</div>}
-      
+      {subtitle ? (
+        <div className={styles.headline}>検索結果</div>
+      ) : (
+        <div className={styles.headline}>おすすめ</div>
+      )}
+
       {data.map((item: Tour) => {
         return (
           <div key={item.id} id="content" className={styles.eachcontent}>

@@ -22,10 +22,6 @@ npm install @emailjs/browser
 npm install @supabase/supabase-js
 ```
 
-Basic認証: 
- - okapi
- - okapi
-
 テストログイン:
  - メールアドレス : okapia@example.com
  - パスワード : okapiatour

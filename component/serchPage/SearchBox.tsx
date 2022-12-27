@@ -7,26 +7,28 @@ import {
   City,
   Tour,
 } from "../../types/types";
-import { EuropeCountry, France, Italy, Spain } from "./serchEurope";
-import { AsiaCountry, Korea, Philippines, Taiwan } from "./serchAsia";
-import { NorthameCountry, Uni } from "./sertchNorthAmerica";
-import { Australia, OceCountry } from "./oceania";
+import { EuropeCountry, France, Italy, Norway, Spain } from "./serchEurope";
+import { AsiaCountry, India, Korea, Philippines, Taiwan, Thai } from "./serchAsia";
+import { Canada, NorthameCountry, Uni } from "./sertchNorthAmerica";
+import { Australia, Micronesia, OceCountry } from "./oceania";
 import { Bra, SouthameCountry } from "./southame";
 import { Africa, Egy } from "./africa";
 import Link from "next/link";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 type Props = {
   setUrl: Function;
-  setSubtitle:Function
+  setSubtitle: Function;
+  setDisplayInfo: Dispatch<SetStateAction<boolean>>;
 };
 
-export function SearchBox({ setUrl,setSubtitle }: Props) {
+export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
   const [abroad, setAbroad] = useState<Abroad>("abroad");
   const [prefecture, setPrefecture] = useState<Prefecture>("");
   const [areaCode, setArea] = useState<Area>("");
   const [country, setCountry] = useState<Country>("");
   const [city, setCity] = useState<City>("");
+
   const onAbroadChange = (val: Abroad) => {
     setAbroad(val);
     setArea("");
@@ -84,7 +86,6 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
     area: Area;
     onAreaChange: Function;
   }) => {
-
     const changeHandler = (e: { target: { value: any } }) => {
       onAreaChange(e.target.value);
     };
@@ -116,7 +117,6 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
     );
   };
 
-
   // 国内を選んだ場合
   const RouteJapan = ({
     setPrefecture,
@@ -143,12 +143,21 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
           >
             <option value="-">-</option>
             <option value="hoka">北海道</option>
-            <option value="miya"> 宮城</option>
+            <option value="miya">宮城</option>
+            <option value="nii">新潟</option>
+            <option value="ishi">石川</option>
+            <option value="yama">山梨</option>
+            <option value="tochi">栃木</option>
+            <option value="kana">神奈川</option>
             <option value="osk">大阪</option>
             <option value="kyo">京都</option>
+            <option value="mie">三重</option>
+            <option value="hiro">広島</option>
+            <option value="kag">香川</option>
+            <option value="ehi">愛媛</option>
             <option value="naga">長崎</option>
             <option value="fuku">福岡</option>
-            <option value="oki"> 沖縄</option>
+            <option value="oki">沖縄</option>
           </select>
         </div>
       </div>
@@ -156,6 +165,7 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
   };
   const onsubmitHandler = (e: { preventDefault: () => void }) => {
     setSubtitle(true);
+    setDisplayInfo(false);
     e.preventDefault();
     let query = "?";
 
@@ -177,10 +187,10 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
       } else if (prefecture) {
         query = query + `abroad=${abroad}&prefecture=${prefecture}`;
       } else {
-        query = (query + `abroad=${abroad}`);
+        query = query + `abroad=${abroad}`;
       }
     }
-   
+
     setUrl(`/api/supabaseTours${query}`);
   };
   return (
@@ -241,16 +251,21 @@ export function SearchBox({ setUrl,setSubtitle }: Props) {
               )}
               {"fr" === country && <France city={city} setCity={setCity} />}
               {"ita" === country && <Italy city={city} setCity={setCity} />}
+              {"nor" === country && <Norway city={city} setCity={setCity} />}
               {"ko" === country && <Korea city={city} setCity={setCity} />}
               {"ame" === country && <Uni city={city} setCity={setCity} />}
               {"sp" === country && <Spain city={city} setCity={setCity} />}
+              {"thai" === country && <Thai city={city} setCity={setCity} />}
+              {"can" === country && <Canada city={city} setCity={setCity} />}
               {"phi" === country && (
                 <Philippines city={city} setCity={setCity} />
               )}
               {"taiwa" === country && <Taiwan city={city} setCity={setCity} />}
               {"aus" === country && <Australia city={city} setCity={setCity} />}
+              {"micro" === country && <Micronesia city={city} setCity={setCity} />}
               {"bra" === country && <Bra city={city} setCity={setCity} />}
               {"egy" === country && <Egy city={city} setCity={setCity} />}
+              {"ind" === country && <India city={city} setCity={setCity} />}
             </div>
             <button className={styles.search_submit} onClick={onsubmitHandler}>
               検索

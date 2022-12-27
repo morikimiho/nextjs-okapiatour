@@ -14,3 +14,33 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
 }
+.conect {
+    display: flex;
+    justify-content: center;
+    margin-left: -70px;
+    background-color: #FFC896;
+    margin-top: 50px;
+}
+.socials {
+    display: flex;
+    justify-content: center;
+    background-color: #FFC896;
+}
+.face {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.tw {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.ins {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+}

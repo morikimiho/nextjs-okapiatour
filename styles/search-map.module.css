@@ -17,6 +17,7 @@
     order: -1;
     margin: 0 auto;
     font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+    cursor: pointer;
 }
 
 .tab_item:hover {
@@ -69,7 +70,7 @@
 .jpregion li {
     position: absolute;
     list-style: none;
-    border: 1px solid grey;
+    border: 1px solid #43c8f9;
     color: grey;
     text-align: center;
     padding: 5px 10px;
@@ -77,43 +78,165 @@
     background-color: white;
     border-radius: 3px;
     font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+    z-index: 1;
 }
 
+.tihou {
+    position: relative;
+    font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
+
+}
+
+.tohoku {
+    position: absolute;
+    top: 160px;
+    right: 70px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 30px 50px 30px;
+    border-radius: 5px;
+}
+
+.kanto {
+    position: absolute;
+    top: 260px;
+    right: 70px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 52px 50px 52px;
+    border-radius: 5px;
+}
+
+.tyubu {
+    position: absolute;
+    top: 110px;
+    right: 300px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 45px 80px 45px;
+    border-radius: 5px;
+}
+
+.kinki {
+    position: absolute;
+    top: 380px;
+    right: 300px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 45px 80px 45px; 
+    /* background-color: #fff; */
+    border-radius: 5px;
+}
+
+.tyugoku {
+    position: absolute;
+    top: 190px;
+    left: 170px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 35px 80px 35px; 
+    /* background-color: #fff; */
+    border-radius: 5px;
+}
+
+.kyusyu {
+    position: absolute;
+    top: 250px;
+    left: 35px;
+    /* border: 1px solid grey; */
+    color: grey;
+    font-size: 11px;
+    padding: 5px 35px 80px 35px; 
+    /* background-color: #fff; */
+    border-radius: 5px;
+}
 
 .hoka {
-    top: 85px;
-    right: 140px;
+    top: 205px;
+    right: 128px;
 }
 
 .miya {
-    top: 220px;
-    right: 210px;
+    top: 205px;
+    right: 78px;
+}
+
+.kana {
+    top: 305px;
+    right: 78px;
+}
+
+.toti {
+    top: 305px;
+    right: 143px;
 }
 
 .kyo {
-    top:305px;
-    left: 310px;
+    top:420px;
+    left: 343px;
 }
 
 .osk {
-    top:340px;
-    left: 300px;
+    top:420px;
+    left: 293px;
+}
+
+.mie {
+    top:455px;
+    left: 293px;
 }
 
 .fuku {
-    bottom: 120px;
-    left: 155px;
+    top: 290px;
+    left: 100px;
 }
 
 .oki {
-    top:380px;
-    right: 170px;
+    top:325px;
+    left: 50px;
 }
 
 .naga {
-    top:380px;
-    left: 105px;
+    top:290px;
+    left: 50px;
 }
+
+.ishi {
+    top:155px;
+    right: 358px;
+}
+
+.nii {
+    top: 155px;
+    right: 308px;
+}
+
+.yama {
+    top: 190px;
+    right: 308px;
+}
+
+.ehi {
+    top:265px;
+    left: 185px;
+}
+
+.hiro {
+    top:230px;
+    left: 185px;
+}
+
+.kaga {
+    top:230px;
+    left: 235px;
+}
+
+
 
 .worldregion li {
     position: absolute;

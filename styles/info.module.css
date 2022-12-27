@@ -1,0 +1,36 @@
+.infotitle {
+    font-size: 30px;
+    text-align: center;
+}
+
+.infowrapper {
+    border: 1px solid black;
+    max-width: 1000px;
+    margin: 60px auto 45px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.flexbox {
+    display: table;
+    padding: 10px;
+}
+
+.infodate {
+    display: table-cell;
+    padding-right: 20px;
+}
+
+.infotopic {
+    display: table-cell;
+    width: 120px;
+    text-align: center;
+    background-color: #FEC896;
+    border-radius: 15px;
+    padding: 5px 0;
+}
+
+.infocont {
+    display: table-cell;
+    padding-left: 20px;
+}
