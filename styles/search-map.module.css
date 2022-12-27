@@ -327,8 +327,13 @@
 }
 
 .micro {
-     bottom: 155px;
+    bottom: 155px;
     right: 260px;
+}
+
+.chi {
+    top: 215px;
+    right: 425px;
 }
  
 .tab_content a{

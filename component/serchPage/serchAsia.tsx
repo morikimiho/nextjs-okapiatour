@@ -32,6 +32,7 @@ export const AsiaCountry = ({
             <option value="phi">フィリピン</option>
             <option value="ind">インド</option>
             <option value="thai">タイ</option>
+            <option value="chi">中国</option>
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -138,6 +139,7 @@ export const Philippines = ({
   );
 };
 
+//海外→アジア→インドを選んだ場合
 export const India = ({
   setCity,
   city,
@@ -171,6 +173,7 @@ export const India = ({
   );
 };
 
+//海外→アジア→タイを選んだ場合
 export const Thai = ({
   setCity,
   city,
@@ -197,6 +200,41 @@ export const Thai = ({
           >
             <option value="">-</option>
             <option value="ban">バンコク</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+//海外→アジア→中国を選んだ場合
+export const China = ({
+  setCity,
+  city,
+}: {
+  city: City;
+  setCity: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any } }) => {
+    setCity(e.target.value);
+  };
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select
+            className={styles.search_input}
+            value={city}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="pek">北京</option>
+            <option value="se">成都</option>
           </select>
         </div>
       </div>
