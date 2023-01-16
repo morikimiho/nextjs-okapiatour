@@ -20,6 +20,7 @@ yarn mock-api
 ```
 npm install @emailjs/browser
 npm install @supabase/supabase-js
+npm install react-hook-form
 ```
 
 テストログイン:
