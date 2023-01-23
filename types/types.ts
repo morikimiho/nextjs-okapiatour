@@ -1,3 +1,5 @@
+import { type } from "os";
+
 type Users = {
   id: number;
   name: string;
@@ -43,6 +45,7 @@ type Tour = {
   startTime?: number;
   numberOfPeople?: number;
   total: number;
+  winterplan:boolean;
 };
 
 type Cart = {
@@ -65,6 +68,15 @@ type Order = {
   tours: Array<Tour>;
   userId: number;
 };
+
+type Info = {
+  id: number;
+  date: string;
+  topic: string;
+  content:string;
+  src:string;
+  bold: boolean;
+}
 type Abroad = "abroad" | "domestic" | "";
 type Prefecture = "osk" | "";
 type Area = "eu" | "asi" | "northame" | "oce" | "southame" | "af" | "";
@@ -80,8 +92,20 @@ type Country =
   | "phi"
   | "bra"
   | "egy"
+  | "nor"
+  | "ind"
+  | "thai"
+  | "can"
+  | "micro"
+  | "chi"
   | "";
 type City = "mila" | "vene" | "pari" | "bal" | "san" | "mar" | "";
+
+type Contact={
+  question:string;
+  description:string;
+  answer:string
+}
 
 export type {
   Users,
@@ -94,4 +118,6 @@ export type {
   City,
   Comment,
   Order,
+  Info,
+  Contact
 };

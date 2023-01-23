@@ -1,25 +1,30 @@
 import styles from "../../styles/login.module.css";
 import Link from "next/link";
-import { useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../../component/layout";
 import { supabase } from "../../utils/supabaseClient";
-import Head from "next/head";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type inputForm = {
+  mailAddress: string;
+  password: string;
+};
 
 export default function Login() {
   const router = useRouter();
-  const [mailAddress, setMailAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-
-  const data = {
-    mailAddress: mailAddress,
-    password: password,
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<inputForm>();
 
   //ログイン処理（CookieにsignedIn=trueとする）
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const onSubmit: SubmitHandler<inputForm> = async (data, e: any) => {
     e.preventDefault();
+    const mailAddress = data.mailAddress;
+    const password = data.password;
+    console.log(data);
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -32,29 +37,22 @@ export default function Login() {
         response.json();
         if (response.status !== 200) {
           console.log("失敗");
-          setError(true);
         } else if (response.status === 200) {
           const localTourJSON = localStorage.getItem("tours");
           if (localTourJSON === null) {
-            router.push("/tour");
+            // router.push("/tour");
             console.log("トップページに遷移");
           } else {
-            router.push("/tour/pay");
+            // router.push("/tour/pay");
             console.log("payに遷移");
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-          const { data, error }: {data: any, error: any} = await supabase
+          const { data }: { data: any } = await supabase
             .from("users")
             .select("*")
             .eq("mailAddress", mailAddress)
             .eq("password", password);
-
-          // await fetch(
-          //   `/api/users?mailAddress=${mailAddress}&password=${password}`
-          // )
-          //   .then((response) => response.json())
-          //   .then(async (dat) => {
 
           const user = data[0];
           // console.log(user);
@@ -68,7 +66,7 @@ export default function Login() {
             return;
           } else {
             //バックデータのカートの中身を取得
-            const { data }: {data: any} = await supabase
+            const { data }: { data: any } = await supabase
               .from("inCarts")
               .select("*")
               .eq("userId", id);
@@ -81,20 +79,6 @@ export default function Login() {
               .eq("userId", id);
           }
           localStorage.clear();
-          // await fetch(`/api/inCarts?userId=${id}`)
-          //   .then((response) => response.json())
-          //   .then((data) => {
-          //     const cart = data[0];
-          //     //ローカルをバックカートに追加、元々のバックのツアーは残したまま
-          //       // fetch(`/api/inCarts/${id}`, {
-          //       //   method: "PATCH",
-          //       //   headers: {
-          //       //     "Content-Type": "application/json",
-          //       //   },
-          //       //   body: JSON.stringify({ tours: [...cart.tours, ...localtours.tours] }),
-          //       // })
-          //     ;
-          //   });
         }
       })
       .then((data) => {
@@ -104,23 +88,22 @@ export default function Login() {
         console.error(error);
       });
   };
+
   return (
     <>
-        <Head>
+      <Head>
         <title>ログインページ</title>
       </Head>
       <Layout>
         <div className={styles.container}>
+          {/* <div className={styles.animation_ts}></div> */}
           <h3 className={styles.title}>下記からログインしてください。</h3>
           <div className={styles.inner_border}>
-            <form onSubmit={handleSubmit} className={styles.input_form}>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className={styles.input_form}
+            >
               <div>
-                <span
-                  className={styles.error_message}
-                  style={{ display: error ? "block" : "none" }}
-                >
-                  *入力に誤りがあります。*
-                </span>
                 <div>
                   <label htmlFor="mailAddress">メールアドレス</label>
                   <div>
@@ -128,9 +111,15 @@ export default function Login() {
                       className={styles.input_name}
                       id="mailAddress"
                       type="email"
-                      name="mailAddress"
-                      onChange={(e) => setMailAddress(e.target.value)}
+                      {...register("mailAddress", {
+                        required: true,
+                      })}
                     />
+                    {errors.password?.type === "required" && (
+                      <div className={styles.error_message}>
+                        メールアドレスを入力してください
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -141,9 +130,15 @@ export default function Login() {
                       className={styles.input_name}
                       id="password"
                       type="password"
-                      name="password"
-                      onChange={(e) => setPassword(e.target.value)}
+                      {...register("password", {
+                        required: true,
+                      })}
                     />
+                    {errors.password?.type === "required" && (
+                      <div className={styles.error_message}>
+                        パスワードを入力してください
+                      </div>
+                    )}
                   </div>
                 </div>
 

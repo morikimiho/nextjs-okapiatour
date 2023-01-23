@@ -15,6 +15,7 @@
   font-size: 45px;
   font-style: italic;
   margin: auto 10px;
+   cursor: pointer;
 }
 @media (max-width: 767px) {
   .header .header_items .header_logo {
@@ -64,6 +65,28 @@
   height: 30px;
   left: 50%;
   transform: translateX(-50%);
+}
+.contact_size{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.contact{
+  margin: 10px;
+  font-size: 12px;
+}
+.game_size{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.game{
+  margin: 10px;
+  font-size: 12px;
 }
 .header .icon_name {
   width: 100%;

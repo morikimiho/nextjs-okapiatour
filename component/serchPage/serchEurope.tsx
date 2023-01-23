@@ -30,6 +30,8 @@ export const EuropeCountry = ({
             <option value="fr">フランス</option>
             <option value="ita">イタリア</option>
             <option value="sp">スペイン</option>
+            <option value="nor">ノルウェー</option>
+
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -124,6 +126,33 @@ export const Spain = ({ city, setCity }: { city: City; setCity: Function }) => {
             <option value="">-</option>
             <option value="bal">バルセロナ</option>
             <option value="san">サンセバスチャン</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const Norway = ({ city, setCity }: { city: City; setCity: Function }) => {
+  const changeHandler = (e: { target: { value: any } }) => {
+    setCity(e.target.value);
+  };
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select
+            className={styles.search_input}
+            value={city}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="toro">トロムソ</option>
           </select>
         </div>
       </div>

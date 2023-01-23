@@ -12,6 +12,9 @@
 .tour_trip_contents {
   margin: 80px auto;
   width: calc(100vw - 200px);
+  min-height: 69vh;
+  position: relative;
+  box-sizing: border-box;
 }
 @media (max-width: 767px) {
   .tour_trip_contents {

@@ -1,6 +1,6 @@
 import styles from "../../styles/pay.module.css";
 import useCookie from "../../hooks/useCookie";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Layout from "../../component/layout";
 import Head from "next/head";
 import Image from "next/image";
@@ -18,12 +18,17 @@ const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const fetcher = (resource: any, init: any) =>
   fetch(resource, init).then((res) => res.json());
 
+type Point = number;
+
 export default function Pay() {
   const cookie = useCookie();
   const loginId = cookie.loginId;
   const loginName = cookie.loginName;
 
   const { data, error } = useSWR(`/api/supabaseCart`, fetcher);
+
+  //ポイントが保持ポイント以上の場合のバリデーション
+  const [pointcheck, setPointcheck] = useState(false);
 
   //お支払い方法未選択の場合
   const router = useRouter();
@@ -35,10 +40,14 @@ export default function Pay() {
   };
   const [cart, setCart] = useState<Cart>();
   const [amount, setAmount] = useState(0);
+  const [point, setPoint] = useState<Point>(0);
+  //使用ポイント数
+  const [usepoint, setUsepoint] = useState(0);
+  //インプットに入れたポイント数をカウント
+  const [countpoint, setCountpoint] = useState(0);
 
   useEffect(() => {
     if (!data) return;
-
     //カート
     const cartcontent = data[0];
     if (cartcontent) {
@@ -54,14 +63,58 @@ export default function Pay() {
     }
   }, [data]);
 
+  useEffect(() => {
+    Point();
+  });
+  const Point = async () => {
+    if (!loginId) return;
+    let currentP = await supabase
+      .from("users")
+      .select("OkaPoint")
+      .eq("id", loginId);
+
+    let userp = currentP.data;
+    if (!userp) return;
+    // console.log(userp);
+    let OkaP = userp.map((p) => {
+      return p.OkaPoint;
+    });
+    if (!OkaP) return;
+    setPoint(OkaP[0]);
+    // console.log(OkaP);
+  };
+
   // エラーになった場合は一覧は表示できないのでここで終わり
   if (error) return <div>failed to load</div>;
   // データ取得が完了していないときはローディング画面
   if (!data) return <div>loading...</div>;
 
+  //ポイント入力するごとにstateにセット
+  const changePoint = (e: any) => {
+    setCountpoint(e.target.value);
+    setUsepoint(e.target.value);
+  };
+
+  const decidePoint = (e:any) => {
+    if (e.target.value === "all") {
+      setUsepoint(point);
+      setCountpoint(0)
+    } else {
+      setUsepoint(countpoint);
+    }
+  };
+
+  console.log(usepoint);
+
   // 決済する押下時の挙動
   const onClick = async () => {
     if (loginId.length === 0) {
+      return;
+    }
+
+    //ポイントバリデーション
+    if (usepoint > point) {
+      setPointcheck(true);
       return;
     }
 
@@ -90,7 +143,13 @@ export default function Pay() {
       userId: cart.userId,
       rsNumber: rsNumber,
     });
-    console.log("cart", cart);
+    //ツアーの加算ポイント
+    let touramount = Math.floor((amount - usepoint) / 100);
+
+    let Total = point + touramount - usepoint;
+
+    //合計ポイントをデータに保存
+    await supabase.from("users").update({ OkaPoint: Total }).eq("id", loginId);
 
     // await fetch(`/api/inCarts?userId=${loginId}`)
     //   .then((response) => response.json())
@@ -111,10 +170,7 @@ export default function Pay() {
     //   });
 
     //cartを空にする
-    await supabase
-    .from("inCarts")
-    .update({ tours: [] })
-    .eq("userId", loginId);
+    await supabase.from("inCarts").update({ tours: [] }).eq("userId", loginId);
 
     // if (cart) {
     //   fetch(`/api/inCarts/${cart?.id}`, {
@@ -149,7 +205,7 @@ export default function Pay() {
         console.log(error);
       }
     }
-    router.push("/tour/booking_done");
+    // router.push("/tour/booking_done");
   };
   return (
     <>
@@ -186,7 +242,45 @@ export default function Pay() {
                 );
               })}
             <div>
-              <h2>合計:{amount.toLocaleString()}円</h2>
+              <h3>OkaPoint:{point}ポイント</h3>
+              <label htmlFor="">
+                <div>
+                  <input
+                    type="radio"
+                    value="all"
+                    name="howpoint"
+                    onChange={decidePoint}
+                  />
+                  今回の注文で利用可能なポイントをすべて利用する:{point}円分
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    value="partial"
+                    name="howpoint"
+                    onChange={decidePoint}
+                  />
+                  一部のポイントを使用する：
+                  <input
+                    type="number"
+                    value={countpoint}
+                    size={4}
+                   
+                    onChange={changePoint}
+                  />
+                  {pointcheck ? (
+                    <p className={styles.pointcheck}>
+                      {point}ポイント以内で入力してください
+                    </p>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </label>
+              <h2>合計:{(amount - usepoint).toLocaleString()}円</h2>
+              <h3>
+                加算OkaPonint:{Math.floor((amount - usepoint) / 100)}ポイント
+              </h3>
             </div>
           </div>
           <h3 className={styles.title}>

@@ -19,6 +19,7 @@ const CreateUser = () => {
   const [birthD, setBirthD] = useState("");
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const id = 23456;
 
   const [isChecked, setIsChecked] = useState(false);
   // チェクボックスクリックでboolean反転
@@ -96,8 +97,8 @@ const CreateUser = () => {
         .from("users")
         .select()
         .eq("mailAddress", `${mailAddress}`);
-      const id = data[0];
-      const userId = id.id;
+      const ids = data[0];
+      const userId = ids.id;
       const tours = [] as [];
       // inCartsにユーザーのかごを作る
       await supabase.from("inCarts").insert({ userId, tours });

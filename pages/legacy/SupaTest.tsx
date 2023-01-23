@@ -9,9 +9,14 @@ supabase上でテーブルの設定が`No active RLS enabled`になっている�
 https://tech-blog.rakus.co.jp/entry/20220928/vercel#Supabase%E3%81%A8%E3%81%AF
 */
 
-import { supabase } from "../utils/supabaseClient"; // supabaseをコンポーネントで使うときはかく
+import { supabase } from "../../utils/supabaseClient"; // supabaseをコンポーネントで使うときはかく
 import { useState, useEffect } from "react";
-import Error from "next/error";
+import Link from "next/link";
+
+type inputForm = {
+  mailAddress: string;
+  password: string;
+};
 
 const Form = () => {
   // データ送信
@@ -46,6 +51,45 @@ const Form = () => {
   };
   console.log(data);
 
+  // create user
+  const supaSub = async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email: "flamber@example.com",
+      password: "examplpassword",
+      options: {
+        data: {
+          first_name: 'John',
+          last_name: 'Beck',
+          age: 27,
+          birth: 1996,
+        }
+      }
+    });
+    console.log(data);
+  };
+  // login
+  const supaLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: "flamber@example.com",
+      password: "examplpassword",
+    });
+    console.log(data);
+  };
+  const getUser = async () => {
+    // const {
+    //   data: { user },
+    // } = await supabase.auth.getUser();
+    // console.log(user.user_metadata);
+
+    // const { data: { session } } = await supabase.auth.getSession()
+    // console.log(session);
+
+    // const { data, error } = await supabase.auth.refreshSession();
+    // const { session, user } = data;
+    // console.log(data);
+      
+  };
+
   return (
     <>
       {/* supabaseにデータを入力 */}
@@ -74,6 +118,11 @@ const Form = () => {
       <form onSubmit={getData}>
         <button>取得</button>
       </form>
+
+      <h3>登録フォーム</h3>
+      <button onClick={supaSub}>登録</button>
+      <button onClick={supaLogin}>ログイン</button>
+      <button onClick={getUser}>取得</button>
     </>
   );
 };

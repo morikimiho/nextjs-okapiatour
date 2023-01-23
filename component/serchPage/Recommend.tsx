@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../../styles/search-page.module.css";
 import Link from "next/link";
 
-function arrayRandom( data : any) {
+function arrayRandom({data}:{data:Tour[]}) {
   for (let i = 48; i > 0; i--) {
     let r = Math.floor(Math.random() * (i + 1));
     let tmp = data[i];
@@ -13,11 +13,11 @@ function arrayRandom( data : any) {
   return data;
 }
 
-export function Recommend({ data }:{data: any}) {
+export function Recommend({ data }:{data: Tour[]}) {
   return (
     <>
       <div className={styles.headline}>おすすめ</div>;
-      {arrayRandom(data).map((item: Tour) => {
+      {arrayRandom({data}).map((item: Tour) => {
         return (
           <div key={item.id} id="content" className={styles.eachcontent}>
             <div className={styles.result__flex}>

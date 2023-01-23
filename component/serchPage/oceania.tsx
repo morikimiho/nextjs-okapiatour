@@ -28,6 +28,8 @@ export const OceCountry = ({
           >
             <option value="">-</option>
             <option value="aus">オーストラリア</option>
+            <option value="micro">ミクロネシア連邦</option>
+
           </select>
         </div>
         <div className={styles.serchdetail}></div>
@@ -64,6 +66,40 @@ export const Australia = ({
             <option value="">-</option>
             <option value="cairns">ケアンズ</option>
             <option value="gold">ゴールドコースト</option>
+          </select>
+        </div>
+      </div>
+    </>
+  );
+};
+
+//海外→オセアニア→ミクロネシア連邦を選んだ場合
+export const Micronesia = ({
+  setCity,
+  city,
+}: {
+  city: City;
+  setCity: Function;
+}) => {
+  const changeHandler = (e: { target: { value: any } }) => {
+    setCity(e.target.value);
+  };
+  return (
+    <>
+      <div className={styles.flex}>
+        <div>
+          <div>
+            <label htmlFor="">都市</label>
+          </div>
+          <select
+            className={styles.search_input}
+            value={city}
+            name=""
+            id=""
+            onChange={changeHandler}
+          >
+            <option value="">-</option>
+            <option value="jeep">ジープ島</option>
           </select>
         </div>
       </div>

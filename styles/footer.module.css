@@ -1,13 +1,71 @@
-.footer {
+.list{
+    
+    list-style: none;
+    font-size: 0.5rem;
+    margin-left: 20px;
+    padding: 0;
+}
+.trip{
+    padding-left: 20px;
+}
+.horse{
+   
+    margin-bottom: 5px;
+}
+.bigfotter{
+    margin-top: 100px;
+    display: flex;
     background-color: #FFC896;
+  
+    height: 200px;
+}
+
+.page_link{
+margin-left: 40px;
+display: flex;
+margin-right: 20px;
+}
+
+.footer {
+    margin-left: 30px;
     height: 50px;
-    text-align: center;
     display: table;
     width: 100%;
+    position: relative;
+    bottom: 0
 }
 .copy {
     display: table-cell;
     vertical-align: middle;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
+}
+.conect {
+    display: flex;
+    justify-content: center;
+    margin-left: -70px;
+ 
+    margin-top: 50px;
+}
+.socials {
+    display: flex;
+    margin-right: 10px;
+}
+.face {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.tw {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.ins {
+    margin: 15px;
+    padding-right: 10px;
+    cursor: pointer;
+    margin-top: 50px;
 }
