@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cart {
+  id     Int    @id @default(autoincrement())
+  userId Int
+  tours  Json[]
+  User   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Comment {
+  id     Int    @id @default(autoincrement())
+  tourId Int
+  name   String
+  text   String
+  date   String
+  Tour   Tour   @relation(fields: [tourId], references: [id], onDelete: Cascade)
+}
+
+model Contact {
+  id          Int    @id @default(autoincrement())
+  question    String
+  description String
+  answer      String
+}
+
+model Info {
+  id      Int     @id @default(autoincrement())
+  date    String
+  topic   String
+  content String
+  src     String
+  bold    Boolean
+}
+
+model Order {
+  id       Int    @id @default(autoincrement())
+  rsNumber String
+  tours    Json[]
+  userId   Int
+  User     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Tour {
+  id           Int       @id @default(autoincrement())
+  img1         String
+  img2         String
+  img3         String
+  abroad       String
+  area         String
+  areaCode     String
+  areaId       String
+  countryCode  String
+  country      String
+  prefecture   String
+  cityCode     String
+  city         String
+  tourName     String
+  price        Int
+  description  String
+  meetingPlace String
+  times        Int
+  minPeople    Int
+  content1     String
+  content2     String
+  content3     String
+  recommend    Boolean
+  winterplan   Boolean
+  nature       Boolean
+  Comment      Comment[]
+}
+
+model User {
+  id            Int     @id @default(autoincrement())
+  lastName      String
+  lastNameKana  String
+  firstName     String
+  firstNameKana String
+  mailAddress   String  @unique
+  password      String
+  birthY        String
+  birthM        String
+  birthD        String
+  tel           String
+  OkaPoint      Int
+  Cart          Cart[]
+  Order         Order[]
+}
