@@ -1,88 +1,101 @@
-import Head from "next/head";
-import styles from "../../styles/tripdetail.module.css";
-import { TripdetailContent } from "../../component/tripdetailContent";
-import { TripdetailCount } from "../../component/tripdetailCount";
-import { TripdetailAttention } from "../../component/tripdetailAttention";
-import { TripdetailActivity } from "../../component/tripdetailActivity";
-import { TripdetailImage } from "../../component/tripdetailImage";
-import Layout from "../../component/layout";
-import { TripdetailTimes } from "../../component/tripdetailTimes";
-import { useState } from "react";
-import { useRouter } from "next/router";
-import useCookie from "../../hooks/useCookie";
-import { Tour, Comment } from "../../types/types";
-import { supabase } from "../../utils/supabaseClient";
-import { ReviewComment } from "../../component/reviewComment";
+import Head from 'next/head'
+import styles from '../../styles/tripdetail.module.css'
+import { TripdetailContent } from '../../component/tripdetailContent'
+import { TripdetailCount } from '../../component/tripdetailCount'
+import { TripdetailAttention } from '../../component/tripdetailAttention'
+import { TripdetailActivity } from '../../component/tripdetailActivity'
+import { TripdetailImage } from '../../component/tripdetailImage'
+import Layout from '../../component/layout'
+import { TripdetailTimes } from '../../component/tripdetailTimes'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import useCookie from '../../hooks/useCookie'
+import { Tour, Comment } from '../../types/types'
+// import { supabase } from "../../utils/supabaseClient";
+import { ReviewComment } from '../../component/reviewComment'
+import axios from 'axios'
 
 export const getStaticPaths = async () => {
-  const { data, error } = await supabase.from("tours").select("*");
-  if (!data) return;
-  if (error) {
-    console.log(error);
-  }
+  // const { data, error } = await supabase.from("tours").select("*");
+  // if (!data) return;
+  // if (error) {
+  //   console.log(error);
+  // }
 
-  const tours = await data;
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get`
+  )
+
+  const tours = await data
   const paths = tours.map((tour: { id: number }) => {
     return {
       params: {
         id: tour.id.toString(),
       },
-    };
-  });
+    }
+  })
   return {
     paths,
     fallback: false,
-  };
-};
+  }
+}
 
 export const getStaticProps = async ({ params }: { params: any }) => {
-  if (!params) return;
-  const { data, error } = await supabase
-    .from("tours")
-    .select("*")
-    .eq("id", params.id);
-  if (!data) return;
-  if (error) {
-    console.log(error);
-  }
-  const tour = await data[0];
+  if (!params) return
+  // const { data, error } = await supabase
+  //   .from("tours")
+  //   .select("*")
+  //   .eq("id", params.id);
+  // if (!data) return;
+  // if (error) {
+  //   console.log(error);
+  // }
 
-  const comRes = await supabase
-    .from("comment")
-    .select("*")
-    .eq("tourid", params.id);
-  const comment = await comRes.data;
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/${params.id}`
+  )
+  const tour = await data[0]
+
+  // const comRes = await supabase
+  //   .from("comment")
+  //   .select("*")
+  //   .eq("tourid", params.id);
+
+  const comRes = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/comment/${params.tourId}`
+  )
+  const comment = await comRes.data
   // console.log(comment);
   return {
     props: { tour, comment },
     revalidate: 10,
-  };
-};
+  }
+}
 
 export default function Tripdetail({
   tour,
   comment,
 }: {
-  tour: Tour;
-  comment: Comment[];
+  tour: Tour
+  comment: Comment[]
 }) {
-  const [tourDate, setTourDate] = useState("");
-  const [startTime, setStartTime] = useState("");
-  const [numberOfPeople, setNumberOfPeople] = useState(1);
-  const router = useRouter();
-  const cookie = useCookie();
-  const [dateError, setDateError] = useState(false);
-  const [timeError, setTimeError] = useState(false);
-  const [error_message, setErrorMessage] = useState(false);
+  const [tourDate, setTourDate] = useState('')
+  const [startTime, setStartTime] = useState('')
+  const [numberOfPeople, setNumberOfPeople] = useState(1)
+  const router = useRouter()
+  const cookie = useCookie()
+  const [dateError, setDateError] = useState(false)
+  const [timeError, setTimeError] = useState(false)
+  const [error_message, setErrorMessage] = useState(false)
 
   async function PostData(e: { preventDefault: () => void }) {
     if (dateError === false || timeError === false) {
-      setErrorMessage(true);
-      return e.preventDefault();
+      setErrorMessage(true)
+      return e.preventDefault()
     }
-    const loginId = cookie.loginId;
+    const loginId = cookie.loginId
     if (!loginId) {
-      const toursJSON = localStorage.getItem("tours");
+      const toursJSON = localStorage.getItem('tours')
       const setNewData = {
         tours: [
           {
@@ -97,11 +110,11 @@ export default function Tripdetail({
             total: Number(tour.price * numberOfPeople),
           },
         ],
-      };
+      }
       if (toursJSON === null) {
-        localStorage.setItem("tours", JSON.stringify(setNewData));
+        localStorage.setItem('tours', JSON.stringify(setNewData))
       } else {
-        const tours = JSON.parse(toursJSON);
+        const tours = JSON.parse(toursJSON)
         const addTourData = {
           tours: [
             ...tours.tours,
@@ -117,40 +130,40 @@ export default function Tripdetail({
               total: Number(tour.price * numberOfPeople),
             },
           ],
-        };
-        localStorage.setItem("tours", JSON.stringify(addTourData));
+        }
+        localStorage.setItem('tours', JSON.stringify(addTourData))
       }
-      router.push("/tour/cart");
+      router.push('/tour/cart')
     } else {
       const { data, error } = await supabase
-        .from("inCarts")
-        .select("*")
-        .eq("userId", loginId);
-      if (!data) return;
+        .from('inCarts')
+        .select('*')
+        .eq('userId', loginId)
+      if (!data) return
       if (error) {
-        console.log(error);
+        console.log(error)
       }
 
-      const inCarts = await data;
-      console.log(inCarts);
+      const inCarts = await data
+      console.log(inCarts)
       {
         inCarts.map(
           async (cart: {
-            id: number;
+            id: number
             tours: {
-              id: number;
-              tourDate: string; //新規データ
-              startTime: string; //新規データ
-              img1: string;
-              tourName: string;
-              description: string;
-              numberOfPeople: number; //新規データ
-              price: number;
-              total: number;
-            }[];
+              id: number
+              tourDate: string //新規データ
+              startTime: string //新規データ
+              img1: string
+              tourName: string
+              description: string
+              numberOfPeople: number //新規データ
+              price: number
+              total: number
+            }[]
           }) => {
             await supabase
-              .from("inCarts")
+              .from('inCarts')
               .upsert({
                 tours: [
                   ...cart.tours,
@@ -169,20 +182,20 @@ export default function Tripdetail({
                 userId: loginId,
                 id: cart.id,
               })
-              .eq("userId", loginId);
-            router.push("/tour/cart");
+              .eq('userId', loginId)
+            router.push('/tour/cart')
           }
-        );
+        )
       }
     }
   }
-  const [tab, setTab] = useState(true);
+  const [tab, setTab] = useState(true)
   const ChangeTrue = () => {
-    setTab(true);
-  };
+    setTab(true)
+  }
   const ChangeFalse = () => {
-    setTab(false);
-  };
+    setTab(false)
+  }
 
   return (
     <>
@@ -194,7 +207,7 @@ export default function Tripdetail({
           <div className={styles.tour_tags}>
             <div
               className={styles.tour_tag}
-              style={{ display: tour.area === null ? "none" : "block" }}
+              style={{ display: tour.area === null ? 'none' : 'block' }}
             >
               {tour.area}
             </div>
@@ -242,7 +255,7 @@ export default function Tripdetail({
                 <TripdetailAttention /> {/* // 注意事項 */}
               </div>
 
-              <span style={{ display: error_message ? "block" : "none" }}>
+              <span style={{ display: error_message ? 'block' : 'none' }}>
                 {/* <div className={styles.error_message}> */}
                 <p className={styles.error_message}>
                   *日付もしくは時間が指定されていません。*
@@ -261,5 +274,5 @@ export default function Tripdetail({
         </main>
       </Layout>
     </>
-  );
+  )
 }

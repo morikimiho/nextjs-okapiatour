@@ -1,44 +1,48 @@
-import Head from "next/head";
-import Image from "next/legacy/image";
-import styles from "../../styles/toppage.module.css";
-import { Header } from "../../component/header";
-import { Footer } from "../../component/footer";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/splide/css";
-import { useState, useMemo } from "react";
-import { SearchBox } from "../../component/serchPage/SearchBox";
-import { SearchResult } from "../../component/serchPage/SearchResult";
-import { supabase } from "../../utils/supabaseClient";
-import { Info } from "../../types/types";
-import { Infomation } from "../../component/info";
+import Head from 'next/head'
+import Image from 'next/legacy/image'
+import styles from '../../styles/toppage.module.css'
+import { Header } from '../../component/header'
+import { Footer } from '../../component/footer'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/splide/css'
+import { useState, useMemo } from 'react'
+import { SearchBox } from '../../component/serchPage/SearchBox'
+import { SearchResult } from '../../component/serchPage/SearchResult'
+// import { supabase } from "../../utils/supabaseClient";
+import { Info } from '../../types/types'
+import { Infomation } from '../../component/info'
+import axios from 'axios'
 
 export const getStaticProps = async () => {
-  const { data, error } = await supabase
-    .from("info")
-    .select("*")
-    .order("id", { ascending: true });
-  if (!data) return;
-  if (error) return;
+  // const { data, error } = await supabase
+  //   .from("info")
+  //   .select("*")
+  //   .order("id", { ascending: true });
+  // if (!data) return;
+  // if (error) return;
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/info`
+  )
 
   return {
     props: {
       data,
     },
-  };
-};
+  }
+}
 export default function Home({ data }: { data: Info[] }) {
-  const [url, setUrl] = useState("/api/supabaseTours");
-  const [subtitle, setSubtitle] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
-  const [displayInfo, setDisplayInfo] = useState(true);
+  const [url, setUrl] = useState('/api/supabaseTours')
+  const [subtitle, setSubtitle] = useState(false)
+  const [isOpen, setIsOpen] = useState(true)
+  const [displayInfo, setDisplayInfo] = useState(true)
 
   setTimeout(() => {
-    setIsOpen(false);
-  }, 0.8 * 1000);
-  const [isDisplay, setIsDisplay] = useState(true);
+    setIsOpen(false)
+  }, 0.8 * 1000)
+  const [isDisplay, setIsDisplay] = useState(true)
   setTimeout(() => {
-    setIsDisplay(false);
-  }, 2 * 1000);
+    setIsDisplay(false)
+  }, 2 * 1000)
 
   const Slider = () => {
     return (
@@ -75,13 +79,13 @@ export default function Home({ data }: { data: Info[] }) {
           </SplideSlide>
         </Splide>
       </>
-    );
-  };
+    )
+  }
 
   const SearchResultMemo = useMemo(
     () => <SearchResult url={url} subtitle={subtitle} />,
     [url]
-  );
+  )
   return (
     <div>
       <Head>
@@ -92,9 +96,9 @@ export default function Home({ data }: { data: Info[] }) {
       <div
         className={styles.logos}
         style={{
-          transition: "1s",
+          transition: '1s',
           opacity: isOpen ? 1 : 0,
-          display: isDisplay ? "block" : "none",
+          display: isDisplay ? 'block' : 'none',
         }}
       >
         <div className={styles.logo}>
@@ -119,11 +123,11 @@ export default function Home({ data }: { data: Info[] }) {
           setDisplayInfo={setDisplayInfo}
         />
       </div>
-      <div style={{ display: displayInfo ? "block" : "none" }}>
+      <div style={{ display: displayInfo ? 'block' : 'none' }}>
         {<Infomation data={data} />}
       </div>
       <div>{SearchResultMemo}</div>
       <Footer />
     </div>
-  );
+  )
 }

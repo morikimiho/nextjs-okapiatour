@@ -1,25 +1,29 @@
-import Layout from "../../../component/layout";
-import style from "../../../styles/domestic.module.css";
-import Image from "next/legacy/image";
-import { supabase } from "../../../utils/supabaseClient";
-import { Tour } from "../../../types/types";
-import Head from "next/head";
-import Link from "next/link";
+import Layout from '../../../component/layout'
+import style from '../../../styles/domestic.module.css'
+import Image from 'next/legacy/image'
+// import { supabase } from "../../../utils/supabaseClient";
+import { Tour } from '../../../types/types'
+import Head from 'next/head'
+import Link from 'next/link'
+import axios from 'axios'
 
 export const getStaticProps = async () => {
-  const { data, error } = await supabase
-    .from("tours")
-    .select("*")
-    .eq("winterplan", true);
-  if (!data) return;
-  if (error) console.log(error);
+  // const { data, error } = await supabase
+  //   .from("tours")
+  //   .select("*")
+  //   .eq("winterplan", true);
+  // if (!data) return;
+  // if (error) console.log(error);
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/winterplan`
+  )
 
   return {
     props: {
       data,
     },
-  };
-};
+  }
+}
 
 export default function WinterPlan({ data }: { data: Tour[] }) {
   return (
@@ -58,11 +62,11 @@ export default function WinterPlan({ data }: { data: Tour[] }) {
                     </div>
                   </div>
                 </>
-              );
+              )
             })}
           </div>
         </div>
       </Layout>
     </>
-  );
+  )
 }
