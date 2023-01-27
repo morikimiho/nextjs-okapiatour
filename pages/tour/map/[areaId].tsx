@@ -1,50 +1,60 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Tour } from "../../../types/types";
-import styles from "../../../styles/search-page.module.css";
-import Layout from "../../../component/layout";
-import Head from "next/head";
-import { supabase } from "../../../utils/supabaseClient";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Tour } from '../../../types/types'
+import styles from '../../../styles/search-page.module.css'
+import Layout from '../../../component/layout'
+import Head from 'next/head'
+import axios from 'axios'
+// import { supabase } from "../../../utils/supabaseClient";
 
 export const getStaticPaths = async () => {
-  const { data, error } = await supabase.from("tours").select("*");
-  if (!data) return;
-  if (error) {
-    console.log(error);
-  }
-
-  const tours = await data;
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get`
+  )
+  if (!data) return
+  // if (error) {
+  //   console.log(error);
+  // }
+  const tours = await data
   const paths = tours.map((tour: { areaId: number }) => {
     return {
       params: {
         areaId: tour.areaId.toString(),
       },
-    };
-  });
+    }
+  })
   return {
     paths,
     fallback: false,
-  };
-};
-
-export const getStaticProps = async ({ params }: {params: { areaId: number }}) => {
-  if (!params) return;
-  const { data, error } = await supabase
-    .from("tours")
-    .select("*")
-    .eq("areaId", params.areaId);
-  if (!data) return;
-  if (error) {
-    console.log(error);
   }
+}
 
-  const tour = await data;
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { areaId: number }
+}) => {
+  if (!params) return
+  // const { data, error } = await supabase
+  //   .from('tours')
+  //   .select('*')
+  //   .eq('areaId', params.areaId)
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/map/${params.areaId}`
+  )
+
+  if (!data) return
+  // if (error) {
+  //   console.log(error)
+  // }
+
+  const tour = await data
 
   return {
     props: { tour },
     revalidate: 10,
-  };
-};
+  }
+}
 
 export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
   return (
@@ -53,7 +63,7 @@ export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
         <title>検索結果</title>
       </Head>
       <Layout>
-        {tour[0].abroad === "abroad" ? (
+        {tour[0].abroad === 'abroad' ? (
           <p className={styles.headlineArea}>{tour[0].country}</p>
         ) : (
           <p className={styles.headlineArea}>{tour[0].city}</p>
@@ -80,7 +90,7 @@ export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
                   <div className={styles.tour_tags}>
                     <div
                       className={styles.tour_tag}
-                      style={{ display: to.area === null ? "none" : "block" }}
+                      style={{ display: to.area === null ? 'none' : 'block' }}
                     >
                       {to.area}
                     </div>
@@ -117,9 +127,9 @@ export default function worldMapContent({ tour }: { tour: Array<Tour> }) {
                 </div>
               </div>
             </div>
-          );
+          )
         })}
       </Layout>
     </>
-  );
+  )
 }
