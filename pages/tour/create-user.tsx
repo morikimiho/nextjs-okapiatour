@@ -1,85 +1,85 @@
-import styles from "../../styles/crete-user.module.css";
-import Head from "next/head";
-import { useState } from "react";
-import Layout from "../../component/layout";
-import Router from "next/router";
-import { supabase } from "../../utils/supabaseClient";
+import styles from '../../styles/crete-user.module.css'
+import Head from 'next/head'
+import { useState } from 'react'
+import Layout from '../../component/layout'
+import Router from 'next/router'
+// import { supabase } from "../../utils/supabaseClient";
 
 const CreateUser = () => {
-  const [lastName, setLastName] = useState("");
-  const [lastNameKana, setLastNameKana] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [firstNameKana, setFirstNameKana] = useState("");
-  const [tel, setTel] = useState("");
-  const [mailAddress, setMailAddress] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [birthY, setBirthY] = useState("");
-  const [birthM, setBirthM] = useState("");
-  const [birthD, setBirthD] = useState("");
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const id = 23456;
+  const [lastName, setLastName] = useState('')
+  const [lastNameKana, setLastNameKana] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [firstNameKana, setFirstNameKana] = useState('')
+  const [tel, setTel] = useState('')
+  const [mailAddress, setMailAddress] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordConfirm, setPasswordConfirm] = useState('')
+  const [birthY, setBirthY] = useState('')
+  const [birthM, setBirthM] = useState('')
+  const [birthD, setBirthD] = useState('')
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const id = 23456
 
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false)
   // チェクボックスクリックでboolean反転
   const toggleCheckbox = () => {
-    setIsChecked(!isChecked);
-  };
+    setIsChecked(!isChecked)
+  }
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     // 無効な入力値で送信されないために初めにキャンセルする
-    e.preventDefault();
+    e.preventDefault()
     //半角英数字のみ(空文字OK)
 
     const regex =
-      /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+      /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
 
     if (!lastName) {
-      setError(true);
-      setErrorMessage("*姓を入力してください*");
+      setError(true)
+      setErrorMessage('*姓を入力してください*')
     } else if (!firstName) {
-      setError(true);
-      setErrorMessage("名を入力してください");
+      setError(true)
+      setErrorMessage('名を入力してください')
     } else if (!lastNameKana) {
-      setError(true);
-      setErrorMessage("姓(ふりがな)を入力してください");
+      setError(true)
+      setErrorMessage('姓(ふりがな)を入力してください')
     } else if (!firstNameKana) {
-      setError(true);
-      setErrorMessage("名(ふりがな)を入力してください");
+      setError(true)
+      setErrorMessage('名(ふりがな)を入力してください')
     } else if (!tel) {
-      setError(true);
-      setErrorMessage("*電話番号を入力してください*");
+      setError(true)
+      setErrorMessage('*電話番号を入力してください*')
     } else if (!tel.match(/^0[-0-9]{9,12}$/)) {
-      setError(true);
-      setErrorMessage("*電話番号は９~12桁の半角数字を入力してください*");
+      setError(true)
+      setErrorMessage('*電話番号は９~12桁の半角数字を入力してください*')
     } else if (!mailAddress) {
-      setError(true);
-      setErrorMessage("*メールアドレスを入力してください*");
+      setError(true)
+      setErrorMessage('*メールアドレスを入力してください*')
     } else if (!regex.test(mailAddress)) {
-      setError(true);
-      setErrorMessage("*メールアドレスを正しく入力してください*");
+      setError(true)
+      setErrorMessage('*メールアドレスを正しく入力してください*')
     } else if (!password) {
-      setError(true);
-      setErrorMessage("*パスワードを入力してください*");
+      setError(true)
+      setErrorMessage('*パスワードを入力してください*')
     } else if (password.length < 4) {
-      setError(true);
-      setErrorMessage("*パスワードは4桁以上15桁以下入力してください*");
+      setError(true)
+      setErrorMessage('*パスワードは4桁以上15桁以下入力してください*')
     } else if (password.length > 15) {
-      setError(true);
-      setErrorMessage("*パスワードは4桁以上15桁以下入力してください*");
+      setError(true)
+      setErrorMessage('*パスワードは4桁以上15桁以下入力してください*')
     } else if (!passwordConfirm) {
-      setError(true);
-      setErrorMessage("*確認用パスワードを入力してください*");
+      setError(true)
+      setErrorMessage('*確認用パスワードを入力してください*')
     } else if (password !== passwordConfirm) {
-      setError(true);
-      setErrorMessage("*パスワードと確認用パスワードが一致しません*");
+      setError(true)
+      setErrorMessage('*パスワードと確認用パスワードが一致しません*')
     } else if (isChecked === false) {
-      setError(true);
-      setErrorMessage("");
+      setError(true)
+      setErrorMessage('')
     } else {
       // supabaseに登録情報を送信
-      await supabase.from("users").insert({
+      await supabase.from('users').insert({
         lastName,
         lastNameKana,
         firstName,
@@ -90,21 +90,21 @@ const CreateUser = () => {
         birthY,
         birthM,
         birthD,
-      });
+      })
 
       // 送信したユーザーのIDを取得
-      const { data, error }: {data: any, error: any} = await supabase
-        .from("users")
+      const { data, error }: { data: any; error: any } = await supabase
+        .from('users')
         .select()
-        .eq("mailAddress", `${mailAddress}`);
-      const ids = data[0];
-      const userId = ids.id;
-      const tours = [] as [];
+        .eq('mailAddress', `${mailAddress}`)
+      const ids = data[0]
+      const userId = ids.id
+      const tours = [] as []
       // inCartsにユーザーのかごを作る
-      await supabase.from("inCarts").insert({ userId, tours });
-      (await Router.push("/tour/login")) as any; // .reloaded()リロード
+      await supabase.from('inCarts').insert({ userId, tours })
+      ;(await Router.push('/tour/login')) as any // .reloaded()リロード
     }
-  };
+  }
 
   return (
     <>
@@ -185,7 +185,7 @@ const CreateUser = () => {
 
               <div className={styles.form_birth}>
                 <label className={styles.form_label} htmlFor="">
-                  生年月日  
+                  生年月日
                 </label>
                 <div className={styles.form_birth_group}>
                   <div className={styles.form_birth_group_y}>
@@ -305,7 +305,7 @@ const CreateUser = () => {
 
               <span
                 className={styles.error_message}
-                style={{ display: error ? "block" : "none" }}
+                style={{ display: error ? 'block' : 'none' }}
               >
                 {errorMessage}
               </span>
@@ -320,9 +320,9 @@ const CreateUser = () => {
         </section>
       </Layout>
     </>
-  );
-};
-export default CreateUser;
+  )
+}
+export default CreateUser
 
 // プルダウンデータ
 const SelectYear = () => {
@@ -391,8 +391,8 @@ const SelectYear = () => {
       <option value="2009">2009</option>
       <option value="2010">2010</option>
     </>
-  );
-};
+  )
+}
 const SelectMonth = () => {
   return (
     <>
@@ -410,8 +410,8 @@ const SelectMonth = () => {
       <option value="11">11</option>
       <option value="12">12</option>
     </>
-  );
-};
+  )
+}
 const SelectDays = () => {
   return (
     <>
@@ -448,8 +448,8 @@ const SelectDays = () => {
       <option value="30">30</option>
       <option value="31">31</option>
     </>
-  );
-};
+  )
+}
 
 // const data = {
 //   firstName,
