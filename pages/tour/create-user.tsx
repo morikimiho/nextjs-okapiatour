@@ -2,7 +2,8 @@ import styles from '../../styles/crete-user.module.css'
 import Head from 'next/head'
 import { useState } from 'react'
 import Layout from '../../component/layout'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 // import { supabase } from "../../utils/supabaseClient";
 
 const CreateUser = () => {
@@ -20,6 +21,7 @@ const CreateUser = () => {
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const id = 23456
+  const router = useRouter()
 
   const [isChecked, setIsChecked] = useState(false)
   // チェクボックスクリックでboolean反転
@@ -79,30 +81,31 @@ const CreateUser = () => {
       setErrorMessage('')
     } else {
       // supabaseに登録情報を送信
-      await supabase.from('users').insert({
-        lastName,
-        lastNameKana,
-        firstName,
-        firstNameKana,
-        mailAddress,
-        tel,
-        password,
-        birthY,
-        birthM,
-        birthD,
-      })
+      let user = {
+        lastName: lastName,
+        lastNameKana: lastNameKana,
+        firstName: firstName,
+        firstNameKana: firstNameKana,
+        mailAddress: mailAddress,
+        tel: tel,
+        password: password,
+        birthY: birthY,
+        birthM: birthM,
+        birthD: birthD,
+      }
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/create`, user)
 
       // 送信したユーザーのIDを取得
-      const { data, error }: { data: any; error: any } = await supabase
-        .from('users')
-        .select()
-        .eq('mailAddress', `${mailAddress}`)
-      const ids = data[0]
-      const userId = ids.id
-      const tours = [] as []
+      // const { data, error }: { data: any; error: any } = await supabase
+      //   .from('users')
+      //   .select()
+      //   .eq('mailAddress', `${mailAddress}`)
+      // const ids = data[0]
+      // const userId = ids.id
+      // const tours = [] as []
       // inCartsにユーザーのかごを作る
-      await supabase.from('inCarts').insert({ userId, tours })
-      ;(await Router.push('/tour/login')) as any // .reloaded()リロード
+      // await supabase.from('inCarts').insert({ userId, tours })
+      router.push('/tour/login') // .reloaded()リロード
     }
   }
 

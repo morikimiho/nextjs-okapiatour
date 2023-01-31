@@ -1,93 +1,93 @@
-import styles from "../../styles/login.module.css";
-import Link from "next/link";
-import Head from "next/head";
-import { useRouter } from "next/router";
-import Layout from "../../component/layout";
-import { supabase } from "../../utils/supabaseClient";
-import { useForm, SubmitHandler } from "react-hook-form";
+import styles from '../../styles/login.module.css'
+import Link from 'next/link'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import Layout from '../../component/layout'
+import { supabase } from '../../utils/supabaseClient'
+import { useForm, SubmitHandler } from 'react-hook-form'
 
 type inputForm = {
-  mailAddress: string;
-  password: string;
-};
+  mailAddress: string
+  password: string
+}
 
 export default function Login() {
-  const router = useRouter();
+  const router = useRouter()
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<inputForm>();
+  } = useForm<inputForm>()
 
   //ログイン処理（CookieにsignedIn=trueとする）
   const onSubmit: SubmitHandler<inputForm> = async (data, e: any) => {
-    e.preventDefault();
-    const mailAddress = data.mailAddress;
-    const password = data.password;
-    console.log(data);
-    fetch("/api/login", {
-      method: "POST",
+    e.preventDefault()
+    const mailAddress = data.mailAddress
+    const password = data.password
+    console.log(data)
+    fetch('/api/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     })
       .then(async (response) => {
-        console.log(response);
-        response.json();
+        console.log(response)
+        response.json()
         if (response.status !== 200) {
-          console.log("失敗");
+          console.log('失敗')
         } else if (response.status === 200) {
-          const localTourJSON = localStorage.getItem("tours");
+          const localTourJSON = localStorage.getItem('tours')
           if (localTourJSON === null) {
             // router.push("/tour");
-            console.log("トップページに遷移");
+            console.log('トップページに遷移')
           } else {
             // router.push("/tour/pay");
-            console.log("payに遷移");
+            console.log('payに遷移')
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
           const { data }: { data: any } = await supabase
-            .from("users")
-            .select("*")
-            .eq("mailAddress", mailAddress)
-            .eq("password", password);
+            .from('users')
+            .select('*')
+            .eq('mailAddress', mailAddress)
+            .eq('password', password)
 
-          const user = data[0];
+          const user = data[0]
           // console.log(user);
-          const id = user.id;
+          const id = user.id
           // console.log(id);
           const localtours = JSON.parse(
-            localStorage.getItem("tours") ?? '{"tours:[]}'
-          );
+            localStorage.getItem('tours') ?? '{"tours:[]}'
+          )
 
           if (localtours.tours.length === 0) {
-            return;
+            return
           } else {
             //バックデータのカートの中身を取得
             const { data }: { data: any } = await supabase
-              .from("inCarts")
-              .select("*")
-              .eq("userId", id);
-            console.log("datam", data);
-            const cart = data[0];
+              .from('inCarts')
+              .select('*')
+              .eq('userId', id)
+            console.log('datam', data)
+            const cart = data[0]
             //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
             await supabase
-              .from("inCarts")
+              .from('inCarts')
               .update({ tours: [...cart.tours, ...localtours.tours] })
-              .eq("userId", id);
+              .eq('userId', id)
           }
-          localStorage.clear();
+          localStorage.clear()
         }
       })
       .then((data) => {
-        console.log(data);
+        console.log(data)
       })
       .catch((error) => {
-        console.error(error);
-      });
-  };
+        console.error(error)
+      })
+  }
 
   return (
     <>
@@ -111,11 +111,11 @@ export default function Login() {
                       className={styles.input_name}
                       id="mailAddress"
                       type="email"
-                      {...register("mailAddress", {
+                      {...register('mailAddress', {
                         required: true,
                       })}
                     />
-                    {errors.password?.type === "required" && (
+                    {errors.password?.type === 'required' && (
                       <div className={styles.error_message}>
                         メールアドレスを入力してください
                       </div>
@@ -130,11 +130,11 @@ export default function Login() {
                       className={styles.input_name}
                       id="password"
                       type="password"
-                      {...register("password", {
+                      {...register('password', {
                         required: true,
                       })}
                     />
-                    {errors.password?.type === "required" && (
+                    {errors.password?.type === 'required' && (
                       <div className={styles.error_message}>
                         パスワードを入力してください
                       </div>
@@ -157,5 +157,5 @@ export default function Login() {
         </Link>
       </Layout>
     </>
-  );
+  )
 }
