@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import Layout from '../../component/layout'
 import { supabase } from '../../utils/supabaseClient'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import axios from 'axios'
 
 type inputForm = {
   mailAddress: string
@@ -22,8 +23,12 @@ export default function Login() {
   //ログイン処理（CookieにsignedIn=trueとする）
   const onSubmit: SubmitHandler<inputForm> = async (data, e: any) => {
     e.preventDefault()
-    const mailAddress = data.mailAddress
-    const password = data.password
+    const dto = {
+      mailAddress: data.mailAddress,
+      password: data.password,
+    }
+    // const mailAddress = data.mailAddress
+    // const password = data.password
     console.log(data)
     fetch('/api/login', {
       method: 'POST',
@@ -40,22 +45,26 @@ export default function Login() {
         } else if (response.status === 200) {
           const localTourJSON = localStorage.getItem('tours')
           if (localTourJSON === null) {
-            // router.push("/tour");
+            router.push('/tour')
             console.log('トップページに遷移')
           } else {
-            // router.push("/tour/pay");
+            router.push('/tour/pay')
             console.log('payに遷移')
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
-          const { data }: { data: any } = await supabase
-            .from('users')
-            .select('*')
-            .eq('mailAddress', mailAddress)
-            .eq('password', password)
+          // const { data }: { data: any } = await supabase
+          //   .from('users')
+          //   .select('*')
+          //   .eq('mailAddress', mailAddress)
+          //   .eq('password', password)
+          const { data } = await axios.post(
+            'http://localhost:3003/user/login',
+            dto
+          )
 
           const user = data[0]
-          // console.log(user);
+          console.log('user', user)
           const id = user.id
           // console.log(id);
           const localtours = JSON.parse(
@@ -66,17 +75,20 @@ export default function Login() {
             return
           } else {
             //バックデータのカートの中身を取得
-            const { data }: { data: any } = await supabase
-              .from('inCarts')
-              .select('*')
-              .eq('userId', id)
+            // const { data }: { data: any } = await supabase
+            //   .from('inCarts')
+            //   .select('*')
+            //   .eq('userId', id)
+            const { data } = await axios.get(
+              `http://localhost:3003/tour/get/cart`
+            )
             console.log('datam', data)
             const cart = data[0]
             //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
-            await supabase
-              .from('inCarts')
-              .update({ tours: [...cart.tours, ...localtours.tours] })
-              .eq('userId', id)
+            // await supabase
+            //   .from('inCarts')
+            //   .update({ tours: [...cart.tours, ...localtours.tours] })
+            //   .eq('userId', id)
           }
           localStorage.clear()
         }

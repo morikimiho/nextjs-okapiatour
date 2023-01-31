@@ -1,66 +1,75 @@
-import styles from "../../styles/booking_confirmation.module.css";
-import Head from "next/head";
-import Layout from "../../component/layout";
-import useCookie from "../../hooks/useCookie";
-import { useEffect, useState } from "react";
-import Image from "next/legacy/image";
-import Link from "next/link";
-import { Order } from "../../types/types";
-import { supabase } from "../../utils/supabaseClient";
+import styles from '../../styles/booking_confirmation.module.css'
+import Head from 'next/head'
+import Layout from '../../component/layout'
+import useCookie from '../../hooks/useCookie'
+import { useEffect, useState } from 'react'
+import Image from 'next/legacy/image'
+import Link from 'next/link'
+import { Order } from '../../types/types'
+// import { supabase } from '../../utils/supabaseClient'
+import axios from 'axios'
 
 export default function BookingConfirmation() {
-  const cookie = useCookie();
+  const cookie = useCookie()
 
-  const loginName = cookie.loginName;
-  const loginId = cookie.loginId;
-  const [okastatus, setOkastatus] = useState("/images/status/worm.png");
+  const loginName = cookie.loginName
+  const loginId = cookie.loginId
+  // const [okastatus, setOkastatus] = useState('/images/status/worm.png')
 
   useEffect(() => {
-    ConfData();
-  }, [loginId]);
-  const [data, setData] = useState<Order[]>([]);
-  const [point, setPoint] = useState<any>(0);
+    ConfData()
+  }, [loginId])
+  const [data, setData] = useState<Order[]>([])
+  const [point, setPoint] = useState<any>(0)
   const ConfData = async () => {
-    if (!loginId) return;
-    let { data, error } = await supabase
-      .from("orders")
-      .select(`*`)
-      .eq("userId", loginId)
-      .order(`id`, { ascending: false });
-    if (!data) return;
-    if (error) return;
-    setData(data);
+    if (!loginId) return
+    // let { data, error } = await supabase
+    //   .from('orders')
+    //   .select(`*`)
+    //   .eq('userId', loginId)
+    //   .order(`id`, { ascending: false })
+
+    let { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/order/get/${loginId}`
+    )
+    if (!data) return
+    // if (error) return
+    setData(data)
 
     //ポイント情報を取得
-    let point = await supabase
-      .from(`users`)
-      .select(`OkaPoint`)
-      .eq("id", loginId);
+    // let point = await supabase
+    //   .from(`users`)
+    //   .select(`OkaPoint`)
+    //   .eq('id', loginId)
 
+    let point = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/user/getuser/${loginId}`
+    )
+    // console.log(point)
     //usersのポイントを取得
-    let userp = point.data;
-    if (!userp) return;
-    setPoint(userp[0].OkaPoint);
-  };
-
-  //ステータス表示
-  let status = "/images/status/okapia01.png";
-  if (point >= 500) {
-    status = "/images/status/okapia02.png";
-    if (point >= 1000) {
-      status = "/images/status/okapia03.png";
-      if (point >= 1500) {
-        status = "/images/status/okapia04.png";
-        if (point >= 2000) {
-          status = "/images/status/okapia05.png";
-        }
-      }
-    }
+    let userp = point.data
+    if (!userp) return
+    setPoint(userp.OkaPoint)
   }
 
-  useEffect(() => {
-    setOkastatus(status);
-  },[status]);
+  //ステータス表示
+  // let status = "/images/status/okapia01.png";
+  // if (point >= 500) {
+  //   status = "/images/status/okapia02.png";
+  //   if (point >= 1000) {
+  //     status = "/images/status/okapia03.png";
+  //     if (point >= 1500) {
+  //       status = "/images/status/okapia04.png";
+  //       if (point >= 2000) {
+  //         status = "/images/status/okapia05.png";
+  //       }
+  //     }
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   setOkastatus(status);
+  // },[status]);
 
   return (
     <>
@@ -73,8 +82,8 @@ export default function BookingConfirmation() {
             <h1 className={styles.bookingC_title}>
               {loginName}さん、こんにちは！
             </h1>
-            <h2 className={styles.status}>現在のステータス</h2>
-            <Image src={okastatus} width={110} height={90} alt="画像"></Image>
+            {/* <h2 className={styles.status}>現在のステータス</h2>
+            <Image src={okastatus} width={110} height={90} alt="画像"></Image> */}
           </div>
           <h3>
             現在のOkaPointは<div className={styles.point}>{point}</div>
@@ -130,13 +139,13 @@ export default function BookingConfirmation() {
                         </Link>
                       </div>
                     </div>
-                  );
+                  )
                 })}
               </div>
-            );
+            )
           })}
         </main>
       </Layout>
     </>
-  );
+  )
 }
