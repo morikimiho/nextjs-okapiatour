@@ -1,6 +1,6 @@
 import styles from '../../styles/crete-user.module.css'
 import Head from 'next/head'
-import { useState } from 'react'
+import { use, useState } from 'react'
 import Layout from '../../component/layout'
 import { useRouter } from 'next/router'
 import axios from 'axios'
@@ -100,11 +100,26 @@ const CreateUser = () => {
       //   .from('users')
       //   .select()
       //   .eq('mailAddress', `${mailAddress}`)
-      // const ids = data[0]
-      // const userId = ids.id
-      // const tours = [] as []
+      const dto = {
+        mailAddress: user.mailAddress,
+        password: user.password,
+      }
+      const { data } = await axios.post('http://localhost:3003/user/login', dto)
+      console.log('data', data)
+
+      const userId = data[0].id
+      // console.log('userId', userId)
+      const tours = [] as []
       // inCartsにユーザーのかごを作る
       // await supabase.from('inCarts').insert({ userId, tours })
+      const initcartDto = {
+        userId: userId,
+        tours: tours,
+      }
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/user/initcart`,
+        initcartDto
+      )
       router.push('/tour/login') // .reloaded()リロード
     }
   }

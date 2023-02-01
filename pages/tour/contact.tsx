@@ -38,7 +38,7 @@ export default function Contact() {
         `${process.env.NEXT_PUBLIC_API_URL}/tour/post/question`,
         dto
       )
-      console.log(dto)
+      // console.log(dto)
 
       router.push('/tour')
     }
