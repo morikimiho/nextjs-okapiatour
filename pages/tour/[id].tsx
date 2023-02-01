@@ -169,28 +169,50 @@ export default function Tripdetail({
               total: number
             }[]
           }) => {
-            await supabase
-              .from('inCarts')
-              .upsert({
-                tours: [
-                  ...cart.tours,
-                  {
-                    id: tour.id,
-                    tourDate: tourDate, //新規データ
-                    startTime: startTime, //新規データ
-                    img1: tour.img1,
-                    tourName: tour.tourName,
-                    description: tour.description,
-                    numberOfPeople: numberOfPeople, //新規データ
-                    price: Number(tour.price),
-                    total: Number(tour.price * numberOfPeople),
-                  },
-                ],
-                userId: loginId,
-                id: cart.id,
-              })
-              .eq('userId', loginId)
-            router.push('/tour/cart')
+            // await supabase
+            //     .from('inCarts')
+            //     .upsert({
+            //       tours: [
+            //         ...cart.tours,
+            //         {
+            //           id: tour.id,
+            //           tourDate: tourDate, //新規データ
+            //           startTime: startTime, //新規データ
+            //           img1: tour.img1,
+            //           tourName: tour.tourName,
+            //           description: tour.description,
+            //           numberOfPeople: numberOfPeople, //新規データ
+            //           price: Number(tour.price),
+            //           total: Number(tour.price * numberOfPeople),
+            //         },
+            //       ],
+            //       userId: loginId,
+            //       id: cart.id,
+            //     })
+            //     .eq('userId', loginId)
+            //   router.push('/tour/cart')
+
+            const dto = {
+              tours: [
+                ...cart.tours,
+                {
+                  id: tour.id,
+                  tourDate: tourDate, //新規データ
+                  startTime: startTime, //新規データ
+                  img1: tour.img1,
+                  tourName: tour.tourName,
+                  description: tour.description,
+                  numberOfPeople: numberOfPeople, //新規データ
+                  price: Number(tour.price),
+                  total: Number(tour.price * numberOfPeople),
+                },
+              ],
+              userId: loginId,
+              id: cart.id,
+            }
+
+            //＊途中！！！！＊
+            await axios
           }
         )
       }

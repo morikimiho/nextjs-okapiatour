@@ -20,7 +20,7 @@ const CreateUser = () => {
   const [birthD, setBirthD] = useState('')
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const id = 23456
+  // const id = 23456
   const router = useRouter()
 
   const [isChecked, setIsChecked] = useState(false)
