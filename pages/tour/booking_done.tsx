@@ -4,7 +4,7 @@ import Link from 'next/link'
 import useCookie from '../../hooks/useCookie'
 import Layout from '../../component/layout'
 import { useEffect, useState } from 'react'
-import { supabase } from '../../utils/supabaseClient'
+// import { supabase } from '../../utils/supabaseClient'
 import { Order } from '../../types/types'
 import axios from 'axios'
 
