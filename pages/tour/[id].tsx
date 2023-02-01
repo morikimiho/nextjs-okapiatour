@@ -40,7 +40,11 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps = async ({ params }: { params: any }) => {
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { id: number }
+}) => {
   if (!params) return
   // const { data, error } = await supabase
   //   .from("tours")
@@ -54,15 +58,15 @@ export const getStaticProps = async ({ params }: { params: any }) => {
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/tour/get/${params.id}`
   )
-  const tour = await data[0]
-
+  const tour = await data
+  // console.log('tour', tour)
   // const comRes = await supabase
   //   .from("comment")
   //   .select("*")
   //   .eq("tourid", params.id);
 
   const comRes = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/comment/${params.tourId}`
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/comment/${params.id}`
   )
   const comment = await comRes.data
   // console.log(comment);
@@ -135,14 +139,17 @@ export default function Tripdetail({
       }
       router.push('/tour/cart')
     } else {
-      const { data, error } = await supabase
-        .from('inCarts')
-        .select('*')
-        .eq('userId', loginId)
+      // const { data, error } = await supabase
+      //   .from('inCarts')
+      //   .select('*')
+      //   .eq('userId', loginId)
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/tour/get/cart/${loginId}`
+      )
       if (!data) return
-      if (error) {
-        console.log(error)
-      }
+      // if (error) {
+      //   console.log(error)
+      // }
 
       const inCarts = await data
       console.log(inCarts)
@@ -162,28 +169,50 @@ export default function Tripdetail({
               total: number
             }[]
           }) => {
-            await supabase
-              .from('inCarts')
-              .upsert({
-                tours: [
-                  ...cart.tours,
-                  {
-                    id: tour.id,
-                    tourDate: tourDate, //新規データ
-                    startTime: startTime, //新規データ
-                    img1: tour.img1,
-                    tourName: tour.tourName,
-                    description: tour.description,
-                    numberOfPeople: numberOfPeople, //新規データ
-                    price: Number(tour.price),
-                    total: Number(tour.price * numberOfPeople),
-                  },
-                ],
-                userId: loginId,
-                id: cart.id,
-              })
-              .eq('userId', loginId)
-            router.push('/tour/cart')
+            // await supabase
+            //     .from('inCarts')
+            //     .upsert({
+            //       tours: [
+            //         ...cart.tours,
+            //         {
+            //           id: tour.id,
+            //           tourDate: tourDate, //新規データ
+            //           startTime: startTime, //新規データ
+            //           img1: tour.img1,
+            //           tourName: tour.tourName,
+            //           description: tour.description,
+            //           numberOfPeople: numberOfPeople, //新規データ
+            //           price: Number(tour.price),
+            //           total: Number(tour.price * numberOfPeople),
+            //         },
+            //       ],
+            //       userId: loginId,
+            //       id: cart.id,
+            //     })
+            //     .eq('userId', loginId)
+            //   router.push('/tour/cart')
+
+            const dto = {
+              tours: [
+                ...cart.tours,
+                {
+                  id: tour.id,
+                  tourDate: tourDate, //新規データ
+                  startTime: startTime, //新規データ
+                  img1: tour.img1,
+                  tourName: tour.tourName,
+                  description: tour.description,
+                  numberOfPeople: numberOfPeople, //新規データ
+                  price: Number(tour.price),
+                  total: Number(tour.price * numberOfPeople),
+                },
+              ],
+              userId: loginId,
+              id: cart.id,
+            }
+
+            //＊途中！！！！＊
+            await axios
           }
         )
       }

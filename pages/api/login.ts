@@ -19,9 +19,8 @@ export default async function Handler(
   // .eq("mailAddress", mailAddress)
   // .eq("password", password)
 
-  // const { data } = await axios.get(`http://localhost:3003/user/getuserinfo`)
   const { data } = await axios.post('http://localhost:3003/user/login', dto)
-  // const { data } = await fetch(`http://localhost:3003/user/getuserinfo?mailAddress=${mailAddress}&password=${password}`);
+
   const user = data[0]
   console.log('user', user)
   const id = user.id

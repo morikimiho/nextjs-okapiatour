@@ -1,43 +1,44 @@
-import Head from "next/head";
-import styles from "../../styles/booking_done.module.css";
-import Link from "next/link";
-import useCookie from "../../hooks/useCookie";
-import Layout from "../../component/layout";
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
-import { Order } from "../../types/types";
-
+import Head from 'next/head'
+import styles from '../../styles/booking_done.module.css'
+import Link from 'next/link'
+import useCookie from '../../hooks/useCookie'
+import Layout from '../../component/layout'
+import { useEffect, useState } from 'react'
+// import { supabase } from '../../utils/supabaseClient'
+import { Order } from '../../types/types'
+import axios from 'axios'
 
 export default function BookingDone() {
-  const cookie = useCookie();
-  const loginId = cookie.loginId;
-  const [numData, setNumData] = useState<any>();
+  const cookie = useCookie()
+  const loginId = cookie.loginId
+  const [numData, setNumData] = useState<any>()
   //  if (!numData) return;
-   
 
   useEffect(() => {
-    getOrders();
-  }, [loginId]);
-  const [data, setData] = useState<Order[]>([]);
+    getOrders()
+  }, [loginId])
+  const [data, setData] = useState<Order[]>([])
   const getOrders = async () => {
-    if(!loginId)return 
-    let { data, error } = await supabase
-      .from("orders")
-      .select("rsNumber")
-      .eq("userId", loginId);
-      if(error)return ;
-    if (!data) return <div>loading...</div>;
-   
+    if (!loginId) return
+    // let { data, error } = await supabase
+    //   .from("orders")
+    //   .select("rsNumber")
+    //   .eq("userId", loginId);
+    //   if(error)return ;
+
+    let { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/order/get/${loginId}`
+    )
+    if (!data) return <div>loading...</div>
+
     // setData(data);
     // console.log("data", data)
-    const cartItem = data[data.length - 1];
-    setNumData(cartItem);
+    const cartItem = data[data.length - 1]
+    setNumData(cartItem)
     // console.log("numData", numData);
-  };
+  }
 
   // console.log("numData", numData);
-
-  
 
   return (
     <>
@@ -56,9 +57,11 @@ export default function BookingDone() {
           <div className={styles.booking_number}>
             <p>ご予約を承りました。</p>
             <p>ご予約番号</p>
-              { numData? 
-                   <p className={styles.booking_RsNumber}>{numData.rsNumber}</p>
-                :""}
+            {numData ? (
+              <p className={styles.booking_RsNumber}>{numData.rsNumber}</p>
+            ) : (
+              ''
+            )}
             <p className={styles.booking_message}>
               お問合せに必要な番号です。大切に保管してください。
             </p>
@@ -84,5 +87,5 @@ export default function BookingDone() {
         </main>
       </Layout>
     </>
-  );
+  )
 }

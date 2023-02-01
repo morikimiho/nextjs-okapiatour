@@ -1,90 +1,112 @@
-import { useRouter } from "next/router";
-import { SetStateAction, useEffect, useState } from "react";
-import Layout from "../../../component/layout";
-import { Tour } from "../../../types/types";
-import { supabase } from "../../../utils/supabaseClient";
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import { SetStateAction, useEffect, useState } from 'react'
+import Layout from '../../../component/layout'
+import { Tour } from '../../../types/types'
+// import { supabase } from "../../../utils/supabaseClient";
 
 // データ取得
 // ページ読み込み時にsupabaseのデータ取得
 export const getStaticPaths = async () => {
-  const { data, error } = await supabase.from("tours").select("*"); // テーブル名 "tours" のデータを取得
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
-  const tours = await data;
+  // const { data, error } = await supabase.from('tours').select('*') // テーブル名 "tours" のデータを取得
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get`
+  )
+  // if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
+  const tours = await data
   const paths = tours.map((tour: { id: number }) => {
     return {
       params: {
         id: tour.id.toString(),
       },
-    };
-  });
+    }
+  })
   return {
     paths,
     fallback: false,
-  };
-};
+  }
+}
 
-export const getStaticProps = async ({ params }: { params: any }) => {
-  const { data, error } = await supabase
-    .from("tours")
-    .select("*")
-    .eq("id", params.id); // テーブル名 "tours.id" のデータを取得
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
-  const tour = await data;
+export const getStaticProps = async ({
+  params,
+}: {
+  params: { id: number }
+}) => {
+  // .from('tours')
+  // .select('*')
+  // .eq('id', params.id) // テーブル名 "tours.id" のデータを取得
+  // if (error) return <div>failed to load</div>
+  const { data } = await axios.get(
+    `${process.env.NEXT_PUBLIC_API_URL}/tour/get/${params.id}`
+  )
+  if (!data) return <div>loading...</div>
+  const tour = await data
   return {
     props: { tour },
     revalidate: 10,
-  };
-};
+  }
+}
 
-export default function Comment({ tour }: { tour: Array<Tour> }) {
-  const [text, setText] = useState("");
-  const [name, setName] = useState("");
-  const [tourid, setTourid] = useState(0);
-  const [thanksmessage, setThanksmessage] = useState(false);
-  const router = useRouter();
+export default function Comment({ tour }: { tour: Tour }) {
+  const [text, setText] = useState('')
+  const [name, setName] = useState('')
+  const [tourid, setTourid] = useState(0)
+  const [thanksmessage, setThanksmessage] = useState(false)
+  const router = useRouter()
 
+  console.log(tour)
   useEffect(() => {
-    setTourid(tour[0].id);
-  }, [tour]);
+    setTourid(tour.id)
+  }, [tour])
 
   const submitHandler = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const newdate = new Date();
-    let year = newdate.getFullYear();
-    let month = newdate.getMonth() + 1;
-    let aday = newdate.getDate();
+    e.preventDefault()
+    const newdate = new Date()
+    let year = newdate.getFullYear()
+    let month = newdate.getMonth() + 1
+    let aday = newdate.getDate()
 
-    let date = `${year}-${month}-${aday}`;
+    let date = `${year}-${month}-${aday}`
+
+    const dto = {
+      tourId: tourid,
+      name: name,
+      text: text,
+      date: date,
+    }
 
     if (!text) {
     } else {
-      await supabase.from("comment").insert({ tourid, name, text, date });
-      setThanksmessage((prev) => !prev);
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/tour/post/review`,
+        dto
+      )
+      // await supabase.from('comment').insert({ tourid, name, text, date })
+      setThanksmessage((prev) => !prev)
       setTimeout(() => {
-        router.push("/tour");
-      }, 2000);
+        router.push('/tour')
+      }, 2000)
     }
-  };
+  }
 
   //リセット
   const clickHandler = () => {
-    setText("");
-    setName("");
-  };
+    setText('')
+    setName('')
+  }
 
   const changetextHandler = (e: {
-    target: { value: SetStateAction<string> };
+    target: { value: SetStateAction<string> }
   }) => {
-    setText(e.target.value);
-  };
+    setText(e.target.value)
+  }
 
   const changenameHandler = (e: {
-    target: { value: SetStateAction<string> };
+    target: { value: SetStateAction<string> }
   }) => {
-    setName(e.target.value);
-  };
+    setName(e.target.value)
+  }
 
   return (
     <div>
@@ -93,7 +115,7 @@ export default function Comment({ tour }: { tour: Array<Tour> }) {
         <h2>口コミ</h2>
         <form onSubmit={submitHandler}>
           <h2>ツアーの感想ご記入をお願いいたします。</h2>
-          <p>参加ツアー：{tour[0].tourName}</p>
+          <p>参加ツアー：{tour.tourName}</p>
           <br />
           <label htmlFor="">
             ニックネーム
@@ -120,10 +142,10 @@ export default function Comment({ tour }: { tour: Array<Tour> }) {
               <p>3秒後にトップ画面へ遷移します。</p>
             </div>
           ) : (
-            ""
+            ''
           )}
         </form>
       </Layout>
     </div>
-  );
+  )
 }

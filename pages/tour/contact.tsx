@@ -1,36 +1,48 @@
-import Layout from "../../component/layout";
-import Image from "next/image";
-import styles from "../../styles/contact.module.css";
-import { useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
-import Router from "next/router";
-import Link from "next/link";
+import Layout from '../../component/layout'
+import Image from 'next/image'
+import styles from '../../styles/contact.module.css'
+import { useState } from 'react'
+import { supabase } from '../../utils/supabaseClient'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import axios from 'axios'
 
 export default function Contact() {
-  const [question, setQuestion] = useState("");
-  const [description, setDescription] = useState("");
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  
+  const [question, setQuestion] = useState('')
+  const [description, setDescription] = useState('')
+  const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  const router = useRouter()
 
-  const onSubmit = async(e:any) => {
-    e.preventDefault();
+  const dto = {
+    question: question,
+    description: description,
+    answer: '',
+  }
+  console.log(dto)
+
+  const onSubmit = async (e: any) => {
+    e.preventDefault()
     if (!question) {
-      setError(true);
-      setErrorMessage("質問を入力してください");
+      setError(true)
+      setErrorMessage('質問を入力してください')
     } else if (!description) {
-      setError(true);
-      setErrorMessage("質問の詳細を入力してください。");
-    }else{
-        await supabase.from("contact").insert({
-         question:question,
-         description:description
-          })
-          await Router.push("/tour");
+      setError(true)
+      setErrorMessage('質問の詳細を入力してください。')
+    } else {
+      // await supabase.from('contact').insert({
+      //   question: question,
+      //   description: description,
+      // })
+      await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/tour/post/question`,
+        dto
+      )
+      // console.log(dto)
+
+      router.push('/tour')
     }
-  };
-
-
+  }
 
   return (
     <>
@@ -60,31 +72,29 @@ export default function Contact() {
               </label>
               <br />
               <button>送信</button>
-              
             </form>
           </div>
           <div>
-          <span
-                className={styles.error_message}
-                style={{ display: error ? "block" : "none" }}
-              >
-                {errorMessage}
-              </span>
+            <span
+              className={styles.error_message}
+              style={{ display: error ? 'block' : 'none' }}
+            >
+              {errorMessage}
+            </span>
             <Image
-              src={"/images/horse.png"}
+              src={'/images/horse.png'}
               width={200}
               height={200}
-              alt={"画像"}
+              alt={'画像'}
               className={`${styles.keyframe0} ${styles.animation}`}
               priority
             ></Image>
           </div>
-         
         </div>
         <Link rel="stylesheet" href="/tour/questionhistory">
-            <h2 className={styles.questionhistory}>よくある質問はこちら</h2>
+          <h2 className={styles.questionhistory}>よくある質問はこちら</h2>
         </Link>
       </Layout>
     </>
-  );
+  )
 }
