@@ -19,7 +19,7 @@ export default function Contact() {
     description: description,
     answer: '',
   }
-  console.log(dto)
+  // console.log(dto)
 
   const onSubmit = async (e: any) => {
     e.preventDefault()

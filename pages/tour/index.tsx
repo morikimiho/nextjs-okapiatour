@@ -5,11 +5,11 @@ import { Header } from '../../component/header'
 import { Footer } from '../../component/footer'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/splide/css'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { SearchBox } from '../../component/serchPage/SearchBox'
 import { SearchResult } from '../../component/serchPage/SearchResult'
 // import { supabase } from "../../utils/supabaseClient";
-import { Info } from '../../types/types'
+import { Info, Tour } from '../../types/types'
 import { Infomation } from '../../component/info'
 import axios from 'axios'
 
@@ -23,15 +23,19 @@ export const getStaticProps = async () => {
   const { data } = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/tour/get/info`
   )
+  const info = data
 
   return {
     props: {
-      data,
+      info,
     },
   }
 }
-export default function Home({ data }: { data: Info[] }) {
-  const [url, setUrl] = useState('/api/supabaseTours')
+export default function Home({ info }: { info: Info[] }) {
+  // const [url, setUrl] = useState('/api/supabaseTours')
+
+  const [url, setUrl] = useState(`${process.env.NEXT_PUBLIC_API_URL}/tour/get`)
+  console.log('index', url)
   const [subtitle, setSubtitle] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [displayInfo, setDisplayInfo] = useState(true)
@@ -124,7 +128,7 @@ export default function Home({ data }: { data: Info[] }) {
         />
       </div>
       <div style={{ display: displayInfo ? 'block' : 'none' }}>
-        {<Infomation data={data} />}
+        {<Infomation info={info} />}
       </div>
       <div>{SearchResultMemo}</div>
       <Footer />
