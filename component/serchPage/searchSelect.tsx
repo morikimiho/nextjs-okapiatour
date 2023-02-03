@@ -1,23 +1,23 @@
-import Image from "next/legacy/image";
-import { Tour } from "../../types/types";
-import styles from "../../styles/search-page.module.css";
-import Link from "next/link";
+import Image from 'next/legacy/image'
+import { Tour } from '../../types/types'
+import styles from '../../styles/search-page.module.css'
+import Link from 'next/link'
 
 type Props = {
-  data: [];
-  subtitle: boolean;
-  length: number;
-};
+  data: Tour[]
+  subtitle: boolean
+  length: number
+}
 
 export function SearchSelect({ data, length, subtitle }: Props) {
   for (let i = length - 2; i > 0; i--) {
-    let r = Math.floor(Math.random() * (i + 1));
-    let tmp = data[i];
-    data[i] = data[r];
-    data[r] = tmp;
+    let r = Math.floor(Math.random() * (i + 1))
+    let tmp = data[i]
+    data[i] = data[r]
+    data[r] = tmp
   }
 
-  // console.log(data);
+  // console.log('search', data)
   return (
     <>
       {subtitle ? (
@@ -76,7 +76,7 @@ export function SearchSelect({ data, length, subtitle }: Props) {
                   </div>
 
                   <div id="button" className={styles.button_around}>
-                    {" "}
+                    {' '}
                     {/* 詳細ボタン */}
                     <Link href={`/tour/${item.id}`}>
                       <button className={styles.button}>詳細はこちら </button>
@@ -86,8 +86,8 @@ export function SearchSelect({ data, length, subtitle }: Props) {
               </div>
             </div>
           </div>
-        );
+        )
       })}
     </>
-  );
+  )
 }

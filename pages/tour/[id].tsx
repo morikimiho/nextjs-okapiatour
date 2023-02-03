@@ -152,70 +152,78 @@ export default function Tripdetail({
       // }
 
       const inCarts = await data
-      console.log(inCarts)
-      {
-        inCarts.map(
-          async (cart: {
-            id: number
-            tours: {
-              id: number
-              tourDate: string //新規データ
-              startTime: string //新規データ
-              img1: string
-              tourName: string
-              description: string
-              numberOfPeople: number //新規データ
-              price: number
-              total: number
-            }[]
-          }) => {
-            // await supabase
-            //     .from('inCarts')
-            //     .upsert({
-            //       tours: [
-            //         ...cart.tours,
-            //         {
-            //           id: tour.id,
-            //           tourDate: tourDate, //新規データ
-            //           startTime: startTime, //新規データ
-            //           img1: tour.img1,
-            //           tourName: tour.tourName,
-            //           description: tour.description,
-            //           numberOfPeople: numberOfPeople, //新規データ
-            //           price: Number(tour.price),
-            //           total: Number(tour.price * numberOfPeople),
-            //         },
-            //       ],
-            //       userId: loginId,
-            //       id: cart.id,
-            //     })
-            //     .eq('userId', loginId)
-            //   router.push('/tour/cart')
-
-            const dto = {
-              tours: [
-                ...cart.tours,
-                {
-                  id: tour.id,
-                  tourDate: tourDate, //新規データ
-                  startTime: startTime, //新規データ
-                  img1: tour.img1,
-                  tourName: tour.tourName,
-                  description: tour.description,
-                  numberOfPeople: numberOfPeople, //新規データ
-                  price: Number(tour.price),
-                  total: Number(tour.price * numberOfPeople),
-                },
-              ],
-              userId: loginId,
-              id: cart.id,
-            }
-
-            //＊途中！！！！＊
-            await axios
-          }
-        )
+      console.log('inCarts', inCarts)
+      const dto = {
+        tours: [
+          ...inCarts.tours,
+          {
+            id: tour.id,
+            tourDate: tourDate, //新規データ
+            startTime: startTime, //新規データ
+            img1: tour.img1,
+            tourName: tour.tourName,
+            description: tour.description,
+            numberOfPeople: numberOfPeople, //新規データ
+            price: Number(tour.price),
+            total: Number(tour.price * numberOfPeople),
+          },
+        ],
+        userId: loginId,
+        id: inCarts.id,
       }
+      console.log('dto', dto)
+      const addTour = dto.tours
+      console.log('addTours', addTour)
+      //現在の内容に新しいカートデータを追加→置き換え
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_URL}/order/updatecart/${loginId}`,
+        addTour
+      )
+      router.push('/tour/cart')
+      // {
+      //   inCarts.map(
+      //     async (
+      //       cart
+      //       // : {
+      //       //   id: number
+      //       //   tours: {
+      //       //     id: number
+      //       //     tourDate: string //新規データ
+      //       //     startTime: string //新規データ
+      //       //     img1: string
+      //       //     tourName: string
+      //       //     description: string
+      //       //     numberOfPeople: number //新規データ
+      //       //     price: number
+      //       //     total: number
+      //       //   }[]
+      //       // }
+      //     ) => {
+      //       // await supabase
+      //       //     .from('inCarts')
+      //       //     .upsert({
+      //       //       tours: [
+      //       //         ...cart.tours,
+      //       //         {
+      //       //           id: tour.id,
+      //       //           tourDate: tourDate, //新規データ
+      //       //           startTime: startTime, //新規データ
+      //       //           img1: tour.img1,
+      //       //           tourName: tour.tourName,
+      //       //           description: tour.description,
+      //       //           numberOfPeople: numberOfPeople, //新規データ
+      //       //           price: Number(tour.price),
+      //       //           total: Number(tour.price * numberOfPeople),
+      //       //         },
+      //       //       ],
+      //       //       userId: loginId,
+      //       //       id: cart.id,
+      //       //     })
+      //       //     .eq('userId', loginId)
+      //       //   router.push('/tour/cart')
+      //     }
+      //   )
+      // }
     }
   }
   const [tab, setTab] = useState(true)

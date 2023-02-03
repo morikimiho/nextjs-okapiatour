@@ -66,7 +66,7 @@ export default function Login() {
           const user = data[0]
           console.log('user', user)
           const id = user.id
-          // console.log(id);
+          console.log('id', id)
           const localtours = JSON.parse(
             localStorage.getItem('tours') ?? '{"tours:[]}'
           )
@@ -80,7 +80,7 @@ export default function Login() {
             //   .select('*')
             //   .eq('userId', id)
             const { data } = await axios.get(
-              `http://localhost:3003/tour/get/cart`
+              `http://localhost:3003/tour/get/cart/${id}`
             )
             console.log('datam', data)
             const cart = data[0]
