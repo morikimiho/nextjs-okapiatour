@@ -55,22 +55,20 @@ export default function WinterPlan({ data }: { data: Tour[] }) {
           <div className={style.tourwrapper}>
             {data.map((tour) => {
               return (
-                <>
-                  <div className={style.tourcont}>
-                    <img src={tour.img1} alt="画像" className={style.image} />
-                    <div className={style.detail}>
-                      <div className={style.blockCont}>
-                        <div className={style.nationName}>{tour.country}</div>
-                        <div className={style.cityname}>{tour.city}</div>
-                      </div>
-                      <div className={style.tourName}>{tour.tourName}</div>
-                      価格：{tour.price.toLocaleString()}円〜
-                      <Link href={`/tour/${tour.id}`}>
-                        <div className={style.button}>詳細はこちら</div>
-                      </Link>
+                <ul className={style.tourcont} key={tour.id}>
+                  <img src={tour.img1} alt="画像" className={style.image} />
+                  <div className={style.detail}>
+                    <div className={style.blockCont}>
+                      <div className={style.nationName}>{tour.country}</div>
+                      <div className={style.cityname}>{tour.city}</div>
                     </div>
+                    <div className={style.tourName}>{tour.tourName}</div>
+                    価格：{tour.price.toLocaleString()}円〜
+                    <Link href={`/tour/${tour.id}`}>
+                      <div className={style.button}>詳細はこちら</div>
+                    </Link>
                   </div>
-                </>
+                </ul>
               )
             })}
           </div>

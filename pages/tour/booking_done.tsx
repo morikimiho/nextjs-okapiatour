@@ -17,7 +17,7 @@ export default function BookingDone() {
   useEffect(() => {
     getOrders()
   }, [loginId])
-  const [data, setData] = useState<Order[]>([])
+  // const [data, setData] = useState<Order[]>([])
   const getOrders = async () => {
     if (!loginId) return
     // let { data, error } = await supabase
@@ -26,16 +26,15 @@ export default function BookingDone() {
     //   .eq("userId", loginId);
     //   if(error)return ;
 
-    let { data } = await axios.get(
+    const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/order/get/${loginId}`
     )
     if (!data) return <div>loading...</div>
 
-    // setData(data);
-    // console.log("data", data)
+    // console.log('data', data)
     const cartItem = data[data.length - 1]
     setNumData(cartItem)
-    // console.log("numData", numData);
+    // console.log('numData', cartItem)
   }
 
   // console.log("numData", numData);

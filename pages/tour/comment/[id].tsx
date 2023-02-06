@@ -55,7 +55,7 @@ export default function Comment({ tour }: { tour: Tour }) {
   const [thanksmessage, setThanksmessage] = useState(false)
   const router = useRouter()
 
-  console.log(tour)
+  // console.log(tour)
   useEffect(() => {
     setTourid(tour.id)
   }, [tour])

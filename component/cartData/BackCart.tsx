@@ -14,7 +14,7 @@ const fetcher = (resource: string, init: any) =>
   fetch(resource, init).then((res) => res.json())
 
 export function BackCart({ loginId, amount, setAmount }: Props) {
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `http://localhost:3003/tour/get/cart/${loginId}`,
     fetcher
   )

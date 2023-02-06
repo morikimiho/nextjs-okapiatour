@@ -2,7 +2,7 @@ import Layout from '../../component/layout'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Styles from '../../styles/okapi.module.css'
-import { supabase } from '../../utils/supabaseClient'
+// import { supabase } from '../../utils/supabaseClient'
 import useCookie from '../../hooks/useCookie'
 import Link from 'next/link'
 import axios from 'axios'
@@ -10,7 +10,7 @@ import axios from 'axios'
 export default function Okapi() {
   const cookie = useCookie()
   const loginId = cookie.loginId
-  const [okapi, setOkapi] = useState(9)
+  const [okapi, setOkapi] = useState(0)
   const [disable1, setDisable1] = useState(false)
   const [disable2, setDisable2] = useState(false)
   const [disable3, setDisable3] = useState(false)
