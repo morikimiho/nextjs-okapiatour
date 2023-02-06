@@ -105,7 +105,7 @@ const CreateUser = () => {
         password: user.password,
       }
       const { data } = await axios.post('http://localhost:3003/user/login', dto)
-      console.log('data', data)
+      // console.log('data', data)
 
       const userId = data[0].id
       // console.log('userId', userId)

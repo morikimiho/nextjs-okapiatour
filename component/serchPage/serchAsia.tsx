@@ -1,17 +1,17 @@
-import styles from "../../styles/scss/search-page.module.scss";
-import { City, Country } from "../../types/types";
+import styles from '../../styles/scss/search-page.module.scss'
+import { City, Country } from '../../types/types'
 
 //海外→アジアを選んだ場合
 export const AsiaCountry = ({
   onCountryChanege,
   country,
 }: {
-  onCountryChanege: Function;
-  country: Country;
+  onCountryChanege: Function
+  country: Country
 }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    onCountryChanege(e.target.value);
-  };
+    onCountryChanege(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -38,14 +38,14 @@ export const AsiaCountry = ({
         <div className={styles.serchdetail}></div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→韓国を選んだ場合
 export const Korea = ({ city, setCity }: { city: City; setCity: Function }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -60,25 +60,26 @@ export const Korea = ({ city, setCity }: { city: City; setCity: Function }) => {
             id=""
             onChange={changeHandler}
           >
+            <option value="">-</option>
             <option value="seoul">ソウル</option>
           </select>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→台湾を選んだ場合
 export const Taiwan = ({
   setCity,
   city,
 }: {
-  city: City;
-  setCity: Function;
+  city: City
+  setCity: Function
 }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -101,20 +102,20 @@ export const Taiwan = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→台湾を選んだ場合
 export const Philippines = ({
   setCity,
   city,
 }: {
-  city: City;
-  setCity: Function;
+  city: City
+  setCity: Function
 }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -136,20 +137,14 @@ export const Philippines = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→インドを選んだ場合
-export const India = ({
-  setCity,
-  city,
-}: {
-  city: City;
-  setCity: Function;
-}) => {
+export const India = ({ setCity, city }: { city: City; setCity: Function }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -170,20 +165,14 @@ export const India = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→タイを選んだ場合
-export const Thai = ({
-  setCity,
-  city,
-}: {
-  city: City;
-  setCity: Function;
-}) => {
+export const Thai = ({ setCity, city }: { city: City; setCity: Function }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -204,20 +193,14 @@ export const Thai = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
 //海外→アジア→中国を選んだ場合
-export const China = ({
-  setCity,
-  city,
-}: {
-  city: City;
-  setCity: Function;
-}) => {
+export const China = ({ setCity, city }: { city: City; setCity: Function }) => {
   const changeHandler = (e: { target: { value: any } }) => {
-    setCity(e.target.value);
-  };
+    setCity(e.target.value)
+  }
   return (
     <>
       <div className={styles.flex}>
@@ -239,5 +222,5 @@ export const China = ({
         </div>
       </div>
     </>
-  );
-};
+  )
+}

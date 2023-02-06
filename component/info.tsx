@@ -11,18 +11,16 @@ export function Infomation({ info }: { info: Info[] }) {
       <div className={style.infowrapper}>
         {reverseData.map((info) => {
           return (
-            <div>
-              <div className={style.flexbox}>
-                <div className={style.infodate}>{info.date}</div>
-                <div className={style.infotopic}>{info.topic}</div>
-                <div
-                  className={style.infocont}
-                  style={{ fontWeight: info.bold ? 'bold' : 'normal' }}
-                >
-                  <Link href={info.src}>{info.content}</Link>
-                </div>
-              </div>
-            </div>
+            <ul className={style.flexbox} key={info.id}>
+              <li className={style.infodate}>{info.date}</li>
+              <li className={style.infotopic}>{info.topic}</li>
+              <li
+                className={style.infocont}
+                style={{ fontWeight: info.bold ? 'bold' : 'normal' }}
+              >
+                <Link href={info.src}>{info.content}</Link>
+              </li>
+            </ul>
           )
         })}
       </div>

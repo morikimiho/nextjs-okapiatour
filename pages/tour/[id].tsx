@@ -152,7 +152,7 @@ export default function Tripdetail({
       // }
 
       const inCarts = await data
-      console.log('inCarts', inCarts)
+      // console.log('inCarts', inCarts)
       const dto = {
         tours: [
           ...inCarts.tours,
@@ -171,9 +171,9 @@ export default function Tripdetail({
         userId: loginId,
         id: inCarts.id,
       }
-      console.log('dto', dto)
+      // console.log('dto', dto)
       const addTour = dto.tours
-      console.log('addTours', addTour)
+      // console.log('addTours', addTour)
       //現在の内容に新しいカートデータを追加→置き換え
       await axios.patch(
         `${process.env.NEXT_PUBLIC_API_URL}/order/updatecart/${loginId}`,
