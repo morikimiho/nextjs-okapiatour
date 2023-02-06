@@ -29,7 +29,7 @@ export default function Login() {
     }
     // const mailAddress = data.mailAddress
     // const password = data.password
-    console.log(data)
+    // console.log(data)
     fetch('/api/login', {
       method: 'POST',
       headers: {
@@ -38,18 +38,18 @@ export default function Login() {
       body: JSON.stringify(data),
     })
       .then(async (response) => {
-        console.log(response)
+        // console.log(response)
         response.json()
         if (response.status !== 200) {
-          console.log('失敗')
+          // console.log('失敗')
         } else if (response.status === 200) {
           const localTourJSON = localStorage.getItem('tours')
           if (localTourJSON === null) {
             router.push('/tour')
-            console.log('トップページに遷移')
+            // console.log('トップページに遷移')
           } else {
             router.push('/tour/pay')
-            console.log('payに遷移')
+            // console.log('payに遷移')
           }
 
           //ここからログインしたidにローカルデータを紐付けるコードを記載
@@ -83,12 +83,16 @@ export default function Login() {
               `http://localhost:3003/tour/get/cart/${id}`
             )
             console.log('datam', data)
-            const cart = data[0]
+            const cart = data
             //supabaseにローカルのデータを保存。元々supabaseにあったものはそのまま。
             // await supabase
             //   .from('inCarts')
             //   .update({ tours: [...cart.tours, ...localtours.tours] })
             //   .eq('userId', id)
+            await axios.patch(`http://localhost:3003/order/updatecart/${id}`, [
+              ...cart.tours,
+              ...localtours.tours,
+            ])
           }
           localStorage.clear()
         }

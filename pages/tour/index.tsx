@@ -35,7 +35,7 @@ export default function Home({ info }: { info: Info[] }) {
   // const [url, setUrl] = useState('/api/supabaseTours')
 
   const [url, setUrl] = useState(`${process.env.NEXT_PUBLIC_API_URL}/tour/get`)
-  console.log('index', url)
+  // console.log('index', url)
   const [subtitle, setSubtitle] = useState(false)
   const [isOpen, setIsOpen] = useState(true)
   const [displayInfo, setDisplayInfo] = useState(true)
