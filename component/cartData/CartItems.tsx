@@ -1,21 +1,21 @@
-import Link from "next/link";
-import Head from "next/head";
-import Layout from "../../component/layout";
-import styles from "../../styles/cart.module.css";
-import { Cartlist } from "../../component/CartList/cartlist";
-import Styles from "../../styles/cartlist.module.css";
-import { Dispatch, SetStateAction, useEffect } from "react";
-import { Tour } from "../../types/types";
-import { useState } from "react";
-import Router from "next/router";
+import Link from 'next/link'
+import Head from 'next/head'
+import Layout from '../../component/layout'
+import styles from '../../styles/cart.module.css'
+import { Cartlist } from '../../component/CartList/cartlist'
+import Styles from '../../styles/cartlist.module.css'
+import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Tour } from '../../types/types'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 type Props = {
-  tours: Array<Tour>;
-  amount: number;
-  setAmount: Dispatch<SetStateAction<number>>;
-  deleteHandler: Function;
-  loginId: string;
-};
+  tours: Array<Tour>
+  amount: number
+  setAmount: Dispatch<SetStateAction<number>>
+  deleteHandler: Function
+  loginId: string
+}
 export function CartItems({
   tours,
   amount,
@@ -23,43 +23,44 @@ export function CartItems({
   deleteHandler,
   loginId,
 }: Props) {
-  const [errorMessage, setErrorMessage] = useState("");
-
-  const [tourNew, setTourNew] = useState<any>([]);
+  const [errorMessage, setErrorMessage] = useState('')
+  const [tourNew, setTourNew] = useState<any>([])
+  const router = useRouter()
 
   useEffect(() => {
-    judgeError();
-  }, [tours]);
+    judgeError()
+  }, [tours])
 
   const judgeError = async () => {
-    if (typeof tours === "undefined") {
-      return;
+    if (typeof tours === 'undefined') {
+      return
     }
-    let newTour = new Map();
+    let newTour = new Map()
     tours.map((tour) => {
-      const v = newTour.get(tour.tourDate);
+      const v = newTour.get(tour.tourDate)
       if (v === undefined) {
-        newTour.set(tour.tourDate, [tour.tourName]);
+        newTour.set(tour.tourDate, [tour.tourName])
       } else if (Array.isArray(v)) {
-        newTour.set(tour.tourDate, [...v, tour.tourName]);
+        newTour.set(tour.tourDate, [...v, tour.tourName])
       }
-    });
+    })
 
-    setTourNew(newTour);
-  };
+    setTourNew(newTour)
+    // console.log('newTour', newTour)
+  }
 
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     // 無効な入力値で送信されないために初めにキャンセルする
-    e.preventDefault();
+    e.preventDefault()
 
     if (tours.length === 0) {
-      setErrorMessage("*カートに商品を追加してください。*");
+      setErrorMessage('*カートに商品を追加してください。*')
     } else if (!loginId) {
-      Router.push("/tour/login") as any;
+      router.push('/tour/login') as any
     } else {
-      Router.push("/tour/pay") as any;
+      router.push('/tour/pay') as any
     }
-  };
+  }
   return (
     <>
       <Head>
@@ -82,11 +83,11 @@ export function CartItems({
                         deleteHandler={deleteHandler}
                         tourNew={tourNew}
                       />
-                    );
+                    )
                   })}
                 </div>
                 <h2>合計：{Number(amount).toLocaleString()}円</h2>
-                <h3>加算OkaPoint:{amount/100}ポイント</h3>
+                <h3>加算OkaPoint:{amount / 100}ポイント</h3>
                 <p className={styles.error_message}>{errorMessage}</p>
                 <div className={styles.buttonsubmit}>
                   <div>
@@ -130,5 +131,5 @@ export function CartItems({
         </main>
       </Layout>
     </>
-  );
+  )
 }

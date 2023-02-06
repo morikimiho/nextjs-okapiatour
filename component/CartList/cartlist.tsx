@@ -1,9 +1,9 @@
 import Image from 'next/legacy/image'
 import { CartdetailCount } from '../../component/CartList/cartdetailCount'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { useRouter } from 'next/router'
 import useCookie from '../../hooks/useCookie'
 import Styles from '../../styles/cartlist.module.css'
+import axios from 'axios'
 
 type Props = {
   tour: any
@@ -22,9 +22,13 @@ export const Cartlist = ({
   const loginId = cookie.loginId
   const [num, setNum] = useState(tour.numberOfPeople)
 
-  const HandleNumChange = (e: { target: { value: any } }) => {
+  const HandleNumChange = async (e: { target: { value: any } }) => {
     const newNum = e.target.value
+    const tourId = tour.id
     setNum(newNum)
+    // await axios.patch(
+    //   `http://localhost:3003/order/updatecart/${loginId}&${tourId}`
+    // )
     setAmount((prev: number) => prev - tour.price * num + tour.price * newNum)
   }
 

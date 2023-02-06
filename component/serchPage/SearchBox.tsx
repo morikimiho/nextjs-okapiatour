@@ -177,46 +177,54 @@ export function SearchBox({ setUrl, setSubtitle, setDisplayInfo }: Props) {
     setDisplayInfo(false)
     e.preventDefault()
     // let query = '?'
-    let query
 
-    if (abroad.length > 0) {
-      if (areaCode.length > 0) {
-        if (country.length > 0) {
-          if (city.length > 0) {
-            // query =
-            //   query +
-            //   `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}&cityCode=${city}`
-            query = {
-              abroad: abroad,
-              areaCode: areaCode,
-              countryCode: country,
-              cityCode: city,
-            }
-          } else {
-            // query =
-            //   query +
-            //   `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}`
-            query = { abroad: abroad, areaCode: areaCode, countryCode: country }
-          }
-        } else {
-          // query = query + `abroad=${abroad}&areaCode=${areaCode}`
-          query = { abroad: abroad, areaCode: areaCode }
-        }
-      } else if (prefecture) {
-        // query = query + `abroad=${abroad}&prefecture=${prefecture}`
-        query = { abroad: abroad, prefecture: prefecture }
-      } else {
-        // query = query + `abroad=${abroad}`
-        query = { abroad: abroad }
-      }
+    let query = {
+      abroad: abroad,
+      areaCode: areaCode,
+      countryCode: country,
+      cityCode: city,
     }
-    // console.log('nextquery', query)
-    // setUrl(`/api/supabaseTours${query}`);
+
     let filterData = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/search/query`,
+      `${process.env.NEXT_PUBLIC_API_URL}/search-q`,
       query
     )
+    console.log(filterData)
     setUrl(filterData)
+
+    // if (abroad.length > 0) {
+    //   if (areaCode.length > 0) {
+    //     if (country.length > 0) {
+    //       if (city.length > 0) {
+    //         // query =
+    //         //   query +
+    //         //   `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}&cityCode=${city}`
+    //         query = {
+    //           abroad: abroad,
+    //           areaCode: areaCode,
+    //           countryCode: country,
+    //           cityCode: city,
+    //         }
+    //       } else {
+    //         // query =
+    //         //   query +
+    //         //   `abroad=${abroad}&areaCode=${areaCode}&countryCode=${country}`
+    //         query = { abroad: abroad, areaCode: areaCode, countryCode: country }
+    //       }
+    //     } else {
+    //       // query = query + `abroad=${abroad}&areaCode=${areaCode}`
+    //       query = { abroad: abroad, areaCode: areaCode }
+    //     }
+    //   } else if (prefecture) {
+    //     // query = query + `abroad=${abroad}&prefecture=${prefecture}`
+    //     query = { abroad: abroad, prefecture: prefecture }
+    //   } else {
+    //     // query = query + `abroad=${abroad}`
+    //     query = { abroad: abroad }
+    //   }
+    // }
+    // console.log('nextquery', query)
+    // setUrl(`/api/supabaseTours${query}`);
   }
   return (
     <>
